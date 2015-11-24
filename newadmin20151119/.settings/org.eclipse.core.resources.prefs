@@ -1,0 +1,17 @@
+eclipse.preferences.version=1
+encoding//Application/Admin/Conf/config.php=UTF-8
+encoding//Application/Admin/Controller/HelpController.class.php=UTF-8
+encoding//Application/Admin/Controller/LoginController.class.php=UTF-8
+encoding//Application/Admin/Controller/NewsController.class.php=UTF-8
+encoding//Application/Admin/Controller/PlugController.class.php=UTF-8
+encoding//Application/Admin/Controller/SysController.class.php=UTF-8
+encoding//Application/Admin/Model/NewsModel.class.php=UTF-8
+encoding//Application/Admin/View/Sys/admin_list.html=UTF-8
+encoding//Application/Admin/View/Sys/emailsys.html=UTF-8
+encoding//Application/Admin/View/Sys/sys.html=UTF-8
+encoding//Application/Common/Common/function.php=UTF-8
+encoding//Application/Common/Conf/config.php=UTF-8
+encoding//Application/Common/Controller/AuthController.class.php=UTF-8
+encoding//ThinkPHP/Conf/convention.php=UTF-8
+encoding//ThinkPHP/Library/Org/Net/IpLocation.class.php=UTF-8
+encoding//ThinkPHP/Library/Think/Page.class.php=UTF-8

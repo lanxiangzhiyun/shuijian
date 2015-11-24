@@ -1,0 +1,1700 @@
+[ 2015-11-10T17:16:05+08:00 ] 127.0.0.1 /newadmin/index.php/Admin/News/news_list_alldel.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000676s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000836s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000974s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0021s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0020s ]
+SQL: SELECT `condition`,`name` FROM `mr_auth_rule` WHERE `id` IN ('1','2','6','10','19') AND `type` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant htmlspecialchars - assumed 'htmlspecialchars' E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 164 行.
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0021s ]
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0021s ]
+SQL: UPDATE `mr_news` SET `news_back`='1' WHERE ( n_id in(4299) ) [ RunTime:0.0002s ]
+
+[ 2015-11-10T17:16:08+08:00 ] 127.0.0.1 /newadmin/index.php/Admin/Sys/leftnav.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000613s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000795s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000946s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0029s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0023s ]
+SQL: SELECT `condition`,`name` FROM `mr_auth_rule` WHERE `id` IN ('1','2','6','10','19') AND `type` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+ERR: 非法操作:leftnav
+
+[ 2015-11-10T17:16:14+08:00 ] 127.0.0.1 /newadmin/index.php/Admin/News/news_back.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000804s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000980s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001206s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0025s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0025s ]
+SQL: SELECT `condition`,`name` FROM `mr_auth_rule` WHERE `id` IN ('1','2','6','10','19') AND `type` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant news_title - assumed 'news_title' E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 122 行.
+NOTIC: [8] Undefined offset: 1 E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 130 行.
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0026s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `mr_news` WHERE `news_back` = 1 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) LIMIT 1   [ RunTime:0.0074s ]
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0028s ]
+SQL: SELECT * FROM `mr_news` WHERE `news_back` = 1 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) ORDER BY news_time desc LIMIT 0,10   [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `mr_column` [ RunTime:0.0027s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='5' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='5' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='20' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='20' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='35' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='35' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `mr_diyflag` [ RunTime:0.0024s ]
+SQL: SELECT * FROM `mr_diyflag`  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000177s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000283s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0027s ]
+SQL: SELECT `id`,`name`,`title`,`css` FROM `mr_auth_rule` WHERE ( pid=0 AND status=1 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 7 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 22 AND `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [8] Undefined variable: vt E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 523 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 543 行.
+NOTIC: [8] Undefined variable: vt E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 523 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 546 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 547 行.
+NOTIC: [8] Undefined variable: vt E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 523 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 543 行.
+NOTIC: [8] Undefined variable: vt E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 523 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 543 行.
+NOTIC: [8] Undefined variable: vt E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 523 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 543 行.
+NOTIC: [8] Undefined variable: vt E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 523 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 543 行.
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 8 AND `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.031314s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.031404s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000446s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000530s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000591s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000679s ]
+
+[ 2015-11-10T17:16:16+08:00 ] 127.0.0.1 /newadmin/index.php/Admin/News/news_list.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000046s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000863s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001049s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001268s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0033s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0031s ]
+SQL: SELECT `condition`,`name` FROM `mr_auth_rule` WHERE `id` IN ('1','2','6','10','19') AND `type` = 1 AND `status` = 1  [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant news_title - assumed 'news_title' E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 10 行.
+NOTIC: [8] Undefined offset: 1 E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0032s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `mr_news` WHERE `news_back` = 0 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) LIMIT 1   [ RunTime:0.0091s ]
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0034s ]
+SQL: SELECT * FROM `mr_news` WHERE `news_back` = 0 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) ORDER BY news_time desc LIMIT 0,10   [ RunTime:0.0101s ]
+SQL: SHOW COLUMNS FROM `mr_column` [ RunTime:0.0033s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='5' ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='33' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='31' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='7' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='24' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='21' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='31' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='31' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='20' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='33' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `mr_diyflag` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `mr_diyflag`  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000198s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000320s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0032s ]
+SQL: SELECT `id`,`name`,`title`,`css` FROM `mr_auth_rule` WHERE ( pid=0 AND status=1 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 1 AND `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 7 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 22 AND `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 545 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 546 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 545 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 546 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 8 AND `status` = 1  [ RunTime:0.0003s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.040280s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.040392s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000522s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000627s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000718s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000829s ]
+
+[ 2015-11-10T17:17:10+08:00 ] 127.0.0.1 /newadmin/index.php/Admin/News/news_list.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000043s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000814s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000982s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001178s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0023s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0022s ]
+SQL: SELECT `condition`,`name` FROM `mr_auth_rule` WHERE `id` IN ('1','2','6','10','19') AND `type` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant news_title - assumed 'news_title' E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 10 行.
+NOTIC: [8] Undefined offset: 1 E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0025s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `mr_news` WHERE `news_back` = 0 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) LIMIT 1   [ RunTime:0.0077s ]
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0026s ]
+SQL: SELECT * FROM `mr_news` WHERE `news_back` = 0 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) ORDER BY news_time desc LIMIT 0,10   [ RunTime:0.0085s ]
+SQL: SHOW COLUMNS FROM `mr_column` [ RunTime:0.0026s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='5' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='33' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='31' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='7' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='24' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='21' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='31' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='31' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='20' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='33' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `mr_diyflag` [ RunTime:0.0022s ]
+SQL: SELECT * FROM `mr_diyflag`  [ RunTime:0.0001s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000151s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000248s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0027s ]
+SQL: SELECT `id`,`name`,`title`,`css` FROM `mr_auth_rule` WHERE ( pid=0 AND status=1 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 7 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 22 AND `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 545 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 546 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 545 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 546 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 8 AND `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.030527s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.030611s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000455s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000539s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000518s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000599s ]
+
+[ 2015-11-10T17:17:16+08:00 ] 127.0.0.1 /newadmin/index.php/Admin/News/news_list_alldel.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000036s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000700s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001006s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001164s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0029s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0028s ]
+SQL: SELECT `condition`,`name` FROM `mr_auth_rule` WHERE `id` IN ('1','2','6','10','19') AND `type` = 1 AND `status` = 1  [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant htmlspecialchars - assumed 'htmlspecialchars' E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 164 行.
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0031s ]
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0030s ]
+SQL: UPDATE `mr_news` SET `news_back`='1' WHERE ( n_id in(11) ) [ RunTime:0.0002s ]
+
+[ 2015-11-10T17:17:17+08:00 ] 127.0.0.1 /newadmin/index.php/Admin/News/news_list.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000482s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000595s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000702s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0028s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0028s ]
+SQL: SELECT `condition`,`name` FROM `mr_auth_rule` WHERE `id` IN ('1','2','6','10','19') AND `type` = 1 AND `status` = 1  [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant news_title - assumed 'news_title' E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 10 行.
+NOTIC: [8] Undefined offset: 1 E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0034s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `mr_news` WHERE `news_back` = 0 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) LIMIT 1   [ RunTime:0.0087s ]
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0032s ]
+SQL: SELECT * FROM `mr_news` WHERE `news_back` = 0 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) ORDER BY news_time desc LIMIT 0,10   [ RunTime:0.0092s ]
+SQL: SHOW COLUMNS FROM `mr_column` [ RunTime:0.0024s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='33' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='31' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='7' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='24' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='21' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='31' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='31' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='20' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='33' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='32' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `mr_diyflag` [ RunTime:0.0019s ]
+SQL: SELECT * FROM `mr_diyflag`  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000125s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000200s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0021s ]
+SQL: SELECT `id`,`name`,`title`,`css` FROM `mr_auth_rule` WHERE ( pid=0 AND status=1 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 1 AND `status` = 1  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 7 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 22 AND `status` = 1  [ RunTime:0.0001s ]
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 545 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 546 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 545 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 546 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 545 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 546 行.
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 8 AND `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.025687s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.025759s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000326s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000391s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000423s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000489s ]
+
+[ 2015-11-10T17:17:18+08:00 ] 127.0.0.1 /newadmin/index.php/Admin/News/news_back.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000349s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000468s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000540s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0024s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0020s ]
+SQL: SELECT `condition`,`name` FROM `mr_auth_rule` WHERE `id` IN ('1','2','6','10','19') AND `type` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant news_title - assumed 'news_title' E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 122 行.
+NOTIC: [8] Undefined offset: 1 E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 130 行.
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0021s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `mr_news` WHERE `news_back` = 1 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) LIMIT 1   [ RunTime:0.0071s ]
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0024s ]
+SQL: SELECT * FROM `mr_news` WHERE `news_back` = 1 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) ORDER BY news_time desc LIMIT 0,10   [ RunTime:0.0067s ]
+SQL: SHOW COLUMNS FROM `mr_column` [ RunTime:0.0023s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='5' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='5' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='5' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='20' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='20' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='35' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='35' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `mr_diyflag` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `mr_diyflag`  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000125s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000198s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0023s ]
+SQL: SELECT `id`,`name`,`title`,`css` FROM `mr_auth_rule` WHERE ( pid=0 AND status=1 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 7 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 22 AND `status` = 1  [ RunTime:0.0001s ]
+NOTIC: [8] Undefined variable: vt E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 523 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 543 行.
+NOTIC: [8] Undefined variable: vt E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 523 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 546 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 547 行.
+NOTIC: [8] Undefined variable: vt E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 523 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 543 行.
+NOTIC: [8] Undefined variable: vt E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 523 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 543 行.
+NOTIC: [8] Undefined variable: vt E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 523 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 543 行.
+NOTIC: [8] Undefined variable: vt E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 523 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 543 行.
+NOTIC: [8] Undefined variable: vt E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 523 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 543 行.
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 8 AND `status` = 1  [ RunTime:0.0001s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.025162s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.025239s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000193s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000256s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000340s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000405s ]
+
+[ 2015-11-10T17:17:20+08:00 ] 127.0.0.1 /newadmin/index.php/Admin/News/news_list.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000069s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000803s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000915s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001089s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0047s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0046s ]
+SQL: SELECT `condition`,`name` FROM `mr_auth_rule` WHERE `id` IN ('1','2','6','10','19') AND `type` = 1 AND `status` = 1  [ RunTime:0.0004s ]
+NOTIC: [8] Use of undefined constant news_title - assumed 'news_title' E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 10 行.
+NOTIC: [8] Undefined offset: 1 E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0049s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `mr_news` WHERE `news_back` = 0 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) LIMIT 1   [ RunTime:0.0129s ]
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0051s ]
+SQL: SELECT * FROM `mr_news` WHERE `news_back` = 0 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) ORDER BY news_time desc LIMIT 0,10   [ RunTime:0.0098s ]
+SQL: SHOW COLUMNS FROM `mr_column` [ RunTime:0.0027s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='33' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='31' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='7' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='24' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='21' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='31' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='31' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='20' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='33' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='32' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_diyflag` [ RunTime:0.0024s ]
+SQL: SELECT * FROM `mr_diyflag`  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000164s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000266s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0028s ]
+SQL: SELECT `id`,`name`,`title`,`css` FROM `mr_auth_rule` WHERE ( pid=0 AND status=1 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 7 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 22 AND `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 545 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 546 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 545 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 546 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 545 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 546 行.
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 8 AND `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.032497s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.032594s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000317s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000404s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000457s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000544s ]
+
+[ 2015-11-10T17:17:25+08:00 ] 127.0.0.1 /newadmin/index.php/Admin/News/news_list_alldel.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000037s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000680s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000902s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001061s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0029s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0027s ]
+SQL: SELECT `condition`,`name` FROM `mr_auth_rule` WHERE `id` IN ('1','2','6','10','19') AND `type` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant htmlspecialchars - assumed 'htmlspecialchars' E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 164 行.
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0028s ]
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0028s ]
+SQL: UPDATE `mr_news` SET `news_back`='1' WHERE ( n_id in(4306) ) [ RunTime:0.0002s ]
+
+[ 2015-11-10T17:17:27+08:00 ] 127.0.0.1 /newadmin/index.php/Admin/News/news_list.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000621s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000814s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000954s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0038s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0036s ]
+SQL: SELECT `condition`,`name` FROM `mr_auth_rule` WHERE `id` IN ('1','2','6','10','19') AND `type` = 1 AND `status` = 1  [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant news_title - assumed 'news_title' E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 10 行.
+NOTIC: [8] Undefined offset: 1 E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0038s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `mr_news` WHERE `news_back` = 0 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) LIMIT 1   [ RunTime:0.0113s ]
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0043s ]
+SQL: SELECT * FROM `mr_news` WHERE `news_back` = 0 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) ORDER BY news_time desc LIMIT 0,10   [ RunTime:0.0099s ]
+SQL: SHOW COLUMNS FROM `mr_column` [ RunTime:0.0033s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='33' ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='7' ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='24' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='21' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='31' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='31' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='20' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='33' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='32' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='31' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_diyflag` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `mr_diyflag`  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000196s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000318s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0027s ]
+SQL: SELECT `id`,`name`,`title`,`css` FROM `mr_auth_rule` WHERE ( pid=0 AND status=1 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 7 AND `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 22 AND `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 545 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 546 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 545 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 546 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 8 AND `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.036429s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.036534s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000302s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000367s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000398s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000463s ]
+
+[ 2015-11-10T17:17:30+08:00 ] 127.0.0.1 /newadmin/index.php/Admin/News/news_list_alldel.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000445s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000590s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000694s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0031s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0031s ]
+SQL: SELECT `condition`,`name` FROM `mr_auth_rule` WHERE `id` IN ('1','2','6','10','19') AND `type` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant htmlspecialchars - assumed 'htmlspecialchars' E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 164 行.
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0033s ]
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0033s ]
+SQL: UPDATE `mr_news` SET `news_back`='1' WHERE ( n_id in(4307,4305) ) [ RunTime:0.0003s ]
+
+[ 2015-11-10T17:17:31+08:00 ] 127.0.0.1 /newadmin/index.php/Admin/News/news_list.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000043s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000855s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001121s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001321s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0035s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0034s ]
+SQL: SELECT `condition`,`name` FROM `mr_auth_rule` WHERE `id` IN ('1','2','6','10','19') AND `type` = 1 AND `status` = 1  [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant news_title - assumed 'news_title' E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 10 行.
+NOTIC: [8] Undefined offset: 1 E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0035s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `mr_news` WHERE `news_back` = 0 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) LIMIT 1   [ RunTime:0.0100s ]
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0037s ]
+SQL: SELECT * FROM `mr_news` WHERE `news_back` = 0 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) ORDER BY news_time desc LIMIT 0,10   [ RunTime:0.0107s ]
+SQL: SHOW COLUMNS FROM `mr_column` [ RunTime:0.0035s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='24' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='21' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='31' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='31' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='20' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='33' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='32' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='31' ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='31' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='31' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_diyflag` [ RunTime:0.0032s ]
+SQL: SELECT * FROM `mr_diyflag`  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000128s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000207s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0021s ]
+SQL: SELECT `id`,`name`,`title`,`css` FROM `mr_auth_rule` WHERE ( pid=0 AND status=1 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 1 AND `status` = 1  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 7 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 22 AND `status` = 1  [ RunTime:0.0001s ]
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 545 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 546 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 8 AND `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.032343s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.032440s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000219s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000285s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000387s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000454s ]
+
+[ 2015-11-10T17:17:38+08:00 ] 127.0.0.1 /newadmin/index.php/Admin/News/news_back.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000042s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000860s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001077s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001283s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0031s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0031s ]
+SQL: SELECT `condition`,`name` FROM `mr_auth_rule` WHERE `id` IN ('1','2','6','10','19') AND `type` = 1 AND `status` = 1  [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant news_title - assumed 'news_title' E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 122 行.
+NOTIC: [8] Undefined offset: 1 E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 130 行.
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0034s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `mr_news` WHERE `news_back` = 1 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) LIMIT 1   [ RunTime:0.0086s ]
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0036s ]
+SQL: SELECT * FROM `mr_news` WHERE `news_back` = 1 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) ORDER BY news_time desc LIMIT 0,10   [ RunTime:0.0092s ]
+SQL: SHOW COLUMNS FROM `mr_column` [ RunTime:0.0034s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='5' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='5' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='5' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='33' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='31' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='7' ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='20' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='20' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='35' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='35' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_diyflag` [ RunTime:0.0029s ]
+SQL: SELECT * FROM `mr_diyflag`  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000218s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000364s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0024s ]
+SQL: SELECT `id`,`name`,`title`,`css` FROM `mr_auth_rule` WHERE ( pid=0 AND status=1 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 7 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 22 AND `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [8] Undefined variable: vt E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 523 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 543 行.
+NOTIC: [8] Undefined variable: vt E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 523 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 546 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 547 行.
+NOTIC: [8] Undefined variable: vt E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 523 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 543 行.
+NOTIC: [8] Undefined variable: vt E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 523 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 546 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 547 行.
+NOTIC: [8] Undefined variable: vt E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 523 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 546 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 547 行.
+NOTIC: [8] Undefined variable: vt E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 523 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 543 行.
+NOTIC: [8] Undefined variable: vt E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 523 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 543 行.
+NOTIC: [8] Undefined variable: vt E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 523 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 543 行.
+NOTIC: [8] Undefined variable: vt E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 523 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 543 行.
+NOTIC: [8] Undefined variable: vt E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 523 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\63a14476e9b8e15b87628f93e42f8a66.php 第 543 行.
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 8 AND `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.035872s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.035964s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000294s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000361s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000463s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000552s ]
+
+[ 2015-11-10T17:17:40+08:00 ] 127.0.0.1 /newadmin/index.php/Admin/News/news_list.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000034s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000680s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000892s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001046s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0041s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0038s ]
+SQL: SELECT `condition`,`name` FROM `mr_auth_rule` WHERE `id` IN ('1','2','6','10','19') AND `type` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant news_title - assumed 'news_title' E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 10 行.
+NOTIC: [8] Undefined offset: 1 E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0026s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `mr_news` WHERE `news_back` = 0 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) LIMIT 1   [ RunTime:0.0078s ]
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0028s ]
+SQL: SELECT * FROM `mr_news` WHERE `news_back` = 0 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) ORDER BY news_time desc LIMIT 0,10   [ RunTime:0.0083s ]
+SQL: SHOW COLUMNS FROM `mr_column` [ RunTime:0.0027s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='24' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='21' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='31' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='31' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='20' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='33' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='32' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='31' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='31' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='31' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `mr_diyflag` [ RunTime:0.0019s ]
+SQL: SELECT * FROM `mr_diyflag`  [ RunTime:0.0001s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000121s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000195s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0023s ]
+SQL: SELECT `id`,`name`,`title`,`css` FROM `mr_auth_rule` WHERE ( pid=0 AND status=1 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 1 AND `status` = 1  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 7 AND `status` = 1  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 22 AND `status` = 1  [ RunTime:0.0001s ]
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 545 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 546 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 541 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 8 AND `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.025928s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.026003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000258s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000324s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000370s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000438s ]
+
+[ 2015-11-10T17:19:46+08:00 ] 127.0.0.1 /newadmin/index.php/Admin/News/news_list/p/3.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000036s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000722s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001041s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001213s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0022s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0021s ]
+SQL: SELECT `condition`,`name` FROM `mr_auth_rule` WHERE `id` IN ('1','2','6','10','19') AND `type` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant news_title - assumed 'news_title' E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 10 行.
+NOTIC: [8] Undefined offset: 1 E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0023s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `mr_news` WHERE `news_back` = 0 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) LIMIT 1   [ RunTime:0.0072s ]
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `mr_news` WHERE `news_back` = 0 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) ORDER BY news_time desc LIMIT 20,10   [ RunTime:0.0076s ]
+SQL: SHOW COLUMNS FROM `mr_column` [ RunTime:0.0024s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='20' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='38' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='38' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='7' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='35' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='31' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='35' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='7' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='37' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='33' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `mr_diyflag` [ RunTime:0.0021s ]
+SQL: SELECT * FROM `mr_diyflag`  [ RunTime:0.0001s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000149s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000233s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0023s ]
+SQL: SELECT `id`,`name`,`title`,`css` FROM `mr_auth_rule` WHERE ( pid=0 AND status=1 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 7 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 22 AND `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 546 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 547 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 546 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 547 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 546 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 547 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 8 AND `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.028910s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.028988s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000336s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000406s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000468s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000542s ]
+
+[ 2015-11-10T17:19:49+08:00 ] 127.0.0.1 /newadmin/index.php/Admin/News/news_list_alldel.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000566s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000737s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000854s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0032s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0031s ]
+SQL: SELECT `condition`,`name` FROM `mr_auth_rule` WHERE `id` IN ('1','2','6','10','19') AND `type` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant htmlspecialchars - assumed 'htmlspecialchars' E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 165 行.
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0033s ]
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0032s ]
+SQL: UPDATE `mr_news` SET `news_back`='1' WHERE ( n_id in(4136,1727) ) [ RunTime:0.0003s ]
+
+[ 2015-11-10T17:19:51+08:00 ] 127.0.0.1 /newadmin/index.php/Admin/News/news_list/p/3.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000036s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000732s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001042s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001214s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0029s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0028s ]
+SQL: SELECT `condition`,`name` FROM `mr_auth_rule` WHERE `id` IN ('1','2','6','10','19') AND `type` = 1 AND `status` = 1  [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant news_title - assumed 'news_title' E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 10 行.
+NOTIC: [8] Undefined offset: 1 E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0031s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `mr_news` WHERE `news_back` = 0 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) LIMIT 1   [ RunTime:0.0086s ]
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0032s ]
+SQL: SELECT * FROM `mr_news` WHERE `news_back` = 0 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) ORDER BY news_time desc LIMIT 20,10   [ RunTime:0.0095s ]
+SQL: SHOW COLUMNS FROM `mr_column` [ RunTime:0.0031s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='20' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='38' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='38' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='7' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='35' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='31' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='37' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='33' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='36' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='33' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_diyflag` [ RunTime:0.0027s ]
+SQL: SELECT * FROM `mr_diyflag`  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000125s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000200s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0022s ]
+SQL: SELECT `id`,`name`,`title`,`css` FROM `mr_auth_rule` WHERE ( pid=0 AND status=1 )  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 7 AND `status` = 1  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 22 AND `status` = 1  [ RunTime:0.0001s ]
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 546 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 547 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 546 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 547 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 546 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 547 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 546 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 547 行.
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 8 AND `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.027556s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.027630s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000341s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000408s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000437s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000505s ]
+
+[ 2015-11-10T17:26:23+08:00 ] 127.0.0.1 /newadmin/index.php/Admin/News/news_list/p/3.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000587s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000785s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000923s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0044s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0012s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0047s ]
+SQL: SELECT `condition`,`name` FROM `mr_auth_rule` WHERE `id` IN ('1','2','6','10','19') AND `type` = 1 AND `status` = 1  [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant news_title - assumed 'news_title' E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 10 行.
+NOTIC: [8] Undefined offset: 1 E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0047s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `mr_news` WHERE `news_back` = 0 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) LIMIT 1   [ RunTime:0.0109s ]
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0042s ]
+SQL: SELECT * FROM `mr_news` WHERE `news_back` = 0 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) ORDER BY news_time desc LIMIT 20,10   [ RunTime:0.0116s ]
+SQL: SHOW COLUMNS FROM `mr_column` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='20' ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='38' ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='38' ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='7' ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='35' ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='31' ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='37' ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='33' ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='36' ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='33' ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `mr_diyflag` [ RunTime:0.0043s ]
+SQL: SELECT * FROM `mr_diyflag`  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000164s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000253s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0023s ]
+SQL: SELECT `id`,`name`,`title`,`css` FROM `mr_auth_rule` WHERE ( pid=0 AND status=1 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 7 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 22 AND `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 546 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 547 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 546 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 547 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 546 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 547 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 546 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 547 行.
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 8 AND `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.037584s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.037688s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000367s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000439s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000455s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000530s ]
+
+[ 2015-11-10T17:26:25+08:00 ] 127.0.0.1 /newadmin/index.php/Admin/News/news_list/p/4.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000043s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000929s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001189s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001391s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0033s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0031s ]
+SQL: SELECT `condition`,`name` FROM `mr_auth_rule` WHERE `id` IN ('1','2','6','10','19') AND `type` = 1 AND `status` = 1  [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant news_title - assumed 'news_title' E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 10 行.
+NOTIC: [8] Undefined offset: 1 E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0033s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `mr_news` WHERE `news_back` = 0 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) LIMIT 1   [ RunTime:0.0092s ]
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0034s ]
+SQL: SELECT * FROM `mr_news` WHERE `news_back` = 0 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) ORDER BY news_time desc LIMIT 30,10   [ RunTime:0.0101s ]
+SQL: SHOW COLUMNS FROM `mr_column` [ RunTime:0.0032s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='32' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='35' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='35' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='35' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='32' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='33' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='7' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='7' ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='35' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='32' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_diyflag` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `mr_diyflag`  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000206s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000328s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0032s ]
+SQL: SELECT `id`,`name`,`title`,`css` FROM `mr_auth_rule` WHERE ( pid=0 AND status=1 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 1 AND `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 7 AND `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 22 AND `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 8 AND `status` = 1  [ RunTime:0.0003s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.041858s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.041968s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000523s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000626s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000690s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000797s ]
+
+[ 2015-11-10T17:26:30+08:00 ] 127.0.0.1 /newadmin/index.php/Admin/News/news_list_alldel.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000037s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000834s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000960s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001114s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0022s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0022s ]
+SQL: SELECT `condition`,`name` FROM `mr_auth_rule` WHERE `id` IN ('1','2','6','10','19') AND `type` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant htmlspecialchars - assumed 'htmlspecialchars' E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 165 行.
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0023s ]
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0023s ]
+SQL: UPDATE `mr_news` SET `news_back`='1' WHERE ( n_id in(1718) ) [ RunTime:0.0002s ]
+
+[ 2015-11-10T17:26:32+08:00 ] 127.0.0.1 /newadmin/index.php/Admin/News/news_list/p/4.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000036s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000812s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001073s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001253s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0034s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0034s ]
+SQL: SELECT `condition`,`name` FROM `mr_auth_rule` WHERE `id` IN ('1','2','6','10','19') AND `type` = 1 AND `status` = 1  [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant news_title - assumed 'news_title' E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 10 行.
+NOTIC: [8] Undefined offset: 1 E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0035s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `mr_news` WHERE `news_back` = 0 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) LIMIT 1   [ RunTime:0.0099s ]
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0038s ]
+SQL: SELECT * FROM `mr_news` WHERE `news_back` = 0 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) ORDER BY news_time desc LIMIT 30,10   [ RunTime:0.0106s ]
+SQL: SHOW COLUMNS FROM `mr_column` [ RunTime:0.0022s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='32' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='35' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='35' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='35' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='32' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='33' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='7' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='35' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='32' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='32' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `mr_diyflag` [ RunTime:0.0019s ]
+SQL: SELECT * FROM `mr_diyflag`  [ RunTime:0.0001s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000149s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000236s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0022s ]
+SQL: SELECT `id`,`name`,`title`,`css` FROM `mr_auth_rule` WHERE ( pid=0 AND status=1 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 7 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 22 AND `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 8 AND `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.027711s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.027784s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000367s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000432s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000511s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000576s ]
+
+[ 2015-11-10T17:26:37+08:00 ] 127.0.0.1 /newadmin/index.php/Admin/News/news_list_alldel.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000038s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000740s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000841s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000982s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0021s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0019s ]
+SQL: SELECT `condition`,`name` FROM `mr_auth_rule` WHERE `id` IN ('1','2','6','10','19') AND `type` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant htmlspecialchars - assumed 'htmlspecialchars' E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 165 行.
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0021s ]
+SQL: UPDATE `mr_news` SET `news_back`='1' WHERE ( n_id in(1719) ) [ RunTime:0.0002s ]
+
+[ 2015-11-10T17:26:39+08:00 ] 127.0.0.1 /newadmin/index.php/Admin/News/news_list/p/4.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000046s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000910s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001316s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001638s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0025s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0025s ]
+SQL: SELECT `condition`,`name` FROM `mr_auth_rule` WHERE `id` IN ('1','2','6','10','19') AND `type` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant news_title - assumed 'news_title' E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 10 行.
+NOTIC: [8] Undefined offset: 1 E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0026s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `mr_news` WHERE `news_back` = 0 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) LIMIT 1   [ RunTime:0.0078s ]
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0029s ]
+SQL: SELECT * FROM `mr_news` WHERE `news_back` = 0 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) ORDER BY news_time desc LIMIT 30,10   [ RunTime:0.0085s ]
+SQL: SHOW COLUMNS FROM `mr_column` [ RunTime:0.0026s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='32' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='35' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='35' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='35' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='32' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='7' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='35' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='32' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='32' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='33' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_diyflag` [ RunTime:0.0021s ]
+SQL: SELECT * FROM `mr_diyflag`  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000128s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000204s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0021s ]
+SQL: SELECT `id`,`name`,`title`,`css` FROM `mr_auth_rule` WHERE ( pid=0 AND status=1 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 7 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 22 AND `status` = 1  [ RunTime:0.0001s ]
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 8 AND `status` = 1  [ RunTime:0.0001s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.026260s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.026328s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000275s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000336s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000528s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000618s ]
+
+[ 2015-11-10T17:26:46+08:00 ] 127.0.0.1 /newadmin/index.php/Admin/News/news_list
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000034s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000737s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000955s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001109s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0022s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0020s ]
+SQL: SELECT `condition`,`name` FROM `mr_auth_rule` WHERE `id` IN ('1','2','6','10','19') AND `type` = 1 AND `status` = 1  [ RunTime:0.0001s ]
+NOTIC: [8] Use of undefined constant news_title - assumed 'news_title' E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 10 行.
+NOTIC: [8] Undefined offset: 1 E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0022s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `mr_news` WHERE `news_back` = 0 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) LIMIT 1   [ RunTime:0.0067s ]
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0024s ]
+SQL: SELECT * FROM `mr_news` WHERE `news_back` = 0 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) ORDER BY news_time desc LIMIT 0,10   [ RunTime:0.0073s ]
+SQL: SHOW COLUMNS FROM `mr_column` [ RunTime:0.0022s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='24' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='21' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='31' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='31' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='20' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='33' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='32' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='31' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='31' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='31' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `mr_diyflag` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `mr_diyflag`  [ RunTime:0.0001s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000134s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000216s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0022s ]
+SQL: SELECT `id`,`name`,`title`,`css` FROM `mr_auth_rule` WHERE ( pid=0 AND status=1 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 7 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 22 AND `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 546 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 547 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 8 AND `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.027231s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.027306s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000378s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000449s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000463s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000534s ]
+
+[ 2015-11-10T17:35:31+08:00 ] 127.0.0.1 /newadmin/index.php/Admin/News/news_list/p/3.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000038s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000824s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001043s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001215s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0023s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0022s ]
+SQL: SELECT `condition`,`name` FROM `mr_auth_rule` WHERE `id` IN ('1','2','6','10','19') AND `type` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant news_title - assumed 'news_title' E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 10 行.
+NOTIC: [8] Undefined offset: 1 E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0023s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `mr_news` WHERE `news_back` = 0 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) LIMIT 1   [ RunTime:0.0069s ]
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `mr_news` WHERE `news_back` = 0 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) ORDER BY news_time desc LIMIT 20,10   [ RunTime:0.0078s ]
+SQL: SHOW COLUMNS FROM `mr_column` [ RunTime:0.0024s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='20' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='38' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='38' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='7' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='35' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='31' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='37' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='33' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='36' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='33' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `mr_diyflag` [ RunTime:0.0021s ]
+SQL: SELECT * FROM `mr_diyflag`  [ RunTime:0.0001s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000187s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000263s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0022s ]
+SQL: SELECT `id`,`name`,`title`,`css` FROM `mr_auth_rule` WHERE ( pid=0 AND status=1 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 7 AND `status` = 1  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 22 AND `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 546 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 547 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 546 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 547 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 546 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 547 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 546 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 547 行.
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 8 AND `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.029085s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.029161s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000330s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000397s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000414s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000478s ]
+
+[ 2015-11-10T17:35:31+08:00 ] 127.0.0.1 /newadmin/index.php/Admin/News/news_list/p/4.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000844s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001059s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001235s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0021s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0021s ]
+SQL: SELECT `condition`,`name` FROM `mr_auth_rule` WHERE `id` IN ('1','2','6','10','19') AND `type` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant news_title - assumed 'news_title' E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 10 行.
+NOTIC: [8] Undefined offset: 1 E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0021s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `mr_news` WHERE `news_back` = 0 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) LIMIT 1   [ RunTime:0.0067s ]
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0023s ]
+SQL: SELECT * FROM `mr_news` WHERE `news_back` = 0 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) ORDER BY news_time desc LIMIT 30,10   [ RunTime:0.0073s ]
+SQL: SHOW COLUMNS FROM `mr_column` [ RunTime:0.0022s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='32' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='35' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='35' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='35' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='32' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='7' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='35' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='32' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='32' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='33' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `mr_diyflag` [ RunTime:0.0021s ]
+SQL: SELECT * FROM `mr_diyflag`  [ RunTime:0.0001s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000134s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000217s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0024s ]
+SQL: SELECT `id`,`name`,`title`,`css` FROM `mr_auth_rule` WHERE ( pid=0 AND status=1 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 1 AND `status` = 1  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 7 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 22 AND `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 8 AND `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.027871s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.027943s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000356s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000420s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000499s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000566s ]
+
+[ 2015-11-10T17:35:32+08:00 ] 127.0.0.1 /newadmin/index.php/Admin/News/news_list/p/5.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000585s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000792s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000928s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0020s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0020s ]
+SQL: SELECT `condition`,`name` FROM `mr_auth_rule` WHERE `id` IN ('1','2','6','10','19') AND `type` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant news_title - assumed 'news_title' E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 10 行.
+NOTIC: [8] Undefined offset: 1 E:\wamp\www\newadmin\Application\Admin\Controller\NewsController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0022s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `mr_news` WHERE `news_back` = 0 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) LIMIT 1   [ RunTime:0.0068s ]
+SQL: SHOW COLUMNS FROM `mr_news` [ RunTime:0.0023s ]
+SQL: SELECT * FROM `mr_news` WHERE `news_back` = 0 AND `news_title` LIKE '%%' AND ( `news_time` >= 0 AND `news_time` <= 1447170955  ) ORDER BY news_time desc LIMIT 40,10   [ RunTime:0.0072s ]
+SQL: SHOW COLUMNS FROM `mr_column` [ RunTime:0.0024s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='33' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='35' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='35' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='33' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='33' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='33' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='33' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='33' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='33' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_column` WHERE ( 1=1 AND c_id='33' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `mr_diyflag` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `mr_diyflag`  [ RunTime:0.0001s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000130s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000204s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0025s ]
+SQL: SELECT `id`,`name`,`title`,`css` FROM `mr_auth_rule` WHERE ( pid=0 AND status=1 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 7 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 22 AND `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+NOTIC: [8] Use of undefined constant news_open - assumed 'news_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 542 行.
+NOTIC: [8] Undefined index: id E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\5dc7cb56e7e8cd7601e6f40f87c141e0.php 第 543 行.
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 8 AND `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.027527s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.027601s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000343s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000419s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000411s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000477s ]
+

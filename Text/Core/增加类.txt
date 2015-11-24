@@ -1,0 +1,5 @@
+拼音类：
+	ThinkPHP/Extend/Library/ORG/Util/PinYin.class.php
+
+验证码类：
+	ThinkPHP/Extend/Library/ORG/Util/Vcode.class.php

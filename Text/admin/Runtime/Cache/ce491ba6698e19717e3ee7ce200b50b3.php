@@ -1,0 +1,1 @@
+<?php if (!defined('THINK_PATH')) exit();?>这是首页，不会被关掉！

@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=320, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-touch-fullscreen" content="yes" />
+  <meta content="yes" name="apple-mobile-web-app-capable" />
+  <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+  <meta content="telephone=no" name="format-detection" />
+  <meta name="keywords" content="HeyJuice,轻断食果汁,纤体,冷榨蔬果汁,轻断食蔬果汁,HeyJuice轻断食蔬果汁,果汁,果蔬汁,轻断食果蔬汁,冷榨果汁" />
+  <meta name="description" content="轻断食果蔬汁HeyJuice，3天变美计划。营养学家设计的冷压鲜榨果蔬汁餐单，每天6瓶连续3天，排出体内毒素，激发细胞修复力，减去多余脂肪、美颜、身体变轻盈，充满青春活力！新鲜水果与蔬菜冷压鲜榨，全程冷链免费送达。" />
+  <title>轻断食果蔬汁HeyJuice，3天变美计划</title>
+  <script type="text/javascript" src="/Public/Common/js/base.js?v=1.3"></script>
+  <script type="text/javascript" src="/Public/Common/js/common.js?v=1.3"></script>
+  <script type="text/javascript" src="/Public/Wap/js/global.js?v=1.3"></script>
+  <link rel="stylesheet" type="text/css" href="/Public/Common/css/base.css?v=1.3">
+  <link rel="stylesheet" type="text/css" href="/Public/Wap/css/global.css?v=1.3">
+</head>
+<body>
+<div class="wrap Wrap">
+  <div class="header clearfix">
+    <div class="navbox">
+      <div class="navbar NavBar">
+        菜单
+      </div>
+    </div>
+    <ul class="nav NavList">
+      <li><a href="/Index">首页</a></li>
+      <li><a href="/Product">产品</a></li>
+      <li><a href="/Comments/index?type=index">顾客口碑</a></li>
+      <!-- 				<li><a href="/Brand">品牌活动</a></li> -->
+      <li><a href="/Service">品牌理念</a></li>
+      <li><a href="/Delivery">配送范围查询</a></li>
+      <li><a href="/Qa">帮助中心</a></li>
+      <li><a href="/Customer">个人中心</a></li>
+      <li><a href="/Customer/logout">退出登录</a></li>
+    </ul>HeyJuice<div class="shoping_car">
+    <a class="ShoppingCarLink" href="/ShoppingCar">
+    </a>
+  </div>
+  </div>
+  <div class="main">
+
+    <div class="ctr_info_main">
+      <div class="info_list_tittle">帐户设置</div>
+      <div class="ctr_userinfo_box">
+        <div class="info_list">
+          <table width="100%;">
+            <tr class="ctr_user_info">
+              <th>个人资料</th>
+              <th></th>
+              <th style="text-align:right;"><span></span></th>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <div class="ctr_set_info">
+                  <div class="ctr_set_input">
+                    <input type="text" class="InfoEditValue" name="customer_name" value="用户3ISGXT99" placeholder="请输入昵称">
+                  </div>
+                  <div class="ctr_set_input">
+                    <label class="GenderSelect sex_radio "><input class="InfoEditValue"  value="1" type="radio" name="gender">男</label><label class="GenderSelect sex_radio "><input class="InfoEditValue"  value="2" type="radio"  name="gender">女</label>
+                  </div>
+                  <div class="ctr_info_save InfoEditSubmit">保存</div>
+                </div>
+              </td>
+            </tr>
+            <tr class="ctr_user_pass">
+              <th>修改密码</th>
+              <th></th>
+              <th style="text-align:right;"><span></span></th>
+            </tr>
+            <tr class="ctr_set_password">
+              <td colspan="3">
+                <div class="ctr_set_input">
+                  <input type="password" class="PwdEditValue" name="password_old" placeholder="输入旧密码">
+                </div>
+                <div class="ctr_set_input">
+                  <input type="password" class="PwdEditValue" name="password" placeholder="输入新密码">
+                </div>
+                <div class="ctr_set_input _mr">
+                  <input class="PwdEditValue" type="password" placeholder="确认新密码">
+                </div>
+                <div class="ctr_info_save PwdEditSubmit">保存</div>
+              </td>
+            </tr>
+            <tr class="ctr_user_pass">
+              <th>绑定微信</th>
+              <th></th>
+              <th style="text-align:right;"><span></span></th>
+            </tr>
+            <tr class="ctr_set_password">
+              <td colspan="3" style="text-aglin:center">
+                <div class="ctr_info_save CancelWechatBind">取消绑定</div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      $(function(){
+        var BindWechat = (function(){
+          return {
+            cancel : function(){
+              Base.Http.ajax({
+                url : '/Customer/cancel_wechat_bind',
+                success : function(data){
+                  if (data['status']==1) {
+                    window.location.reload();
+                  }else{
+                    Common.Prompt.alert({
+                      tips : data['info'],
+                      enter_text : '确认'
+                    });
+                  }
+                }
+              });
+            }
+          }
+        }());
+        $('.CancelWechatBind').click(BindWechat.cancel);
+        Base.Form.upload({
+          object : $('.AvatarEditFile'),
+          target : 'avatar',
+          action : '/Customer/avatar_submit',
+          name : 'avatar',
+          id : 'avatar'
+        });
+        var Customer = {
+          info : {
+            submit : function(){
+              var data = Base.Form.serialize($('.InfoEditValue'));
+              Base.Http.ajax({
+                url : '/Customer/info_submit',
+                data : data,
+                success : function(data){
+                  Common.Prompt.auto({
+                    tips : data['info']
+                  });
+                  if (data['status']==1) {
+                    window.location.reload();
+                  }
+                }
+              });
+            },
+            gender : function(){
+              $(this).addClass('this').siblings('label').removeClass('this');
+            }
+          },
+          pwd : {
+            submit : function(){
+              var data = Base.Form.serialize($('.PwdEditValue'));
+              Base.Http.ajax({
+                url : '/Customer/pwd_submit',
+                data : data,
+                success : function(data){
+                  Common.Prompt.auto({
+                    tips : data['info']
+                  });
+                  if (data['status']==1) {
+                    window.location.reload();
+                  }
+                }
+              });
+            }
+          }
+        };
+        $('.GenderSelect').click(Customer.info.gender);
+        $('.InfoEditSubmit').click(Customer.info.submit);
+        $('.PwdEditSubmit').click(Customer.pwd.submit);
+      });
+    </script>
+  </div>
+  <div class="footer">
+    <p>为更好的自己<br>Better Me</p>
+    <span>京ICP备14009743号  ©HeyJuice 2014</span>
+  </div>
+</div>
+<!-- 弹出层 -->
+<div class="mask_pro MarkWrap"></div>
+<div style="display:none;">
+  <script type="text/javascript">
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://":" http://");
+    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fe1e9293140df80038214b7e8ebdc4ab7' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+</body>
+</html>

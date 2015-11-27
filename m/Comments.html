@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=320, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-touch-fullscreen" content="yes" />
+  <meta content="yes" name="apple-mobile-web-app-capable" />
+  <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+  <meta content="telephone=no" name="format-detection" />
+  <meta name="keywords" content="HeyJuice,轻断食果汁,纤体,冷榨蔬果汁,轻断食蔬果汁,HeyJuice轻断食蔬果汁,果汁,果蔬汁,轻断食果蔬汁,冷榨果汁" />
+  <meta name="description" content="轻断食果蔬汁HeyJuice，3天变美计划。营养学家设计的冷压鲜榨果蔬汁餐单，每天6瓶连续3天，排出体内毒素，激发细胞修复力，减去多余脂肪、美颜、身体变轻盈，充满青春活力！新鲜水果与蔬菜冷压鲜榨，全程冷链免费送达。" />
+  <title>轻断食果蔬汁HeyJuice，3天变美计划</title>
+  <script type="text/javascript" src="/Public/Common/js/base.js?v=1.3"></script>
+  <script type="text/javascript" src="/Public/Common/js/common.js?v=1.3"></script>
+  <script type="text/javascript" src="/Public/Wap/js/global.js?v=1.3"></script>
+  <link rel="stylesheet" type="text/css" href="/Public/Common/css/base.css?v=1.3">
+  <link rel="stylesheet" type="text/css" href="/Public/Wap/css/global.css?v=1.3">
+</head>
+<body>
+<div class="wrap Wrap">
+  <div class="header clearfix">
+    <div class="navbox">
+      <div class="navbar NavBar">
+        菜单
+      </div>
+    </div>
+    <ul class="nav NavList">
+      <li><a href="/Index">首页</a></li>
+      <li><a href="/Product">产品</a></li>
+      <li><a href="/Comments/index?type=index">顾客口碑</a></li>
+      <!-- 				<li><a href="/Brand">品牌活动</a></li> -->
+      <li><a href="/Service">品牌理念</a></li>
+      <li><a href="/Delivery">配送范围查询</a></li>
+      <li><a href="/Qa">帮助中心</a></li>
+      <li><a href="/Customer">个人中心</a></li>
+      <li><a href="/Customer/logout">退出登录</a></li>
+    </ul>HeyJuice<div class="shoping_car">
+    <a class="ShoppingCarLink" href="/ShoppingCar">
+    </a>
+  </div>
+  </div>
+  <div class="about_nav">
+    <a href="/Comments/index?type=index" class="this">顾客说</a>
+    <a href="/Comments/index?type=waist" class="">小蛮腰</a>
+    <a href="/Comments/index?type=nice" class="">nice</a>
+  </div>
+  <div class="main">
+
+    <div class="order_comments">
+      <div class="main">
+        <ul class="comments_list">
+
+        </ul>
+        <div class="order_comments_loading">
+          <img src="/Public/Home/images/loading.gif" />
+          <span>加载中...</span>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="/Public/Common/js/jquery.wookmark.min.js?v=1.3"></script>
+    <script type="text/javascript" src="/Public/Common/js/jquery.imagesloaded.js?v=1.3"></script>
+    <script type="text/javascript">
+      $(function(){
+        var page = 1,
+            flag = true,
+            content = $(window),
+            isLoading = false,
+            options = {
+              container : $('.comments_list'),
+              autoResize : true,
+              offset : 10,
+              outerOffset : 10
+            },
+            limit = 20,
+            applyLayout = function(){
+              options.container.imagesLoaded(function() {
+                options.container.find('li').wookmark(options);
+                isLoading = false;
+              });
+            },
+            loadData = function(){
+              isLoading = true;
+              Base.Http.ajax({
+                url : '/Comments/wookmark',
+                data : {'page':page,'limit':limit,'type':'index'},
+                context : options.container,
+                beforeSend : function(obj){
+                  $('.order_comments_loading').hide();
+                },
+                success : function(data,obj){
+                  page ++;
+                  obj.append(data['data']);
+                  if (data['status']=='0') {
+
+                    flag = false;
+
+                  }else{
+
+                    applyLayout();
+
+                  }
+                },
+                complete : function(obj){
+                  if (flag) {
+                    $('.order_comments_loading').show();
+                  };
+
+                }
+              })
+            },
+            onScroll = function(){
+              if(!isLoading&&flag) {
+                if (content.scrollTop() + content.height() > options.container.height() - 800) {
+                  loadData();
+                };
+              };
+            };
+        content.bind('scroll', onScroll).scroll();
+      });
+    </script>
+  </div>
+  <div class="footer">
+    <p>为更好的自己<br>Better Me</p>
+    <span>京ICP备14009743号  ©HeyJuice 2014</span>
+  </div>
+</div>
+<!-- 弹出层 -->
+<div class="mask_pro MarkWrap"></div>
+<div style="display:none;">
+  <script type="text/javascript">
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://":" http://");
+    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fe1e9293140df80038214b7e8ebdc4ab7' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+</body>
+</html>

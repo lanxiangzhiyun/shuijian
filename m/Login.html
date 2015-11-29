@@ -15,8 +15,8 @@
       siteid:"kf_9700",
       settingid:"kf_9700_1410331097630",
       itemid:"",
-      uid:"119641",
-      uname:"用户3ISGXT99",
+      uid:"",
+      uname:"",
       orderid:"<",
       orderprice:"",
       userlevel:""
@@ -30,19 +30,8 @@
 <div class="wrap Wrap">
   <div class="navtop">
     <div class="navtop_box">
-      <div class="user_info_bar">
-        <div class="user_info_bar_icon HeaderUserBtn">
-          <img src="/Public/Common/images/default_avatar.png" width="28px" height="28px">
-        </div>
-        <div class="user_info_bar_list clearfix HeaderUserList">
-          <ul>
-            <li><a href="/Customer/info">我的资料</a></li>
-            <li><a href="/Customer/order">我的订单</a></li>
-            <li><a href="/Customer/address">地址管理</a></li>
-            <li><a href="/Customer/virtual">抵用金</a></li>
-            <li><a href="/Customer/logout">退出登录</a></li>
-          </ul>
-        </div>
+      <div class="login_bar">
+        <a href="/Register">注册</a>／<a href="/Login">登录</a>
       </div>
       <div class="navtop_info">为更好的自己，Better Me!</div>
     </div>
@@ -63,6 +52,7 @@
         </ul>
         <div class="shoping_car">
           <a class="ShoppingCarLink" href="/ShoppingCar">
+            <sapn class="shopping_num_1 ShoppingCarNum">1</span>
           </a>
         </div>
       </div>
@@ -71,103 +61,109 @@
   </div>
   <div class="main">
 
-    <div class="customer_main">
-      <!-- 个人资料 -->
-      <div class="info_main">
-        <div class="ctr_user_icon"><img src="/Public/Common/images/default_avatar.png"width="100px"></div>
-        <div class="pt20">
-          <table>
-            <tr>
-              <td>帐号：13564128227</td>
-              <td>姓名：用户3ISGXT99</td>
-            </tr>
-            <tr>
-              <td>性别：女</td>
-              <td>手机号：13564128227</td>
-            </tr>
-          </table>
+    <div class="login_main">
+      <h2>欢迎登录HeyJuice</h2>
+      <!--<p>HeyJuice什么什么吧啦吧啦写点什么的什么的什么的<br>什么的。HeyJuice什么什么吧啦吧啦写点什么的什么<br>的什么的什么的。</p> -->
+      <div class="prersective">
+        <div class="login_concent clearfix">
+          <div class="password_tab clearfix">
+            <a class="ispassword this LoginType" data-login-type="iskey" href="javascript:;">密码登录</a>
+            <a class="nopassword LoginType" data-login-type="nokey" href="javascript:;">免密登录</a>
+          </div>
+          <div class="login_box KeyLoginContent">
+            <div class="login">
+              <div class="login_input">
+                <input class="KeyLoginValue" type="text" name="username" value=""  placeholder="请输入您的手机号">
+              </div>
+              <div class="login_input">
+                <input class="KeyLoginValue" type="password" value="" name="password" placeholder="请输入密码">
+              </div>
+              <div class="re_password clearfix">
+                <label>
+                  <input name="remember"  class="KeyLoginValue" type="checkbox">记住密码
+                </label>
+                <a href="/Login/forget">忘记密码?</a>
+              </div>
+              <div class="login_btn"><a class="KeyLogin" href="javascript:;">登录</a></div>
+              <a href="/Register" class="register_go">现在注册</a>
+            </div>
+          </div>
+          <div class="quick_login NoKeyLoginContent" style="display:none;">
+            <div class="quick_input	">
+              <input type="text" name="username" class="NoKeyLoginValue LoginCaptchaValue" placeholder="请输入您的手机号">
+            </div>
+            <div class="quick_input login_code">
+              <input type="text" name="captcha" class="NoKeyLoginValue" placeholder="请输入验证码">
+              <div class="LoginCaptcha send_code">
+                发送验证码<span class="LoginCaptchaTime"></span>
+              </div>
+            </div>
+            <div class="re_password clearfix">
+              <a href="/Login/forget">忘记密码?</a>
+            </div>
+            <div class="login_btn"><a class="NoKeyLogin" href="javascript:;">登录</a></div>
+            <a href="/Register" class="register_go">现在注册</a>
+          </div>
         </div>
-
-        <div class="ctr_user_set">
-          <a href="/Customer/info">帐号设置</a>
-        </div>
-      </div>
-      <!-- 导航 -->
-      <div class="customer_nav">
-        <ul>
-          <li><a href="/Customer/order" class="this">我的订单</a></li>
-          <li><a href="/Customer/address">地址管理</a></li>
-          <li><a href="/Customer/virtual">抵用金</a></li>
-        </ul>
-      </div>
-      <!-- 订单列表 -->
-      <div class="customer_order_list">
-        <div class="customer_order_tittle">订单列表</div>
-
-        <div class="customer_order_box ">
-          <table>
-            <thead class="or_tittle">
-            <tr>
-              <td class="or_id">订单编号：
-                <a target="_blank" href="/Order/info?order_code=2015112677834674">2015112677834674</a>
-              </td>
-              <td>下单时间：2015-11-26 18:02:39</td>
-              <td class="or_money">订单金额：<span>¥590.00</span></td>
-              <td class="or_state">订单状态：<span>未处理</span></td>
-              <td rowspan="2">
-                <a href="/Order/info?order_code=2015112677834674" class="gopay_now">立即支付</a>
-              </td>
-              <td rowspan="2"><a target="_blank" href="/Order/info?order_code=2015112677834674" class="order_details">查看详情</a></td>
-            </tr>
-
-            </thead>
-          </table>
-          <table class="or_list">
-            <tbody><tr>
-              <td class="or_list_tittle">商<br>品<br>信<br>息</td>
-              <td>
-                <table class="or_table">
-                  <thead>
-                  <tr>
-                    <th><div>共1件产品</div></th>
-                    <th><div>收货日期</div></th>
-                    <th><div>单价</div></th>
-                    <th><div>数量</div></th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td width="300">
-                      <div class="i_icon"><img src="/Public/Common/images/product/product_02.png" width="88px"></div>
-                      <div class="i_tittle">
-                        轻断食果蔬汁											暖身款											（三天装）
-                      </div>
-                    </td>
-                    <td>
-                      <div>2015-12-16</div>
-                      <div>2015-12-17</div>
-                      <div>2015-12-18</div>
-                    </td>
-                    <td>¥ 590.00</td>
-                    <td>1套</td>
-                  </tr>
-                  </tbody>
-
-                </table>
-              </td>
-            </tr>
-            </tbody></table>
-          <table class="or_tittle_b">
-            <tbody><tr>
-              <td>姓名：daf</td>
-              <td>电话：13564128552</td>
-              <td colspan="2">地址：北京市 北京市 adfadf</td>
-            </tr>
-            </tbody></table>
-        </div>
-        <!-- <div class="order_list_old"><span>查看更多历史订单</span></div> -->
       </div>
     </div>
+    <!-- <p class="login_foot_info">最好的轻断食果蔬汁</p> -->
+    <script type="text/javascript">
+      $(function(){
+        //加载验证码类
+        Common.Captcha($('.LoginCaptcha'),$('.LoginCaptchaValue'),'login',function(data){
+          $('.LoginCaptcha').addClass('one');
+          $('.LoginCaptchaTime').html(data['time']);
+          Common.Timer($('.LoginCaptchaTime'));
+        });
+        var Login = {
+          type : function(){
+            $('.LoginType').removeClass('this');
+            $(this).addClass('this');
+            var type = $(this).attr('data-login-type');
+            if (type=='iskey') {
+              $('.KeyLoginContent').show();
+              $('.NoKeyLoginContent').hide();
+            }else if (type=='nokey') {
+              $('.NoKeyLoginContent').show();
+              $('.KeyLoginContent').hide();
+            };
+          },
+          submit : function(){
+            var type = $('.LoginType.this').attr('data-login-type');
+            if (type=='iskey') {
+              var form = $('.KeyLoginValue');
+            }else if (type=='nokey') {
+              var form = $('.NoKeyLoginValue');
+            };
+            var data = Base.Form.serialize(form);
+            data['type'] = type;
+            Base.Http.ajax({
+              url : '/Login/submit',
+              data : data,
+              success : function(data){
+                if (data['status']==1) {
+                  window.location.href = data['data'];
+                }else{
+                  Common.Prompt.alert({
+                    tips : data['info'],
+                    enter_text : '确认'
+                  });
+                }
+              }
+            });
+          }
+        };
+        $('.LoginType').click(Login.type);
+        $('.KeyLogin').click(Login.submit);
+        $('.NoKeyLogin').click(Login.submit);
+        $(window).keydown(function(event){
+          if(event.keyCode == 13) {
+            $('.NoKeyLogin').click();
+          }
+        });
+      });
+    </script>
   </div>
   <div class="footer">
     <div class="footer_logo">

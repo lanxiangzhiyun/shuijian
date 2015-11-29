@@ -1,0 +1,103 @@
+#首页
+rewrite ^/Index$               /m/Index.html last;
+#产品
+rewrite ^/Product$               /m/Product.html last;
+#顾客口碑
+rewrite ^/Comments/index$               /Comments.html last;
+rewrite ^/Comments$               /m/Comments.html last;
+#品牌活动
+rewrite ^/Brand$               /m/Brand.html last;
+#品牌理念 品牌信念
+rewrite ^/Service$               /m/ServiceIndex.html last;
+rewrite ^/Service/index$               /m/ServiceIndex.html last;
+#产品工艺
+rewrite ^/Service/product$               /m/ServiceProduct.html last;
+#HPP技术
+rewrite ^/Service/hpp$               /m/HPP.html last;
+#登陆
+rewrite ^/Login$               /m/Login.html last;
+#注册
+rewrite ^/Register$               /m/Register.html last;
+#忘记密码
+rewrite ^/Login/forget$               /m/Forget.html last;
+#订单列表
+rewrite ^/Customer/order$               /m/CustomerOrder.html last;
+#订单地址
+rewrite ^/Customer/address$               /m/CustomerAddress.html last;
+#抵用金
+rewrite ^/Customer/virtual$               /m/CustomerVirtual.html last;
+#账号设置
+rewrite ^/Customer/info$               /m/CustomerInfo.html last;
+#抵用金
+rewrite ^/Customer/virtual$               /m/CustomerVirtual.html last;
+#购物车
+rewrite ^/ShoppingCar$               /m/ShoppingCar.html last;
+#商品列表
+rewrite ^/Product/index$               /m/Product.html last;
+#商品详情
+rewrite ^/Product/inside$               /m/ProductDetail.html last;
+#订单收货信息
+rewrite ^/Order$               /m/Order.html last;
+#订单确认信息
+rewrite ^/Order/info?order_code=([0-9]+)$               /m/OrderInfo.html last;
+#订单微信支付界面
+rewrite ^/Order/wepay?order_code=([0-9]+)$               /m/OrderWepay.html last;
+#帮助中心
+rewrite ^/Qa$               /m/QAIndex.html last;
+#配送范围查询
+rewrite ^/Delivery/index$               /m/DeliveryIndex.html last;
+
+
+if ($http_user_agent ~ "((MIDP)|(WAP)|(UP.Browser)|(Smartphone)|(Obigo)|(Mobile)|(AU.Browser)|(wxd.Mms)|(WxdB.Browser)|(CLDC)|(UP.Link)|(KM.Browser)|(UCWEB)|(SEMC\-Browser)|(Mini)|(Symbian)|(Palm)|(Nokia)|(Panasonic)|(MOT)|(SonyEricsson)|(NEC)|(Alcatel)|(Ericsson)|(BENQ)|(BenQ)|(Amoisonic)|(Amoi)|(Capitel)|(PHILIPS)|(SAMSUNG)|(Lenovo)|(Mitsu)|(Motorola)|(SHARP)|(WAPPER)|(LG)|(EG900)|(CECT)|(Compal)|(kejian)|(Bird)|(BIRD)|(G900/V1.0)|(Arima)|(CTL)|(TDG)|(Daxian)|(DAXIAN)|(DBTEL)|(Eastcom)|(EASTCOM)|(PANTECH)|(Dopod)|(Haier)|(HAIER)|(KONKA)|(KEJIAN)|(LENOVO)|(Soutec)|(SOUTEC)|(SAGEM)|(SEC)|(SED)|(EMOL)|(INNO55)|(ZTE)|(iPhone)|(Android)|(Windows CE)|(Wget)|(Java)|(curl)|(Opera))"  )
+{
+    #Mobile
+    #首页
+    rewrite ^/Index$               /m/Index.html last;
+    #产品
+    rewrite ^/Product$               /m/Product.html last;
+    #顾客口碑
+    rewrite ^/Comments/index$               /m/Comments.html last;
+    rewrite ^/Comments$               /m/Comments.html last;
+    #品牌活动
+    rewrite ^/Brand$               /m/Brand.html last;
+    #品牌理念 品牌信念
+    rewrite ^/Service$               /m/ServiceIndex.html last;
+    rewrite ^/Service/index$               /m/ServiceIndex.html last;
+    #产品工艺
+    rewrite ^/Service/product$               /m/ServiceProduct.html last;
+    #HPP技术
+    rewrite ^/Service/hpp$               /m/HPP.html last;
+    #登陆
+    rewrite ^/Login$               /m/Login.html last;
+    #注册
+    rewrite ^/Register$               /m/Register.html last;
+    #忘记密码
+    rewrite ^/Login/forget$               /m/Forget.html last;
+    #订单列表
+    rewrite ^/Customer/order$               /m/CustomerOrder.html last;
+    #订单地址
+    rewrite ^/Customer/address$               /m/CustomerAddress.html last;
+    #抵用金
+    rewrite ^/Customer/virtual$               /m/CustomerVirtual.html last;
+    #账号设置
+    rewrite ^/Customer/info$               /m/CustomerInfo.html last;
+    #抵用金
+    rewrite ^/Customer/virtual$               /m/CustomerVirtual.html last;
+    #购物车
+    rewrite ^/ShoppingCar$               /m/ShoppingCar.html last;
+    #商品列表
+    rewrite ^/Product/index$               /m/Product.html last;
+    #商品详情
+    rewrite ^/Product/inside$               /m/ProductDetail.html last;
+    #订单收货信息
+    rewrite ^/Order$               /m/Order.html last;
+    #订单确认信息
+    rewrite ^/Order/info?order_code=([0-9]+)$               /m/OrderInfo.html last;
+    #订单微信支付界面
+    rewrite ^/Order/wepay?order_code=([0-9]+)$               /m/OrderWepay.html last;
+    #帮助中心
+    rewrite ^/Qa$               /m/QAIndex.html last;
+    #配送范围查询
+    rewrite ^/Delivery/index$               /m/DeliveryIndex.html last;
+}
+

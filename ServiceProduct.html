@@ -15,8 +15,8 @@
       siteid:"kf_9700",
       settingid:"kf_9700_1410331097630",
       itemid:"",
-      uid:"119641",
-      uname:"用户3ISGXT99",
+      uid:"",
+      uname:"",
       orderid:"<",
       orderprice:"",
       userlevel:""
@@ -30,19 +30,8 @@
 <div class="wrap Wrap">
   <div class="navtop">
     <div class="navtop_box">
-      <div class="user_info_bar">
-        <div class="user_info_bar_icon HeaderUserBtn">
-          <img src="/Public/Common/images/default_avatar.png" width="28px" height="28px">
-        </div>
-        <div class="user_info_bar_list clearfix HeaderUserList">
-          <ul>
-            <li><a href="/Customer/info">我的资料</a></li>
-            <li><a href="/Customer/order">我的订单</a></li>
-            <li><a href="/Customer/address">地址管理</a></li>
-            <li><a href="/Customer/virtual">抵用金</a></li>
-            <li><a href="/Customer/logout">退出登录</a></li>
-          </ul>
-        </div>
+      <div class="login_bar">
+        <a href="/Register">注册</a>／<a href="/Login">登录</a>
       </div>
       <div class="navtop_info">为更好的自己，Better Me!</div>
     </div>
@@ -59,7 +48,7 @@
           <li><a class="" href="/Product">产品</a></li>
           <li><a class="" href="/Comments/index?type=index">顾客口碑</a></li>
           <li><a class="" href="/Brand">品牌活动</a></li>
-          <li><a class="" href="/Service">品牌理念</a></li>
+          <li><a class="this" href="/Service">品牌理念</a></li>
         </ul>
         <div class="shoping_car">
           <a class="ShoppingCarLink" href="/ShoppingCar">
@@ -69,103 +58,68 @@
 
     </div>
   </div>
+  <div class="about_nav">
+    <a href="/Service/index" class="">品牌信念</a>
+    <a href="/Service/product" class="this"> 产品工艺</a>
+    <a href="/Service/hpp" class=""> HPP技术</a>
+  </div>
   <div class="main">
 
-    <div class="customer_main">
-      <!-- 个人资料 -->
-      <div class="info_main">
-        <div class="ctr_user_icon"><img src="/Public/Common/images/default_avatar.png"width="100px"></div>
-        <div class="pt20">
-          <table>
-            <tr>
-              <td>帐号：13564128227</td>
-              <td>姓名：用户3ISGXT99</td>
-            </tr>
-            <tr>
-              <td>性别：女</td>
-              <td>手机号：13564128227</td>
-            </tr>
-          </table>
-        </div>
-
-        <div class="ctr_user_set">
-          <a href="/Customer/info">帐号设置</a>
-        </div>
-      </div>
-      <!-- 导航 -->
-      <div class="customer_nav">
+    <div class="technics_main">
+      <div class="product_content_1">
+        <h2>HeyJuice产品准则</h2>
+        <p>我们承诺给到你新鲜的果蔬汁</p>
         <ul>
-          <li><a href="/Customer/order" class="this">我的订单</a></li>
-          <li><a href="/Customer/address">地址管理</a></li>
-          <li><a href="/Customer/virtual">抵用金</a></li>
+          <li>
+            <img  class="lazy" data-original="/Public/Home/images/product_icon_01.png" alt="">
+            <div>
+              <h3>接单鲜榨</h3>
+              HeyJuice是行业中的“少数派”，我们从来不囤积水果和蔬菜，而是每天采购新鲜的高品质果蔬，在收到订单后，立刻进行榨汁，这是每一瓶HeyJuice都鲜美可口的秘密之一。
+            </div>
+          </li>
+          <li>
+            <img  class="lazy" data-original="/Public/Home/images/product_icon_02.png" alt="">
+            <div style="border:none">
+              <h3>HPP超高压灭菌</h3>
+              传统果蔬汁采用高温灭菌技术，果蔬汁被“煮熟”，大量营养流失。HeyJuice创新采用先进的HPP超高压灭菌技术，全程低温生产，保留果蔬汁的生鲜口感和丰富营养，给你原汁原味的享受。
+            </div>
+          </li>
+          <li>
+            <img  class="lazy" data-original="/Public/Home/images/product_icon_03.png" alt="">
+
+            <div>
+              <h3>保留果肉</h3>
+              我们在果蔬汁中加入新鲜果肉，为你补充膳食纤维，促进身体代谢重金属和多余胆固醇，帮助肠胃“大扫除”。我们拒绝添加稳定剂，因此果肉果汁会分层，这是自然现象，摇一摇喝起来啦！
+            </div>
+          </li>
         </ul>
       </div>
-      <!-- 订单列表 -->
-      <div class="customer_order_list">
-        <div class="customer_order_tittle">订单列表</div>
-
-        <div class="customer_order_box ">
-          <table>
-            <thead class="or_tittle">
-            <tr>
-              <td class="or_id">订单编号：
-                <a target="_blank" href="/Order/info?order_code=2015112677834674">2015112677834674</a>
-              </td>
-              <td>下单时间：2015-11-26 18:02:39</td>
-              <td class="or_money">订单金额：<span>¥590.00</span></td>
-              <td class="or_state">订单状态：<span>未处理</span></td>
-              <td rowspan="2">
-                <a href="/Order/info?order_code=2015112677834674" class="gopay_now">立即支付</a>
-              </td>
-              <td rowspan="2"><a target="_blank" href="/Order/info?order_code=2015112677834674" class="order_details">查看详情</a></td>
-            </tr>
-
-            </thead>
-          </table>
-          <table class="or_list">
-            <tbody><tr>
-              <td class="or_list_tittle">商<br>品<br>信<br>息</td>
-              <td>
-                <table class="or_table">
-                  <thead>
-                  <tr>
-                    <th><div>共1件产品</div></th>
-                    <th><div>收货日期</div></th>
-                    <th><div>单价</div></th>
-                    <th><div>数量</div></th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td width="300">
-                      <div class="i_icon"><img src="/Public/Common/images/product/product_02.png" width="88px"></div>
-                      <div class="i_tittle">
-                        轻断食果蔬汁											暖身款											（三天装）
-                      </div>
-                    </td>
-                    <td>
-                      <div>2015-12-16</div>
-                      <div>2015-12-17</div>
-                      <div>2015-12-18</div>
-                    </td>
-                    <td>¥ 590.00</td>
-                    <td>1套</td>
-                  </tr>
-                  </tbody>
-
-                </table>
-              </td>
-            </tr>
-            </tbody></table>
-          <table class="or_tittle_b">
-            <tbody><tr>
-              <td>姓名：daf</td>
-              <td>电话：13564128552</td>
-              <td colspan="2">地址：北京市 北京市 adfadf</td>
-            </tr>
-            </tbody></table>
-        </div>
-        <!-- <div class="order_list_old"><span>查看更多历史订单</span></div> -->
+      <div class="technics_content_1">
+        <img  class="lazy" data-original="/Public/Home/images/pro_banner.jpg" alt="" width="100%">
+      </div>
+      <div class="technics_content_2">
+        <img  class="lazy" data-original="/Public/Home/images/technics_icon_1.jpg" alt="" width="100%">
+        <h2>完美的工厂所在地</h2>
+        <p>2014年，HeyJuice在雁栖湖畔(2014 APEC会议举办地)的雁栖经济技术开发区，收购了这家完美的果蔬汁生产工厂。对我们来说，HeyJuice的梦想落地，从这里出发，我们每天将数以万计的HeyJuice发往每个人。</p>
+      </div>
+      <div class="technics_content_3">
+        <img  class="lazy" data-original="/Public/Home/images/technics_icon_2.jpg" alt="" width="100%">
+        <p><img src="/Public/Home/images/product_icon_w.png"></p>
+        <h2>低温冷榨技术(Cold-Pressed)</h2>
+      </div>
+      <div class="technics_content_4">
+        <p>新鲜的蔬菜水果在低温环境下破碎、慢速挤压，减少与空气接触氧化以及高温对营养和口味的破坏，可以压榨出品口感一流和营养丰富的果蔬汁。<br><br>HeyJuice采用低温冷榨技术获得果蔬汁，同时根据我们营养学家团队的科学设计，在每一瓶HeyJuice中按不同比例添加新鲜果肉，这也是为什么HeyJuice清体效果这么好的小秘密。<br><br>作为市场上排毒效果和口碑好的品牌，HeyJuice在北京和上海拥有进口的先进大型冷压设备，以及全流程果蔬汁生产线，大幅降低冷榨果蔬汁成本，让顾客喝到好且价格合理的轻断食果蔬汁。</p>
+      </div>
+      <div class="technics_content_5">
+        <img  class="lazy" data-original="/Public/Home/images/technics_icon_3.jpg" alt="" width="100%">
+        <span><img src="/Public/Home/images/product_icon_hpp.png"></span>
+        <h2>超高压灭菌工艺(HPP)</h2>
+        <p>超高压灭菌就是在密闭的超高压容器内，用水作为介质对果蔬汁施以400～600MPa的压力(4000~6000个大气压)。从而杀死其中几乎所有的细菌、霉菌和酵母菌，而且不会像通常所见的高温杀菌那样造成营养成分破坏和风味变化。</p>
+        <a href="/Service/hpp">了解详情</a>
+      </div>
+      <div class="technics_content_6">
+        <img  class="lazy" data-original="/Public/Home/images/technics_icon_4.jpg" alt="" width="100%">
+        <p>如果我们不能做到，不如不做。</p>
       </div>
     </div>
   </div>

@@ -15,8 +15,8 @@
       siteid:"kf_9700",
       settingid:"kf_9700_1410331097630",
       itemid:"",
-      uid:"119641",
-      uname:"用户3ISGXT99",
+      uid:"",
+      uname:"",
       orderid:"<",
       orderprice:"",
       userlevel:""
@@ -30,19 +30,8 @@
 <div class="wrap Wrap">
   <div class="navtop">
     <div class="navtop_box">
-      <div class="user_info_bar">
-        <div class="user_info_bar_icon HeaderUserBtn">
-          <img src="/Public/Common/images/default_avatar.png" width="28px" height="28px">
-        </div>
-        <div class="user_info_bar_list clearfix HeaderUserList">
-          <ul>
-            <li><a href="/Customer/info">我的资料</a></li>
-            <li><a href="/Customer/order">我的订单</a></li>
-            <li><a href="/Customer/address">地址管理</a></li>
-            <li><a href="/Customer/virtual">抵用金</a></li>
-            <li><a href="/Customer/logout">退出登录</a></li>
-          </ul>
-        </div>
+      <div class="login_bar">
+        <a href="/Register">注册</a>／<a href="/Login">登录</a>
       </div>
       <div class="navtop_info">为更好的自己，Better Me!</div>
     </div>
@@ -63,6 +52,7 @@
         </ul>
         <div class="shoping_car">
           <a class="ShoppingCarLink" href="/ShoppingCar">
+            <sapn class="shopping_num_1 ShoppingCarNum">1</span>
           </a>
         </div>
       </div>
@@ -71,103 +61,67 @@
   </div>
   <div class="main">
 
-    <div class="customer_main">
-      <!-- 个人资料 -->
-      <div class="info_main">
-        <div class="ctr_user_icon"><img src="/Public/Common/images/default_avatar.png"width="100px"></div>
-        <div class="pt20">
-          <table>
-            <tr>
-              <td>帐号：13564128227</td>
-              <td>姓名：用户3ISGXT99</td>
-            </tr>
-            <tr>
-              <td>性别：女</td>
-              <td>手机号：13564128227</td>
-            </tr>
-          </table>
+    <div class="register_main">
+      <h2>欢迎登录HeyJuice</h2>
+      <!-- <p>HeyJuice什么什么吧啦吧啦写点什么的什么的什么的<br>什么的。HeyJuice什么什么吧啦吧啦写点什么的什么<br>的什么的什么的。</p> -->
+      <div class="register_box">
+        <div class="register_tittle">快速注册</div>
+        <div class="register_input">
+          <input type="text" class="RegisterValue RegisterCaptchaValue" type="text" name="username" placeholder="请输入您的手机号">
         </div>
-
-        <div class="ctr_user_set">
-          <a href="/Customer/info">帐号设置</a>
+        <div class="register_input register_code">
+          <input class="RegisterValue" name="captcha" type="text" placeholder="短信验证码">
+          <div class="RegisterCaptcha send_code">
+            发送验证码<span class="RegisterCaptchaTime"></span>
+          </div>
         </div>
-      </div>
-      <!-- 导航 -->
-      <div class="customer_nav">
-        <ul>
-          <li><a href="/Customer/order" class="this">我的订单</a></li>
-          <li><a href="/Customer/address">地址管理</a></li>
-          <li><a href="/Customer/virtual">抵用金</a></li>
-        </ul>
-      </div>
-      <!-- 订单列表 -->
-      <div class="customer_order_list">
-        <div class="customer_order_tittle">订单列表</div>
-
-        <div class="customer_order_box ">
-          <table>
-            <thead class="or_tittle">
-            <tr>
-              <td class="or_id">订单编号：
-                <a target="_blank" href="/Order/info?order_code=2015112677834674">2015112677834674</a>
-              </td>
-              <td>下单时间：2015-11-26 18:02:39</td>
-              <td class="or_money">订单金额：<span>¥590.00</span></td>
-              <td class="or_state">订单状态：<span>未处理</span></td>
-              <td rowspan="2">
-                <a href="/Order/info?order_code=2015112677834674" class="gopay_now">立即支付</a>
-              </td>
-              <td rowspan="2"><a target="_blank" href="/Order/info?order_code=2015112677834674" class="order_details">查看详情</a></td>
-            </tr>
-
-            </thead>
-          </table>
-          <table class="or_list">
-            <tbody><tr>
-              <td class="or_list_tittle">商<br>品<br>信<br>息</td>
-              <td>
-                <table class="or_table">
-                  <thead>
-                  <tr>
-                    <th><div>共1件产品</div></th>
-                    <th><div>收货日期</div></th>
-                    <th><div>单价</div></th>
-                    <th><div>数量</div></th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td width="300">
-                      <div class="i_icon"><img src="/Public/Common/images/product/product_02.png" width="88px"></div>
-                      <div class="i_tittle">
-                        轻断食果蔬汁											暖身款											（三天装）
-                      </div>
-                    </td>
-                    <td>
-                      <div>2015-12-16</div>
-                      <div>2015-12-17</div>
-                      <div>2015-12-18</div>
-                    </td>
-                    <td>¥ 590.00</td>
-                    <td>1套</td>
-                  </tr>
-                  </tbody>
-
-                </table>
-              </td>
-            </tr>
-            </tbody></table>
-          <table class="or_tittle_b">
-            <tbody><tr>
-              <td>姓名：daf</td>
-              <td>电话：13564128552</td>
-              <td colspan="2">地址：北京市 北京市 adfadf</td>
-            </tr>
-            </tbody></table>
-        </div>
-        <!-- <div class="order_list_old"><span>查看更多历史订单</span></div> -->
+        <div class="register_input"><input class="RegisterValue" type="password" name="password" placeholder="请设置密码"></div>
+        <div class="register_input"><input class="RegisterValue" type="password" name="password_repeat" placeholder="请再次输入密码"></div>
+        <div class="register_btn"><a class="RegisterSubmit" href="javascript:;">注册</a></div>
+        <a href="/Login" class="register_go">现在登录</a>
       </div>
     </div>
+    <script type="text/javascript">
+      $(function(){
+        Common.Captcha($('.RegisterCaptcha'),$('.RegisterCaptchaValue'),'register',function(data){
+          $('.RegisterCaptcha').addClass('one');
+          $('.RegisterCaptchaTime').html(data['time']);
+          Common.Timer($('.RegisterCaptchaTime'));
+        });
+        $('.RegisterSubmit').click(function(event) {
+          var data = Base.Form.serialize($('.RegisterValue'));
+          Base.Http.ajax({
+            url : '/Register/submit',
+            data : data,
+            success : function(data){
+              if (data['status']==1) {
+                window.location.href = data['data'];
+              }else{
+                Common.Prompt.alert({
+                  tips : data['info'],
+                  enter_text : '确认',
+                  callback : {
+
+                    enter : function(){
+
+                      $('.VerifyChange').click();
+
+                    },
+                    exit : function(){
+
+                      $('.VerifyChange').click();
+
+                    }
+
+                  }
+                });
+              }
+            }
+          });
+        });
+
+      });
+    </script>
   </div>
   <div class="footer">
     <div class="footer_logo">

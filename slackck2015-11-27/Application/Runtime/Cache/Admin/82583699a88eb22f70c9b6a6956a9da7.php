@@ -9,35 +9,35 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 		<!-- bootstrap & fontawesome -->
-		<link rel="stylesheet" href="/slackck/Public/assets/css/bootstrap.css" />
-		<link rel="stylesheet" href="/slackck/Public/assets/css/font-awesome.css" />
+		<link rel="stylesheet" href="/slackck2015-11-27/Public/assets/css/bootstrap.css" />
+		<link rel="stylesheet" href="/slackck2015-11-27/Public/assets/css/font-awesome.css" />
 
 		<!-- page specific plugin styles -->
 
 		<!-- text fonts -->
-		<link rel="stylesheet" href="/slackck/Public/assets/css/ace-fonts.css" />
+		<link rel="stylesheet" href="/slackck2015-11-27/Public/assets/css/ace-fonts.css" />
 
 		<!-- ace styles -->
-		<link rel="stylesheet" href="/slackck/Public/assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
+		<link rel="stylesheet" href="/slackck2015-11-27/Public/assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
 
 		<!--[if lte IE 9]>
-			<link rel="stylesheet" href="/slackck/Public/assets/css/ace-part2.css" class="ace-main-stylesheet" />
+			<link rel="stylesheet" href="/slackck2015-11-27/Public/assets/css/ace-part2.css" class="ace-main-stylesheet" />
 		<![endif]-->
 
 		<!--[if lte IE 9]>
-		  <link rel="stylesheet" href="/slackck/Public/assets/css/ace-ie.css" />
+		  <link rel="stylesheet" href="/slackck2015-11-27/Public/assets/css/ace-ie.css" />
 		<![endif]-->
 
 		<!-- inline styles related to this page -->
-        <link rel="stylesheet" href="/slackck/Public/assets/css/slackck.css" />
+        <link rel="stylesheet" href="/slackck2015-11-27/Public/assets/css/slackck.css" />
 		<!-- ace settings handler -->
-		<script src="/slackck/Public/assets/js/ace-extra.js"></script>
-		<script src="/slackck/Public/assets/js/jquery.leanModal.min.js"></script>
+		<script src="/slackck2015-11-27/Public/assets/js/ace-extra.js"></script>
+		<script src="/slackck2015-11-27/Public/assets/js/jquery.leanModal.min.js"></script>
 		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
 		<!--[if lte IE 8]>
-		<script src="/slackck/Public/assets/js/html5shiv.js"></script>
-		<script src="/slackck/Public/assets/js/respond.js"></script>
+		<script src="/slackck2015-11-27/Public/assets/js/html5shiv.js"></script>
+		<script src="/slackck2015-11-27/Public/assets/js/respond.js"></script>
 		<![endif]-->
 	</head>
 
@@ -76,7 +76,7 @@
 					<button class="pull-right navbar-toggle navbar-toggle-img collapsed" type="button" data-toggle="collapse" data-target=".navbar-buttons">
 						<span class="sr-only">Toggle user menu</span>
 
-						<img src="/slackck/Public/assets/avatars/user.jpg" alt="Jason's Photo" />
+						<img src="/slackck2015-11-27/Public/assets/avatars/user.jpg" alt="Jason's Photo" />
 					</button>
 
 					<!-- /section:basics/navbar.toggle -->
@@ -182,7 +182,7 @@
 													<ul class="dropdown-menu dropdown-navbar">
 														<li>
 															<a href="#">
-																<img src="/slackck/Public/assets/avatars/avatar.png" class="msg-photo" alt="Alex's Avatar" />
+																<img src="/slackck2015-11-27/Public/assets/avatars/avatar.png" class="msg-photo" alt="Alex's Avatar" />
 																<span class="msg-body">
 																	<span class="msg-title">
 																		<span class="blue">Alex:</span>
@@ -199,7 +199,7 @@
 
 														<li>
 															<a href="#">
-																<img src="/slackck/Public/assets/avatars/avatar3.png" class="msg-photo" alt="Susan's Avatar" />
+																<img src="/slackck2015-11-27/Public/assets/avatars/avatar3.png" class="msg-photo" alt="Susan's Avatar" />
 																<span class="msg-body">
 																	<span class="msg-title">
 																		<span class="blue">Susan:</span>
@@ -216,7 +216,7 @@
 
 														<li>
 															<a href="#">
-																<img src="/slackck/Public/assets/avatars/avatar4.png" class="msg-photo" alt="Bob's Avatar" />
+																<img src="/slackck2015-11-27/Public/assets/avatars/avatar4.png" class="msg-photo" alt="Bob's Avatar" />
 																<span class="msg-body">
 																	<span class="msg-title">
 																		<span class="blue">Bob:</span>
@@ -233,7 +233,7 @@
 
 														<li>
 															<a href="#">
-																<img src="/slackck/Public/assets/avatars/avatar2.png" class="msg-photo" alt="Kate's Avatar" />
+																<img src="/slackck2015-11-27/Public/assets/avatars/avatar2.png" class="msg-photo" alt="Kate's Avatar" />
 																<span class="msg-body">
 																	<span class="msg-title">
 																		<span class="blue">Kate:</span>
@@ -250,7 +250,7 @@
 
 														<li>
 															<a href="#">
-																<img src="/slackck/Public/assets/avatars/avatar5.png" class="msg-photo" alt="Fred's Avatar" />
+																<img src="/slackck2015-11-27/Public/assets/avatars/avatar5.png" class="msg-photo" alt="Fred's Avatar" />
 																<span class="msg-body">
 																	<span class="msg-title">
 																		<span class="blue">Fred:</span>
@@ -283,7 +283,7 @@
 						<!-- #section:basics/navbar.user_menu -->
 						<li class="light-blue">
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
-								<img class="nav-user-photo" src="/slackck/Public/assets/avatars/user.jpg" alt="Jason's Photo" />
+								<img class="nav-user-photo" src="/slackck2015-11-27/Public/assets/avatars/user.jpg" alt="Jason's Photo" />
 								<span class="user-info">
 									<small>Welcome,</small>
 									<?php echo ($_COOKIE['admin_username']); ?>
@@ -325,9 +325,9 @@
 				<!-- /section:basics/navbar.dropdown -->
 			</div><!-- /.navbar-container -->
 		</div>
-<script src="/slackck/Public/assets/js/jquery.min.js"></script>
-<script src="/slackck/Public/assets/js/jquery.form.js"></script>
-<script src="/slackck/Public/layer/layer.js"></script>
+<script src="/slackck2015-11-27/Public/assets/js/jquery.min.js"></script>
+<script src="/slackck2015-11-27/Public/assets/js/jquery.form.js"></script>
+<script src="/slackck2015-11-27/Public/layer/layer.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function(){
@@ -436,7 +436,7 @@ $(document).ready(function(){
 							</div>
 
 								<div class="col-xs-12 col-sm-3">
-								<form name="admin_list_sea" class="form-search" method="post" action="/slackck/index.php/Plug/plug_link_list">
+								<form name="admin_list_sea" class="form-search" method="post" action="/slackck2015-11-27/index.php/Plug/plug_link_list">
 									<div class="input-group">
 										<span class="input-group-addon">
 											<i class="ace-icon fa fa-check"></i>
@@ -452,7 +452,7 @@ $(document).ready(function(){
 								</form>
 								</div>
 								  <div class="input-group-btn">
-									<a href="/slackck/index.php/Plug/plug_link_list">
+									<a href="/slackck2015-11-27/index.php/Plug/plug_link_list">
 									<button type="button" class="btn btn-xs  btn-purple">
 										<span class="ace-icon fa fa-globe icon-on-right bigger-110"></span>
 										显示全部
@@ -463,12 +463,12 @@ $(document).ready(function(){
 
 							<div class="row maintop">
 								<div class="col-xs-12 col-sm-3">
-								<a href="/slackck/index.php/Plug/plug_link_list">
+								<a href="/slackck2015-11-27/index.php/Plug/plug_link_list">
 									<button class="btn btn-xs btn-warning">
 											返回列表
 									</button>
 								</a>
-								<?php if(is_array($link_type)): foreach($link_type as $key=>$v): ?><a href="/slackck/index.php/Plug/plug_link_list/type/<?php echo ($v["plug_linktype_id"]); ?>">
+								<?php if(is_array($link_type)): foreach($link_type as $key=>$v): ?><a href="/slackck2015-11-27/index.php/Plug/plug_link_list/type/<?php echo ($v["plug_linktype_id"]); ?>">
 									<button class="btn btn-xs btn-warning">
 											<?php echo ($v["plug_linktype_name"]); ?>
 									</button>
@@ -559,7 +559,7 @@ $(document).ready(function(){
 
 <!-- 显示模态框（Modal） -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-<form class="form-horizontal" name="plug_link_add" id="plug_link_add" method="post" action="/slackck/index.php/Plug/plug_link_runadd">
+<form class="form-horizontal" name="plug_link_add" id="plug_link_add" method="post" action="/slackck2015-11-27/index.php/Plug/plug_link_runadd">
    <div class="modal-dialog">
       <div class="modal-content">
          <div class="modal-header">
@@ -662,7 +662,7 @@ $(document).ready(function(){
 <!-- 显示模态框（Modal） -->
 <div class="modal fade in" id="myModaledit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 <div class="modal-backdrop fade in" id="gbbb" style="height: 100%;"></div>
-<form class="form-horizontal" name="plug_link_runedit" id="plug_link_runedit" method="post" action="/slackck/index.php/Plug/plug_link_runedit">
+<form class="form-horizontal" name="plug_link_runedit" id="plug_link_runedit" method="post" action="/slackck2015-11-27/index.php/Plug/plug_link_runedit">
 <input type="hidden" name="plug_link_id" id="editplug_link_id" value="" />
    <div class="modal-dialog">
       <div class="modal-content">
@@ -752,7 +752,7 @@ $(document).ready(function(){
 function del(id,p){
 	layer.confirm('你确定要删除吗？', {icon: 3}, function(index){
 	layer.close(index);
-	window.location.href="/slackck/index.php/Plug/plug_link_del/plug_link_id/"+id+"/p/"+p+"";
+	window.location.href="/slackck2015-11-27/index.php/Plug/plug_link_del/plug_link_id/"+id+"/p/"+p+"";
 	});
 }
 
@@ -935,17 +935,17 @@ $(function(){
 </script>
 <![endif]-->
 		<script type="text/javascript">
-			if('ontouchstart' in document.documentElement) document.write("<script src='/slackck/Public/assets/js/jquery.mobile.custom.js'>"+"<"+"/script>");
+			if('ontouchstart' in document.documentElement) document.write("<script src='/slackck2015-11-27/Public/assets/js/jquery.mobile.custom.js'>"+"<"+"/script>");
 		</script>
-		<script src="/slackck/Public/assets/js/bootstrap.js"></script>
+		<script src="/slackck2015-11-27/Public/assets/js/bootstrap.js"></script>
 
 		<!-- page specific plugin scripts -->
 
 		<!-- ace scripts -->
-		<script src="/slackck/Public/assets/js/maxlength.js"></script>
-		<script src="/slackck/Public/assets/js/ace/ace.js"></script>
-		<script src="/slackck/Public/assets/js/ace/ace.sidebar.js"></script>
-		<script src="/slackck/Public/assets/js/ace/ace.submenu-hover.js"></script>
+		<script src="/slackck2015-11-27/Public/assets/js/maxlength.js"></script>
+		<script src="/slackck2015-11-27/Public/assets/js/ace/ace.js"></script>
+		<script src="/slackck2015-11-27/Public/assets/js/ace/ace.sidebar.js"></script>
+		<script src="/slackck2015-11-27/Public/assets/js/ace/ace.submenu-hover.js"></script>
 
 
 		<!-- inline scripts related to this page -->
@@ -970,7 +970,7 @@ $(function(){
 			   }).triggerHandler('settings.ace.two_menu', ['sidebar_fixed' ,$('#sidebar').hasClass('sidebar-fixed')]);
 			})
 		</script>
-		<script src="/slackck/Public/assets/js/jquery.form.js"></script>
+		<script src="/slackck2015-11-27/Public/assets/js/jquery.form.js"></script>
 
     
 		</div><!-- /.main-container -->

@@ -9,33 +9,33 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 		<meta property="qc:admins" content="03212514451660216477244363757164506000714516747716747716" />
 		<!-- bootstrap & fontawesome -->
-		<link rel="stylesheet" href="/slackck/Public/assets/css/bootstrap.css" />
-		<link rel="stylesheet" href="/slackck/Public/assets/css/font-awesome.css" />
+		<link rel="stylesheet" href="/slackck2015-11-27/Public/assets/css/bootstrap.css" />
+		<link rel="stylesheet" href="/slackck2015-11-27/Public/assets/css/font-awesome.css" />
 
 		<!-- text fonts -->
-		<link rel="stylesheet" href="/slackck/Public/assets/css/ace-fonts.css" />
+		<link rel="stylesheet" href="/slackck2015-11-27/Public/assets/css/ace-fonts.css" />
 
 		<!-- ace styles -->
-		<link rel="stylesheet" href="/slackck/Public/assets/css/ace.css" />
+		<link rel="stylesheet" href="/slackck2015-11-27/Public/assets/css/ace.css" />
 
 		<!--[if lte IE 9]>
-			<link rel="stylesheet" href="/slackck/Public/assets/css/ace-part2.css" />
+			<link rel="stylesheet" href="/slackck2015-11-27/Public/assets/css/ace-part2.css" />
 		<![endif]-->
-		<link rel="stylesheet" href="/slackck/Public/assets/css/ace-rtl.css" />
+		<link rel="stylesheet" href="/slackck2015-11-27/Public/assets/css/ace-rtl.css" />
 
 		<!--[if lte IE 9]>
-		  <link rel="stylesheet" href="/slackck/Public/assets/css/ace-ie.css" />
+		  <link rel="stylesheet" href="/slackck2015-11-27/Public/assets/css/ace-ie.css" />
 		<![endif]-->
 
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 
 		<!--[if lt IE 9]>
-		<script src="/slackck/Public/assets/js/html5shiv.js"></script>
-		<script src="/slackck/Public/assets/js/respond.js"></script>
+		<script src="/slackck2015-11-27/Public/assets/js/html5shiv.js"></script>
+		<script src="/slackck2015-11-27/Public/assets/js/respond.js"></script>
 		<![endif]-->
-<script src="/slackck/Public/assets/js/jquery.min.js"></script>
-<script src="/slackck/Public/assets/js/jquery.form.js"></script>
-<script src="/slackck/Public/layer/layer.js"></script>
+<script src="/slackck2015-11-27/Public/assets/js/jquery.min.js"></script>
+<script src="/slackck2015-11-27/Public/assets/js/jquery.form.js"></script>
+<script src="/slackck2015-11-27/Public/layer/layer.js"></script>
 <script>
 //登入
 $(function(){
@@ -388,7 +388,7 @@ $(function(){
 
 		<!--[if !IE]> -->
 		<script type="text/javascript">
-			window.jQuery || document.write("<script src='/slackck/Public/assets/js/jquery.js'>"+"<"+"/script>");
+			window.jQuery || document.write("<script src='/slackck2015-11-27/Public/assets/js/jquery.js'>"+"<"+"/script>");
 		</script>
 
 		<!-- <![endif]-->
@@ -399,7 +399,7 @@ $(function(){
 </script>
 <![endif]-->
 		<script type="text/javascript">
-			if('ontouchstart' in document.documentElement) document.write("<script src='/slackck/Public/assets/js/jquery.mobile.custom.js'>"+"<"+"/script>");
+			if('ontouchstart' in document.documentElement) document.write("<script src='/slackck2015-11-27/Public/assets/js/jquery.mobile.custom.js'>"+"<"+"/script>");
 		</script>
 
 		<!-- inline scripts related to this page -->

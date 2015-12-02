@@ -1,6 +1,6 @@
 <?php
 /**
- *  首页
+ *  产品
  * @author fanghui
  * @date 2015/12/01
  *
@@ -12,6 +12,12 @@ class ProductAction extends Action {
      */
 
     public function index(){
-        $this->display('index');
+
+        $this->display('Product');
+    }
+
+    public function inside($sid){
+
+        $this->display('ProductDetail');
     }
 }

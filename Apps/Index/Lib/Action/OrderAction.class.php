@@ -5,7 +5,7 @@
  * @date 2015/12/01
  *
  */
-class BrandAction extends Action {
+class OrderAction extends Action {
     /**
      * 首页
      *

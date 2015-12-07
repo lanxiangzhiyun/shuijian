@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>编辑关键词</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+</head>
+<body>
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li><a href="/iadmin.php/Search/keywordList"><span>关键词列表</span></a></li>
+        <li class="current"><a href="/iadmin.php/Search/addKeyword?id={$info.id}&page={$page}"><span>编辑关键词</span></a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+	
+	<form action='/iadmin.php/Search/saveKeyword' method='post'>
+	<input type='hidden' value='{$info.id}' name='id'>
+	<input type='hidden' value='{$page}' name='page'>
+    <!--修改标签开始-->
+    <div class="common_tb">
+        <ul>
+            <li>
+                <span class="text">关键词名：</span>
+                <span class="input_area">
+                    <input name="name" type="text" onblur="checkKeyword(this)" class="input_bk" id="textfield" value="{$info.name}" />
+					<font id="tishi" color="red"></font>
+                </span>
+            </li>
+            <li>
+                <span class="txt w250">&nbsp;&nbsp;&nbsp;创建人：<em>{$info.username}</em></span>
+                <!-- <span class="txt w250">&nbsp;&nbsp;&nbsp;修改人：<em>{$modifyName}</em></span> -->
+            </li>
+            <li>
+                <span class="txt w250">创建时间：<em>{$info.create_time}</em></span>
+              <!--   <span class="txt w250">修改时间：<em>{$Tag.updatetime|date="y-m-d H:i:s",###}</em></span> -->
+            </li>
+            <li>
+                <span class="txt">使用次数：<em>{$info.num}</em></span>
+            </li>
+           <!--  <li>
+                <span class="text">&nbsp;</span>
+                <span class="input_area">
+                <label><input class="pb" value='2' type="checkbox" <if condition="$Tag.status eq 2">checked='checked'</if> name="status" id="checkbox" />屏蔽</label>
+                </span>
+            </li> -->
+            <li>
+                <span class="text">&nbsp;</span>
+                <span class="input_area"><a class="submit_btn" href="javascript:void(0);" onClick='submitFun();' title="确定"></a><a class="cancel_btn" onClick="return backfun('/iadmin.php/Search/keywordList');" href="javascript:void(0);" title="取消"></a> </span>
+            </li>
+        </ul>
+    </div>
+    <!--修改标签结束-->
+
+	</form>
+</div>
+<script type="text/javascript">
+	function checkKeyword(obj){
+		var kn = obj.value;
+		var kt = 1;
+		if(kn){
+			$.getJSON(
+				"/iadmin.php/Search/ajaxCheckKeywordIsExists",
+				{kn:kn,kt:kt},
+				function(d){ 
+					if(d.status == 'ok'){
+						//$(obj).focus();
+						$('#tishi').html(d.msg);
+					}else{
+						$('#tishi').html('');
+					}
+				}
+			)
+		}
+	}
+</script>
+</body>
+</html>

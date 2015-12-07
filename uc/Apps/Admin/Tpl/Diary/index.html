@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>日记管理</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Js/library/ui/static/calendar/calendar.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type="text/javascript" src="__PUBLIC__/Js/bq.js"></script>
+<script type='text/javascript' src='__PUBLIC__/Js/library/ui/form/calender.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+</head>
+<body>
+<include file="Index:isdelete"/>
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li class="current"><a href="__ROOT__/iadmin.php/Diary/index"><span>日记管理</span></a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+	<form action='__ROOT__/iadmin.php/Diary/index' method='get'>
+    <!--搜索开始-->
+    <div class="search_box">
+        <div class="search">
+            <div class="title">
+                <span class="txt">日记标题：</span>
+                <input name="data[title]"  id="clearText_1" val='输入标题关键字'  type="text" class="input_txt" value="<?php if($title){echo $title;}else{echo '输入标题关键字';}?>" />
+            </div>
+            <div class="date">
+                <span class="txt">创建时间：</span>
+                <input class="input_date calendar" type="text" name="data[starttime]" id="calender1"  value="<?php if($starttime){echo $starttime;}?>"/>
+                <span class="txt">至</span>
+                <input class="input_date calendar" type="text" name="data[endtime]" id="calender2"  value="<?php if($endtime){echo $endtime;}?>"/>
+            </div>
+			<div class="btn_box"><input type='button' class='calendarClear' name='' value='清除时间'></div>
+            <div class="nick">
+                <span class="txt">用户搜索：</span>
+                <input name="data[user]" type="text"  id="clearText_2" val='输入用户呢称或id' class="input_txt" value="<?php if($user){echo $user;}else{echo '输入用户呢称或id';}?>"/>
+                <select class="select_menu" name="data[select]" id="select">
+                    <option value='1' <?php if($select==1){echo 'selected';}?> >用户昵称</option>
+                    <option value='2' <?php if($select==2){echo 'selected';}?> >用户ID</option>
+                </select>
+            </div>
+            <div class="btn_box"><a class="search_btn" onClick='submitFun();' href="javascript:void(0);" title="查询">查询</a></div>
+        </div>
+    </div>
+    <!--搜索结束-->
+	</form>
+    
+    <!--数据列表开始-->
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+        <thead>
+            <tr>
+                <th width="45">选中</th>
+                <th width="6%">ID</th>
+                <th width="30%">日记标题</th>
+                <th width="12%"><a class="sort_desc" href="javascript:void(0);">发布时间<i></i></a></th>
+                <th width="10%">用户昵称</th>
+                <th width="8%">用户ID</th>
+                <th width="8%"><a class="sort_asc" href="javascript:void(0);">浏览数<i></i></a></th>
+                <th width="8%"><a href="javascript:void(0);">评论数<i></i></a></th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+
+			<volist name='Diarys' id='vo'>
+            <tr>
+                <td><input class="dx" type="checkbox" value="{$vo.id}" id="blogID_{$vo.id}" name="blogID"></td>
+                <td>{$vo.id}</td>
+                <td align="left"><span class="title"><a href="__ROOT__/UcDiary/diary/id/{$vo.id}" target='_blank'>{$vo.title}</a></span></td>
+                <td>{$vo.cretime|date="y-m-d H:i:s",###}</td>
+                <td>{$vo.nickname}</td>
+                <td>{$vo.uid}</td>
+                <td>{$vo.views}</td>
+                <td>{$vo.comments}</td>
+                <td><a href="__ROOT__/UcDiary/diary/id/{$vo.id}" target='_blank'>查看</a><span class="line">|</span><a href="javascript:;" onCLick="return urlDelete(2,'__ROOT__/iadmin.php/Diary/deleteDiray?deleteDiray={$vo.id}&page=<?php echo $page;?>');" >删除</a><span class="line">|</span><a href="__ROOT__/iadmin.php/Diary/editPage?diaryid={$vo.id}">编辑</a></td>
+            </tr>
+           </volist>
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="9" align="left"><label><input class="select_all" type="checkbox" value="全选" id="blogID" name="blogID">全选</label> <a class="del_btn" href="#" actions='3' controllers='2' title="删除"></a></td>
+            </tr>
+        </tfoot>
+    </table>
+    <!--数据列表结束-->
+    
+    <!--分页开始-->
+    <?php echo $pageHtml;?>
+    <!--分页结束-->
+    <input type='hidden' value='<?php echo $url;?>' id='url'>
+</div>
+<script type='text/javascript'>
+//页面加载一次
+window.onload=function(){
+		var url = $('#url').val();
+		if(url){
+			var maxCode=parent.oMapReloadInfo['maxCode'];
+			var code=parent.oMapReloadInfo['code'];
+			var difference = maxCode-code;
+			if(difference==1){
+				parent.oMapReloadInfo['maxCode']=maxCode+1;
+				location.href=url;
+			}else{
+				parent.oMapReloadInfo['code']=code+1;
+			}
+		}
+}
+BQ.ui.form.Calender('#calender1');
+BQ.ui.form.Calender('#calender2');
+</script>
+</body>
+</html>

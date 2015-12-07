@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<php>if($oruid){</php><meta name="keywords" content="<php>if(isset($huser['nickname'])) { </php>{$huser.nickname}<php>} else { </php>波奇{$huser.uid}<php>} </php>关注的话题" />
+<php>}else{</php><meta name="keywords" content="<php>if(isset($userinfo['nickname'])) { </php>{$userinfo.nickname}<php>} else { </php>波奇{$userinfo.uid}<php>} </php>关注的话题" />
+<php>}</php>
+<php>if($oruid){</php><meta name="description" content="波奇网宠物家园记录着<php>if(isset($huser['nickname'])) { </php>{$huser.nickname}<php>} else { </php>波奇{$huser.uid}<php>} </php>在社区关注的话题<php>if(isset($p) && $p >= 2) { </php>，第{$p}页<php>} </php>，分享的快乐" />
+<php>}else{</php><meta name="description" content="波奇网宠物家园记录着<php>if(isset($userinfo['nickname'])) { </php>{$userinfo.nickname}<php>} else { </php>波奇{$userinfo.uid}<php>} </php>在社区关注的话题<php>if(isset($p) && $p >= 2) { </php>，第{$p}页<php>} </php>，分享的快乐" />
+<php>}</php>
+<php>if($obj == "me") { if($userinfo['groupid'] >= 4 && $userinfo['groupid'] < 11) { </php><META NAME="robots" CONTENT="NOINDEX,NOFOLLOW">
+<php>} } elseif($obj == "other") { if($huser['groupid']  >= 4 && $huser['groupid'] < 11) { </php><META NAME="robots" CONTENT="NOINDEX,NOFOLLOW">
+<php>} }</php>
+<title><php>if($oruid){</php><php>if(isset($huser['nickname'])) { </php>{$huser.nickname}<php>} else { </php>波奇{$huser.uid}<php>} </php><php>}else{</php><php>if(isset($userinfo['nickname'])) { </php>{$userinfo.nickname}<php>} else { </php>波奇{$userinfo.uid}<php>} </php><php>}</php>关注的话题<php>if(isset($p) && $p >= 2) { </php> - 页{$p}<php>} </php> – 波奇网宠物家园、分享宠物的快乐生活</title>
+<link rel="stylesheet" type="text/css" href="<php>echo autoVer('/Css/uc/global.css');</php>"/>
+<link rel="stylesheet" type="text/css" href="<php>echo autoVer('/Css/uc/main.css');</php>"/>
+<script type="text/javascript" src="__PUBLIC__/Js/jquery.js"></script>
+</head>
+<body>
+<!--头部开始-->
+<div class="global_header"> 
+    <!--头部导航开始-->
+	<include file="Public:top" />
+    <!--头部导航结束--> 
+    
+   <include file="Public:header" />
+</div>
+<!--头部结束--> 
+
+<!--主体部分开始-->
+<div class="main two_side clearfix"> 
+    <!--左侧开始-->
+    <div class="main_left"> 
+    <include file="Public:left" />
+    </div>
+    <!--左侧结束-->
+    <div class="plc_main"> 
+        <!--右侧开始-->
+        <div class="main_cont bbs_conts">
+		
+            <div class="path_title">
+                <span class="bbs_title"><php>if($oruid){</php>{$huser.nickname}<php>}else{</php>我<php>}</php>的宠物社区</span>
+            </div>
+			<php>if($userinfo){</php>
+            <div class="sub_tab bbs_cont" id="bbs_cont">
+				<h3 id="bbscontck"><php>if($oruid){</php>TA<php>}else{</php>我<php>}</php>的论坛名片<i class="bbsconh3"></i></h3>
+				<ul class="subbbs" id="subbbs">
+				<li>
+					<span class="wdom"><span class="word">当前用户组：</span><span class="input_area input_txt"><a href="javascript:void(0);" class="orange"><php>if($oruid){</php>{$ouserinfo.grouptitle}<php>}else{</php>{$userinfo.grouptitle}<php>}</php></a></span></span>
+					<span class="wdom wright"><span class="word">人气：</span><span class="input_area input_txt"><a href="javascript:void(0);" class="orange"><php>if($oruid){</php>{$ouserinfo.extinfo.extcredits1}<php>}else{</php>{$userinfo.extinfo.extcredits1}<php>}</php></a></span></span>
+				</li>
+				<li>
+					<span class="wdom"><span class="word">帖子：</span><span class="input_area input_txt"><a href="javascript:void(0);" class="none"><php>if($oruid){</php>{$ouserinfo.extinfo.posts}<php>}else{</php>{$userinfo.extinfo.posts}<php>}</php>篇</a></span></span>
+					<span class="wdom wright"><span class="word">精华：</span><span class="input_area input_txt"><a href="javascript:void(0);" class="none"><php>if($oruid){</php>{$ouserinfo.extinfo.digestposts}<php>}else{</php>{$userinfo.extinfo.digestposts}<php>}</php>篇</a></span></span>
+				</li>
+				<li>
+					<span class="wdom"><span class="word">在线时间：</span><span class="input_area input_txt"><a href="javascript:void(0);" class="none"><php>if($oruid){</php>{$ouserinfo.extinfo.oltimes}<php>}else{</php>{$userinfo.extinfo.oltimes}<php>}</php></a></span></span>
+					<span class="wdom wright"><span class="word">上次访问：</span><span class="input_area input_txt"><a href="javascript:void(0);" class="none"><php>if($oruid){</php><php>if($ouserinfo['lastvisit']){</php> {$ouserinfo.lastvisit|date="Y-m-d H:i", ###} <php>}</php><php>}else{</php><php>if($userinfo['lastvisit']){</php> {$userinfo.lastvisit|date="Y-m-d H:i", ###} <php>}</php><php>}</php></a></span></span>
+				</li>
+				<li>
+					<span class="wdom"><span class="word">最后发表：</span><span class="input_area input_txt"><a href="javascript:void(0);" class="none"><php>if($oruid){</php><php>if($ouserinfo['extinfo']['lastpost']){</php> {$ouserinfo.extinfo.lastpost|date="Y-m-d H:i", ###} <php>}</php><php>}else{</php><php>if($userinfo['extinfo']['lastpost']){</php> {$userinfo.extinfo.lastpost|date="Y-m-d H:i", ###} <php>}</php><php>}</php></a></span></span>
+					<span class="wdom wright"><span class="word">注册时间：</span><span class="input_area input_txt"><a href="javascript:void(0);" class="none"><php>if($oruid){</php><php>if($ouserinfo['regdate']){</php> {$ouserinfo.regdate|date="Y-m-d H:i", ###} <php>}</php><php>}else{</php><php>if($userinfo['regdate']){</php> {$userinfo.regdate|date="Y-m-d H:i", ###} <php>}</php><php>}</php></a></span></span>
+				</li>
+				<li>
+					<span class="wdom wdoms">
+						<span class="word">论坛签名：</span>
+						<span class="input_txt">
+							<div class="conmin" id="conmin"><php>if($oruid){</php>{$ouserinfo.sightml}<php>}else{</php>{$userinfo.sightml}<php>}</php></div><php>if(!$oruid && $userinfo){</php><a href="javascript:void(0);" id="wdomck">修改</a><php>}</php>
+						</span>
+					</span>
+				</li>
+				<li class="wdomaft">
+					<span class="wdom wdoms">
+						<span class="input_area input_txt">
+							<span class="wordtarea">
+								<textarea id="sightml" class="textarea_bk" name="sightml">{$userinfo.sightmlo}</textarea>
+							</span>
+							<span class="wordtarea">
+								<span class="worea">图片使用img标签，如：[img]http://www.boqii.com/photo.jpg[/img]</span>
+							</span>
+							<span class="wordtarea">
+								<a href="javascript:void(0);" id="submit_btn" class="submit_btn">确定</a>
+								<a href="javascript:void(0);"id="cancel_btn" class="cancel_btn">取消</a>
+							</span>
+						</span>
+					</span>
+				</li>
+				</ul>
+			</div>
+			<php>}</php>
+            <div class="sub_tab">
+                <ul>
+                    <li><a href="<php>if($oruid){</php><php>echo get_rewrite_url('UcForum','forum',$oruid);</php><php>}else{</php><php>echo get_rewrite_url('UcForum','forum',$userinfo['uid']);</php><php>}</php>"><php>if($oruid){</php>TA<php>}else{</php>我<php>}</php>发表的话题</a></li>
+                    <li><a href="<php>if($oruid){</php><php>echo get_rewrite_url('UcForum','reForum',$oruid);</php><php>}else{</php><php>echo get_rewrite_url('UcForum','reForum',$userinfo['uid']);</php><php>}</php>"><php>if($oruid){</php>TA<php>}else{</php>我<php>}</php>回复的话题</a></li>
+					<li><a href="<php>if($oruid){</php><php>echo get_rewrite_url('UcForum','attentionGroup',$oruid);</php><php>}else{</php><php>echo get_rewrite_url('UcForum','attentionGroup',$userinfo['uid']);</php><php>}</php>"><php>if($oruid){</php>TA<php>}else{</php>我<php>}</php>关注的群组</a></li>
+					<li class="current"><a href="<php>if($oruid){</php><php>echo get_rewrite_url('UcForum','attentionThread',$oruid);</php><php>}else{</php><php>echo get_rewrite_url('UcForum','attentionThread',$userinfo['uid']);</php><php>}</php>"><php>if($oruid){</php>TA<php>}else{</php>我<php>}</php>关注的话题</a></li>
+                </ul>
+               <!-- <php>if($userinfo && !$oruid){</php><a class="submit_btn" target="_blank" href="<php>echo C('BBS_DIR');</php>/index.php/Forums/threadNew">发起新话题</a><php>}</php> -->
+            </div>
+            <div class="bbs_content">
+                <!--话题列表开始-->
+                <div class="pub_topic">
+                    <ul>
+                        <li class="th">
+                            <span class="title">主题</span>
+                            <span class="lastpostor">最后回复</span>
+                            <span class="view">回复/查看</span>
+							<span class="view">发表时间</span>
+                            <span class="group">版块/群组</span>
+                        </li>
+						<php>if($myAttentionThreads){</php>
+						<volist name='myAttentionThreads' id='v'>
+                        <li>
+                            <span class="title"><a title="{$v.subject}" href="<php>echo C('BBS_DIR');</php>/content/viewthread-{$v.tid}.html" target='_blank'><if condition="$v.digest eq 1"><font color="red">【精华】</font></if>{$v.subject}</a></span>
+                            <span class="lastpostor"><php>if($v['lastposter']){</php><a href="<php>echo get_rewrite_url('Index','index',$v['lastposterid']);</php>" title="{$v.lastposter}">{$v.lastposter}</a><php>}else{</php>&nbsp;&nbsp;<php>}</php></span>
+                            <span class="view" title="回复：{$v.replies}/阅读：{$v.views}">{$v.replies}/{$v.views}</span>
+							<span class="view" title="发表时间">{$v.dateline}</span>
+                            <span class="group"><a href="<php>echo get_rewrite_url('Forum','forumDisplay',$v['fid']);</php>" title="{$v.name}" target="_blank">{$v.name}</a></span>
+                        </li>
+                       </volist>
+					   <php>}else{</php>
+					   <li><php>if($oruid){</php>他<php>}else{</php>你<php>}</php>还未关注过话题</li>
+					   <php>}</php>
+                    </ul>
+                </div>
+                <!--话题列表结束-->
+                
+            <!--分页开始-->
+            <div class="page_wrap">
+				<div class="sub_tab">
+					<ul>
+						<li <if condition="!$digestType">class="current"</if>><a href="{$allThreadsUrl}">全部话题</a></li>
+						<li <if condition="$digestType eq 1">class="current"</if>><a href="{$digestThreadsUrl}">精华话题</a></li>
+					</ul>					
+				</div>
+    	        <div class="showpage">
+				 	{$page}
+	                <!--<a class="page-prev" href="#"><span>上一页</span></a>
+                    <span class="page-this">1</span>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <span class="page-break">...</span>
+                    <a href="#">20</a>
+                    <a class="page-next" href="#"><span>下一页</span></a>-->
+	            </div>
+             </div>
+             <!--分页结束-->
+            </div>
+            
+        </div>
+        <!--右侧结束--> 
+    </div>
+</div>
+<!--主体部分结束--> 
+<script type="text/javascript"> 
+	BQ.load("UCForum",function(){
+         BQ.UCForum('myAttentionThreads').exec();
+    });
+</script>
+
+<!--底部开始-->
+<include file="Public:footer" />
+<!--底部结束--> 
+

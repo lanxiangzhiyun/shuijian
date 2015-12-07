@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>添加成员</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+</head>
+<body>
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li><a href="__ROOT__/iadmin.php/Admin/index"><span>后台成员管理</span></a></li>
+        <li class="current"><a href="__ROOT__/iadmin.php/Admin/addPage"><span>添加成员</span></a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+	
+	<form action='__ROOT__/iadmin.php/Admin/editAdmin' method='post'>
+	<input name="data[id]" type="hidden" class="input_bk w200" value="<?php echo $admin[0]['id']?>"/>
+    <!--添加成员开始-->
+    <div class="common_tb">
+        <ul>
+            <li>
+                <span class="text">用户名：</span>
+                <span class="input_area"><input name="data[username]" type="text" class="input_bk w200" value="<?php echo $admin[0]['username']?>"/><font color='red'>（*必填项）</font></span>
+            </li>
+            <li>
+                <span class="text">真实姓名：</span>
+                <span class="input_area"><input name="data[truename]" type="text" class="input_bk w200" value="<?php echo $admin[0]['truename']?>"/><font color='red'>（*必填项）</font></span>
+            </li>
+            <li>
+                <span class="text">登录密码：</span>
+                <span class="input_area">
+                    <input name="data[password]" type="password" class="input_bk w200" id="" /><font color='red'>（*必填项）</font>
+                </span>
+            </li>
+            <li>
+                <span class="text">确认密码：</span>
+                <span class="input_area">
+                    <input name="againpassword" type="password" class="input_bk w200" id="" /><font color='red'>（*必填项）</font>
+                </span>
+            </li>
+            <li style='width:500px;'>
+                <span class="text">用户权限：</span>
+                <span class="input_area" style='width:415px;'>
+                 <volist name='RBAC' id='vo' key='i'>
+				<label class="qx" style='width:90px;'><input class="pb" <in name='i' value="$admin[0]['operation']">checked='checked'</in> type="checkbox" name="operation[]" value="{$i}" id=""/>{$vo}</label>
+                </volist>
+                </span>
+            </li>
+
+            <li>
+                <span class="text">&nbsp;</span>
+                <span class="input_area"><a class="submit_btn" href="javascript:void(0);" onClick='submitFun();' title="确定"></a><a class="cancel_btn" href="javascript:void(0);" title="取消" onClick="return backfun('/iadmin.php/Admin/index');"></a> </span>
+            </li>
+        </ul>
+    </div>
+    <!--添加成员结束-->
+	</form>
+
+</div>
+</body>
+</html>

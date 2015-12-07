@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>导入关键词</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Js/bq.js'></script>
+</head>
+<body>
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li><a href="__ROOT__/iadmin.php/Sensitive/index"><span>敏感词列表</span></a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+	
+	<form action='__ROOT__/iadmin.php/Sensitive/importSensitive' method='post' enctype="multipart/form-data">
+    <div class="common_tb">
+        <ul>
+            <li>
+                <span class="text">敏感词文件：</span>
+                <span class="input_area">
+                    <input  type="file"  name="file" />
+					<font id="tishi" color="red">*选择需要导入的excel文件</font>
+                </span>
+            </li>
+            <li>
+                <span class="text">&nbsp;</span>
+                <span class="input_area"><a class="submit_btn" onClick='submitFunc();' href="javascript:void(0);" title="确定"></a><a class="cancel_btn" onClick="return backfun('/iadmin.php/Sensitive/index');" href="javascript:void(0);" title="取消"></a> </span>
+            </li>
+        </ul>
+    </div>
+    <!--广告结束-->
+	</form>
+</div>
+
+
+<script type='text/javascript'>
+function submitFunc(){
+	$("form").submit();
+}
+</script>
+</body>
+</html>

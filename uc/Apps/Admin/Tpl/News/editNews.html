@@ -1,0 +1,310 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><php>if($detail['id']){</php>编辑<php>}else{</php>添加<php>}</php>文章</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/easydialog.css"/>	
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type="text/javascript" src="__ROOT__/Addons/Plugins/ueditor/editor_config_article.js"></script>  
+<script type="text/javascript" src="__ROOT__/Addons/Plugins/ueditor/editor_all.js"></script>  
+<script type="text/javascript" src="__ROOT__/Addons/Plugins/ueditor/_src/plugins/autoheight.js"></script>  
+<link rel="stylesheet" type="text/css" href="__ROOT__/Addons/Plugins/ueditor/themes/default/ueditor.css">
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Js/bq.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/easydialog.min.js'></script>
+<script type='text/javascript'>
+	BQ.load("BQAjaxUP",function(){
+		BQ.BQAjaxUP('AjaxUP',{but:$('.addfield'),action:'/iadmin.php/Upload/imageUpload',data:{'type':'news'},onSubmit:function(file,ext){
+			if(ext && /^(jpg|jpeg|png|gif)$/.test(ext)){
+				//console.log('上传中...');
+			}else{
+				alert('不支持非图片格式！');
+				return false;
+			}
+			},onComplete:function(file,response){
+				response = eval("("+response+")");
+				//返回json数据
+				if(response.status == 'ok'){
+					$('#pic_path').val(response.imgpath);
+					$('#minimg').html('<img src="'+response.domain+response.imgpath+'" alt="" width="'+response.width+'" height="'+response.height+'">')
+				}else if(response.status == 'noselect'){
+					alert('服务器错误、上传图片为空值。');
+				}else if(response.status == 'login'){
+					alert('请登录后操作！');
+				}else{
+					alert('上传失败，请保持图片不超过2M');
+				}
+			}});
+	})
+</script>
+<script>
+//保存
+function check(obj) {
+	if(obj.title.value == '') {
+		alert('请输入标题！');
+		obj.title.focus();
+		return false;
+	}
+	if(obj.big_column_id.value == 0) {
+		alert('请选择资讯所在大分类！');
+		obj.parent.focus();
+		return false;
+	}
+	if(obj.column_id.value == 0) {
+		alert('请选择资讯所在小分类！');
+		obj.category.focus();
+		return false;
+	}
+	if(obj.summary.value == '') {
+		alert('请输入摘要！');
+		obj.summary.focus();
+		return false;
+	}
+	if(obj.content.value == '') {
+		alert('请输入内容！');
+		obj.content.focus();
+		return false;
+	}
+	
+ 
+	
+	return true;
+}
+</script>
+</head>
+<body>
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li><a href="__ROOT__/iadmin.php/News/newsList"><span>资讯管理</span></a></li>
+        <li class="current"><a href="javascript:void(0)"><span>编辑资讯</span></a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+	
+	<form action='__ROOT__/iadmin.php/News/editNews' id="form1" method='post' enctype="multipart/form-data" onsubmit="return check(this)">
+	<div class="common_tb">
+        <ul>
+			<li>
+                <span class="text">标题：</span>
+                <span class="input_area">
+				<input name="title" type="text" value='{$idInfo.title}' class="input_bk" id="" />
+				</span>
+            </li>
+            <li>
+                <span class="text" style="float:left">分类：</span>
+                <span class="input_area" ">
+				<select class="select_menu" name="big_column_id" id="big_column_id" style="float:left">
+                    <option value="0">--请选择分类--</option>
+                    <volist name='bigColumn' id='v'>
+                    <option value="{$v.id}" flag = "{$v.name}" <php> if($idInfo['big_column_id'] == $v['id']){ echo "selected"; }</php>  >{$v.name}</option>
+					</volist>
+                </select>
+				<span id="second" style="margin-left:30px;float:left"> 
+				<select class="select_menu" id="column_id" name="column_id" style="width:100px;">
+					<volist name="columnInfo" id="v">
+						<option value="{$v.id}" flag = "{$v.name}" <php> if($idInfo['column_id'] == $v['id']){ echo "selected"; }</php>  >{$v.name}</option>
+					</volist>
+				</select> 
+				</span>
+				
+				</span>
+				<span class="three_column">
+					<font style="color:red;" id ="three_name">{$idInfo.three_column_name}</font>
+					<input type="hidden" id="three_level_id" name="three_column_id" value="{$idInfo.three_column_id}" />
+					<a href="javascript:void(0)" onclick="setClassification()">选择三级分类</a>
+				</span>
+            </li>
+            <li>
+            	<span class="text">初始浏览数</span>
+            	<span class="input_area">
+            		<input name="custom_visits_number" type="text" value='{$idInfo.custom_visits_number}' class="input_bk" id="" />
+            	</span>
+            </li>
+			<li>
+				<span class="text">资讯状态</span>
+				<span class="input_area">
+					<select class="select_menu" name="status">
+						<option value="0" <php> if($idInfo['status'] == 0){ echo "selected"; }</php> >待审核</option>
+						<option value="1" <php> if($idInfo['status'] == 1){ echo "selected"; }</php> >已审核</option>
+					</select>
+				</span>
+			</li>
+			
+            <li>
+                <span class="text">摘要：</span>
+                <span class="input_area">
+                <textarea name="summary" cols="110" rows="6">{$idInfo.summary}</textarea>
+                </span>
+            </li>
+           
+            <li>
+                <span class="text">内容：</span>
+                <span class="input_area">
+				<textarea id="content_init" name="content" style="width:755px; height:350px;">{$idInfo.content}</textarea>
+				<input type="hidden" id="content" name="content" value=""/>
+                <script type="text/javascript">
+					// 自定义的编辑器配置项,此处定义的配置项将覆盖editor_config.js中的同名配置
+					var editorOption = {
+						toolbars:[['FullScreen', 'fontfamily', 'fontsize', 'forecolor', 'backcolor','Undo', 'Redo','Bold', 'italic', 'underline', 'removeformat', 'justifyleft','justifyright','justifycenter','emotion', 'insertimage','insertvideo','link']],
+						//focus时自动清空初始化时的内容
+						autoClearinitialContent:false,
+						//不自动长高
+						autoHeightEnabled:false,
+						//关闭字数统计
+						wordCount:false,
+						//关闭elementPath
+						elementPathEnabled:false,
+						//imageUrl
+						imageUrl:'<php>echo C('I_DIR');</php>/iadmin.php/Upload/vetNewsImageUpload',
+					};
+					var ueditor = new baidu.editor.ui.Editor(editorOption);
+					ueditor.render( 'content_init' );
+				</script>
+                </span>
+            </li>
+            <li>
+                <span class="text">图片：</span>
+                <span class="input_area">
+                <input type="hidden" name="pic_path" value='{$idInfo.pic_path}' id="pic_path" />
+				<a href="#" class="addfield">点击上传</a>
+				&nbsp;&nbsp;<font color="#FF0000">*</font>文章配图尺寸：500*350
+				<p id="minimg">
+					<php>if($idInfo['pic_path']){</php>
+					 <img src="<php>echo C('IMG_DIR').'/'.$idInfo['pic_path'];</php>" width="500"/>
+					 <php>}</php> 
+				</p>
+                </span>
+            </li>
+				<input type="hidden" name="id" value="{$idInfo.id}"  />
+            <li>
+                <span class="text">&nbsp;</span>
+                <span class="input_area"><a class="submit_btn" onClick='submitFunc();' href="javascript:void(0);" title="确定"></a></span>
+            </li>
+        </ul>
+    </div>
+    
+    </form>
+</div>
+<!-- 弹出层 star  -->
+    <div id="massTransfer" style="width:600px;height:300px;border:1px #ccc solid;display:none;background:#fff">
+    	<font style="float:right;font-size:16px; margin: 10px 20px 0 0; cursor:pointer" onclick="easyDialog.close();" >X</font>
+    	<div class="" style ="float:left ;margin-top:30px;margin-left:20px;">
+        		<span class="txt">一级分类:<font id="yjfl" sytle="color:red"></font></span>
+        		<span class="txt" style="margin-left:15px;">二级分类:<font id="ejfl" sytle="color:red"></font></span>
+        		
+        	</div>
+        	
+        	<div class="" style ="float:left;width:100%;margin-top:10px;margin-left:20px;">
+        		三级分类:<input type="text" name="three_level_search" id="three_level_search" />
+        		&nbsp;&nbsp;<font style="color:red">完全匹配</font>&nbsp;&nbsp;
+        		<input type="hidden" name="erji_id" id ="erji_id" value="">
+        		 <a class="search_btn" onClick='searchThreelevel()' href="javascript:void(0);" title="查询">查询</a>
+        	</div>
+        	
+        	<div id="three_level_conn" style ="float:left;width:520px;height:100px; margin-top:10px;margin-left:20px;border:1px #ccc solid; padding:20px; "></div>
+        	<input type="hidden" name="newsIds" id ='newsIds' value="" />
+        	<div style="margin-top:10px;padding-left:390px;width:100%;float:left;" ><a href="javascript:void(0);" onClick='Determine()' >设置完成</a></div>
+    </div>
+    <!-- 弹出层end  -->
+<script type='text/javascript'>
+
+function Determine(){
+	var ids = $('#newsIds').val();
+	var three_column_id = $('input:radio[id="three_column_id"]:checked').val();
+	if( three_column_id == undefined){
+		alert("请选择三级分类");
+	}else{
+		$("#three_name").html($('#three_column_id').attr('flag'));
+		$("#three_level_id").val($("#three_column_id").val());
+		easyDialog.close();
+		
+		
+	}
+}
+
+function searchThreelevel(){
+	
+	var column_id = $("#erji_id").val();
+	var three_level_search = $("#three_level_search").val();
+	
+	if(!three_level_search){
+		alert("请搜索三级分类");
+		return false;
+	}
+	$.ajax({
+		type:'post',
+		url:'/iadmin.php/news/AjaxGetThreeLevelColumnInfo',
+		data:'&column_id='+column_id+'&search_name='+three_level_search,
+		dataType:'json',
+		success:function(data){
+			html = '<input type="radio"  id="three_column_id" flag="'+data.name+'"  value="'+data.id+'" />&nbsp;&nbsp;'+data.name
+			$('#three_level_conn').html(html);
+		}
+	});
+}
+
+function setClassification(){
+	var big_column_id = $("#big_column_id").val();
+	var column_id = $("#column_id").val();
+	var big_coumn_id_index = document.getElementById("big_column_id").selectedIndex;
+	var big_coumn_id_name =  document.getElementById("big_column_id").options[big_coumn_id_index].text ;
+	var big_coumn_index = document.getElementById("column_id").selectedIndex;
+	var big_coumn_name =  document.getElementById("column_id").options[big_coumn_index].text ;
+	$("#yjfl").html(big_coumn_id_name);
+	$("#ejfl").html(big_coumn_name);
+	$("#erji_id").val(column_id);
+	if(!big_column_id){
+		alert("请选择一级分类");
+		return false;
+	}
+	if(!column_id){
+		alert("请选择二级分类");
+		return false;
+	}
+	easyDialog.open({container : 'massTransfer',fixed : false,});
+}
+
+
+function submitFunc(){
+	var message = encodeURIComponent(ueditor.getContent());
+	$('#content').val(message);
+	$("#form1").submit();
+}
+
+$('#big_column_id').change(function(){
+	var big_column_id = $(this).val();
+	if(big_column_id != 0){
+		$.ajax({
+			type:'post',
+			url:'/iadmin.php/news/AjaxGetColumnInfo',
+			data:'id='+big_column_id,
+			dataType:'json',
+			success:function(data){
+				if(data == null){
+					html="<option value =''>--所有子栏目--</option>";
+				}else{
+					$("#xiaolanmu").show();
+					var len = data.length,html="<option value =''>--所有子栏目--</option>";
+					if(len){
+						for(var i=0;i<len;i++){
+							html+='<option flag ="'+data[i].name+'" value="'+data[i].id+'">'+data[i].name+'</option>';
+						}		
+					}
+				}
+				$("#column_id").html(html);
+			}
+		});
+	}else{
+		html="<option value =''>--所有子栏目--</option>";
+		$("#column_id").html(html);
+		$("#xiaolanmu").hide();
+	}
+});
+
+</script>
+
+</body>
+</html>

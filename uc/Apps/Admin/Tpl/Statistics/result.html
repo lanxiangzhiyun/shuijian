@@ -1,0 +1,1331 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type="text/javascript" src="__PUBLIC__/Js/bq.js"></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+<style type='text/css'>
+.popup_layer .setnotice_class{
+	display:none;
+}
+</style>
+</head>
+
+<body>
+<div class="common_tab">
+    <ul>
+        <li class="current"><a href="__ROOT__/iadmin.php/Statistics/index"><span>投票统计</span></a></li>
+    </ul>
+</div>
+<div class="wrap">
+    <!--搜索开始-->
+    <div class="search_box">
+        <div class="search">
+        </div>
+    </div>
+<php>if($id == 1){</php>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+  <tr>
+    <td width="30%">选项：</td>
+    <td width="18%">&nbsp;答案1</td>
+    <td width="18%">&nbsp;答案2</td>
+    <td width="18%">&nbsp;答案3</td>
+    <td width="17%">&nbsp;答案4</td>
+  </tr>
+  <tr>
+    <td>你的性别：</td>
+    <td>&nbsp;男( {$result.c1} )</td>
+    <td>&nbsp;女( {$result.c2} )</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>你的年龄：</td>
+    <td>&nbsp;18岁以下( {$result.c3} )</td>
+    <td>&nbsp;19-40岁( {$result.c4} )</td>
+    <td>&nbsp;41-60岁( {$result.c5} )</td>
+    <td>&nbsp;60岁以上( {$result.c6} )</td>
+  </tr>
+  <tr>
+    <td>你是否了解导盲犬：</td>
+    <td>&nbsp;了解( {$result.c7} )</td>
+    <td>&nbsp;不了解( {$result.c8} )</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>你是否在生活中见过导盲犬：</td>
+    <td>&nbsp;见过( {$result.c9} )</td>
+    <td>&nbsp;没见过( {$result.c10} )</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>你知道导盲犬可以进出公共场合吗：</td>
+    <td>&nbsp;知道( {$result.c11} )</td>
+    <td>&nbsp;不知道( {$result.c12} )</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>你是否接受导盲犬跟你同行：</td>
+    <td>&nbsp;能接受( {$result.c13} )</td>
+    <td>&nbsp;不接受( {$result.c14} )</td>
+    <td>&nbsp;看情况( {$result.c15} )</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>你不愿意与导盲犬同行和共处的理由是什么：</td>
+    <td>&nbsp;担心被导盲犬伤害( {$result.c16} )</td>
+    <td>&nbsp;导盲犬容易带来各种细菌和疾病( {$result.c17} )</td>
+    <td>&nbsp;单纯地害怕( {$result.c18} )</td>
+    <td>&nbsp;其他( {$result.c19} )</td>
+  </tr>
+  
+  <tr>
+    <td colspan="5">&nbsp;<a href="?act=export">导出excel</a></td>
+  </tr>
+</table>
+<php>}elseif($id == 2){</php>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+  <tr>
+    <td width="30%">选项：</td>
+    <td width="18%">&nbsp;答案1</td>
+    <td width="18%">&nbsp;答案2</td>
+    <td width="18%">&nbsp;答案3</td>
+    <td width="17%">&nbsp;答案4</td>
+  </tr>
+  <tr>
+    <td>你的性别：</td>
+    <td>&nbsp;男( {$result.c1} )</td>
+    <td>&nbsp;女( {$result.c2} )</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>你的年龄：</td>
+    <td>&nbsp;20岁以下( {$result.c3} )</td>
+    <td>&nbsp;21-35岁( {$result.c4} )</td>
+    <td>&nbsp;35-50岁( {$result.c5} )</td>
+    <td>&nbsp;50岁以上( {$result.c6} )</td>
+  </tr>
+  <tr>
+    <td>你家猫咪是否是品种猫：</td>
+    <td>&nbsp;是( {$result.c7} )</td>
+    <td>&nbsp;不是( {$result.c8} )</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>你是否愿意带猫咪出门：</td>
+    <td>&nbsp;愿意( {$result.c9} )</td>
+    <td>&nbsp;不愿意( {$result.c10} )</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>如果不愿意带猫咪出门是因为什么：</td>
+    <td>&nbsp;猫咪担心不愿意出门( {$result.c11} )</td>
+    <td>&nbsp;没有合适的交通工具( {$result.c12} )</td>
+    <td>&nbsp;猫咪出门不好控制( {$result.c13} )</td>
+    <td>&nbsp;没有合适的带猫场合( {$result.c14} )</td>
+  </tr>
+  <tr>
+    <td>如果一定要带猫咪出门你会选择去什么样的场合：</td>
+    <td>&nbsp;小型室内聚会场所(20人以上)( {$result.c15} )</td>
+    <td>&nbsp;小型室内聚会场所(100人以上)( {$result.c16} )</td>
+    <td>&nbsp;有草坪的公园( {$result.c17} )</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>一定要带猫咪出门你会选择什么样的交通工具：</td>
+    <td>&nbsp;出租( {$result.c18} )</td>
+    <td>&nbsp;私家车( {$result.c19} )</td>
+    <td>&nbsp;公交车( {$result.c20} )</td>
+    <td>&nbsp;偷渡( {$result.c21} )</td>
+  </tr>
+  <tr>
+    <td>上海地区的猫主是否愿意参加我们下次的人民广场附近的猫聚：</td>
+    <td>&nbsp;愿意( {$result.c22} )</td>
+    <td>&nbsp;不愿意( {$result.c23} )</td>
+    <td>&nbsp;看时间( {$result.c24} )</td>
+    <td>&nbsp;有礼物就参加( {$result.c25} )</td>
+  </tr>
+  
+  <tr>
+    <td colspan="6">&nbsp;<a href="?act=export">导出excel</a></td>
+  </tr>
+</table>
+<php>}elseif($id == 3){</php>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+  <tr>
+    <td width="30%">选项：</td>
+    <td width="18%">&nbsp;答案1</td>
+    <td width="18%">&nbsp;答案2</td>
+    <td width="18%">&nbsp;答案3</td>
+    <td width="17%">&nbsp;答案4</td>
+  </tr>
+  <tr>
+    <td>你家是否有猫有狗：</td>
+    <td>&nbsp;猫狗一家其乐融融( {$result.c1} )</td>
+    <td>&nbsp;一个物种已经很头疼了( {$result.c2} )</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>猫狗到家的顺序是怎样的：</td>
+    <td>&nbsp;猫先到家( {$result.c3} )</td>
+    <td>&nbsp;狗先到家( {$result.c4} )</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>后来者多久才适应新环境：</td>
+    <td>&nbsp;完全没有不适应( {$result.c5} )</td>
+    <td>&nbsp;隔了很久才适应( {$result.c6} )</td>
+    <td>&nbsp;至今还没有接受另一半的存在( {$result.c7} )</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>猫狗大战经常上演吗：</td>
+    <td>&nbsp;经常打的毛毛满天飞( {$result.c8} )</td>
+    <td>&nbsp;猫狗和谐相处就是我们家( {$result.c9} )</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>猫狗大战最后谁获胜：</td>
+    <td>&nbsp;当之无愧猫获胜( {$result.c10} )</td>
+    <td>&nbsp;狗狗才是小霸王( {$result.c11} )</td>
+    <td>&nbsp;还没开打主人就要出门调( {$result.c12} )</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>猫咪和狗狗吃饭习惯是怎样的：</td>
+    <td>&nbsp;猫盆放高处，狗盆放低处( {$result.c13} )</td>
+    <td>&nbsp;猫盆狗盆放一起( {$result.c14} )</td>
+    <td>&nbsp;猫吃狗粮，狗吃猫粮( {$result.c15} )</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>是否考虑两只不和而考虑送走另外一只：</td>
+    <td>&nbsp;守得云开见月明，从来没考虑过( {$result.c16} )</td>
+    <td>&nbsp;曾有那么考虑过，终究没送走( {$result.c17} )</td>
+    <td>&nbsp;打的实在太厉害，不得已已经送走( {$result.c18} )</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>猫狗一起养是否给你带来了美好的回忆：</td>
+    <td>&nbsp;和谐相处，都是心头肉( {$result.c19} )</td>
+    <td>&nbsp;如果有的选，还是一个物种好( {$result.c20} )</td>
+    <td>&nbsp;虽然很辛苦，但是很乐意( {$result.c21} )</td>
+    <td>&nbsp;</td>
+  </tr>
+  
+  <tr>
+    <td colspan="6">&nbsp;<a href="?act=export">导出excel</a></td>
+  </tr>
+</table>
+<php>}elseif($id == 4){</php>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+  <tr>
+    <td width="17%">选项：</td>
+    <td width="16%">&nbsp;答案1</td>
+    <td width="16%">&nbsp;答案2</td>
+    <td width="16%">&nbsp;答案3</td>
+    <td width="16%">&nbsp;答案4</td>
+	<td width="16%">&nbsp;答案5</td>
+  </tr>
+  <tr>
+    <td>您的性别：</td>
+    <td>&nbsp;男( {$result.c1} )</td>
+    <td>&nbsp;女( {$result.c2} )</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>您的年龄：</td>
+    <td>&nbsp;18岁以下( {$result.c3} )</td>
+    <td>&nbsp;19-40岁( {$result.c4} )</td>
+    <td>&nbsp;41-60岁( {$result.c5} )</td>
+    <td>&nbsp;60岁以上( {$result.c6} )</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>您觉得自己交接猫咪的各种行为吗：</td>
+    <td>&nbsp;不了解( {$result.c7} )</td>
+    <td>&nbsp;了解一些( {$result.c8} )</td>
+    <td>&nbsp;大部分都能懂( {$result.c9} )</td>
+    <td>&nbsp;完全了解( {$result.c10} )</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>猫咪出现您不了解的行为时，您会：</td>
+    <td>&nbsp;置之不理( {$result.c11} )</td>
+    <td>&nbsp;观察后续状态( {$result.c12} )</td>
+    <td>&nbsp;询问猫友( {$result.c13} )</td>
+    <td>&nbsp;询问宠物医生( {$result.c14} )</td>
+	<td>&nbsp;上网查阅资料( {$result.c15} )</td>
+  </tr>
+  <tr>
+    <td>您是如何了解猫咪行为背后的含义：</td>
+    <td>&nbsp;网络( {$result.c16} )</td>
+    <td>&nbsp;宠物医生( {$result.c17} )</td>
+    <td>&nbsp;猫友( {$result.c18} )</td>
+    <td>&nbsp;身边人的口口相传( {$result.c19} )</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>当猫咪出现异常行为时，您最先会：</td>
+    <td>&nbsp;询问宠物医生( {$result.c20} )</td>
+    <td>&nbsp;询问猫友( {$result.c21} )</td>
+    <td>&nbsp;观察一阵再说( {$result.c22} )</td>
+    <td>&nbsp;</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>猫咪出现异常行为时，您会找出真正原因吗：</td>
+    <td>&nbsp;会( {$result.c23} )</td>
+    <td>&nbsp;看情况( {$result.c24} )</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>您会帮助猫咪改变异常行为吗：</td>
+    <td>&nbsp;会( {$result.c25} )</td>
+    <td>&nbsp;不影响正常生活就无所谓( {$result.c26} )</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+	<td>&nbsp;</td>
+  </tr>
+  
+  <tr>
+    <td colspan="6">&nbsp;<a href="?act=export">导出excel</a></td>
+  </tr>
+</table>
+<php>}elseif($id == 5){</php>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+  <tr>
+    <td width="30%">选项：</td>
+    <td width="18%">&nbsp;答案1</td>
+    <td width="18%">&nbsp;答案2</td>
+    <td width="18%">&nbsp;答案3</td>
+    <td width="17%">&nbsp;答案4</td>
+  </tr>
+  <tr>
+    <td>您爱宠的类型是：</td>
+    <td>&nbsp;喵星人( {$result.c1} )</td>
+    <td>&nbsp;汪星人( {$result.c2} )</td>
+    <td>&nbsp;其他萌宠( {$result.c3} )</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>您爱宠的年龄是：</td>
+    <td>&nbsp;1-3岁( {$result.c4} )</td>
+    <td>&nbsp;3-6岁( {$result.c5} )</td>
+    <td>&nbsp;6岁及以上( {$result.c6} )</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>您爱宠的性别是：</td>
+    <td>&nbsp;公( {$result.c7} )</td>
+    <td>&nbsp;母( {$result.c8} )</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>您了解过绝育手术吗：</td>
+    <td>&nbsp;从来没有( {$result.c9} )</td>
+    <td>&nbsp;了解过，但是不全面( {$result.c10} )</td>
+    <td>&nbsp;非常了解( {$result.c11} )</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>您的爱宠做过绝育手术吗：</td>
+    <td>&nbsp;有( {$result.c12} )</td>
+    <td>&nbsp;没有( {$result.c13} )</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>您建议其他主人带着爱宠去做绝育手术吗：</td>
+    <td>&nbsp;爱宠回复很好，建议( {$result.c14} )</td>
+    <td>&nbsp;效果不明显，不建议( {$result.c15} )</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>您会带着爱宠去做绝育手术吗：</td>
+    <td>&nbsp;了解的很详细，会去的( {$result.c16} )</td>
+    <td>&nbsp;怕出现意外，不会去的( {$result.c17} )</td>
+    <td>&nbsp;不赞成给宠物做绝育，剥夺了他们的权利( {$result.c18} )</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>对于宠物绝育手术，您的看法是：</td>
+    <td>&nbsp;太残忍，不能接受( {$result.c19} )</td>
+    <td>&nbsp;对宠物健康有利，支持( {$result.c20} )</td>
+    <td>&nbsp;其他，可文字说明( {$result.c21} )</td>
+    <td>&nbsp;</td>
+  </tr>
+  
+  <tr>
+    <td colspan="6">&nbsp;<a href="?act=export">导出excel</a></td>
+  </tr>
+</table>
+<php>}elseif($id == 6){</php>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+  <tr>
+    <td width="17%">选项：</td>
+    <td width="16%">&nbsp;答案1</td>
+    <td width="16%">&nbsp;答案2</td>
+    <td width="16%">&nbsp;答案3</td>
+    <td width="16%">&nbsp;答案4</td>
+	<td width="16%">&nbsp;答案5</td>
+  </tr>
+  <tr>
+    <td>您的性别：</td>
+    <td>&nbsp;男( {$result.c1} )</td>
+    <td>&nbsp;女( {$result.c2} )</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>您的年龄：</td>
+    <td>&nbsp;18岁以下( {$result.c3} )</td>
+    <td>&nbsp;19-40岁( {$result.c4} )</td>
+    <td>&nbsp;41-60岁( {$result.c5} )</td>
+    <td>&nbsp;60岁以上( {$result.c6} )</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>您会选择龟做宠物吗：</td>
+    <td>&nbsp;会( {$result.c7} )</td>
+    <td>&nbsp;不会( {$result.c8} )</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>您有饲养宠物龟的经验吗：</td>
+    <td>&nbsp;有，并且现在正在养( {$result.c9} )</td>
+    <td>&nbsp;有过，但现在没有在养( {$result.c10} )</td>
+    <td>&nbsp;没有( {$result.c11} )</td>
+    <td>&nbsp;</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>不会饲养龟做宠物的理由是：</td>
+    <td>&nbsp;单纯地不喜欢( {$result.c12} )</td>
+    <td>&nbsp;条件不允许( {$result.c13} )</td>
+    <td>&nbsp;家人不同意( {$result.c14} )</td>
+    <td>&nbsp;曾经养过( {$result.c15} )</td>
+	<td>&nbsp;我会养宠物龟( {$result.c16} )</td>
+  </tr>
+  <tr>
+    <td>您通过哪种渠道学习宠物龟的相关知识的：</td>
+    <td>&nbsp;网络( {$result.c17} )</td>
+    <td>&nbsp;宠物医生( {$result.c18} )</td>
+    <td>&nbsp;龟友( {$result.c19} )</td>
+    <td>&nbsp;看书( {$result.c20} )</td>
+	<td>&nbsp;身边人的口口相传( {$result.c21} )</td>
+  </tr>
+  <tr>
+    <td>您是否会通过网络渠道跟龟友交流：</td>
+    <td>&nbsp;会（结束调查）( {$result.c22} )</td>
+    <td>&nbsp;不会（请回答第8题）( {$result.c23} )</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>为什么不会通过网络渠道与龟友交流：</td>
+    <td>&nbsp;人气不够( {$result.c24} )</td>
+    <td>&nbsp;无法获得想要的信息( {$result.c25} )</td>
+    <td>&nbsp;麻烦( {$result.c26} )</td>
+    <td>&nbsp;</td>
+	<td>&nbsp;</td>
+  </tr>
+  
+  <tr>
+    <td colspan="6">&nbsp;<a href="?act=export">导出excel</a></td>
+  </tr>
+</table>
+<php>}elseif($id == 7){</php>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+  <tr>
+    <td width="17%">选项：</td>
+    <td width="16%">&nbsp;答案1</td>
+    <td width="16%">&nbsp;答案2</td>
+    <td width="16%">&nbsp;答案3</td>
+    <td width="16%">&nbsp;答案4</td>
+	<td width="16%">&nbsp;答案5</td>
+  </tr>
+  <tr>
+    <td>您一般隔多久给宠物洗澡：</td>
+    <td>&nbsp;一周1次( {$result.c1} )</td>
+    <td>&nbsp;半个月1次( {$result.c2} )</td>
+    <td>&nbsp;一个月1次( {$result.c3} )</td>
+    <td>&nbsp;超过一个月( {$result.c4} )</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>您一般去哪里给宠物做清洁护理：</td>
+    <td>&nbsp;只在宠物店( {$result.c5} )</td>
+    <td>&nbsp;自己在家给宠物洗澡( {$result.c6} )</td>
+    <td>&nbsp;宠物店、家里交替做( {$result.c7} )</td>
+    <td>&nbsp;</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>您去宠物店的消费方式是：</td>
+    <td>&nbsp;办宠物店的会员卡( {$result.c8} )</td>
+    <td>&nbsp;直接在宠物店消费，不办理会员卡( {$result.c9} )</td>
+    <td>&nbsp;在网上团购服务( {$result.c10} )</td>
+    <td>&nbsp;</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>您一般多久给宠物做一次美容造型：</td>
+    <td>&nbsp;1-2个月1次( {$result.c11} )</td>
+    <td>&nbsp;半年一次( {$result.c12} )</td>
+    <td>&nbsp;一年一次( {$result.c13} )</td>
+    <td>&nbsp;从不做造型( {$result.c14} )</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>什么原因会让你选择换美容店：</td>
+    <td>&nbsp;服务态度( {$result.c15} )</td>
+    <td>&nbsp;修剪水平( {$result.c16} )</td>
+    <td>&nbsp;价格过高( {$result.c17} )</td>
+    <td>&nbsp;其他( {$result.c18} )</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>您是否自己在家里尝试过给狗狗做美容造型：</td>
+    <td>&nbsp;有过，但是很快放弃了( {$result.c19} )</td>
+    <td>&nbsp;一直都是自己动手的作品( {$result.c20} )</td>
+    <td>&nbsp;从来不敢自己弄( {$result.c21} )</td>
+    <td>&nbsp;</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>您会推荐给狗友自己觉得的比较好的宠物店吗：</td>
+    <td>&nbsp;会，好东西要大家分享( {$result.c22} )</td>
+    <td>&nbsp;不会( {$result.c23} )</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+	<td>&nbsp;</td>
+  </tr>
+  
+  <tr>
+    <td colspan="6">&nbsp;<a href="?act=export">导出excel</a></td>
+  </tr>
+</table>
+<php>}elseif($id == 8){</php>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+  <tr>
+    <td width="17%">选项：</td>
+    <td width="16%">&nbsp;答案1</td>
+    <td width="16%">&nbsp;答案2</td>
+    <td width="16%">&nbsp;答案3</td>
+    <td width="16%">&nbsp;答案4</td>
+  </tr>
+  <tr>
+    <td>您爱宠的类型是：</td>
+    <td>&nbsp;喵星人( {$result.c1} )</td>
+    <td>&nbsp;汪星人( {$result.c2} )</td>
+    <td>&nbsp;其他萌宠( {$result.c3} )</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>您爱宠的年龄是：</td>
+    <td>&nbsp;3岁以下( {$result.c4} )</td>
+    <td>&nbsp;3~6岁( {$result.c5} )</td>
+    <td>&nbsp;6岁及以上( {$result.c6} )</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>您了解过寄生虫的危害性吗：</td>
+    <td>&nbsp;不了解( {$result.c7} )</td>
+    <td>&nbsp;了解，但是不多( {$result.c8} )</td>
+    <td>&nbsp;非常了解( {$result.c9} )</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>您为爱宠定期驱虫了吗：</td>
+    <td>&nbsp;是的，定期驱虫( {$result.c10} )</td>
+    <td>&nbsp;有驱虫，但是时间很随机( {$result.c11} )</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>您的爱宠生过寄生虫病吗：</td>
+    <td>&nbsp;从来没有( {$result.c12} )</td>
+    <td>&nbsp;有过，但是很快痊愈( {$result.c13} )</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>您为爱宠驱虫的时候会选择：</td>
+    <td>&nbsp;在家，自购驱虫药( {$result.c14} )</td>
+    <td>&nbsp;去宠物医院( {$result.c15} )</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>对于春季驱虫，您的看法是：</td>
+    <td>&nbsp;很有必要，在计划之中( {$result.c16} )</td>
+    <td>&nbsp;没有必要一定春季驱虫( {$result.c17} )</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  
+  <tr>
+    <td colspan="5">&nbsp;<a href="?act=export">导出excel</a></td>
+  </tr>
+</table>
+<php>}elseif($id == 9){</php>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+  <tr>
+    <td width="17%">选项：</td>
+    <td width="16%">&nbsp;答案1</td>
+    <td width="16%">&nbsp;答案2</td>
+    <td width="16%">&nbsp;答案3</td>
+    <td width="16%">&nbsp;答案4</td>
+	<td width="16%">&nbsp;答案5</td>
+  </tr>
+  <tr>
+    <td>您的性别：</td>
+    <td>&nbsp;男( {$result.c1} )</td>
+    <td>&nbsp;女( {$result.c2} )</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>您的年龄：</td>
+    <td>&nbsp;18岁以下( {$result.c3} )</td>
+    <td>&nbsp;19-40岁( {$result.c4} )</td>
+    <td>&nbsp;41-60岁( {$result.c5} )</td>
+    <td>&nbsp;60岁以上( {$result.c6} )</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>您有养猫咪吗：</td>
+    <td>&nbsp;有( {$result.c7} )</td>
+    <td>&nbsp;没有( {$result.c8} )</td>
+    <td>&nbsp;准备养( {$result.c9} )</td>
+    <td>&nbsp;</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>您了解猫砂吗：</td>
+    <td>&nbsp;非常了解( {$result.c10} )</td>
+    <td>&nbsp;不太了解( {$result.c11} )</td>
+    <td>&nbsp;不了解( {$result.c12} )</td>
+    <td>&nbsp;</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>您会选择给猫咪使用哪种猫砂：</td>
+    <td>&nbsp;凝结猫砂( {$result.c13} )</td>
+    <td>&nbsp;水晶猫砂( {$result.c14} )</td>
+    <td>&nbsp;木屑猫砂( {$result.c15} )</td>
+    <td>&nbsp;纸屑猫砂( {$result.c16} )</td>
+	<td>&nbsp;其他( {$result.c17} )</td>
+  </tr>
+  <tr>
+    <td>您有碰到过猫咪不在猫砂盆里排便的情况吗：</td>
+    <td>&nbsp;有（请回答第七题）( {$result.c18} )</td>
+    <td>&nbsp;没有（直接跳至第八题）( {$result.c19} )</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>猫咪不在猫砂盆里排便时，一般会选择在哪些地方排便？：</td>
+    <td>&nbsp;床上( {$result.c20} )</td>
+    <td>&nbsp;地毯( {$result.c21} )</td>
+    <td>&nbsp;暗处角落( {$result.c22} )</td>
+    <td>&nbsp;随意( {$result.c23} )</td>
+	<td>&nbsp;其他( {$result.c24} )</td>
+  </tr>
+  <tr>
+    <td>您是否了解猫咪不使用猫砂盆的原因：</td>
+    <td>&nbsp;了解( {$result.c25} )</td>
+    <td>&nbsp;不完全了解( {$result.c26} )</td>
+    <td>&nbsp;完全不了解( {$result.c27} )</td>
+    <td>&nbsp;</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>当猫咪不使用猫砂盆时，您会怎么办？：</td>
+    <td>&nbsp;教训一顿( {$result.c28} )</td>
+    <td>&nbsp;更换猫砂( {$result.c29} )</td>
+    <td>&nbsp;找出真正原因( {$result.c30} )</td>
+    <td>&nbsp;继续观察( {$result.c31} )</td>
+	<td>&nbsp;求助（猫友、网友、兽医等）( {$result.c32} )</td>
+  </tr>
+  <tr>
+    <td>当猫咪不使用猫砂盆时，您是否会怀疑猫咪生病了：</td>
+    <td>&nbsp;会( {$result.c33} )</td>
+    <td>&nbsp;看情况( {$result.c34} )</td>
+    <td>&nbsp;不会( {$result.c35} )</td>
+    <td>&nbsp;</td>
+	<td>&nbsp;</td>
+  </tr>
+  
+  <tr>
+    <td colspan="6">&nbsp;<a href="?act=export">导出excel</a></td>
+  </tr>
+</table>
+<php>}elseif($id == 10){</php>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+  <tr>
+    <td width="17%">选项：</td>
+    <td width="16%">&nbsp;答案1</td>
+    <td width="16%">&nbsp;答案2</td>
+    <td width="16%">&nbsp;答案3</td>
+    <td width="16%">&nbsp;答案4</td>
+  </tr>
+  <tr>
+    <td>出门踏青时你会选择带上宠物一起游玩吗：</td>
+    <td>&nbsp;会( {$result.c1} )</td>
+    <td>&nbsp;不会( {$result.c2} )</td>
+    <td>&nbsp;看情况( {$result.c3} )</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>如果带宠物，你会选择何种出现方式：</td>
+    <td>&nbsp;自驾( {$result.c4} )</td>
+    <td>&nbsp;公共交通偷渡( {$result.c5} )</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>带着宠物你通常会选择几日的行程：</td>
+    <td>&nbsp;1日( {$result.c6} )</td>
+    <td>&nbsp;2日( {$result.c7} )</td>
+    <td>&nbsp;3日以及以上( {$result.c8} )</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>哪些问题会让你选择不带宠物一起出门游玩：</td>
+    <td>&nbsp;景点不让带宠物( {$result.c9} )</td>
+    <td>&nbsp;带宠物游玩太麻烦( {$result.c10} )</td>
+    <td>&nbsp;其他( {$result.c11} )</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>如果条件允许，你是否会参加波奇网举办的线下宠物聚会：</td>
+    <td>&nbsp;会( {$result.c12} )</td>
+    <td>&nbsp;不会( {$result.c13} )</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>你希望波奇网举办的线下聚会在什么地方：</td>
+    <td>&nbsp;浦东周边( {$result.c14} )</td>
+    <td>&nbsp;浦西周边( {$result.c15} )</td>
+    <td>&nbsp;出上海( {$result.c16} )</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>波奇网聚宠你更希望为宠物设置哪些项目：</td>
+    <td>&nbsp;游戏环节( {$result.c17} )</td>
+    <td>&nbsp;专家当面咨询( {$result.c18} )</td>
+    <td>&nbsp;宠物相亲( {$result.c19} )</td>
+    <td>&nbsp;其他( {$result.c20} )</td>
+  </tr>
+  <tr>
+    <td colspan="5">&nbsp;<a href="?act=export">导出excel</a></td>
+  </tr>
+</table>
+<php>}elseif($id == 11){</php>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+  <tr>
+    <td width="20%">选项：</td>
+    <td width="13%">&nbsp;答案1</td>
+    <td width="13%">&nbsp;答案2</td>
+    <td width="13%">&nbsp;答案3</td>
+    <td width="13%">&nbsp;答案4</td>
+	<td width="13%">&nbsp;答案5</td>
+	<td width="13%">&nbsp;答案6</td>
+  </tr>
+  <tr>
+    <td>您的性别：</td>
+    <td>&nbsp;男( {$result.c1} )</td>
+    <td>&nbsp;女( {$result.c2} )</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>您的年龄</td>
+    <td>&nbsp;18岁以下( {$result.c3} )</td>
+    <td>&nbsp;19-40岁( {$result.c4} )</td>
+    <td>&nbsp;41-60岁( {$result.c5} )</td>
+    <td>&nbsp;60岁以上( {$result.c6} )</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>您有养宠物：</td>
+    <td>&nbsp;有( {$result.c7} )</td>
+    <td>&nbsp;准备养( {$result.c8} )</td>
+    <td>&nbsp;没有( {$result.c9} )</td>
+    <td>&nbsp;</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>您养的宠物是：</td>
+    <td>&nbsp;狗狗( {$result.c10} )</td>
+    <td>&nbsp;猫咪( {$result.c11} )</td>
+    <td>&nbsp;兔兔( {$result.c12} )</td>
+    <td>&nbsp;龟( {$result.c13} )</td>
+	<td>&nbsp;观赏鱼( {$result.c14} )</td>
+	<td>&nbsp;小宠( {$result.c15} )</td>
+  </tr>
+  <tr>
+    <td>您认为宠物春季养护是否重要：</td>
+    <td>&nbsp;非常重要( {$result.c16} )</td>
+    <td>&nbsp;还好，没有特别重视( {$result.c17} )</td>
+    <td>&nbsp;不重要( {$result.c18} )</td>
+    <td>&nbsp;</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>您是否了解宠物在春天的特殊需求：</td>
+    <td>&nbsp;了解( {$result.c19} )</td>
+    <td>&nbsp;不太了解( {$result.c20} )</td>
+    <td>&nbsp;完全不了解( {$result.c21} )</td>
+    <td>&nbsp;</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>您是否会针对春天的到来而改变宠物养护方法：</td>
+    <td>&nbsp;会( {$result.c22} )</td>
+    <td>&nbsp;不会( {$result.c23} )</td>
+    <td>&nbsp;看情况( {$result.c24} )</td>
+    <td>&nbsp;</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>您认为在宠物春季养护工作中，哪方面最重要？：</td>
+    <td>&nbsp;驱虫( {$result.c25} )</td>
+    <td>&nbsp;毛发护理( {$result.c26} )</td>
+    <td>&nbsp;清洁工作( {$result.c27} )</td>
+    <td>&nbsp;孕育下一代( {$result.c28} )</td>
+	<td>&nbsp;疫病防控( {$result.c29} )</td>
+	<td>&nbsp;其他( {$result.c30} )</td>
+  </tr>
+  <tr>
+    <td>您有没有为爱宠做相应的春季养护工作：</td>
+    <td>&nbsp;有( {$result.c31} )</td>
+    <td>&nbsp;没有( {$result.c32} )</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>您为宠物做了哪些春季养护工作：</td>
+    <td>&nbsp;驱虫( {$result.c33} )</td>
+    <td>&nbsp;毛发护理( {$result.c34} )</td>
+    <td>&nbsp;清洁工作( {$result.c35} )</td>
+    <td>&nbsp;孕育下一代( {$result.c36} )</td>
+	<td>&nbsp;疫病防控( {$result.c37} )</td>
+	<td>&nbsp;其他( {$result.c38} )</td>
+  </tr>
+  <tr>
+    <td colspan="7">&nbsp;<a href="?act=export">导出excel</a></td>
+  </tr>
+</table>
+<php>}elseif($id == 12){</php>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+  <tr>
+    <td width="20%">选项：</td>
+    <td width="13%">&nbsp;答案1</td>
+    <td width="13%">&nbsp;答案2</td>
+    <td width="13%">&nbsp;答案3</td>
+    <td width="13%">&nbsp;答案4</td>
+	<td width="13%">&nbsp;答案5</td>
+  </tr>
+  <tr>
+    <td>您的性别：</td>
+    <td>&nbsp;男( {$result.c1} )</td>
+    <td>&nbsp;女( {$result.c2} )</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>您的年龄</td>
+    <td>&nbsp;18岁以下( {$result.c3} )</td>
+    <td>&nbsp;19-40岁( {$result.c4} )</td>
+    <td>&nbsp;41-60岁( {$result.c5} )</td>
+    <td>&nbsp;60岁以上( {$result.c6} )</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>您有养宠物：</td>
+    <td>&nbsp;有( {$result.c7} )</td>
+    <td>&nbsp;准备养( {$result.c8} )</td>
+    <td>&nbsp;没有( {$result.c9} )</td>
+    <td>&nbsp;</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>是否被宠物抓咬过：</td>
+    <td>&nbsp;是( {$result.c10} )</td>
+    <td>&nbsp;否( {$result.c11} )</td>
+    <td></td>
+    <td></td>
+	<td></td>
+  </tr>
+  <tr>
+    <td>如果被宠物抓咬伤，您会怎么处理？：</td>
+    <td>&nbsp;如果仅仅被轻微抓伤（未出血），仅仅用水冲洗或不做特意处理( {$result.c12} )</td>
+    <td>&nbsp;如果被自家宠物抓、咬出血，不进行疫苗注射( {$result.c13} )</td>
+    <td>&nbsp;如果被家养宠物抓、咬出血，不进行疫苗注射( {$result.c14} )</td>
+    <td>&nbsp;如果被流浪动物抓、咬出血，则会进行疫苗注射( {$result.c15} )</td>
+	<td>&nbsp;不管被什么动物抓、咬出血都会进行疫苗注射( {$result.c16} )</td>
+  </tr>
+  <tr>
+    <td>您有被抓咬伤过的经历吗？当时如何处理的？</td>
+    <td>&nbsp;有，但情况不严重，没有注射疫苗( {$result.c17} )</td>
+    <td>&nbsp;有，因为是家养宠物，所以没有注射疫苗( {$result.c18} )</td>
+    <td>&nbsp;有，被伤后立即注射疫苗( {$result.c19} )</td>
+    <td>&nbsp;没有被抓咬伤过( {$result.c20} )</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>你认为防治狂犬病最重要的方面是什么：</td>
+    <td>&nbsp;政府部门统筹防控( {$result.c21} )</td>
+    <td>&nbsp;动物饲养主注重狂犬病防疫( {$result.c22} )</td>
+    <td>&nbsp;动物饲养主看好自家宠物( {$result.c23} )</td>
+    <td>&nbsp;加强市民狂犬病疫苗接种( {$result.c24} )</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="6">&nbsp;<a href="?act=export">导出excel</a></td>
+  </tr>
+</table>
+<php>}elseif($id == 13){</php>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+	  <tr>
+	    <td width="20%">选项：</td>
+	    <td width="14%">&nbsp;答案1</td>
+	    <td width="14%">&nbsp;答案2</td>
+	    <td width="13%">&nbsp;答案3</td>
+	    <td width="13%">&nbsp;答案4</td>
+		<td width="13%">&nbsp;答案5</td>
+		<td width="13%">&nbsp;答案6</td>
+	  </tr>
+	  <tr>
+	  	<td>您的性别:</td>
+    	<td>&nbsp;男( {$result.c1} )</td>
+    	<td>&nbsp;女( {$result.c2} )</td>
+	  	<td>&nbsp;</td>
+	  	<td>&nbsp;</td>
+	  	<td>&nbsp;</td>
+	  	<td>&nbsp;</td>
+	  </tr>
+	  <tr>
+	  	<td>您的性别:</td>
+    	<td>您的年龄</td>
+	    <td>&nbsp;18岁以下( {$result.c3} )</td>
+	    <td>&nbsp;19-40岁( {$result.c4} )</td>
+	    <td>&nbsp;41-60岁( {$result.c5} )</td>
+	    <td>&nbsp;60岁以上( {$result.c6} )</td>
+	  	<td>&nbsp;</td>
+	  	<td>&nbsp;</td>
+	  </tr>
+	  <tr>
+	  	<td>您有养宠物吗:</td>
+    	<td>&nbsp;有 ( {$result.c7} )</td>
+    	<td>&nbsp;准备养 ( {$result.c8} )</td>
+	  	<td>&nbsp;没有 ( {$result.c9} )</td>
+	  	<td>&nbsp;</td>
+	  	<td>&nbsp;</td>
+	  	<td>&nbsp;</td>
+	  </tr>
+	  <tr>
+	  	<td>您觉得自制狗粮能满足狗狗的营养需求吗:</td>
+    	<td>&nbsp;能 ( {$result.c10} )</td>
+    	<td>&nbsp;不能( {$result.c11} )</td>
+	  	<td>&nbsp;</td>
+	  	<td>&nbsp;</td>
+	  	<td>&nbsp;</td>
+	  	<td>&nbsp;</td>
+	  </tr>
+	  <tr>
+	  	<td>是否了解给狗狗自制狗粮的注意事项:</td>
+    	<td>&nbsp;完全了解 ( {$result.c12} )</td>
+    	<td>&nbsp;了解一些 ( {$result.c13} )</td>
+	  	<td>&nbsp;完全不了解 ( {$result.c14} )</td>
+	  	<td>&nbsp;</td>
+	  	<td>&nbsp;</td>
+	  	<td>&nbsp;</td>
+	  </tr>
+	  <tr>
+	  	<td>有没有自制狗粮的经验:</td>
+    	<td>&nbsp;有 ( {$result.c15} )</td>
+    	<td>&nbsp;没有( {$result.c16} )</td>
+	  	<td>&nbsp;</td>
+	  	<td>&nbsp;</td>
+	  	<td>&nbsp;</td>
+	  	<td>&nbsp;</td>
+	  </tr>
+	  <tr>
+	  	<td>您会完全给狗狗吃自制狗粮吗:</td>
+    	<td>&nbsp;会 ( {$result.c17} )</td>
+    	<td>&nbsp;不会，但以自制狗粮为主 ( {$result.c18} )</td>
+	  	<td>&nbsp;不会，只是偶尔自制狗粮 ( {$result.c19} )</td>
+	  	<td>&nbsp;不给狗狗吃自制狗粮 ( {$result.c20} )</td>
+	  	<td>&nbsp;</td>
+	  	<td>&nbsp;</td>
+	  </tr>
+	  <tr>
+	  	<td>如何选择自制狗粮的食材:</td>
+    	<td>&nbsp;先上网搜寻对狗狗有益的食物有哪些，然后再购买 ( {$result.c21} )</td>
+    	<td>&nbsp;根据自己的生活经验进行选择 ( {$result.c22} )</td>
+	  	<td>&nbsp;与宠友交流后进行选择 ( {$result.c23} )</td>
+	  	<td>&nbsp;利用自己多买的食材 ( {$result.c24} )</td>
+	  	<td>&nbsp;其他 ( {$result.c25} )</td>
+	  	<td>&nbsp;不会自制狗粮 ( {$result.c26} )</td>
+	  </tr>
+	  <tr>
+	  	<td>自制狗粮时是否会放调味料:</td>
+    	<td>&nbsp;完全不放 ( {$result.c27} )</td>
+    	<td>&nbsp;稍微放一些 ( {$result.c28} )</td>
+	  	<td>&nbsp;跟自己平时做饭一样 ( {$result.c29} )</td>
+	  	<td>&nbsp;不会自制狗粮 ( {$result.c30} )</td>
+	  	<td>&nbsp;</td>
+	  	<td>&nbsp;</td>
+	  </tr>
+	  <tr>
+	  	<td>您觉得自制狗粮的优点有哪些:</td>
+    	<td>&nbsp;安全 ( {$result.c31} )</td>
+    	<td>&nbsp;经济实惠 ( {$result.c32} )</td>
+	  	<td>&nbsp;营养均衡 ( {$result.c33} )</td>
+	  	<td>&nbsp;狗狗爱吃 ( {$result.c34} )</td>
+	  	<td>&nbsp;其他 ( {$result.c35} )</td>
+	  	<td>&nbsp;</td>
+	  </tr>
+	  <tr>
+	  	<td>您觉得自制狗粮的缺点有哪些:</td>
+    	<td>&nbsp;制作麻烦 ( {$result.c36} )</td>
+    	<td>&nbsp;搭配不当会造成狗狗营养不良 ( {$result.c37} )</td>
+	  	<td>&nbsp;有可能会给狗狗吃到它们不能吃的食物 ( {$result.c38} )</td>
+	  	<td>&nbsp;其他  ( {$result.c39} )</td>
+	  	<td>&nbsp;</td>
+	  	<td>&nbsp;</td>
+	  </tr>
+	  <tr>
+    	<td colspan="7">&nbsp;<a href="?act=export">导出excel</a></td>
+  	  </tr>
+	</table>
+<php>}elseif($id == 14){</php>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+    <tr>
+      <td width="20%">选项：</td>
+      <td width="14%">&nbsp;答案1</td>
+      <td width="14%">&nbsp;答案2</td>
+      <td width="13%">&nbsp;答案3</td>
+      <td width="13%">&nbsp;答案4</td>
+    <td width="13%">&nbsp;答案5</td>
+    </tr>
+    <tr>
+      <td>您的性别:</td>
+      <td>&nbsp;男( {$result.c1} )</td>
+      <td>&nbsp;女( {$result.c2} )</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>您的年龄:</td>
+      <td>&nbsp;18岁以下( {$result.c3} )</td>
+      <td>&nbsp;19-40岁( {$result.c4} )</td>
+      <td>&nbsp;41-60岁( {$result.c5} )</td>
+      <td>&nbsp;60岁以上( {$result.c6} )</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>您有养宠物吗:</td>
+      <td>&nbsp;有 ( {$result.c7} )</td>
+      <td>&nbsp;准备养 ( {$result.c8} )</td>
+      <td>&nbsp;没有 ( {$result.c9} )</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>您觉得自制猫粮能满足猫咪的营养需求吗:</td>
+      <td>&nbsp;能 ( {$result.c10} )</td>
+      <td>&nbsp;不能( {$result.c11} )</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>是否了解给猫咪自制猫粮的注意事项:</td>
+      <td>&nbsp;完全了解 ( {$result.c12} )</td>
+      <td>&nbsp;了解一些 ( {$result.c13} )</td>
+      <td>&nbsp;完全不了解 ( {$result.c14} )</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>有没有自制猫粮的经验:</td>
+      <td>&nbsp;有 ( {$result.c15} )</td>
+      <td>&nbsp;没有( {$result.c16} )</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>您会完全给猫咪吃自制猫粮吗:</td>
+      <td>&nbsp;会 ( {$result.c17} )</td>
+      <td>&nbsp;不会，但以自制猫粮为主 ( {$result.c18} )</td>
+      <td>&nbsp;不会，只是偶尔自制猫粮 ( {$result.c19} )</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>如何选择自制猫粮的食材:</td>
+      <td>&nbsp;先上网搜寻对猫咪有益的食物有哪些，然后再购买 ( {$result.c20} )</td>
+      <td>&nbsp;根据自己的生活经验进行选择 ( {$result.c21} )</td>
+      <td>&nbsp;与宠友交流后进行选择 ( {$result.c22} )</td>
+      <td>&nbsp;利用自己多买的食材 ( {$result.c23} )</td>
+      <td>&nbsp;其他 ( {$result.c24} )</td>
+      
+    </tr>
+    <tr>
+      <td>自制猫粮时是否会放调味料:</td>
+      <td>&nbsp;完全不放 ( {$result.c25} )</td>
+      <td>&nbsp;稍微放一些 ( {$result.c26} )</td>
+      <td>&nbsp;跟自己平时做饭一样 ( {$result.c27} )</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>您觉得自制猫粮的优点有哪些:</td>
+      <td>&nbsp;安全 ( {$result.c28} )</td>
+      <td>&nbsp;经济实惠 ( {$result.c29} )</td>
+      <td>&nbsp;营养均衡 ( {$result.c30} )</td>
+      <td>&nbsp;猫咪爱吃 ( {$result.c31} )</td>
+      <td>&nbsp;其他 ( {$result.c32} )</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>您觉得自制狗粮的缺点有哪些:</td>
+      <td>&nbsp;制作麻烦 ( {$result.c33} )</td>
+      <td>&nbsp;搭配不当会造成猫咪营养不良 ( {$result.c34} )</td>
+      <td>&nbsp;有可能会给猫咪吃到它们不能吃的食物 ( {$result.c35} )</td>
+      <td>&nbsp;其他  ( {$result.c36} )</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="7">&nbsp;<a href="?act=export">导出excel</a></td>
+      </tr>
+  </table>
+<php>}elseif($id == 15){</php>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+		<tr>
+	      <td width="20%">选项：</td>
+	      <td width="14%">&nbsp;答案1</td>
+	      <td width="14%">&nbsp;答案2</td>
+	      <td width="13%">&nbsp;答案3</td>
+	      <td width="13%">&nbsp;答案4</td>
+	      <td width="13%">&nbsp;答案5</td>
+	      <td width="13%">&nbsp;答案6</td>
+	    </tr>
+		<tr>
+	      <td>您的性别:</td>
+	      <td>&nbsp;男( {$result.c1} )</td>
+	      <td>&nbsp;女( {$result.c2} )</td>
+	      <td>&nbsp;</td>
+	      <td>&nbsp;</td>
+	      <td>&nbsp;</td>
+	      <td>&nbsp;</td>
+	    </tr>
+	    <tr>
+	      <td>您的年龄:</td>
+	      <td>&nbsp;18岁以下( {$result.c3} )</td>
+	      <td>&nbsp;19-40岁( {$result.c4} )</td>
+	      <td>&nbsp;41-60岁( {$result.c5} )</td>
+	      <td>&nbsp;60岁以上( {$result.c6} )</td>
+	      <td>&nbsp;</td>
+	      <td>&nbsp;</td>
+	   </tr>
+	   <tr>
+	      <td>您有遇到过流浪动物吗:</td>
+	      <td>&nbsp;有( {$result.c7} )</td>
+	      <td>&nbsp;没有( {$result.c8} )</td>
+	      <td>&nbsp;</td>
+	      <td>&nbsp;</td>
+	      <td>&nbsp;</td>
+	      <td>&nbsp;</td>
+	    </tr>
+	    <tr>
+	      <td>您是否怕流浪动物:</td>
+	      <td>&nbsp;怕( {$result.c9} )</td>
+	      <td>&nbsp;不怕( {$result.c10} )</td>
+	      <td>&nbsp;</td>
+	      <td>&nbsp;</td>
+	      <td>&nbsp;</td>
+	      <td>&nbsp;</td>
+	    </tr>
+	    <tr>
+	      <td>害怕流浪动物的原因是什么:</td>
+	      <td>&nbsp;被流浪动物误伤( {$result.c11} )</td>
+	      <td>&nbsp;害怕感染寄生虫或其他疾病( {$result.c12} )</td>
+	      <td>&nbsp;只是觉得流浪动物脏( {$result.c13} )</td>
+	      <td>&nbsp;其他( {$result.c14} )</td>
+	      <td>&nbsp;</td>
+	      <td>&nbsp;</td>
+	    </tr>
+	    <tr>
+	      <td>看到流浪动物是否会进行收养:</td>
+	      <td>&nbsp;会( {$result.c15} )</td>
+	      <td>&nbsp;看情况( {$result.c16} )</td>
+	      <td>&nbsp;不会( {$result.c17} )</td>
+	      <td>&nbsp;</td>
+	      <td>&nbsp;</td>
+	      <td>&nbsp;</td>
+	    </tr>
+	     <tr>
+	      <td>有没有过领养流浪动物的经历:</td>
+	      <td>&nbsp;有( {$result.c18} )</td>
+	      <td>&nbsp;没有( {$result.c19} )</td>
+	      <td>&nbsp;</td>
+	      <td>&nbsp;</td>
+	      <td>&nbsp;</td>
+	      <td>&nbsp;</td>
+	    </tr>
+	     <tr>
+	      <td>有没有过领养动物后因为其他原因送掉的经历:</td>
+	      <td>&nbsp;有( {$result.c20} )</td>
+	      <td>&nbsp;没有( {$result.c21} )</td>
+	      <td>&nbsp;</td>
+	      <td>&nbsp;</td>
+	      <td>&nbsp;</td>
+	      <td>&nbsp;</td>
+	    </tr>
+	    <tr>
+	      <td>哪些因素会影响您做出是否领养流浪动物的决定:</td>
+	      <td>&nbsp;流浪动物的长相( {$result.c22} )</td>
+	      <td>&nbsp;家人或室友的意见( {$result.c23} )</td>
+	      <td>&nbsp;居住空间的大小( {$result.c24} )</td>
+	      <td>&nbsp;自己的经济状况( {$result.c25} )</td>
+	      <td>&nbsp;我不会领养流浪动物( {$result.c26} )</td>
+	      <td>&nbsp;其他( {$result.c27} )</td>
+	    </tr>
+	    <tr>
+      	<td colspan="7">&nbsp;<a href="?act=export">导出excel</a></td>
+      </tr>
+</table>
+<php>}elseif($id == 16){</php>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+		<tr>
+	      <td width="20%">选项：</td>
+	      <td width="14%">&nbsp;答案1</td>
+	      <td width="14%">&nbsp;答案2</td>
+	      <td width="13%">&nbsp;答案3</td>
+	      <td width="13%">&nbsp;答案4</td>
+	      <td width="13%">&nbsp;答案5</td>
+	   </tr>
+		<tr>
+	      <td>您的性别:</td>
+	      <td>&nbsp;男( {$result.c1} )</td>
+	      <td>&nbsp;女( {$result.c2} )</td>
+	      <td>&nbsp;</td>
+	      <td>&nbsp;</td>
+	      <td>&nbsp;</td>
+	    </tr>
+	    <tr>
+	      <td>您的年龄:</td>
+	      <td>&nbsp;18岁以下( {$result.c3} )</td>
+	      <td>&nbsp;19-40岁( {$result.c4} )</td>
+	      <td>&nbsp;41-60岁( {$result.c5} )</td>
+	      <td>&nbsp;60岁以上( {$result.c6} )</td>
+	      <td>&nbsp;</td>
+	   </tr>
+	   <tr>
+	   	  <td>您有养狗狗吗:</td>
+	   	  <td>&nbsp;有( {$result.c7} )</td>
+	      <td>&nbsp;准备养( {$result.c8} )</td>
+	      <td>&nbsp;没有( {$result.c9} )</td>
+	      <td>&nbsp;</td>
+	      <td>&nbsp;</td>
+	   </tr>
+	   <tr>
+	      <td>您是否会对狗狗进行训练:</td>
+	      <td>&nbsp;会( {$result.c10} )</td>
+	      <td>&nbsp;不会( {$result.c11} )</td>
+	      <td>&nbsp;</td>
+	      <td>&nbsp;</td>
+	      <td>&nbsp;</td>
+	    </tr>
+	     <tr>
+	   	  <td>您对狗狗会进行什么样的训练:</td>
+	   	  <td>&nbsp;基本生活技能训练（如定点排便、拒食陌生人给的食物等）( {$result.c12} )</td>
+	      <td>&nbsp;拓展训练（如让狗狗帮自己叼东西等）( {$result.c13} )</td>
+	      <td>&nbsp;明星训练（如装死、转圈跳舞等）( {$result.c14} )</td>
+	      <td>&nbsp;</td>
+	      <td>&nbsp;</td>
+	   </tr>
+	   <tr>
+	   	  <td>您觉得训练狗狗是否困难:</td>
+	   	  <td>&nbsp;困难( {$result.c15} )</td>
+	      <td>&nbsp;一般( {$result.c16} )</td>
+	      <td>&nbsp;容易( {$result.c17} )</td>
+	      <td>&nbsp;</td>
+	      <td>&nbsp;</td>
+	   </tr>
+	   <tr>
+	   	  <td>您觉得训练狗狗的过程中最令你头疼的是:</td>
+	   	  <td>&nbsp;狗狗听不懂自己的话( {$result.c18} )</td>
+	      <td>&nbsp;狗狗不按自己说的做( {$result.c19} )</td>
+	      <td>&nbsp;狗狗很容易忘记学会的技能( {$result.c20} )</td>
+	      <td>&nbsp;重复训练让自己很烦躁( {$result.c21} )</td>
+	      <td>&nbsp;其他( {$result.c22} )</td>
+	   </tr>
+	   <tr>
+	   	  <td>您家狗狗目前的训练状况如何:</td>
+	   	  <td>&nbsp;没开始训练( {$result.c23} )</td>
+	      <td>&nbsp;刚开始训练，尚未掌握基本生活技能( {$result.c24} )</td>
+	      <td>&nbsp;已经能掌握基本生活技能( {$result.c25} )</td>
+	      <td>&nbsp;在掌握基本生活技能的基础上还学会了一些其他本领( {$result.c26} )</td>
+	      <td>&nbsp;</td>
+	   </tr>
+	   <tr>
+	   	  <td>您认为训练好狗狗的必备条件因素有哪些:</td>
+	   	  <td>&nbsp;主人要有耐心( {$result.c27} )</td>
+	      <td>&nbsp;狗狗要不停地重复训练( {$result.c28} )</td>
+	      <td>&nbsp;狗狗天资聪颖( {$result.c29} )</td>
+	      <td>&nbsp;主人的训练方法得当( {$result.c30} )</td>
+	      <td>&nbsp;其他( {$result.c31} )</td>
+	   </tr>
+	   <tr>
+      	<td colspan="6">&nbsp;<a href="?act=export">导出excel</a></td>
+      </tr>
+	 </table>
+<php>}</php>
+</div>
+</body>
+</html>

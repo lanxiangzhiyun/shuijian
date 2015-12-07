@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>宠物管理</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Js/library/ui/static/calendar/calendar.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type="text/javascript" src="__PUBLIC__/Js/bq.js"></script>
+<script type='text/javascript' src='__PUBLIC__/Js/library/ui/form/calender.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+</head>
+<body>
+<include file="Index:isdelete"/>
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li class="current"><a href="__ROOT__/iadmin.php/Pet/index"><span>宠物管理</span></a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+	
+	<form action='__ROOT__/iadmin.php/Pet/index' method='get'>
+    <!--搜索开始-->
+    <div class="search_box">
+        <div class="search">
+            <div class="title">
+                <span class="txt">宠物呢称：</span>
+                <input name="data[petname]" id="clearText_1" val='输入宠物呢称关键字' type="text" class="input_txt"  value="<?php if($petname){echo $petname;}else{echo '输入宠物呢称关键字';}?>" />
+            </div>
+			<!--
+            <div class="title">
+                <span class="txt">宠物种类：</span>
+                <input name="textfield" type="text" class="input_txt" id="textfield" value="输入宠物种类关键字" />
+            </div>-->
+            <div class="date">
+                <span class="txt">创建时间：</span>
+                <input class="input_date calendar" type="text" name="data[starttime]" id="calender1" value="<?php if($starttime){echo $starttime;}?>"/>
+                <span class="txt">至</span>
+                <input class="input_date calendar" type="text" name="data[endtime]" id="calender2" value="<?php if($endtime){echo $endtime;}?>"/>
+            </div>
+			<div class="btn_box"><input type='button' class='calendarClear' name='' value='清除时间'></div>
+            <div class="state">
+                <span class="txt">宠物状态：</span>
+                <select class="select_menu" name="data[petstatus]" id="select">
+					<option value=''>全部</option>
+							<php>
+								foreach($petType as $key=>$val){
+									if($petstatus==$key && $petstatus!=''){
+										echo "<option value='$key' selected='selected'>".$val."</option>";
+									}else{
+										echo "<option value='$key'>".$val."</option>";
+									}
+								}
+							</php>
+                </select>
+            </div>
+            <div class="pets">
+                <span class="txt">当家宠物：</span>
+                <select class="select_menu" name="data[is_default]" id="select">
+					<option value=''  <?php if($is_default==''){echo 'selected';}?>>全部</option>
+                    <option value='1' <?php if($is_default==1){echo 'selected';}?>>是</option>
+                    <option value='0' <?php if($is_default=='0'){echo 'selected';}?>>否</option>
+                </select>
+            </div>
+            <div class="head_photo">
+                <span class="txt">是否有头像：</span>
+                <select class="select_menu" name="data[ispic]" id="select">
+					<option value=''>全部</option>
+                    <option value='1' <?php if($ispic==1){echo 'selected';}?>>有</option>
+                    <option value='2' <?php if($ispic==2){echo 'selected';}?>>没有</option>
+                    
+                </select>
+            </div>
+            <div class="nick">
+                 <span class="txt">用户搜索：</span>
+                <input name="data[user]" type="text" id="clearText_2" val='输入用户呢称或id' class="input_txt"  value="<?php if($user){echo $user;}else{echo '输入用户呢称或id';}?>"/>
+                <select class="select_menu" name="data[select]" id="select">
+                    <option value='1' <?php if($select==1){echo 'selected';}?> >用户昵称</option>
+                    <option value='2' <?php if($select==2){echo 'selected';}?> >用户ID</option>
+                </select>
+            </div>
+            <div class="btn_box"><a class="search_btn" onClick='submitFun();' href="javascript:void(0);" title="查询">查询</a></div>
+        </div>
+    </div>
+    <!--搜索结束-->
+	</form>
+	
+
+    <!--数据列表开始-->
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+        <thead>
+            <tr>
+                <th width="45">选中</th>
+                <th width="5%">ID</th>
+                <th width="120">宠物头像</th>
+                <th width="15%">宠物呢称</th>
+                <th width="12%">宠物种类</th>
+                <th width="10%">状态</th>
+                <th width="8%">主人</th>
+                <th width="8%">当家宠物</th>
+                <th width="12%"><a href="javascript:void(0);">创建时间<i></i></a></th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+
+			<volist name='UserPets' id='vo'>
+            <tr>
+                <td><input class="dx" type="checkbox" value="{$vo.id}" id="blogID_{$vo.id}" name="blogID"></td>
+                <td>{$vo.id}</td>
+                <td><div class="img_show"><img src="<php>if($vo['picpath']){echo C('IMG_DIR').'/'.$vo['picpath'];}else{echo '/Public/Images/no_pet_150.gif';}</php>"/></div></td>
+                <td>{$vo.petname}</td>
+                <td>{$vo.title}</td>
+                <td>{$vo.petTypes}</td>
+                <td>{$vo.nickname}</td>
+                <td><if condition="$vo.is_default eq 0">否<else/>是</if></td>
+                <td>{$vo.cretime|date="y-m-d H:i:s",###}</td>
+                <td><a href="javascript:;" onCLick="return urlDelete(2,'__ROOT__/iadmin.php/Pet/deletePetPic?deletePetPic={$vo.id}&page=<?php echo $page;?>');">删除头像</a><span class="line">|</span><a href="__ROOT__/iadmin.php/Pet/editPage?id={$vo.id}">编辑</a><span class="line">|</span><a href="javascript:;" onCLick="return urlDelete(2,'__ROOT__/iadmin.php/Pet/deletePet?deletePet={$vo.id}&page=<?php echo $page;?>');">删除</a></td>
+            </tr>
+			</volist>
+			
+		</tbody>
+        <tfoot>
+            <tr>
+                <td colspan="10" align="left"><label><input class="select_all" type="checkbox" value="全选" id="blogID" name="blogID">全选</label> <a class="del_head" href="#" title="删除头像"></a> <a class="del_btn" href="#" actions='7' controllers='4' title="删除"></a></td>
+            </tr>
+        </tfoot>
+    </table>
+    <!--数据列表结束-->
+    
+    <!--分页开始-->
+    <?php echo $pageHtml;?>
+    <!--分页结束-->
+    <input type='hidden' value='<?php echo $url;?>' id='url'>
+</div>
+</body>
+<script type='text/javascript'>
+window.onload=function(){
+		var url = $('#url').val();
+		if(url){
+			var maxCode=parent.oMapReloadInfo['maxCode'];
+			var code=parent.oMapReloadInfo['code'];
+			var difference = maxCode-code;
+			if(difference==1){
+				parent.oMapReloadInfo['maxCode']=maxCode+1;
+				location.href=url;
+			}else{
+				parent.oMapReloadInfo['code']=code+1;
+			}
+		}
+}
+BQ.ui.form.Calender('#calender1');
+BQ.ui.form.Calender('#calender2');
+</script>
+</html>

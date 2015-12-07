@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>添加推送内容</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Js/library/ui/static/calendar/calendar.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type="text/javascript" src="__PUBLIC__/Js/bq.js"></script>
+<script type='text/javascript' src='__PUBLIC__/Js/library/ui/form/calender.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+</head>
+<body>
+<div class="common_tab">
+    <ul>
+        <li><a href="__ROOT__/iadmin.php/Push/indexPushlist"><span>论坛推荐</span></a></li>
+        <li class="current"><a href="__ROOT__/iadmin.php/Push/indexPush"><span>论坛推荐添加</span></a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+	<form id="fm" name="fm" method="post" action="__ROOT__/iadmin.php/Push/indexPushSave" enctype="multipart/form-data">
+	<input type='hidden' id='' value='{$push.id}' name='data[id]'>
+    <!--创建个人中心推荐开始-->
+    <div class="common_tb">
+        <ul>
+		<li>
+                <span class="text">选择版块：</span>
+                <span class="input_area">
+                <select id="type" name="type" class="select_1" >
+				    <?php foreach($typelist as $tk => $typename) { ?>
+			          <option value="{$tk}" <?php if($tk == $push['type']) { ?>selected="selected"<?php } ?> >{$typename}</option>
+			        <?php } ?>
+		 </select>
+                </span>
+            </li>
+			
+			<li>
+                <span class="text">主题ID：</span>
+                <span class="input_area">
+			<input type="text" class="text_1" id="tid" name="tid" value="{$push.tid}" style="width:310px;"/>
+                </span>
+            </li>
+			
+			<li>
+                <span class="text">标&nbsp;&nbsp;&nbsp;&nbsp;题：</span>
+                <span class="input_area">
+                <input type="text" class="text_1" id="subject" name="subject" value="{$push.subject}" style="width:310px;"/>系百科不必添加链接
+                </span>
+            </li>
+
+            <li>
+                <span class="text">内&nbsp;&nbsp;&nbsp;&nbsp;容：</span><span class="input_area">
+                <textarea id="content" name="content" rows="5" cols="50">{$push.content}</textarea>
+                </span>
+			</li>
+            <li>
+                <span class="text">链接地址：</span><span class="input_area">
+                <input type="text" class="text_1" id="linkurl" name="linkurl" value="{$push.linkurl}" style="width:310px;"/>
+                </span>
+			</li>
+			<li>
+                <span class="text">图片上传：</span><span class="input_area">
+                <input type="file" id="attachurl" name="attachurl" />[文件格式 JPG | GIF | JPEG] <br/><?php if(!empty($push['attachurl'])) { ?><img src="<php>echo C('IMG_DIR');</php>/{$push.attachurl}"  /><?php } ?>
+                </span>
+			</li>
+			<input type="hidden" name="act" value="{$act}" />
+			  <input type="hidden" name="bid" value="{$push.bid}" />
+			  <input type="hidden" name="hidtypeid" value="{$sel.typeid}" />
+			  <input type="hidden" name="hidsubject" value="{$sel.subject}" />
+            <li>
+                <span class="text">&nbsp;</span>
+                <span class="input_area"><a class="submit_btn"  onClick='submitFun();' href="javascript:void(0);" title="确定"></a> </span>
+            </li>
+        </ul>
+    </div>
+    <!--创建个人中心推荐结束-->
+	</form>
+</div>
+</body>
+</html>

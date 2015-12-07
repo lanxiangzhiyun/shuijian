@@ -1,0 +1,265 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><php>if($detail['id']){</php>编辑<php>}else{</php>添加<php>}</php>宠物</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type="text/javascript" src="__ROOT__/Addons/Plugins/ueditor/editor_config_article.js"></script>  
+<script type="text/javascript" src="__ROOT__/Addons/Plugins/ueditor/editor_all.js"></script>  
+<script type="text/javascript" src="__ROOT__/Addons/Plugins/ueditor/_src/plugins/autoheight.js"></script>  
+<link rel="stylesheet" type="text/css" href="__ROOT__/Addons/Plugins/ueditor/themes/default/ueditor.css">
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Js/bq.js'></script>
+<script type='text/javascript'>
+	BQ.load("BQAjaxUP",function(){
+		BQ.BQAjaxUP('AjaxUP',{but:$('.addfield'),action:'/iadmin.php/Upload/imageUpload',data:{'type':'pettype'},onSubmit:function(file,ext){
+			if(ext && /^(jpg|jpeg|png|gif)$/.test(ext)){
+				//console.log('上传中...');
+			}else{
+				alert('不支持非图片格式！');
+				return false;
+			}
+			},onComplete:function(file,response){
+				response = eval("("+response+")");
+				//返回json数据
+				if(response.status == 'ok'){
+					$('#pic_path').val(response.imgpath);
+					$('#minimg').html('<img src="'+response.domain+response.imgpath+'" alt="" width="'+response.width+'" height="'+response.height+'">')
+				}else if(response.status == 'noselect'){
+					alert('服务器错误、上传图片为空值。');
+				}else if(response.status == 'login'){
+					alert('请登录后操作！');
+				}else{
+					alert('上传失败，请保持图片不超过2M');
+				}
+			}});
+	})
+</script>
+<script>
+//保存
+function check(obj) {
+	if(obj.title.value == '') {
+		alert('请输入标题！');
+		obj.title.focus();
+		return false;
+	}
+	if(obj.parent.value == 0) {
+		alert('请选择大类！');
+		obj.parent.focus();
+		return false;
+	}
+	if(obj.category.value == 0) {
+		alert('请选择二级分类！');
+		obj.category.focus();
+		return false;
+	}
+	if(obj.summary.value == '') {
+		alert('请输入摘要！');
+		obj.summary.focus();
+		return false;
+	}
+	if(obj.content.value == '') {
+		alert('请输入内容！');
+		obj.content.focus();
+		return false;
+	}
+	<php>if(!$detail['id']){</php>
+	if(obj.pic_path.value == '') {
+		alert('请上传图片！');
+		return false;
+	}
+	<php>}</php>
+	return true;
+}
+</script>
+</head>
+<body>
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li><a href="__ROOT__/iadmin.php/AllPet/articleList"><span>宠物管理</span></a></li>
+        <li class="current"><a href="__ROOT__/iadmin.php/AllPet/addArticle"><span><php>if($detail['id']){</php>编辑<php>}else{</php>添加<php>}</php>宠物</span></a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+	
+	<form action='__ROOT__/iadmin.php/AllPet/saveArticle' method='post' enctype="multipart/form-data" onsubmit="return check(this)">
+	<input type='hidden' name='id' value='{$detail.id}'>
+    <!--广告开始-->
+    <div class="common_tb">
+        <ul>
+			<li>
+                <span class="text">标题：</span>
+                <span class="input_area">
+				<input name="name" type="text" value='{$detail.name}' class="input_bk" id="" />
+				</span>
+            </li>
+			<li>
+                <span class="text">分类：</span>
+                <span class="input_area">
+				<select class="select_menu" name="parent" id="first">
+                    <option value="0">全部</option>
+					<volist name='catgorylist' id='v'>
+					<option value="{$v.id}" <php>if($parcat == $v['id']) {echo 'selected="selected"';}</php>>{$v.name}</option>
+					</volist>
+                </select>&nbsp;&nbsp;
+				<span id="second"> 
+				<select class="select_menu" id="category" name="category" style="width:100px;">
+				</select> 
+				</span>
+				</span>
+            </li>
+			<li>
+                <span class="text">首字母：</span>
+                <span class="input_area">
+				<input name="letter" type="text" value='{$detail.letter}' class="input_bk" id="" style="width:60px"/>
+				</span>
+            </li>
+			<li>
+                <span class="text">对应论坛板块ID：</span>
+                <span class="input_area">
+				<input name="relation_forum" type="text" value='{$detail.relation_forum}' class="input_bk" style="width:60px" id="" />
+				</span>
+				</span>
+            </li>
+			<li>
+                <span class="text">拼音：</span>
+                <span class="input_area">
+				<input name="pinyin" type="text" value='{$detail.pinyin}' class="input_bk" id="" />
+				</span>
+            </li>
+			<script language="javascript">
+			$(function(){ 
+				$("#first").change(function(){
+					smallID="";
+					var parentId=$("#first").val();
+					if(parentId!=false){ 
+						ajaxJson(parentId);
+					} else{ 
+						$("#second").hide(); 
+					} 
+				});
+			}); 
+			
+			var smallID = '{$category}';
+			function ajaxJson(parentId){
+				$.getJSON(
+					"/iadmin.php/AllPet/getSubCategory",
+					{id:parentId},
+					function(DataJSON){ 
+						var stroptions="",strselect=""; 
+						if(DataJSON.length>0){ 
+							stroptions+="<option value=''>全部</option>"; 
+							for(var i=0;i<DataJSON.length;i++){ 
+								if(smallID!="" && smallID==DataJSON[i].id){
+									strselect = 'selected="selected"';
+								}else{
+									strselect = '';
+								}
+								stroptions+="<option value="+DataJSON[i].id+" "+strselect+">"+DataJSON[i].name+"</option>";
+							}
+							$("#category").html(stroptions);
+							$("#second").show();
+						}else{ 
+							$("#second").hide(); 
+						} 
+					}
+				); 
+			}
+			
+			<php>if($parcat){</php>
+			ajaxJson({$parcat});
+			<php>}else{</php>
+			$("#second").hide();
+			<php>}</php>
+			</script>
+            <li>
+                <span class="text">摘要：</span>
+                <span class="input_area">
+                <textarea name="summary" cols="110" rows="6">{$detail.summary}</textarea>
+                </span>
+            </li>
+            <li>
+                <span class="text">内容：</span>
+                <span class="input_area">
+				<textarea id="content_init" name="content_init" style="width:755px; height:350px;">{$detail.content}</textarea>
+				<input type="hidden" id="content" name="content" value=""/>
+                <script type="text/javascript">
+					// 自定义的编辑器配置项,此处定义的配置项将覆盖editor_config.js中的同名配置
+					var editorOption = {
+						toolbars:[['FullScreen', 'fontfamily', 'fontsize', 'forecolor', 'backcolor','Undo', 'Redo','Bold', 'italic', 'underline', 'removeformat', 'justifyleft','justifyright','justifycenter','emotion', 'insertimage','insertvideo','link']],
+						//focus时自动清空初始化时的内容
+						autoClearinitialContent:false,
+						//不自动长高
+						autoHeightEnabled:false,
+						//关闭字数统计
+						wordCount:false,
+						//关闭elementPath
+						elementPathEnabled:false,
+						//imageUrl
+						imageUrl:'<php>echo C("I_DIR");</php>/iadmin.php/Upload/bkPettypeImageUpload'
+					};
+					var ueditor = new baidu.editor.ui.Editor(editorOption);
+					ueditor.render( 'content_init' );
+				</script>
+                </span>
+            </li>
+			<li>
+                <span class="text">相关知识：</span>
+                <span class="input_area">
+				<textarea id="content_init1" name="content_init1" style="width:755px; height:350px;">{$detail.knowledge}</textarea>
+				<input type="hidden" id="knowledge" name="knowledge" value=""/>
+                <script type="text/javascript">
+					// 自定义的编辑器配置项,此处定义的配置项将覆盖editor_config.js中的同名配置
+					var editorOption = {
+						toolbars:[['FullScreen', 'fontfamily', 'fontsize', 'forecolor', 'backcolor','Undo', 'Redo','Bold', 'italic', 'underline', 'removeformat', 'justifyleft','justifyright','justifycenter','emotion', 'insertimage','insertvideo','link']],
+						//focus时自动清空初始化时的内容
+						autoClearinitialContent:false,
+						//不自动长高
+						autoHeightEnabled:false,
+						//关闭字数统计
+						wordCount:false,
+						//关闭elementPath
+						elementPathEnabled:false
+					};
+					var editor = new baidu.editor.ui.Editor(editorOption);
+					editor.render( 'content_init1' );
+				</script>
+                </span>
+            </li>
+            <li>
+                <span class="text">图片：</span>
+                <span class="input_area">
+                <input type="hidden" name="pic_path" value='{$detail.pic_path}' id="pic_path" />
+				<a href="#" class="addfield">点击上传</a>
+				&nbsp;&nbsp;<font color="#FF0000">*</font>宠物详情配图
+				<p id="minimg"><php>if($detail['pic_path']){</php>
+				<img src="<php>echo C('IMG_DIR').'/'.$detail['pic_path'];</php>" width="200"/>
+				<php>}</php></p>
+                </span>
+            </li>
+
+            <li>
+                <span class="text">&nbsp;</span>
+                <span class="input_area"><a class="submit_btn" onClick='submitFunc();' href="javascript:void(0);" title="确定"></a><a class="cancel_btn" onClick="return backfun('/iadmin.php/AllPet/articleList');" href="javascript:void(0);" title="取消"></a> </span>
+            </li>
+        </ul>
+    </div>
+    <!--广告结束-->
+	</form>
+</div>
+
+<script type='text/javascript'>
+function submitFunc(){
+	var message = encodeURIComponent(ueditor.getContent());
+	$('#content').val(message);
+	var message1 = encodeURIComponent(editor.getContent());
+	$('#knowledge').val(message1);
+	$("form").submit();
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>奖品</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Js/library/ui/static/calendar/calendar.css"/>
+    <script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/bq.js"></script>
+    <script type='text/javascript' src='__PUBLIC__/Js/library/ui/form/calender.js'></script>
+    <script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+</head>
+<body>
+
+<div class="common_tab">
+    <ul>
+        <li class="current"><a href="__ROOT__/iadmin.php/Bet/index"><span>兑奖中心</span></a></li>
+        <li ><a href="__ROOT__/iadmin.php/Bet/prize"><span>添加奖品</span></a></li>
+        <li ><a href="__ROOT__/iadmin.php/Bet/prize?action=list"><span>兑奖奖品列表</span></a></li>
+		<li><a href="__ROOT__/iadmin.php/Bet/prize?action=lottery"><span>抽奖奖品列表</span></a></li>
+    </ul>
+</div>
+
+
+<!--tab结束-->
+<div class="wrap">
+
+    <form action='__ROOT__/iadmin.php/Bet/index' method='get' id='form1'>
+        <!--搜索开始-->
+        <div class="search_box">
+            <div class="search">
+                <div class="title">
+                    <span class="txt">搜索区：</span>
+                    <select class="select_menu" name="data[select]" id="select">
+                        <option value=''>全部</option>
+                        <option value='0' <php>if($select == 0 && $select != '') echo 'selected'; </php>>未受理</option>
+                        <option value='1' <php>if($select == 1) echo 'selected'; </php>>已受理</option>
+                        <option value='2' <php>if($select == 2) echo 'selected'; </php>>抽奖未中</option>
+                    </select>
+                </div>
+                <div class="nick">
+                    <span class="txt">申请ID：</span>
+                    <input name="data[user_name]"
+                           type="text" id="clearText_2"  class="input_txt"
+                           value="<php>if($user_name){echo $user_name;}</php>" />
+
+                </div>
+                <div class="title">
+                    <span class="txt">类型：</span>
+                    <select class="select_menu" name="data[selectype]" id="selectype">
+                        <option value='' >--请选择--</option>
+                        <option value='1' <php>if($type == 1) echo 'selected'; </php>>抽奖</option>
+                        <option value='2' <php>if($type == 2) echo 'selected'; </php>>兑奖</option>
+                    </select>
+                </div>
+                <div class="date">
+                    <span class="txt">创建时间：</span>
+                    <input class="input_date calendar" type="text" name="data[starttime]" id="calender1" value="<?php if($starttime){echo $starttime;}?>"/>
+                    <span class="txt">至</span>
+                    <input class="input_date calendar" type="text" name="data[endtime]" id="calender2" value="<?php if($endtime){echo $endtime;}?>"/>
+                </div>
+                <div class="btn_box"><input type='button' class='calendarClear' name='' value='清除时间'></div>
+
+                <div class="btn_box"><a class="search_btn" onClick="submitFun();" href="javascript:void(0);" title="查询">查询</a></div>
+            </div>
+        </div>
+        <!--搜索结束-->
+
+    <!--数据列表开始-->
+
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+        <thead>
+        <tr>
+        
+            <td  colspan="15" ><a href="<php>echo $url</php>&data[action]=exportExcel">导出成excel</a></td>
+        </tr>
+        <tr>
+            <th width="3%">操作</th>
+			<th width="5%">类型</th>
+            <th width="5%">日 期</th>
+            <th width="5%">申请ID</th>
+            <th width="5%">姓 名</th>
+            <th width="8%">电 话</th>
+            <th width="5%">省 市</th>
+            <th width="10%">地 址</th>
+            <th width="7%">兑换QQ</th>
+            <th width="10%">Email</th>
+            <th width="5%">投入啵币</th>
+            <th width="10%">商品名称</th>
+            <th width="5%">饲养宠物</th>
+            <th width="3%">品种</th>
+            <th>是否已受理</th>
+        </tr>
+        </thead>
+        <tbody>
+        <volist name="arrSearchList" id="vo" >
+            <tr>
+               <td><php>if($vo['change_status'] == 0) {echo '<input class="dx" type="checkbox" value="'.$vo['id'].'" id="blogID_'.$vo['id'].'" name="blogID[]" >' ;}else{echo '--';}</php></td>
+				<td>{$vo.typeName}</td>
+                   <td>{$vo.applychange_time}</td>
+                   <td>{$vo.user_name}</td>
+                   <td>{$vo.name}</td>
+                   <td>{$vo.phone}</td>
+                   <td>{$vo.cityName}</td>
+                   <td>{$vo.address}</td>
+                   <td>{$vo.user_qq}</td>
+                   <td>{$vo.email}</td>
+                   <td>{$vo.change_icons}</td>
+                   <td>{$vo.change_product}</td>
+                   <td>{$typeArr[$vo['pettype']]}</td>
+                   <td>{$vo.pet}</td>
+                   <td>{$vo.applyMsg}</td>
+            </tr>
+        </volist>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="15" align="left"><label><input class="select_all" type="checkbox" value="全选" >全选</label> <input type="button" title="受理" value='受理' onClick="submitFun();"></td>
+        </tr>
+        </tfoot>
+    </table>
+    </form>
+    <!--数据列表结束-->
+
+    <!--分页开始-->
+    <?php echo $pageHtml;?>
+    <!--分页结束-->
+</div>
+<script type='text/javascript'>
+    //页面加载一次
+    window.onload=function(){
+        var url = $('#url').val();
+        if(url){
+            var maxCode=parent.oMapReloadInfo['maxCode'];
+            var code=parent.oMapReloadInfo['code'];
+            var difference = maxCode-code;
+            if(difference==1){
+                parent.oMapReloadInfo['maxCode']=maxCode+1;
+                location.href=url;
+            }else{
+                parent.oMapReloadInfo['code']=code+1;
+            }
+        }
+    }
+    BQ.ui.form.Calender('#calender1');
+    BQ.ui.form.Calender('#calender2');
+</script>
+</body>
+</html>

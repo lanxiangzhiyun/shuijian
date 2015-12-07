@@ -1,0 +1,277 @@
+<!--This is IE DTD patch , Don't delete this line.-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>左侧导航</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<script src='__PUBLIC__/Js/jquery.js' type="text/javascript"></script>
+</head>
+<body class="left_bd">
+    <div class="menu_list">
+
+        <dl class="bitem open" <?php if(in_array(1,$Useroperation)){echo "style='display:block;'";}else{echo "style='display:none;'";}?> >
+            <dt>操作日志</dt>
+            <dd class="sitem">
+                <ul>
+                    <li><a href="__ROOT__/iadmin.php/Operation/index" target="main">后台操作日志</a></li>
+					<li><a href="__ROOT__/iadmin.php/Operation/baikeOperation" target="main">百科操作日志</a></li>
+                </ul>
+            </dd>
+        </dl>
+
+        <dl class="bitem" <?php if(in_array(2,$Useroperation)){echo "style='display:block;'";}else{echo "style='display:none;'";}?>>
+            <dt>日记管理</dt>
+            <dd class="sitem">
+                <ul>
+                    <li><a href="__ROOT__/iadmin.php/Diary/index" target="main">日记管理</a></li>
+					
+                </ul>
+            </dd>
+        </dl>
+
+        <dl class="bitem" <?php if(in_array(3,$Useroperation)){echo "style='display:block;'";}else{echo "style='display:none;'";}?>>
+            <dt>相册管理</dt>
+            <dd class="sitem">
+                <ul>
+                    <li><a href="__ROOT__/iadmin.php/Album/index" target="main">相册信息管理</a></li>
+                    <li><a href="__ROOT__/iadmin.php/Album/photo" target="main">图片管理</a></li>
+                </ul>
+            </dd>
+        </dl>
+
+        <dl class="bitem" <?php if(in_array(4,$Useroperation)){echo "style='display:block;'";}else{echo "style='display:none;'";}?>>
+            <dt>微博管理</dt>
+            <dd class="sitem">
+                <ul>
+                    <li><a href="__ROOT__/iadmin.php/Weibo/index" target="main">微博内容管理</a></li>
+                    <li><a href="__ROOT__/iadmin.php/Weibo/weiboComment" target="main">微博评论管理</a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl class="bitem" <?php if(in_array(5,$Useroperation)){echo "style='display:block;'";}else{echo "style='display:none;'";}?>>
+            <dt>评论管理</dt>
+            <dd class="sitem">
+                <ul>
+                    <li><a href="__ROOT__/iadmin.php/Diary/diaryComment" target="main">日记评论管理</a></li>
+                    <li><a href="__ROOT__/iadmin.php/Album/photoComment" target="main">图片评论管理</a></li>
+                    <li><a href="__ROOT__/iadmin.php/Article/articleComment" target="main">百科文章评论管理</a></li>
+                    <li><a href="__ROOT__/iadmin.php/Thread/askCommentList" target="main">百科问题回答管理</a></li>
+                </ul>
+            </dd>
+        </dl>
+
+        <dl class="bitem" <?php if(in_array(6,$Useroperation)){echo "style='display:block;'";}else{echo "style='display:none;'";}?>>
+            <dt>宠物管理</dt>
+            <dd class="sitem">
+                <ul>
+                    <li><a href="__ROOT__/iadmin.php/Pet/index" target="main">宠物管理</a></li>
+                    <li><a href="__ROOT__/iadmin.php/Pet/petIndex" target="main">宠物管理(APP)</a></li>
+               </ul>
+            </dd>
+        </dl>
+		
+		<dl class="bitem" <?php if(in_array(14,$Useroperation)){echo "style='display:block;'";}else{echo "style='display:none;'";}?>>
+            <dt>百科内容管理</dt>
+            <dd class="sitem">
+                <ul>
+					<li><a href="__ROOT__/iadmin.php/AllPet/entryList" target="main">词条管理</a></li>
+					<li><a href="__ROOT__/iadmin.php/AllPet/addEntry" target="main">发布词条</a></li>
+					<li><a href="__ROOT__/iadmin.php/Article/articleList" target="main">文章管理</a></li>
+					<li><a href="__ROOT__/iadmin.php/Article/addArticle" target="main">发布文章</a></li>
+ 					<li><a href="__ROOT__/iadmin.php/Thread/askList" target="main">问答管理</a></li>
+               </ul>
+            </dd>
+        </dl>
+		
+        <dl class="bitem" <?php if(in_array(7,$Useroperation)){echo "style='display:block;'";}else{echo "style='display:none;'";}?>>
+            <dt>标签管理</dt>
+            <dd class="sitem">
+                <ul>
+                    <li><a href="__ROOT__/iadmin.php/Tag/index" target="main">标签管理</a></li>
+                    <li><a href="__ROOT__/iadmin.php/Tag/createTag" target="main">创建标签</a></li>
+                    <li><a href="__ROOT__/iadmin.php/Tag/treeStruct" target="main">完整标签结构</a></li>
+                    <li><a href="__ROOT__/iadmin.php/Tag/batchTagOperation" target="main">批量处理</a></li>
+                </ul>
+            </dd>
+        </dl>
+		
+        <dl class="bitem" <?php if(in_array(8,$Useroperation)){echo "style='display:block;'";}else{echo "style='display:none;'";}?>>
+            <dt>敏感词管理</dt>
+            <dd class="sitem">
+                <ul>
+                    <li><a href="__ROOT__/iadmin.php/Sensitive/index" target="main">敏感词管理</a></li>
+                </ul>
+            </dd>
+        </dl>
+	
+        <dl class="bitem" <?php if(in_array(9,$Useroperation)){echo "style='display:block;'";}else{echo "style='display:none;'";}?>>
+            <dt>广告管理</dt>
+            <dd class="sitem">
+                <ul>
+                    <li><a href="__ROOT__/iadmin.php/Ad/index" target="main">广告管理</a></li>
+                    <li><a href="__ROOT__/iadmin.php/Ad/add" target="main">添加广告</a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl class="bitem" <?php if(in_array(10,$Useroperation)){echo "style='display:block;'";}else{echo "style='display:none;'";}?>>
+            <dt>推荐位管理</dt>
+            <dd class="sitem">
+                <ul>
+					<li><a href="__ROOT__/iadmin.php/Push/publishGroupList" target="main">栏目列表</a></li>
+                    <li><a href="__ROOT__/iadmin.php/Push/index" target="main">个人中心推荐</a></li>
+					<li><a href="__ROOT__/iadmin.php/Push/indexPushlist" target="main">论坛推荐</a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl class="bitem" <?php if(in_array(11,$Useroperation)){echo "style='display:block;'";}else{echo "style='display:none;'";}?>>
+            <dt>后台成员管理</dt>
+            <dd class="sitem">
+                <ul>
+                    <li><a href="__ROOT__/iadmin.php/Admin/index" target="main">成员管理</a></li>
+                    <li><a href="__ROOT__/iadmin.php/Admin/addPage" target="main">添加成员</a></li>
+                </ul>
+            </dd>
+        </dl>
+		<dl class="bitem" <?php if(in_array(12,$Useroperation)){echo "style='display:block;'";}else{echo "style='display:none;'";}?>>
+            <dt>意见反馈管理</dt>
+            <dd class="sitem">
+                <ul>
+                    <li><a href="__ROOT__/iadmin.php/Feedback/feedbackList" target="main">意见反馈管理</a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl class="bitem" <?php if(in_array(13,$Useroperation)){echo "style='display:block;'";}else{echo "style='display:none;'";}?>>
+        <dt>兑奖中心管理</dt>
+        <dd class="sitem">
+            <ul>
+                <li><a href="__ROOT__/iadmin.php/Bet/index" target="main">兑换中心</a></li>
+                <li><a href="__ROOT__/iadmin.php/Bet/prize" target="main">添加奖品</a></li>
+                <li><a href="__ROOT__/iadmin.php/Bet/prize?action=list" target="main">兑奖奖品列表</a></li>
+                <li><a href="__ROOT__/iadmin.php/Bet/prize?action=lottery" target="main">抽奖奖品列表</a></li>
+                <li><a href="__ROOT__/iadmin.php/Bet/setBobi" target="main">抽奖啵币设置</a></li>
+            </ul>
+        </dd>
+        </dl>
+        <dl class="bitem" <?php if(in_array(15,$Useroperation)){echo "style='display:block;'";}else{echo "style='display:none;'";}?>>
+        <dt>百科分类管理</dt>
+        <dd class="sitem">
+            <ul>
+                <li><a href="__ROOT__/iadmin.php/BkCat/index/level/1" target="main">文章一级分类</a></li>
+                <li><a href="__ROOT__/iadmin.php/BkCat/subIndex" target="main">文章二级分类</a></li>
+                <li><a href="__ROOT__/iadmin.php/BkCat/threeIndex" target="main">文章三级分类</a></li>
+                <li><a href="__ROOT__/iadmin.php/BkEntryCat/index/level/1" target="main">词条一级分类</a></li>
+				<li><a href="__ROOT__/iadmin.php/BkEntryCat/subIndex" target="main">词条二级分类</a></li>
+				<li><a href="__ROOT__/iadmin.php/BkEntryCat/threeIndex" target="main">词条三级分类</a></li>
+            </ul>
+        </dd>
+        </dl>
+        <dl class="bitem" <?php if(in_array(16,$Useroperation)){echo "style='display:block;'";}else{echo "style='display:none;'";}?>>
+        <dt>百科用户管理</dt>
+        <dd class="sitem">
+            <ul>
+                <li><a href="__ROOT__/iadmin.php/BkExpert/index" target="main">用户列表</a></li>
+                <li><a href="__ROOT__/iadmin.php/BkExpert/addMember/action/add" target="main">添加成员</a></li>
+            </ul>
+        </dd>
+        </dl>
+		<dl class="bitem" <?php if(in_array(17,$Useroperation)){echo "style='display:block;'";}else{echo "style='display:none;'";}?>>
+        <dt>站内信管理</dt>
+        <dd class="sitem">
+            <ul>
+                <li><a href="__ROOT__/iadmin.php/SysMsg/msgList" target="main">站内信列表</a></li>
+                <li><a href="__ROOT__/iadmin.php/SysMsg/addMsg" target="main">发站内信</a></li>
+            </ul>
+        </dd>
+        </dl>
+		<dl class="bitem" <?php if(in_array(18,$Useroperation)){echo "style='display:block;'";}else{echo "style='display:none;'";}?>>
+        <dt>专题管理</dt>
+        <dd class="sitem">
+            <ul>
+				<li><a href="__ROOT__/iadmin.php/SubTem/index" target="main">专题页管理</a></li>
+                <li><a href="__ROOT__/iadmin.php/Vote/index" target="main">投票管理</a></li>
+                <li><a href="__ROOT__/iadmin.php/Vote/brandList" target="main">品牌投票管理</a></li>
+				<li><a href="__ROOT__/iadmin.php/Vote/applyList" target="main">养宠报名管理</a></li>
+                <li><a href="__ROOT__/iadmin.php/Subject/getList" target="main">专题列表</a></li>
+                <li><a href="__ROOT__/iadmin.php/Subject/addSubject" target="main">新增专题</a></li>
+				<li><a href="__ROOT__/iadmin.php/Statistics/index" target="main">投票专题</a></li>
+				<li><a href="__ROOT__/iadmin.php/Wish/index" target="main">地图点亮专题</a></li>
+            </ul>
+        </dd>
+        </dl>
+        <dl class="bitem" <?php if(in_array(19,$Useroperation)){echo "style='display:block;'";}else{echo "style='display:none;'";}?>>
+        <dt>友链管理</dt>
+        <dd class="sitem">
+            <ul>
+                <li><a href="__ROOT__/iadmin.php/Help/getList" target="main">友情链接列表</a></li>
+                <li><a href="__ROOT__/iadmin.php/Help/addHelpList" target="main">新增友情链接</a></li>
+            </ul>
+        </dd>
+        </dl>
+
+		<dl class="bitem" <?php if(in_array(21,$Useroperation)){echo "style='display:block;'";}else{echo "style='display:none;'";}?>>
+        <dt>抽奖管理</dt>
+        <dd class="sitem">
+            <ul>
+                <li><a href="__ROOT__/iadmin.php/Prize/index" target="main">奖品列表</a></li>
+				<li><a href="__ROOT__/iadmin.php/Prize/prizeLogList" target="main">抽奖日志列表</a></li>
+            </ul>
+        </dd>
+        </dl>
+        
+        
+        <dl class="bitem" <?php if(in_array(22,$Useroperation)){echo "style='display:block;'";}else{echo "style='display:none;'";}?>>
+        <dt>资讯管理</dt>
+        <dd class="sitem">
+            <ul>
+                <li><a href="__ROOT__/iadmin.php/News/newsList" target="main">资讯列表</a></li>
+				<li><a href="__ROOT__/iadmin.php/News/addNews" target="main">添加资讯</a></li>
+				<li><a href="__ROOT__/iadmin.php/News/columnList" target="main">资讯栏目管理</a></li>
+                <li><a href="__ROOT__/iadmin.php/Tag/newsTagList" target="main">资讯标签管理</a></li>
+                <li><a href="__ROOT__/iadmin.php/Tag/newsTagAdd" target="main">添加资讯标签</a></li>
+            </ul>
+        </dd>
+        </dl>
+        <dl class="bitem" <?php if(in_array(23,$Useroperation)){echo "style='display:block;'";}else{echo "style='display:none;'";}?>>
+        <dt>招聘管理</dt>
+        <dd class="sitem">
+            <ul>
+                <li><a href="__ROOT__/iadmin.php/Job/index" target="main">职位列表</a></li>
+				<li><a href="__ROOT__/iadmin.php/Job/city" target="main">城市列表</a></li>
+				<li><a href="__ROOT__/iadmin.php/Job/type" target="main">类型列表</a></li>
+            </ul>
+        </dd>
+        </dl>
+		<dl class="bitem" <?php if(in_array(24,$Useroperation)){echo "style='display:block;'";}else{echo "style='display:none;'";}?>>
+        <dt>搜索管理</dt>
+        <dd class="sitem">
+            <ul>
+                <li><a href="__ROOT__/iadmin.php/Search/keywordList" target="main">关键词列表</a></li>
+				<li><a href="__ROOT__/iadmin.php/Search/addKeyword" target="main">新增关键词</a></li>
+            </ul>
+        </dd>
+        </dl>
+		<dl class="bitem" <?php if(in_array(25,$Useroperation)){echo "style='display:block;'";}else{echo "style='display:none;'";}?>>
+        <dt>APP配置</dt>
+        <dd class="sitem">
+            <ul>
+                <li><a href="__ROOT__/iadmin.php/Push/appDeploy" target="main">发现首页banner配置</a></li>
+            </ul>
+        </dd>
+        </dl>
+    </div>
+<script>
+	$('.sitem').hide().eq('0').show();
+	$('dt').click(function(e){
+		var _t = $(this),_tp = _t.parent();
+		if(_tp.hasClass('open')){
+			_t.next().hide();
+			_tp.removeClass('open');
+		}else{
+			_t.next().show();
+			_tp.addClass('open');
+		}
+	});
+</script>
+</body>
+</html>

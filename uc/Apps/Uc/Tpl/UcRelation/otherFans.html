@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <php>if($obj == "me") { if($userinfo['groupid'] >= 4 && $userinfo['groupid'] < 11) { </php><META NAME="robots" CONTENT="NOINDEX,NOFOLLOW">
+    <php>} } elseif($obj == "other") { if($huser['groupid']  >= 4 && $huser['groupid'] < 11) { </php><META NAME="robots" CONTENT="NOINDEX,NOFOLLOW">
+    <php>} }</php>
+    <meta name="keywords" content="{$mtaKeywords}" />
+    <meta name="description" content="{$mtaDescription}" />
+    <title>{$mtaTitle}</title>
+<link rel="stylesheet" type="text/css" href="<php>echo autoVer('/Css/uc/global.css');</php>"/>
+<link rel="stylesheet" type="text/css" href="<php>echo autoVer('/Css/uc/main.css');</php>"/>
+<script type="text/javascript" src="__PUBLIC__/Js/jquery.js"></script>
+</head>
+<body>
+<!--头部开始-->
+<div class="global_header"> 
+    <!--头部导航开始-->
+    <include file="Public:top" />
+
+    <include file="Public:header" />
+</div>
+<!--头部结束--> 
+
+<!--主体部分开始-->
+<div class="main two_side clearfix"> 
+    <!--左侧开始-->
+    <include file="Public:left" />
+    <!--左侧结束-->
+    <div class="plc_main"> 
+        <!--右侧开始-->
+        <div class="main_cont">
+            <div class="common_tab">
+                <ul>
+                    <li><a href="<php>echo get_rewrite_url('UcRelation', 'friends', $uid);</php>">TA的好友</a></li>
+                    <li><a href="<php>echo get_rewrite_url('UcRelation', 'follow', $uid);</php>">TA的关注</a></li>
+                    <li class="current"><a href="<php>echo get_rewrite_url('UcRelation', 'fans', $uid);</php>">TA的粉丝</a></li>
+                </ul>
+            </div>
+            <div class="follow_title">
+
+                <present name="name">
+                    <h3>昵称含“<font color="red">{$name}</font>”的{$total}人</h3>
+                    <else />
+                    <h3>已有{$total}人关注了TA</h3>
+                </present>
+
+                <div class="search">
+                    <input name="textfield2" type="text" class="search_input" id="textfield2" value="输入昵称" />
+                    <input class="search_btn" type="submit" name="button2"  id="button2" value=" " />
+                </div>
+            </div>
+            <!--关注列表开始-->
+            <div class="follow_list" id="followlist">
+                <volist name="list" id="vo">
+                <dl>
+                    <dt><a href="{$vo.userInfo.url_link}" target="_blank"><img src="{$vo.userInfo.avatar}" width="50" hight="50" /></a></dt>
+                    <dd>
+                        <div class="name"><a href="{$vo.userInfo.url_link}" target="_blank">{$vo.userInfo.nickname}</a><php>if($vo['userInfo']['baike_level'] == 5) {echo '<img class="avatar" src="'.C('STATIC_DIR').'/Images/uc/zj.jpg"/></div></dd>';}else{ </php>
+                            <i class="{$vo.userInfo.genderClass}">{$vo.userInfo.genderName}</i><span class="area">{$vo.userInfo.city_data}</span></div>
+
+                        <div class="concern">
+                            <div class="info">关注 <a href="<php>echo get_rewrite_url('UcRelation', 'follow', $vo['userInfo']['uid']);</php>" target="_blank">{$vo.userInfo.intMycare}</a><i class="wline">|</i>粉丝 <a href="<php>echo get_rewrite_url('UcRelation', 'fans', $vo['userInfo']['uid']);</php>" target="_blank">{$vo.userInfo.intOtherCare}</a><i class="wline">|</i> 好友 <a href="<php>echo get_rewrite_url('UcRelation', 'friends', $vo['userInfo']['uid']);</php>" target="_blank">{$vo.userInfo.intEachCare}</a></div>
+                            <?php if($vo['userInfo']['uid'] != 1328680){  ?>
+                            <div class="act">
+                                <switch name="vo.userInfo.intcare" >
+                                    <case value="1"><span class="follow_state"><i class="icon_follow"></i>已关注</span></div></case>
+                                    <case value="2">  <span class="follow_state"><a class="a_btn c_ajxbut" href="javascript:void(0);" thref="/UcRelation/addCareOne/bUid/{$vo.userInfo.uid}" title="加关注"></a></span></div> </case>
+                                    <case value="3"><span class="follow_state"><i class="icon_arr"></i>互相关注</span></div></case>
+                                    <case value="4"><span class="follow_state"><a class="a_btn c_ajxbut" href="javascript:void(0);" thref="/UcRelation/addCareOne/bUid/{$vo.userInfo.uid}/blackid/1" title="加关注"></a></span></div></case>
+                                    <case value="5"><span class="follow_state"><a class="a_btn c_ajxbut" href="javascript:void(0);" thref="/UcRelation/addCareOne/bUid/{$vo.userInfo.uid}/tBlackid/2" title="加关注"></a></span></div></case>
+                                    <case value="6"></div></case>
+                                    <case value="7"><span class="follow_state"><i class="icon_arr"></i>互相关注</span></div></case>
+                                    <default />
+                                    <span class="follow_state">未知状态</span></div>
+                                </switch>
+                            <?php }?>
+                        </div>
+
+                        <notempty name="vo.userInfo.petMsg">
+                        <div class="pets"><i class="icon_pets"></i><a ="{$vo.userInfo.url_link}" target="_blank">{$vo.userInfo.petMsg.petname}</a></div>
+                        </notempty>
+                        <notempty name="vo.userInfo.weiBo">
+                        <div class="new_info"><a href="<php>echo get_rewrite_url('UcWeibo', 'weibo', $vo['userInfo']['uid']);</php>">{$vo.userInfo.weiBo.weibo_content|htmlspecialchars}({$vo.userInfo.weiBo.weibo_time})</a></div>
+                        </notempty>
+                    </dd>
+            <php>}</php>
+                </dl>
+                </volist>
+            </div>
+            <!--关注列表结束-->
+            <!--分页开始-->
+            <div class="page_wrap">
+                <div class="showpage"> {$page} </div>
+            </div>
+            <!--分页结束--> 
+            
+        </div>
+        <!--右侧结束--> 
+    </div>
+</div>
+<!--主体部分结束--> 
+<script>
+	BQ.load("UCRelation",function(){
+		BQ.UCRelation('otherFans',{'uid':'<?php echo $uid; ?>'}).exec();
+	});
+</script>
+<!--底部开始-->
+<include file="Public:footer" />
+<!--底部结束--> 

@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>修改标签</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+</head>
+<body>
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li><a href="__ROOT__/iadmin.php/Tag/newsTagList"><span>资讯标签管理</span></a></li>
+        <li class="current"><a href="__ROOT__/iadmin.php/Tag/newsTagEdit?id=<?php echo $id;?>"><span>编辑资讯标签</span></a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+	
+	<form action='__ROOT__/iadmin.php/Tag/newsTagSave' method='post'>
+	<input type='hidden' value='<?php echo $id;?>' name='id'>
+	<input type='hidden' value='edit' name='act'>
+    <!--修改标签开始-->
+    <div class="common_tb">
+        <ul>
+            <li>
+                <span class="text">标签名：</span>
+                <span class="input_area">
+                    <input name="name" type="text" class="input_bk" id="textfield" value="{$Tag.name}" />
+                </span>
+            </li>
+            <li>
+                <span class="txt w250">&nbsp;&nbsp;&nbsp;创建人：<em>{$createName}</em></span>
+                <span class="txt w250">&nbsp;&nbsp;&nbsp;修改人：<em>{$modifyName}</em></span>
+            </li>
+            <li>
+                <span class="txt w250">创建时间：<em>{$Tag.dateline|date="y-m-d H:i:s",###}</em></span>
+                <span class="txt w250">修改时间：<em>{$Tag.updatetime|date="y-m-d H:i:s",###}</em></span>
+            </li>
+            <li>
+                <span class="txt">使用次数：<em>{$Tag.usetimes}</em></span>
+            </li>
+            <li>
+                <span class="text">&nbsp;</span>
+                <span class="input_area">
+                <label><input class="pb" value='2' type="checkbox" <if condition="$Tag.status eq 2">checked='checked'</if> name="status" id="checkbox" />屏蔽</label>
+                </span>
+            </li>
+            <li>
+                <span class="text">&nbsp;</span>
+                <span class="input_area"><a class="submit_btn" href="javascript:void(0);" onClick='submitFun();' title="确定"></a><a class="cancel_btn" onClick="return backfun('/iadmin.php/Tag/newsTagList');" href="javascript:void(0);" title="取消"></a> </span>
+            </li>
+        </ul>
+    </div>
+    <!--修改标签结束-->
+
+	</form>
+</div>
+</body>
+</html>

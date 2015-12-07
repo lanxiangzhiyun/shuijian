@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <php>if($obj == "me") { if($userinfo['groupid'] >= 4 && $userinfo['groupid'] <= 11) { </php><META NAME="robots" CONTENT="NOINDEX,NOFOLLOW">
+    <php>} } elseif($obj == "other") { if($huser['groupid']  >= 4 && $huser['groupid'] <= 11) { </php><META NAME="robots" CONTENT="NOINDEX,NOFOLLOW">
+    <php>} }</php>
+<title>黑名单</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/global.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/main.css"/>
+</head>
+<body>
+<!--头部开始-->
+<div class="global_header">
+    <!--头部导航开始-->
+    <include file="Public:top"/>
+
+    <include file="Public:header"/>
+    <!--nav导航结束-->
+</div>
+<!--头部结束-->
+
+<!--主体部分开始-->
+<div class="main two_side clearfix">
+    <!--左侧开始-->
+    <include file="Public:left"/>
+    <!--左侧结束-->
+    <div class="plc_main">
+        <!--右侧开始-->
+        <div class="main_cont">
+            <div class="common_tab">
+                <ul>
+                    <li><a href="/UcUser/setInfo">帐号设置</a></li>
+                    <li><a href="/UcUser/setHead">头像设置</a></li>
+                    <li><a href="/UcUser/setPassword">修改密码</a></li>
+                    <li class="current"><a href="/UcUser/setBlacklist">黑名单</a></li>
+                </ul>
+            </div>
+
+            <!--黑名单开始-->
+            <div class="blacklist">
+                 <p class="info">被拉入黑名单的用户，将不能给你发消息、不能关注你、评论你，如果你已经关注他，将自动解除关系。</p>
+                 <volist name="arrBlackList" id="vo">
+                 <dl>
+                     <dt><a href="<php>echo get_rewrite_url('Index', 'index', $vo['intUid']);</php>" target="_blank"><img src="{$vo.avatar}"  /></a></dt>
+                     <dd><a href="<php>echo get_rewrite_url('Index', 'index', $vo['intUid']);</php>" target="_blank">{$vo.nickname}</a></dd>
+                     <dd><a class="cancel_btn" href="javascript:void(0);" thref="/UcUser/cancelBlack/buid/{$vo.intUid}">解除</a></dd>
+                 </dl>
+                 </volist>
+                <!--分页开始-->
+                <div class="page_wrap">
+                    <div class="showpage"> {$page} </div>
+                </div>
+                <!--分页结束-->
+            </div>
+
+            <!--黑名单结束-->
+
+        </div>
+        <!--右侧结束-->
+    </div>
+</div>
+<!--主体部分结束-->
+<script>
+	BQ.load("UCUser",function(){
+         BQ.UCUser('setBlackList').exec();
+    });
+</script>
+<!--底部开始-->
+<include file="Public:footer"/>
+<!--底部结束-->
+

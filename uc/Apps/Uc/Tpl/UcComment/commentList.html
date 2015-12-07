@@ -1,0 +1,295 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="<php>if(isset($userinfo['nickname'])) { </php>{$userinfo.nickname}<php>} else { </php>波奇{$userinfo.uid}<php>} </php>的评论页，在这里可以评价你对<php>if(isset($userinfo['nickname'])) { </php>{$userinfo.nickname}<php>} else { </php>波奇{$userinfo.uid}<php>} </php>看法，分享你的兴趣爱好。" />
+    <php>if($obj == "me") { if($userinfo['groupid'] >= 4 && $userinfo['groupid'] < 11) { </php><META NAME="robots" CONTENT="NOINDEX,NOFOLLOW">
+    <php>} } elseif($obj == "other") { if($huser['groupid']  >= 4 && $huser['groupid'] < 11) { </php><META NAME="robots" CONTENT="NOINDEX,NOFOLLOW">
+    <php>} }</php>
+    <title><php>if(isset($userinfo['nickname'])) { </php>{$userinfo.nickname}<php>} else { </php>波奇{$userinfo.uid}<php>} </php>的评论页 - 波奇网宠物家园、分享宠物的快乐生活</title>
+    <link rel="stylesheet" type="text/css" href="<php>echo autoVer('/Css/uc/global.css');</php>"/>
+    <link rel="stylesheet" type="text/css" href="<php>echo autoVer('/Css/uc/main.css');</php>"/>
+</head>
+<body>
+<!--头部开始-->
+<div class="global_header">
+    <include file="Public:top" />
+
+    <include file="Public:header" />
+</div>
+<!--头部结束-->
+
+<!--主体部分开始-->
+<div class="main clearfix">
+<!--左侧开始-->
+<include file="Public:left" />
+<!--左侧结束-->
+
+<div class="plc_main"><!--中间开始-->
+<div class="main_center" id="mainCenter">
+<div><a href="{$midad.linkpath}" target="_blank"><img src="{$midad.pic_path}" width="540" height="150" alt="{$midad.title}"/></a></div>
+<!--网站公告开始-->
+<div class="gg">
+    <i class="bc"></i>
+    <div id="ggmarquee">
+        <ul>
+            <php>foreach($gonggaoList as $gk => $gonggao) { </php>
+            <php>if($gk % 2 == 0) { </php>
+            <li>
+                <php>} </php>
+                <php>if($gonggao['linkurl']){ </php><a href="{$gonggao.linkurl}" target="_blank">{$gonggao.short_subject}</a> <php>} else { </php>{$gonggao.short_subject} <php>} </php>
+                <php>if($gk % 2 == 1 || $gk == count($gonggaoList)-1) { </php>
+            </li>
+            <php>} </php>
+            <php>} </php>
+        </ul>
+    </div>
+</div>
+<!--网站公告结束-->
+
+<div class="pet_show" id="pet_show">
+    <div class="ks_nav"></div>
+</div>
+<!--微博列表开始-->
+<div class="feed_tab">
+    <ul>
+        <li <php>if($type==5) { </php>class="current"<php>}</php>><a href="/comment/t/5">我发表的评论</a></li>
+        <li <php>if($type==6) { </php>class="current"<php>}</php>><a href="/comment/t/6">我收到的回复</a></li>
+    </ul>
+</div>
+<!--全部动态开始-->
+<div class="feeds">
+    <div class="feed">
+        <php>if(!isset($dynamics) || !$dynamics) { </php>
+        <dl class="feed_list">
+            <dt class="head"></dt>
+            <dd class="content">
+                <p class="feed_list_content"><span class="tips_txt">暂无评论动态</span></p>
+            </dd>
+        </dl>
+        <php> } else { </php>
+        <php>foreach($dynamics as $dk => $dynamic) { </php>
+        <!--1个标准列表循环单项开始-->
+        <dl class="feed_list" >
+            <php> if($dynamic['dtype'] == 33 || $dynamic['dtype'] == 53) { </php>
+            <!-- 评论微博/微博评论回复动态开始 -->
+            <php>if($dynamic['dtype'] == 32) { </php>
+            <dt class="head" unm="{$dynamic.user.nickname}" wid="{$dynamic.data.id}" bds="{$dynamic.data.broadcasts}" pnb="{$dynamic.data.comments}"><a href="{$dynamic.user.url_link}" ><img src="{$dynamic.user.avatar_m}" style="width:50px;" /></a><div class="lhei"><a href="javascript:void(0);" thref="/UcRelation/addBlackList/bUid/{$dynamic.uid}" id='c_ajxbut'>拉入黑名单</a></div></dt>
+            <php>} else { </php>
+            <dt class="head" unm="{$dynamic.user.nickname}" ><a href="{$dynamic.user.url_link}" ><img src="{$dynamic.user.avatar_m}" style="width:50px;" /></a>
+            <!--去除黑名单和自己 start-->
+            <php> if(($dynamic['uid'] != $userinfo['uid']) && ($dynamic['uid'] != 1328680)) {
+                if ($dynamic['relation_status'] != 4 ) {</php>
+                <!--不在我的黑名单里 start-->
+                <div class="lhei"><a id='c_ajxbut'  thref="/UcRelation/addBlackList/bUid/{$dynamic.uid}" href="javascript:void(0);">拉入黑名单</a></div>
+            <php>} else {</php>
+            <!--不在我的黑名单里 end-->
+                <div class="lhei"><a id="c_ajxbut" thref="/UcRealtion/cancelBlack/buid/{$dynamic.uid}" href="javascript:void(0);">解除黑名单</a></div>
+            <php>}}</php>
+            <!--去除黑名单和自己 end-->
+            </dt>
+            <php>} </php>
+            <dd class="content">
+                <!-- 标头开始 -->
+                <php>if($dynamic['dtype'] == 32) { </php>
+                <p class="feed_list_content"><a href="{$dynamic.user.url_link}" class="wname">{$dynamic.user.nickname}</a><span class="tips_txt">{$dynamic.operate_desc}</span></p>
+                <p>&nbsp;<php>if(isset($dynamic['desc'])) { </php>{$dynamic.desc}<php>}</php></p>
+                <php>} else { </php>
+                <p class="feed_list_content">
+                    <php>if($type == 5 && $dynamic['uid'] == $userinfo['uid']) {</php>
+                    <span style="color:#A8A8A8">我</span>
+                    <php>} else { </php>
+                    <a href="{$dynamic.user.url_link}" target="_blank">{$dynamic.user.nickname}</a>
+                    <php>} </php>
+                    <span class="tips_txt">{$dynamic.operate_desc}</span>
+                    <php>if(isset($dynamic['linkurl']) && isset($dynamic['operate_title'])){ </php><a href="{$dynamic.linkurl}" target="_blank">{$dynamic.operate_title}</a><php>} elseif(isset($dynamic['operate_title'])) { </php>{$dynamic.operate_title}<php>} </php>
+                    <php>if(isset($dynamic['operate_desc_suffix'])) { </php><span class="tips_txt">{$dynamic.operate_desc_suffix}</span><php>} </php>
+                </p>
+                &nbsp;&nbsp;<php>if(isset($dynamic['desc'])) { </php>{$dynamic.desc}<php>} </php>
+                <php>} </php>
+                <!-- 标头结束 -->
+                <!-- 转播原微博/评论原微博开始 -->
+                <div class="relay bqwbzb">
+                    <i class="arr"></i>
+                    <php>if(!$dynamic['odata']['id'] || $dynamic['odata']['status'] == 1) { </php>
+                    <p class="feed_list_content">抱歉，此啊呜已被删除。</p>
+                    <php>} else { </php>
+                    <p class="feed_list_content"><a href="{$dynamic.ouser.url_link}" target="_blank" class="wname">@{$dynamic.ouser.nickname}</a>&nbsp; 
+					<php>echo remove_xss($dynamic['odata']['content']);</php>
+					</p>
+                    <php>if(isset($dynamic['odata']['pic_path']) && $dynamic['odata']['pic_path']) { </php>
+                    <!--小图浏览开始-->
+                    <ul class="pic_list wbminpic">
+                        <li><div class="minpic"> <a href="<php>echo get_rewrite_url('UcWeibo', 'weiboComments', $dynamic['wid']);</php>" target="_blank"><img alt="" src="<php>echo C('IMG_DIR');</php>/{$dynamic.odata.pic_path_s}" class="bigcursor"></a> </div></li>
+                    </ul>
+                    <!--小图浏览结束-->
+                    <!--大图浏览开始-->
+                    <div class="pic_origin none wbpicorigin">
+                        <p class="act_btn"> <a class="retract" href="#">收起</a> <i class="wline">|</i> <a class="show_big" href="<php>echo C('IMG_DIR');</php>/{$dynamic.odata.pic_path}" target="_blank">查看大图</a> <i class="wline">|</i> <a class="turn_left" href="#">向左转</a> <i class="wline">|</i> <a class="turn_right" href="#">向右转</a> </p>
+                        <div class="smallcursor"><img src="<php>echo C('IMG_DIR');</php>/{$dynamic.odata.pic_path_b}" width="440" class="smimg" id="smimg"/></div>
+                    </div>
+                    <!--大图浏览结束-->
+                    <php>} </php>
+                    <p class="info">
+                        <span class="date">{$dynamic.odata.format_weibo_time}</span>
+                                            <span class="act">
+                                                <a href="<php>echo get_rewrite_url('UcWeibo', 'weiboComments', $dynamic['odata']['id']);</php>" target="_blank">查看</a><i class="wline">|</i>
+                                                <php>if($dynamic['odata']['allowrecast']) { </php>
+                                                    <php>if($dynamic['odata']['recast']) { </php>
+                                                        <span class="relay_num">已转播({$dynamic.odata.broadcasts})</span>
+                                                    <php>} else { </php>
+                                                        <a href="<php>echo get_rewrite_url('UcWeibo', 'weiboComments', $dynamic['odata']['id']);</php>" target="_blank">转播({$dynamic.odata.broadcasts})</a>
+                                                    <php>} </php>
+                                                    <i class="wline">|</i>
+                                                <php>} </php>
+                                                <a href="<php>echo get_rewrite_url('UcWeibo', 'weiboComments', $dynamic['odata']['id']);</php>" target="_blank">评论({$dynamic.odata.comments})</a>
+                                            </span>
+                    </p>
+                    <php>} </php>
+                </div>
+                <!-- 转播原啊呜/评论原啊呜结束 -->
+                <!-- 动态操作开始 -->
+                <p class="info">
+                    <span class="date">{$dynamic.format_dynamic_time}</span>
+                                    <span class="act">
+                                        <php>if($userinfo['uid'] == $dynamic['uid']) { </php>
+                                            <a href="javascript:void(0);" thref="/Index/ajaxDelDynamic/id/{$dynamic.id}" class="bqdelinfo">删除</a>
+                                        <php>} </php>
+                                        <!-- 评论啊呜/回复啊呜评论 -->
+                                        <php>if($dynamic['dtype'] == 33 || $dynamic['dtype'] == 53 ) { </php>
+                                            <php>if(($dynamic['uid'] != $userinfo['uid']) && ($dynamic['ouid'] == $userinfo['uid'])) { </php>
+                                            <a class="bqplwe" href="<php>echo get_rewrite_url('UcWeibo', 'weiboComments', $dynamic['wid']);</php>?&pid={$dynamic.oid}#reply" target="_blank">评论</a>
+                                            <php>} </php>
+                                        <php>} </php>
+                                    </span>
+                </p>
+                <!-- 动态操作结束 -->
+            </dd>
+            <!-- /评论啊呜/啊呜评论回复动态结束 -->
+            <php>} else { </php>
+            <!-- 其他动态 开始 -->
+            <dt class="head" unm="{$dynamic.user.nickname}" ><a href="{$dynamic.user.url_link}" ><img src="{$dynamic.user.avatar_m}" style="width:50px;" /></a>
+                <!--去除黑名单和自己 start-->
+                <php> if(($dynamic['uid'] != $userinfo['uid']) && ($dynamic['uid'] != 1328680)) {
+                    if ($dynamic['relation_status'] != 4 ) {</php>
+                <!--不在我的黑名单里 start-->
+            <div class="lhei"><a id='c_ajxbut'  thref="/UcRelation/addBlackList/bUid/{$dynamic.uid}" href="javascript:void(0);">拉入黑名单</a></div>
+            <php>} else {</php>
+            <!--不在我的黑名单里 end-->
+            <div class="lhei"><a id="c_ajxbut" thref="/UcRelation/cancelBlack/buid/{$dynamic.uid}" href="javascript:void(0);">解除黑名单</a></div>
+            <php>}}</php>
+            <!--去除黑名单和自己 end-->
+            </dt>
+            <dd class="content">
+                <!-- 标头开始 -->
+                <p class="feed_list_content">
+                    <php>if($type == 5 && $dynamic['uid'] == $userinfo['uid']) {</php>
+                    <span style="color:#A8A8A8">我</span>
+                    <php>} else { </php>
+                    <a href="{$dynamic.user.url_link}" target="_blank">{$dynamic.user.nickname}</a>
+                    <php>} </php>
+                    <span class="tips_txt"><php>echo remove_xss($dynamic['operate_desc']);</php></span>
+                    <php>if(isset($dynamic['linkurl']) && isset($dynamic['operate_title'])){ </php>
+                    <a href="{$dynamic.linkurl}" target="_blank"><php>echo remove_xss($dynamic['operate_title']);</php></a>
+                    <php>} elseif(isset($dynamic['operate_title'])) { </php>
+					<php>echo remove_xss($dynamic['operate_title']);</php>
+                    <php>} </php>
+                    <php>if(isset($dynamic['operate_desc_suffix'])) { </php>
+                    <span class="tips_txt">{$dynamic.operate_desc_suffix}</span>
+                    <php>} </php>
+
+                </p>
+                &nbsp;&nbsp;<php>if(isset($dynamic['desc'])) { </php>{$dynamic.desc}<php>} </php> <php>if($dynamic['dtype'] == 11) { </php><a href="{$dynamic.linkurl}" target="_blank">[详细]</a><php>} </php>
+                <!-- 标头结束 -->
+                <!-- 图片开始 -->
+                <php>if($dynamic['dtype'] == 24 || $dynamic['dtype'] == 52) { </php>
+                <!-- 评论照片/照片评论回复动态开始 -->
+                <php>if(isset($dynamic['first_pic'])) { </php>
+                <!--小图浏览开始-->
+                <ul class="pic_list">
+                    <li>
+                        <div class="minpic">
+                            <a href="{$dynamic.linkurl}" target="_blank"><img alt="" src="<php>echo C('IMG_DIR');</php>/{$dynamic.first_pic_b}" class="bigcursor" ></a>
+                        </div>
+                    </li>
+                </ul>
+                <!--小图浏览结束-->
+                <php>} </php>
+                <!-- 评论照片/照片评论回复动态结束 -->
+                <php>} else { </php>
+                <!-- 其他动态开始 -->
+                <php>if(isset($dynamic['first_pic'])) { </php>
+                <!--小图浏览开始-->
+                <ul class="pic_list">
+                    <li>
+                        <div class="minpic">
+                            <img alt="" src="{$dynamic.first_pic}" class="bigcursor" >
+                        </div>
+                    </li>
+                </ul>
+                <!--小图浏览结束-->
+                <php>} </php>
+                <!-- 其他结束 -->
+                <php>} </php>
+                <!-- 图片结束 -->
+                <!-- 动态操作开始 -->
+                <p class="info">
+                    <span class="date">{$dynamic.format_dynamic_time}</span>
+                                    <span class="act">
+                                        <php>if($userinfo['uid'] == $dynamic['uid']) { </php>
+                                            <a href="javascript:void(0);" thref="/Index/ajaxDelDynamic/id/{$dynamic.id}" class="bqdelinfo">删除</a>
+                                        <php>} </php>
+                                        <php>if(($dynamic['uid'] != $userinfo['uid']) && ($dynamic['ouid'] == $userinfo['uid'])) { </php>
+                                            <a class="bqplwe" href="{$dynamic.linkurl}?&pid={$dynamic.oid}#reply" target="_blank">评论</a>
+                                        <php>} </php>
+                                    </span>
+                </p>
+                <!-- 动态操作结束-->
+            </dd>
+            <!-- 其他动态 结束 -->
+            <php>} </php>
+        </dl>
+        <!--1个标准列表循环单项结束-->
+        <php>} </php>
+        <php>} </php>
+    </div>
+    <!--分页开始-->
+    <div class="page_wrap">
+        <div class="showpage">
+            {$page}
+        </div>
+    </div>
+    <!--分页结束-->
+</div>
+<!--全部动态结束-->
+</div>
+<!--中间结束-->
+
+<!--右侧开始-->
+<div class="main_right">
+    <!--图片广告开始-->
+    <div class="picad">
+        <a href="{$rightad.linkpath}" target="_blank"><img src="{$rightad.pic_path}" width="185" height="120" alt="{$rightad.title}"/></a>
+    </div>
+    <!--图片广告结束-->
+
+    <!--热门话题开始-->
+    <include file="Public:right_thread"/>
+    <!--热门话题结束-->
+
+    <!--热门宠物日记开始-->
+    <include file="Public:right_diary"/>
+    <!--热门宠物日记结束-->
+</div>
+<!--右侧结束-->
+</div>
+</div>
+<!--主体部分结束-->
+<script type="text/javascript">
+    BQ.load("UCBQExp,UCBQMinUP,widget.ImgAdaptive,widget.Marquee,UCComment",function(){
+        BQ.UCComment('commentlist',{'I_DIR':'<php>echo C("I_DIR");</php>'}).exec();
+    });
+</script>
+<!--底部开始-->
+<include file="Public:footer"/>
+<!--底部结束-->

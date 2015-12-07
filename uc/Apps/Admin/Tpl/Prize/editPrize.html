@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>奖品编辑</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<script type='text/javascript' src="__PUBLIC__/Js/jquery.js"></script>
+<script type="text/javascript" src="__ROOT__/Addons/Plugins/ueditor/editor_config.js"></script>  
+<script type="text/javascript" src="__ROOT__/Addons/Plugins/ueditor/editor_all.js"></script>  
+<script type="text/javascript" src="__ROOT__/Addons/Plugins/ueditor/_src/plugins/autoheight.js"></script>  
+<link rel="stylesheet" type="text/css" href="__ROOT__/Addons/Plugins/ueditor/themes/default/ueditor.css">
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+</head>
+<body>
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li><a href="__ROOT__/iadmin.php/Prize/index"><span>抽奖列表</span></a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+
+    <!--日记编辑开始-->
+	<form action='__ROOT__/iadmin.php/Prize/editPrize' method='post'>
+	<input type='hidden' value='{$info.id}' name='data[id]'>
+    <div class="common_tb">
+        <ul>
+            <li>
+                <span class="text">奖品标题：</span>
+                <span class="input_area"><input name="data[title]" type="text" class="input_bk" id="" value="{$info.title}" /></span>
+            </li>
+            <li>
+                <span class="txt">发布时间：{$info.create_time|date="y-m-d H:i:s",###}</span>
+                <span class="txt"></span>
+            </li>
+			<li>
+                <span class="text">初始次数：</span>
+                <span class="input_area"><input name="data[val_num]" type="text" class="input_bk" id="" value="{$info.val_num}" /></span>
+            </li>
+
+			<li>
+                <span class="text">奖品等级：</span>
+                <span class="input_area"><input name="data[prize]" type="text" class="input_bk" id="" value="{$info.prize}" /></span>
+            </li>
+			
+			<if condition="$info['id'] eq 1">
+				<li>
+					<span class="text">出现时间：</span>
+					<span class="input_area"><input name="data[start_time]" type="text" class="input_bk" id="" value="{$info.start_time}" /></span>
+				</li>
+			</if>
+
+            <li>
+                <span class="text">&nbsp;</span>
+                <span class="input_area"><a class="submit_btn" href="javascript:void(0);" onClick='submitFunc();' title="确定"></a></span>
+            </li>	
+        </ul>
+    </div>
+	</form>
+    <!--日记编辑结束-->
+
+</div>
+						
+</body>
+</html>
+<script type='text/javascript'>
+function submitFunc(){
+	$("form").submit();
+}
+</script>

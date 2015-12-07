@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>百科帖子评论管理</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Js/library/ui/static/calendar/calendar.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type="text/javascript" src="__PUBLIC__/Js/bq.js"></script>
+<script type='text/javascript' src='__PUBLIC__/Js/library/ui/form/calender.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+</head>
+<body>
+<include file="Index:isdelete"/>
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li><a href="__ROOT__/iadmin.php/Diary/diaryComment"><span>日记评论管理</span></a></li>
+        <li><a href="__ROOT__/iadmin.php/Album/photoComment"><span>图片评论管理</span></a></li>
+        <li><a href="__ROOT__/iadmin.php/Article/articleComment"><span>文章评论管理</span></a></li>
+        <li class="current"><a href="__ROOT__/iadmin.php/Thread/threadComment"><span>百科帖子评论管理</span></a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+	<form action='__ROOT__/iadmin.php/Thread/threadComment' method='get'>
+    <!--搜索开始-->
+    <div class="search_box">
+        <div class="search">
+            <div class="title">
+                <span class="txt">评论内容：</span>
+                <input name="data[content]" id="clearText_1" val='输入评论内容关键字'  type="text" class="input_txt" value="<?php if($content){echo $content;}else{echo '输入评论内容关键字';}?>" />
+            </div>
+            <div class="date">
+                  <span class="txt">发布时间：</span>
+                <input class="input_date calendar" type="text" name="data[starttime]" id="calender1" value="<?php if($starttime){echo $starttime;}?>"/>
+                <span class="txt">至</span>
+                <input class="input_date calendar" type="text" name="data[endtime]" id="calender2" value="<?php if($endtime){echo $endtime;}?>"/>
+            </div>
+			<div class="btn_box"><input type='button' class='calendarClear' name='' value='清除时间'></div>
+			<div >
+			<span class="txt">分类：</span>
+			<select class='select_menu' name='data[category_id]' id='category_id'>
+				<option value='-1'<?php if($category_id==-1){echo 'selected';}?>>全部</option>
+				<php>foreach($catList as $key=>$val) { </php>
+					<option value='{$val.id}' <?php if($category_id==$val['id']){echo 'selected';}?>> {$val.name} </option>
+				<php>} </php>
+			</select>
+			</div>
+            <div class="title">
+                <span class="txt">帖子标题：</span>
+                <input name="data[title]" id="clearText_2" val='输入帖子标题关键字'  type="text" class="input_txt" value="<?php if($title){echo $title;}else{echo '输入帖子标题关键字';}?>" />
+            </div>
+            <div class="nick">
+                 <span class="txt">用户搜索：</span>
+                <input name="data[user]" type="text" id="clearText_3" val='输入用户呢称或id'  class="input_txt" value="<?php if($user){echo $user;}else{echo '输入用户呢称或id';}?>"/>
+                <select class="select_menu" name="data[select]" id="select">
+                    <option value='1' <?php if($select==1){echo 'selected';}?> >用户昵称</option>
+                    <option value='2' <?php if($select==2){echo 'selected';}?> >用户ID</option>
+                </select>
+				<span class="txt">是否审核：</span>
+                <select class="select_menu" name="data[is_check]">
+					<option value='-1'>请选择</option>
+                    <option value='0' <?php if(isset($is_check) && $is_check==0){echo 'selected';}?>>待审核</option>
+                    <option value='1' <?php if(isset($is_check) && $is_check==1){echo 'selected';}?> >已审核</option>
+                </select>
+            </div>
+            <div class="btn_box"><a class="search_btn" onClick='submitFun();' href="javascript:void(0);" title="查询">查询</a></div>
+        </div>
+    </div>
+    <!--搜索结束-->
+	</form>
+
+    
+    <!--数据列表开始-->
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+        <thead>
+            <tr>
+                <th width="5%">选中</th>
+                <th width="5%">ID</th>
+                <th width="30%">评论内容</th>
+                <th width="15%">帖子标题</th>
+				<th width='5%'>分类</th>
+                <th width="10%">用户昵称/ID</th>
+                <th width="15%"><a class="sort_desc" href="javascript:void(0);">发布时间<i></i></a></th>
+                <th width="5%">是否审核</th>
+                <th width="10%">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <volist name='threadComments' id='vo'>
+			<tr>
+                <td width="5%"><input class="dx" type="checkbox" value="{$vo.id}" id="blogID_{$vo.id}" name="blogID"></td>
+                <td width="5%">{$vo.id}</td>
+                <td align="left" width="30%" ><php>if($vo['hasImg'] == 1){</php><strong>[图]</strong><php>}</php><span class="title">{$vo.content}</span></td>
+                <td align="left" width="15%"><span class="title"><a href="<php>echo C('BLOG_DIR'); </php>/post/{$vo.thread_id}.html" target="_blank" title="{$vo.title}">{$vo.title}</a></span></td>
+				<td width="5%">{$vo.name}</td>
+                <td width="10%">{$vo.nickname}</td>
+                <td width="15%">{$vo.create_time|date="y-m-d H:i",###}</td>
+				<td width="5%">&nbsp;<php>if($vo['is_check']==1){</php>已审核<php>}else{</php>未审核<php>}</php></td>
+                <td width="10%"><a href="/iadmin.php/Thread/cdetail/id/{$vo.id}" target="_blank">详细</a><span class="line">|</span>
+					<php>if($vo['is_check']==0){</php><a href="/iadmin.php/Thread/checkComment?id={$vo.id}&page={$page}">审核通过</a><span class="line">|</span><php>}</php><a href="javascript:;" onCLick="return urlDelete(2,'__ROOT__/iadmin.php/Thread/deleteThreadComment?deleteThreadComment={$vo.id}&page=<?php echo $page;?>')">删除</a></td>
+            </tr>
+			</volist>
+
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="9" align="left"><label><input class="select_all" type="checkbox" value="全选" id="blogID" name="blogID">全选</label> <a class="del_btn" href="#" actions='21' controllers='12' title="删除"></a></td>
+            </tr>
+        </tfoot>
+    </table>
+    <!--数据列表结束-->
+    
+    <!--分页开始-->
+	<?php echo $pageHtml;?>
+    <!--分页结束-->
+    <input type='hidden' value='<?php echo $url;?>' id='url'>
+</div>
+
+<script type='text/javascript'>
+//页面加载一次
+window.onload=function(){
+		var url = $('#url').val();
+		if(url){
+			var maxCode=parent.oMapReloadInfo['maxCode'];
+			var code=parent.oMapReloadInfo['code'];
+			var difference = maxCode-code;
+			if(difference==1){
+				parent.oMapReloadInfo['maxCode']=maxCode+1;
+				location.href=url;
+			}else{
+				parent.oMapReloadInfo['code']=code+1;
+			}
+		}
+}
+BQ.ui.form.Calender('#calender1');
+BQ.ui.form.Calender('#calender2');
+</script>
+</body>
+</html>

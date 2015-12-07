@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>编辑宠物详情</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Js/library/ui/static/calendar/calendar.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type="text/javascript" src="__PUBLIC__/Js/bq.js"></script>
+<script type='text/javascript' src='__PUBLIC__/Js/library/ui/form/calender.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+</head>
+<body>
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li><a href="__ROOT__/iadmin.php/Pet/index"><span>宠物管理</span></a><a class="close" href="javascript:void(0);" title="关闭标签"></a></li>
+        <li class="current"><a href="__ROOT__/iadmin.php/Pet/editPage?id={$id}"><span>编辑宠物</span></a><a class="close" href="javascript:void(0);" title="关闭标签"></a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+
+	<form action='__ROOT__/iadmin.php/Pet/postEdit' method='post'>
+	 <input name="data[id]" type="hidden" class="input_bk w130" id="textfield1" value="{$id}" />
+    <!--修改宠物开始-->
+    <div class="common_tb">
+                <ul>
+                    <li> <span class="text">宠物昵称：</span> <span class="input_area">
+                        <input name="data[petname]" type="text" class="input_bk w130" id="textfield1" value="{$Pet[0].petname}" />
+                        </span></li>
+                    <li> <span class="text">宠物头像：</span> <span class="input_area">
+                         <img <php>if($Pet[0]['picpath']!=''){echo "src='/".C('IMG_DIR').$Pet[0]['picpath']."'";}else{echo "src='__PUBLIC__/Admin/Images/no_pet80.gif'";}</php> width="80" height="80" />
+                        </span>
+                        <span class="tips_txt"><label><input class="pb" type="checkbox" name="is_deletepic" value='1' id="checkbox" />删除头像</label></span>
+                    </li>
+                    <li>
+                        <span class="text">宠物种类：</span>
+                        <span class="input_area">
+                            <span class="pets_name">{$Pet.0.title}</span>
+                          <!--  <a href="javascript:void(0);">修改</a>-->
+                        </span>
+                    </li>
+                    <li> <span class="text">性 别：</span> <span class="input_area">
+                        <select class="select_bk" name="data[petgender]" id="select2">
+                            <option value='1' <?php if($Pet[0]['petgender']==1){echo "selected='selected'";}?>>公</option>
+                            <option value='2' <?php if($Pet[0]['petgender']==2){echo "selected='selected'";}?>>母</option>
+                        </select>
+                        </span> </li>
+                    <li> <span class="text">体 重：</span> <span class="input_area">
+                        <input name="data[weight]" type="text" class="input_bk w130" value='{$Pet[0].weight}' id=""/>
+                        </span><span class="unit">kg</span> </li>
+                    <li> <span class="text">生 日：</span> <span class="input_area">
+                        <input name="data[petbday]" type="text" class="input_bk calendar" id='calender1' value="{$Pet[0].petbday|date='Y-m-d',###}"/>
+                        </span></li>
+                    <li> <span class="text">相识时间：</span> <span class="input_area">
+                        <input name="data[adopte_time]" type="text" class="input_bk calendar" id='calender2' value="{$Pet[0].adopte_time|date='Y-m-d',###}"/>
+                        </span></li>
+                    <li> <span class="text">血 统：</span> <span class="input_area">
+                        <label>
+                            <input type="radio" <?php if($Pet[0]['lineages']==1){echo 'checked';}?> name="data[lineages]" value="1"/>
+                        纯种</label>
+                        <label>
+                            <input type="radio" <?php if($Pet[0]['lineages']==2){echo 'checked';}?> name="data[lineages]" value="2"/>
+                        混血（串串）</label>
+                        </span> </li>
+                    <li> <span class="text">宠物状态：</span> <span class="input_area">
+                        <select class="select_bk" name="data[petstatus]" id="select1">
+                      
+							<php>
+								foreach($PET_TYPE as $key=>$val){
+									if($Pet[0]['petstatus']==$key){
+										echo "<option value='$key' selected='selected'>".$val."</option>";
+									}else{
+										echo "<option value='$key'>".$val."</option>";
+									}
+									
+								}
+							</php>
+                        </select>
+                        </span> </li>
+                    <li> <span class="text">每月花费：</span> <span class="input_area">
+                        <select class="select_bk" name="data[spending]" id="select2">
+                           
+							
+							<php>
+								foreach($SPENDING as $key=>$val){
+									if($Pet[0]['spending']==$key){
+										echo "<option value='$key' selected='selected'>".$val."</option>";
+									}else{
+										echo "<option value='$key'>".$val."</option>";
+									}
+									
+								}
+							</php>
+                        </select>
+                        </span> </li>
+                    <li> <span class="text">当家宠物：</span>
+                        <span class="input_area">
+                        <select class="select_bk" name="data[is_default]" id="select2">
+                            <option value='1' <?php if($Pet[0]['is_default']==1){echo "selected='selected'";}?>>是</option>
+                            <option value='0' <?php if($Pet[0]['is_default']==0){echo "selected='selected'";}?>>否</option>
+                        </select>
+                        </span>
+                    </li>
+                    <li> <span class="text">驱 虫：</span> <span class="input_area">
+                        <select class="select_bk" name="data[is_repellend]" id="select2">
+                            <option value='0' <?php if($Pet[0]['is_repellend']==0){echo "selected='selected'";}?>>是</option>
+                            <option value='1' <?php if($Pet[0]['is_repellend']==1){echo "selected='selected'";}?>>否</option>
+                        </select>
+                        <input name="data[repell_time]" type="text" class="input_bk calendar" id="" value="{$Pet[0].repell_time|date='Y-m-d',###}"/>
+                        </span>
+                    </li>
+                    <li> <span class="text">免 疫：</span> <span class="input_area">
+                        <select class="select_bk" name="data[is_immnued]" id="select2">
+                            <option value='0' <?php if($Pet[0]['is_immnued']==0){echo "selected='selected'";}?>>是</option>
+                            <option value='1' <?php if($Pet[0]['is_immnued']==1){echo "selected='selected'";}?>>否</option>
+                        </select>
+                        <input name="data[immune_time]" type="text" class="input_bk calendar" id="calender4"  value="{$Pet[0].immune_time|date='Y-m-d',###}"/>
+                        </span>
+                    </li>
+                    <li> <span class="text">性 格：</span> <span class="input_area">
+                        <textarea name="data[character]" class="textarea_bk" id="textfield3">{$Pet[0].character}</textarea>
+                        </span></li>
+                    <li> <span class="text">喜欢的食物：</span> <span class="input_area">
+                        <textarea name="data[foods]" class="textarea_bk" id="textfield3">{$Pet[0].foods}</textarea>
+                        </span></li>
+                    <li> <span class="text">喜欢的玩具：</span> <span class="input_area">
+                        <textarea name="data[toys]" class="textarea_bk" id="textfield3">{$Pet[0].toys}</textarea>
+                        </span></li>
+                    <li> <span class="text">拿手好戏：</span> <span class="input_area">
+                        <textarea name="data[specialty]" class="textarea_bk" id="textfield3">{$Pet[0].specialty}</textarea>
+                        </span></li>
+                    <li> <span class="text">掌握的指令：</span> <span class="input_area">
+                        <textarea name="data[instructions]" class="textarea_bk" id="textfield3">{$Pet[0].instructions}</textarea>
+                        </span></li>
+                    <li> <span class="text">&nbsp;</span> <span class="input_area"> <a class="submit_btn" onClick='submitFun();' href="javascript:void(0);" title="确定"></a> <a class="cancel_btn" href="javascript:void(0);" onClick="return backfun('/iadmin.php/Pet/index');" title="取消"></a></span> </li>
+                </ul>
+    </div>
+    <!--修改宠物结束-->
+	</form>
+
+</div>
+</body>
+</html>
+<script type='text/javascript'>
+BQ.ui.form.Calender('#calender1');
+BQ.ui.form.Calender('#calender2');
+BQ.ui.form.Calender('#calender3');
+BQ.ui.form.Calender('#calender4');
+</script>

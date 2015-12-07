@@ -1,0 +1,41 @@
+<script type="text/javascript">var config={"local":"<php>echo C('STATIC_DIR');</php>","idir":"<php>echo C('I_DIR');</php>","i_dir":"<php>echo C('I_DIR');</php>","static_dir":"<php>echo C('STATIC_DIR');</php>","userinfo_dir":"<php>echo C('BLOG_DIR');</php>/userinfo","uid":"<php>echo $userinfo['uid'];</php>","curl":"<php>echo C('C_DIR');</php>","lglocal":"<php>echo C('C_DIR');</php>","shop_dir":"<php>echo C('SHOP_DIR');</php>"};</script>
+<script type="text/javascript" src="<php>echo autoVer('/Js/bq.js');</php>"></script>
+<script type="text/javascript">BQ.load("jQuery,UCPublic",function(){ });</script>
+<link href="<php>echo autoVer('/Css/public/static_header.css');</php>" rel="stylesheet" />
+<script src="<php>echo autoVer('/Js1/core/jquery.js');</php>"></script>
+<script src="<php>echo autoVer('/Js1/project/public/public_header.js');</php>"></script>
+<!--头部导航开始-->
+<div id="header" style="height:39px;"><div id="top">
+	<div class="top_left"><img src="<php>echo C('STATIC_DIR');</php>/Images/userinfo/kouhao.gif" alt="波奇全面关爱宠物生活" /></div>
+	<div class="top_right"><a href="<php>echo C('BLOG_DIR');</php>" target="_blank">波奇网</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="<php>echo C('SHOP_DIR');</php>" target="_blank">我的商城</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="<php>echo C('BBS_DIR');</php>"  target="_blank">我的论坛</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="<php>echo C('VET_DIR');</php>"  target="_blank">宠物服务</a></div>
+	<div class="top_icon">
+		<a href="http://e.weibo.com/boqii" target="_blank" title="关注波奇微博"></a>
+		<a class="top_sta" onclick="AddFavorite(window.location,document.title)" href="javascript:void(0);" title="收藏波奇网"></a>
+		<a class="top_tel" title="波奇手机客户端" href="<php>echo C('BLOG_DIR');</php>/subject/mobile/" target="_blank"></a>
+	</div>
+	<php>if($userinfo){</php>
+	<div class="message"><p id="notice11">|&nbsp;&nbsp;&nbsp;&nbsp;消息</p>
+	<p>&nbsp;&nbsp;|</p>
+	</div>
+	<div class="user_select">
+		<span>{$userinfo.nickname}</span>
+		<ul>
+			<li><a href="<php>echo C('BLOG_DIR');</php>/userinfo">个人中心</a></li>
+			<li><a href="<php>echo C('I_DIR');</php>">我的主页</a></li>
+			<li><a href="#" onclick="location.href='<php>echo C('BLOG_DIR');</php>/user/logout?referer={$thisurl}'">退出</a></li>
+		</ul>
+	</div>
+	<php>}else{</php>
+	<div class="message">
+	<p>&nbsp;&nbsp;|</p>
+	</div>
+	<div class="user_dl">
+		<span>[<a href="<php>echo get_rewrite_url('User', 'login');</php>">登录</a>] 或 [<a href="<php>echo get_rewrite_url('User', 'register');</php>">注册</a>]</span>
+		<span class="weibo"><a href="https://api.weibo.com/oauth2/authorize?client_id=4030222662&redirect_uri=http://shop.boqii.com/api/weibo/callback.php&response_type=code">微博登录</a></span>
+		<span class="qq"><a href="#" onclick="toQzoneLogin()">QQ登录</a></span>
+	</div>
+	<php>}</php>
+   <!--<div class="mess_cont"><span>10条新通知，</span><a href="#">查看通知</a><p>关闭</p></div>-->
+</div>
+</div>
+<!--头部导航结束-->

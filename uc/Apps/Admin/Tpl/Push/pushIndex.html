@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>话题选择</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+<style type='text/css'>
+.popup_layer .setnotice_class{
+	display:none;
+}
+</style>
+</head>
+<body>
+<include file="Index:isdelete" />
+
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li><a href="__ROOT__/iadmin.php/Push/index"><span>热门话题排序</span></a></li>
+        <li class="current"><a href="__ROOT__/iadmin.php/Push/pushIndex"><span>热门话题推荐</span></a></li>
+		<li><a href="__ROOT__/iadmin.php/Push/noticePage"><span>公告管理</span></a></li>
+		<li><a href="__ROOT__/iadmin.php/Push/baiKePage"><span>百科小知识</span></a></li>
+		<li class="btn"><a class="add_btn" href="__ROOT__/iadmin.php/Push/addPushPage">创建个人中心推荐</a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+    <!--数据列表开始-->
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+        <thead>
+
+            <tr>
+                <th width="45">选中</th>
+                <th width="5%">ID</th>
+                <th width="30%">话题标题</th>
+                <th width="15%">浏览数</th>
+                <th width="15%">用户昵称</th>
+                <th width="15%">发布时间</th>
+                <th>操作</th>
+            </tr>
+
+        </thead>
+        <tbody>
+			
+			<volist name='bbsThreads' id='vo'>
+            <tr>
+                <td><input class="dx" type="checkbox" value="{$vo.tid}" id="blogID_{$vo.tid}" name="blogID"></td>
+                <td>{$vo.tid}</td>
+                <td align="left"><span class="title">{$vo.subject}</span></td>
+                <td>{$vo.views}</td>
+                <td>{$vo.author}</td>
+                <td>{$vo.dateline|date="y-m-d H:i:s",###}</td>
+                <td><if condition="$vo.ispush eq 1"><a href="javascript:;" onCLick="return urlDelete(2,'__ROOT__/iadmin.php/Push/pushCancel?pushCancel={$vo.tid}');">取消推荐</a><else/><a href="javascript:;" onCLick="return urlDelete(2,'__ROOT__/iadmin.php/Push/pushHandle?pushHandle={$vo.tid}');">推荐</a></if></td>
+            </tr>
+			</volist>
+            
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="8" align="left"><label><input class="select_all" type="checkbox" value="全选" id="blogID" name="blogID">全选</label> <a class="recommend_btn" actions='9' controllers='5' href="#" title="推荐"></a></td>
+            </tr>
+        </tfoot>
+    </table>
+    <!--数据列表结束-->
+    
+    <!--分页开始-->
+    
+    <!--分页结束-->
+    
+</div>
+</body>
+<script type='text/javascript'>
+$(document).ready(function(){
+	$("#isdelete .info").html("<i class='icon_ask'></i>确定推荐或取消推荐该信息？");
+	
+});
+</script>
+</html>

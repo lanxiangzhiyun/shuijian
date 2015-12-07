@@ -1,0 +1,117 @@
+#首页
+rewrite "^/u/([0-9]{1,})$" /index.php/Index/index/uid/$1 last;
+rewrite "^/u/([0-9]{1,})/p/([0-9]{1,})$" /index.php/Index/index/uid/$1/p/$2 last;
+rewrite "^/u/([0-9]{1,})/t/([2-4]{1})$" /index.php/Index/index/uid/$1/type/$2 last;
+rewrite "^/u/([0-9]{1,})/t/([2-4]{1})/p/([0-9]{1,})$" /index.php/Index/index/uid/$1/type/$2/p/$3 last;
+#微博
+rewrite "^/weibo/u/([0-9]{1,})$" /index.php/UcWeibo/weibo/uid/$1 last;
+rewrite "^/weibo/u/([0-9]{1,})/p/([0-9]{1,})$" /index.php/UcWeibo/weibo/uid/$1/p/$2 last;
+rewrite "^/hotweibo/u/([0-9]{1,})$" /index.php/UcWeibo/hotWeibo/uid/$1 last;
+rewrite "^/hotweibo/u/([0-9]{1,})/p/([0-9]{1,})$" /index.php/UcWeibo/hotWeibo/uid/$1/p/$2 last;
+rewrite "^/weibo/w/([0-9]{1,})$" /index.php/UcWeibo/weiboComments/wid/$1 last;
+rewrite "^/weibo/w/([0-9]{1,})/p/([0-9]{1,})$" /index.php/UcWeibo/weiboComments/wid/$1/p/$2 last;
+#日记
+rewrite "^/diary/u/([0-9]{1,})$" /index.php/UcDiary/diaryList/uid/$1 last;
+rewrite "^/diary/u/([0-9]{1,})/p/([0-9]{1,})$" /index.php/UcDiary/diaryList/uid/$1/p/$2 last;
+rewrite "^/diary/u/([0-9]{1,})/t_([0-9]{1,})/$" /index.php/UcDiary/diaryList/uid/$1/typeid/$2 last;
+
+rewrite "^/diary/u/([0-9]{1,})/t_([0-9]{1,})/o/([a-z]{1,})/w/([0-9]{1})$" /index.php/UcDiary/diaryList/uid/$1/typeid/$2/orderby/$3/switch/$4 last;
+
+rewrite "^/diary/u/([0-9]{1,})/t_([0-9]{1,})/p/([0-9]{1,})$" /index.php/UcDiary/diaryList/uid/$1/typeid/$2/p/$3 last;
+rewrite "^/diary/u/([0-9]{1,})/t_([0-9]{1,})/o/([a-z]{1,})/w/([0-9]{1})/p/([0-9]{1,})$" /index.php/UcDiary/diaryList/uid/$1/typeid/$2/orderby/$3/switch/$4/p/$5 last;
+rewrite "^/diary/u/([0-9]{1,})/y/([0-9]{1,})$" /index.php/UcDiary/diaryList/uid/$1/ymonth/$2 last;
+
+rewrite "^/diary/u/([0-9]{1,})/o/([a-z]{1,})/w/([0-9]{1})$" /index.php/UcDiary/diaryList/uid/$1/orderby/$2/switch/$3 last;
+rewrite "^/diary/u/([0-9]{1,})/o/([a-z]{1,})/w/([0-9]{1})/y/([0-9]{1,})$" /index.php/UcDiary/diaryList/uid/$1/orderby/$2/switch/$3/ymonth/$4 last;
+
+rewrite "^/diary/u/([0-9]{1,})/o/([a-z]{1,})/w/([0-9]{1})/p/([0-9]{1})$" /index.php/UcDiary/diaryList/uid/$1/orderby/$2/switch/$3/p/$4 last;
+rewrite "^/diary/u/([0-9]{1,})/o/([a-z]{1,})/w/([0-9]{1})/y/([0-9]{1,})/p/([0-9]{1})$" /index.php/UcDiary/diaryList/uid/$1/orderby/$2/switch/$3/ymonth/$4/p/$5 last;
+
+#rewrite "^/diary/u/([0-9]{1,})/y/([0-9]{1,})$" /index.php/UcDiary/diaryList/uid/$1/y/$2 last;
+#rewrite "^/diary/u/([0-9]{1,})/y/([0-9]{1,})$" /index.php/UcDiary/diaryList/uid/$1/y/$2 last;
+rewrite "^/diary/i/([0-9]{1,}).html$" /index.php/UcDiary/diary/id/$1 last;
+#RewriteCond %{QUERY_STRING} "^/rid=([0-9]{1,})$
+#rewrite "^/diary/i/([0-9]{1,}).html$" /index.php/UcDiary/diary/id/$1/rid/%1 last;
+#rewrite "^/diary/i/([0-9]{1,})/p/([0-9]{1,}).html$" /index.php/UcDiary/diary/id/$1/p/$2 last;
+#相册
+rewrite "^/photo/u/([0-9]{1,})$" /index.php/UcAlbum/photo/uid/$1 last;
+rewrite "^/photo/u/([0-9]{1,})/p/([0-9]{1,})$" /index.php/UcAlbum/photo/uid/$1/p/$2 last;
+rewrite "^/photo/u/([0-9]{1,})/t_([0-9]{1,})/$" /index.php/UcAlbum/photo/uid/$1/petId/$2 last;
+rewrite "^/photo/u/([0-9]{1,})/t_([0-9]{1,})/p/([0-9]{1,})$" /index.php/UcAlbum/photo/uid/$1/petId/$2/p/$3 last;
+rewrite "^/photo/a/([0-9]{1,})$" /index.php/UcAlbum/photoList/aid/$1 last;
+rewrite "^/photo/a/([0-9]{1,})/p/([0-9]{1,})$" /index.php/UcAlbum/photoList/aid/$1/p/$2 last;
+rewrite "^/photo/p/([0-9]{1,}).html$" /index.php/UcAlbum/photoshow/pid/$1 last;
+rewrite "^/photo/p/([0-9]{1,})/p/([0-9]{1,}).html$" /index.php/UcAlbum/photoshow/pid/$1/p/$2 last;
+#社区
+rewrite "^/forum/u/([0-9]{1,})$" /index.php/UcForum/forum/uid/$1 last;
+rewrite "^/forum/u/([0-9]{1,})/p/([0-9]{1,})$" /index.php/UcForum/forum/uid/$1/p/$2 last;
+rewrite "^/forum/u/([0-9]{1,})/type/([0-1]{1,})$" /index.php/UcForum/forum/uid/$1/type/$2 last;
+rewrite "^/forum/u/([0-9]{1,})/type/([0-1]{1,})/p/([0-9]{1,})$" /index.php/UcForum/forum/uid/$1/type/$2/p/$3 last;
+rewrite "^/reforum/u/([0-9]{1,})$" /index.php/UcForum/reForum/uid/$1 last;
+rewrite "^/reforum/u/([0-9]{1,})/p/([0-9]{1,})$" /index.php/UcForum/reForum/uid/$1/p/$2 last;
+rewrite "^/reforum/u/([0-9]{1,})/type/([0-1]{1,})$" /index.php/UcForum/reForum/uid/$1/type/$2 last;
+rewrite "^/reforum/u/([0-9]{1,})/type/([0-1]{1,})/p/([0-9]{1,})$" /index.php/UcForum/reForum/uid/$1/type/$2/p/$3 last;
+rewrite "^/groupforum/u/([0-9]{1,})$" /index.php/UcForum/attentionGroup/uid/$1 last;
+rewrite "^/groupforum/u/([0-9]{1,})/p/([0-9]{1,})$" /index.php/UcForum/attentionGroup/uid/$1/p/$2 last;
+rewrite "^/tforum/u/([0-9]{1,})$" /index.php/UcForum/attentionThread/uid/$1 last;
+rewrite "^/tforum/u/([0-9]{1,})/p/([0-9]{1,})$" /index.php/UcForum/attentionThread/uid/$1/p/$2 last;
+rewrite "^/tforum/u/([0-9]{1,})/type/([0-1]{1,})$" /index.php/UcForum/attentionThread/uid/$1/type/$2 last;
+rewrite "^/tforum/u/([0-9]{1,})/type/([0-1]{1,})/p/([0-9]{1,})$" /index.php/UcForum/attentionThread/uid/$1/type/$2/p/$3 last;
+#关系
+rewrite "^/follow/u/([0-9]{1,})$" /index.php/UcRelation/follow/uid/$1 last;
+rewrite "^/follow/u/([0-9]{1,})/p/([0-9]{1,})$" /index.php/UcRelation/follow/uid/$1/p/$2 last;
+rewrite "^/fans/u/([0-9]{1,})$" /index.php/UcRelation/fans/uid/$1 last;
+rewrite "^/fans/u/([0-9]{1,})/p/([0-9]{1,})$" /index.php/UcRelation/fans/uid/$1/p/$2 last;
+rewrite "^/friends/u/([0-9]{1,})$" /index.php/UcRelation/friends/uid/$1 last;
+rewrite "^/friends/u/([0-9]{1,})/p/([0-9]{1,})$" /index.php/UcRelation/friends/uid/$1/p/$2 last;
+rewrite "^/invite/u/([0-9]{1,})$" /index.php/UcRelation/invite/uid/$1 last;
+rewrite "^/invite/u/([0-9]{1,})/p/([0-9]{1,})$" /index.php/UcRelation/invite/uid/$1/p/$2 last;
+
+#评论
+rewrite "^/comment$" /index.php/UcComment/commentList last;
+rewrite "^/comment/t/([0-9]{1,})$" /index.php/UcComment/commentList/t/$1 last;
+rewrite "^/comment/p/([0-9]{1,})$" /index.php/UcComment/commentList/p/$1 last;
+rewrite "^/comment/t/([0-9]{1,})/p/([0-9]{1,})$" /index.php/UcComment/commentList/t/$1/p/$2 last;
+
+#搜索
+rewrite "^/search$" /index.php/UcSearch/search last;
+rewrite "^/search/p/([0-9]{1,})$" /index.php/UcSearch/search/p/$1 last;
+
+#关系小搜索
+rewrite "^/follow/u/([0-9]{1,})/n/(.+)$" /index.php/UcRelation/follow/uid/$1/nickname/$2 last;
+rewrite "^/follow/u/([0-9]{1,})/n/(.+)/p/([0-9]{1,})$" /index.php/UcRelation/follow/uid/$1/nickname/$2/p/$3 last;
+rewrite "^/fans/u/([0-9]{1,})/n/(.+)$" /index.php/UcRelation/fans/uid/$1/nickname/$2 last;
+rewrite "^/fans/u/([0-9]{1,})/n/(.+)/p/([0-9]{1,})$" /index.php/UcRelation/fans/uid/$1/nickname/$2/p/$3 last;
+rewrite "^/friends/u/([0-9]{1,})/n/(.+)$" /index.php/UcRelation/friends/uid/$1/nickname/$2 last;
+rewrite "^/friends/u/([0-9]{1,})/n/(.+)/p/([0-9]{1,})$" /index.php/UcRelation/friends/uid/$1/nickname/$2/p/$3 last;
+
+#百科模块
+#rewrite "^/baike/u/([0-9]{1,})$" /index.php/UcBaike/category/uid/$1 last;
+#rewrite "^/baike/u/([0-9]{1,})/p/([0-9]{1,})$" /index.php/UcBaike/category/uid/$1/p/$2 last;
+#rewrite "^/tbaike/u/([0-9]{1,})$" /index.php/UcBaike/team/uid/$1 last;
+#rewrite "^/tbaike/u/([0-9]{1,})/p/([0-9]{1,})$" /index.php/UcBaike/team/uid/$1/p/$2 last;
+#rewrite "^/pbaike/u/([0-9]{1,})$" /index.php/UcBaike/post/uid/$1 last;
+#rewrite "^/pbaike/u/([0-9]{1,})/p/([0-9]{1,})$" /index.php/UcBaike/post/uid/$1/p/$2 last;
+#rewrite "^/rebaike/u/([0-9]{1,})$" /index.php/UcBaike/repost/uid/$1 last;
+#rewrite "^/rebaike/u/([0-9]{1,})/p/([0-9]{1,})$" /index.php/UcBaike/repost/uid/$1/p/$2 last;
+#新百科模块
+rewrite "^/baike/u/([0-9]{1,})$" /index.php/UcBaike/collection/uid/$1 last;
+rewrite "^/baike/u/([0-9]{1,})/p/([0-9]{1,})$" /index.php/UcBaike/collection/uid/$1/p/$2 last;
+rewrite "^/abaike/u/([0-9]{1,})$" /index.php/UcBaike/attention/uid/$1 last;
+rewrite "^/abaike/u/([0-9]{1,})/p/([0-9]{1,})$" /index.php/UcBaike/attention/uid/$1/p/$2 last;
+rewrite "^/pbaike/u/([0-9]{1,})$" /index.php/UcBaike/ask/uid/$1 last;
+rewrite "^/pbaike/u/([0-9]{1,})/p/([0-9]{1,})$" /index.php/UcBaike/ask/uid/$1/p/$2 last;
+rewrite "^/rebaike/u/([0-9]{1,})$" /index.php/UcBaike/reply/uid/$1 last;
+rewrite "^/rebaike/u/([0-9]{1,})/p/([0-9]{1,})$" /index.php/UcBaike/reply/uid/$1/p/$2 last;
+rewrite "^/rebaike/u/([0-9]{1,})/s/([0-9]{1,})$" /index.php/UcBaike/reply/uid/$1/status/$2 last;
+rewrite "^/rebaike/u/([0-9]{1,})/s/([0-9]{1,})/p/([0-9]{1,})$" /index.php/UcBaike/reply/uid/$1/status/$2/p/$3 last;
+
+location ^~ /index.php {
+   rewrite "^/index.php/(.*)$" /index.php?s=$1 last;
+}
+location ^~ /iadmin.php {
+   rewrite "^/iadmin.php/(.*)$" /iadmin.php?s=$1 last;
+}
+if (!-e $request_filename) {
+   rewrite "^(.*)$" /index.php?s=$1 last;
+}

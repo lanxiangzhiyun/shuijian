@@ -1,0 +1,662 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<php>if($huser['groupid']  >= 4 && $huser['groupid'] < 11) { </php><META NAME="robots" CONTENT="NOINDEX,NOFOLLOW"><php>} </php>
+<meta name="keywords" content="<php>if(isset($huser['nickname'])) { </php>{$huser.nickname}<php>} else { </php>波奇{$huser.uid}<php>} </php>的宠物家园" />
+<meta name="description" content="<php>if(isset($huser['nickname'])) { </php>{$huser.nickname}<php>} else { </php>波奇{$huser.uid}<php>} </php>在波奇宠物家园分享和宠物们的快乐生活<php>if(isset($_GET['p']) && $_GET['p'] >= 2) { </php>，第{$_GET['p']}页<php>} </php>，记录宠物宝贝的成长过程，和好友们一起见证幸福点滴。" />
+<title><php>if(isset($huser['nickname'])) { </php>{$huser.nickname}<php>} else { </php>波奇{$huser.uid}<php>} </php>的宠物家园<php>if(isset($_GET['p']) && $_GET['p'] >= 2) { </php> - 页{$_GET['p']}<php>} </php> - 波奇网宠物家园、分享宠物的快乐生活</title>
+<link rel="stylesheet" type="text/css" href="<php>echo autoVer('/Css/uc/global.css');</php>"/>
+<link rel="stylesheet" type="text/css" href="<php>echo autoVer('/Css/uc/main.css');</php>"/>
+</head>
+<body>
+<!--头部开始-->
+<div class="global_header">
+    <!--头部导航开始-->
+    <include file="Public:top"/>
+    <!--头部导航结束--> 
+    
+    <!--nav导航开始-->
+    <include file="Public:header"/>
+    <!--nav导航结束--> 
+</div>
+<!--头部结束-->
+
+<!--主体部分开始-->
+<div class="main clearfix">
+    <!--左侧开始-->
+    <include file="Public:left"/>
+    <!--左侧结束-->
+
+    <div class="plc_main">
+        <!--中间开始-->
+        <div class="main_center" id="mainCenter">
+           <div class="pet_show" id="pet_show">
+                <php>if($userPets) { </php>
+                    <div class="ks_content">
+                        <ul>
+                            <php>foreach($userPets as $uk => $pet) { </php>
+                            <li>
+                               <div class="pic" id="pic150agp"><img src="<php>echo C('IMG_DIR');</php>/{$pet.picpath}" /></div>
+                               <div class="info">
+                                    <p class="nick_name">{$pet.petname}</p>
+                                    <p class="txt">{$pet.petgender_lineages}</p>
+                                    <p class="txt">{$pet.petage}</p>
+                                    <p class="txt pettypename" >{$pet.pettype}</p>
+                                    <p class="like"><a href="javascript:void(0);" thref="/Index/ajaxLovePet/id/{$pet.id}" class="like_gray_btn" >喜欢</a><span class="num"><i class="arr"></i>{$pet.lovenum}</span></span>
+                                    <input type="hidden" name="pettype" class="pettype" value="{$pet.pettype}">
+                               </div>
+                               <div class="listpic">
+                                   <ol>
+                                        <php>if($pet['pet_photos']) { </php>
+                                            <php>foreach($pet['pet_photos'] as $photo) {</php>
+                                                <li><a href="<php> echo get_rewrite_url('UcAlbum', 'photoshow', $photo['photo_id']);</php>" target="_blank">
+                                                <img src="<php>echo C('IMG_DIR');</php>/<php>echo str_replace('_y', '_m', $photo['photo_path']);</php>"onload="this.onload=null;BQ.imgLoad(this,[{$photo.imageWidthM},{$photo.imageHeightM}],[70,70]);" style="display:none;" >
+                                                </a></li>
+                                            <php>} </php>
+                                           <li class="linkmove"><a href="<php> echo get_rewrite_url('UcAlbum', 'photo', $huser['uid'] . ','.$pet['id']);</php>" target="_blank">更多</a></li>
+                                        <php>} elseif($userPhotos) { </php>
+                                            <php>foreach($userPhotos as $photo) {</php>
+                                                <li><a href="<php> echo get_rewrite_url('UcAlbum', 'photoshow', $photo['photo_id']);</php>" target="_blank">
+                                                <img src="<php>echo C('IMG_DIR');</php>/<php>echo str_replace('_y', '_m', $photo['photo_path']);</php>"onload="this.onload=null;BQ.imgLoad(this,[{$photo.imageWidthM},{$photo.imageHeightM}],[70,70]);" style="display:none;">
+                                                </a></li>
+                                            <php>} </php>
+                                           <li class="linkmove"><a href="<php> echo get_rewrite_url('UcAlbum', 'photo', $huser['uid']);</php>" target="_blank">更多</a></li>
+                                       <php>} else { </php>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                       <php>} </php>
+                                   </ol>
+                               </div>
+                            </li>
+                            <php>} </php>
+                        </ul>
+                    </div>
+                    <div class="ks_nav">
+                        <php>if(count($userPets) == 1) { </php>
+                        <php>} else { </php>
+                            <a title="上一页" href="javascript:void(0);" class="prev_btn"></a>
+                            <php>if(count($userPets) >= 1) { </php>
+                            <i class="selected">●</i>
+                            <php>} </php>
+                            <php>if(count($userPets) >= 2) { </php>
+                            <i>●</i>
+                            <php>} </php>
+                            <php>if(count($userPets) >= 3) { </php>
+                            <i>●</i>
+                            <php>} </php>
+                            <a title="下一页" href="javascript:void(0);" class="next_btn"></a>
+                        <php>} </php>
+                    </div>
+                <php>} else { </php>
+                    <div class="ks_content">
+                        <ul>
+                            <li>
+                               <div class="pic"><img width="150" height="150" src='/Public/Images/no_pet_150.gif'></div>
+                               <div class="info">
+                                    <p class="nick_name">TA的宠物</p>
+                                    <p class="txt">暂未添加</p>
+                                    <p class="like"><a class="like_btn">喜欢</a></p>
+                                </div>
+                               <div class="listpic">
+                                   <ol>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                   </ol>
+                               </div>
+                            </li>
+                        </ul>
+                    </div>
+                <php>} </php>
+            </div>
+            
+            <!--微博列表开始-->
+        <div class="feed_tab">
+            <ul>
+                <li <php>if($type==4) { </php>class="current"<php>} else { </php> class=""<php>} </php>><a href="<php>echo get_rewrite_url('Index', 'index', $huser['uid'] . ',4');</php>">TA的动态</a></li>
+                <li <php>if($type==2) { </php>class="current"<php>} else { </php> class=""<php>} </php>><a href="<php>echo get_rewrite_url('Index', 'index', $huser['uid'] . ',2');</php>">好友动态</a></li>
+            </ul>
+        </div>
+        <!--全部动态开始--> 
+        <div class="feeds">
+            <div class="feed">
+            <php>if(!isset($dynamics) || !$dynamics) { </php>
+                <dl class="feed_list">
+                    <dt class="head"></dt>
+                    <dd class="content">
+                        <p class="feed_list_content"><span class="tips_txt">暂无动态</span></p>
+                    </dd>
+                </dl>
+            <php> } else { </php>
+                <php>foreach($dynamics as $dk => $dynamic) { </php>
+                <!--1个标准列表循环单项开始-->
+                    <dl class="feed_list" <php>if($dynamic['dtype'] ==  31  || $dynamic['dtype'] ==  32) { </php>ucode="wb" <php>}</php>>
+                        <php>if($dynamic['dtype'] == 31) { </php>
+                        <!-- 发布微博动态开始 -->
+                            <dt class="head" unm="{$dynamic.user.nickname}" wid="{$dynamic.odata.id}" bds="{$dynamic.odata.broadcasts}" pnb="{$dynamic.odata.comments}" uid="{$userinfo.uid}" unickname="{$userinfo.nickname}" uavatar="{$userinfo.avatar}"><a href="{$dynamic.user.url_link}" ><img src="{$dynamic.user.avatar_m}" style="width:50px;" /></a></dt>
+                            <dd class="content">
+                                <p class="feed_list_content">
+                                    <a href="{$dynamic.user.url_link}" target="_blank" class="wname">{$dynamic.user.nickname}</a>
+                                    <span class="tips_txt">{$dynamic.operate_desc}</span>
+                                    <php>if(isset($dynamic['linkurl']) && isset($dynamic['operate_title'])){ </php>
+                                        <a href="{$dynamic.linkurl}" target="_blank">{$dynamic.operate_title}</a>
+                                    <php>} elseif(isset($dynamic['operate_title'])) { </php>
+                                        {$dynamic.operate_title}
+                                    <php>} </php>
+                                    <php>if(isset($dynamic['operate_desc_suffix'])) { </php>
+                                        <span class="tips_txt">{$dynamic.operate_desc_suffix}</span>
+                                    <php>} </php>
+                                </p>
+                                &nbsp;&nbsp;
+                                <php>if(isset($dynamic['desc'])) { </php>
+                                    {$dynamic.desc}
+                                <php>} </php> 
+                                <php>if(isset($dynamic['has_first_pic']) && $dynamic['has_first_pic'] && isset($dynamic['first_pic'])) { </php>
+                                    <!--小图浏览开始-->
+                                    <ul class="pic_list wbminpic">
+                                        <li>
+                                            <div class="minpic"> <img alt="" src="<php>echo C('IMG_DIR');</php>/{$dynamic.first_pic_s}" class="bigcursor"> </div>
+                                        </li>
+                                    </ul>
+                                    <!--小图浏览结束--> 
+                                    <!--大图浏览开始-->
+                                    <div class="pic_origin none wbpicorigin">
+                                        <p class="act_btn"> <a class="retract" href="#">收起</a> <i class="wline">|</i> <a class="show_big" href="<php>echo C('IMG_DIR');</php>/{$dynamic.first_pic}" target="_blank">查看大图</a> <i class="wline">|</i> <a class="turn_left" href="#">向左转</a> <i class="wline">|</i> <a class="turn_right" href="#">向右转</a> </p>
+                                        <div class="smallcursor">
+                                            <img src="<php>echo C('IMG_DIR');</php>/{$dynamic.first_pic_b}" class="smimg" id="smimg"/>
+                                        </div>
+                                    </div>
+                                    <!--大图浏览结束-->
+                                <php>} </php>
+                                <!-- 动态操作开始 -->
+                                <p class="info">
+                                    <span class="date">{$dynamic.format_dynamic_time}</span>
+                                    <span class="act">
+                                        <!-- 发布微博 -->
+                                        <php>if($dynamic['dtype'] == 31 && $userinfo['uid'] != $dynamic['odata']['uid']) { </php>
+                                            <php>if($dynamic['odata']['recast'] == 1) { </php>
+                                                <span class="relay_num">已转播({$dynamic.odata.broadcasts})</span><i class="wline">|</i>
+                                            <php>} else { </php>
+                                                <a class="bqwbzbbut" href="javascript:void(0);" thref="/UcWeibo/relay/wid/{$dynamic.odata.id}">转播({$dynamic.odata.broadcasts})</a><i class="wline">|</i>
+                                            <php>} </php>
+                                        <php>} </php>
+                                        <a class="bqplwe" href="javascript:void(0);">评论({$dynamic.odata.comments})</a>
+                                    </span>
+                                </p>
+                                <!-- 微博评论开始 -->
+                                <div class="repeat bqrepeat none">
+                                    <div class="arrow">
+                                        <em>◆</em>
+                                        <span>◆</span>
+                                    </div>
+                                    <div class="input_box">
+                                        <textarea name="textarea2" class="bqemocom" cols="45" rows="5"></textarea>
+                                        <span class="num bqemonum">0/140</span><!-- 超出字数 addClass('warning') -->
+                                    </div>
+                                    <div class="send_fun">
+                                        <div class="emot"><a class="face bqemobut" href="javascript:void(0);" title="插入表情">表情</a></div>
+                                        <div class="pub"><a class="submit_btn bqemoSubmit" href="javascript:void(0);" >评论</a></div>
+                                    </div>
+                                        <div class="comment_list">
+                                        <php>if(isset($dynamic['odata']['commentlist'])) { </php>
+                                            <php>foreach($dynamic['odata']['commentlist'] as $comment) { </php>
+                                                <dl class="viw">
+                                                    <dt unm="{$comment.nickname}" wid="{$comment.wid}" cid="{$comment.id}"><a href="<php>echo get_rewrite_url('Index', 'index', $comment['uid']);</php>"><img src="{$comment.avatar}"  width="30" height="30"/></a></dt>
+                                                    <dd><a href="<php>echo get_rewrite_url('Index', 'index', $comment['uid']);</php>" target="_blank">{$comment.nickname}</a>：{$comment.message}<em>({$comment.dateline})</em><p class="info tr"><php>if(isset($comment['isuid']) && $comment['isuid'] == 1 || isset($comment['rdel']) && $comment['rdel'] == 1){</php><a href="javascript:void(0);" thref="/UcWeibo/delReply/cid/{$comment.id}" class="bqinfodel">删除</a><i class="wline">|</i><php>}</php><a href="#" class="bqinfors">回复</a></p></dd>
+                                                </dl>
+                                            <php>} </php>
+                                            <php>if($dynamic['odata']['comments'] >= 10){</php>
+                                                <p class="more"><a href="<php>echo get_rewrite_url('UcWeibo', 'weiboComments', $dynamic['odata']['id']);</php>">查看全部{$dynamic.odata.comments}条评论>></a></p>
+                                            <php>}</php>
+                                    <php>} </php>
+                                    </div>
+                                </div>
+                                <!-- 微博评论结束 -->
+                                <!-- 动态操作结束-->
+                            </dd>
+                        <!-- 发布微博动态结束 -->
+                        <php> } elseif($dynamic['dtype'] ==  32 || $dynamic['dtype'] == 33 || $dynamic['dtype'] == 53) { </php>
+                        <!-- 转播微博/评论微博/微博评论回复动态开始 -->
+                            <dt class="head" unm="{$dynamic.user.nickname}" <php>if($dynamic['dtype'] == 32) { </php>wid="{$dynamic.data.id}" bds="{$dynamic.data.broadcasts}" pnb="{$dynamic.data.comments}" uid="{$userinfo.uid}" unickname="{$userinfo.nickname}" uavatar="{$userinfo.avatar}"<php>} </php>><a href="{$dynamic.user.url_link}"><img src="{$dynamic.user.avatar_m}" style="width:50px;" /></a></dt>
+                            <dd class="content">
+                                <!-- 标头开始 -->
+                                <php>if($dynamic['dtype'] == 32) { </php>
+                                    <p class="feed_list_content"><a href="{$dynamic.user.url_link}" target="_blank" class="wname">{$dynamic.user.nickname}</a><span class="tips_txt">{$dynamic.operate_desc}</span></p>
+                                    <p>&nbsp;<php>if(isset($dynamic['desc'])) { </php>{$dynamic.desc}<php>}</php></p>
+                                <php>} else { </php>
+                                    <p class="feed_list_content">
+                                        <a href="{$dynamic.user.url_link}" target="_blank" class="wname">{$dynamic.user.nickname}</a>
+                                        <span class="tips_txt">{$dynamic.operate_desc}</span>
+                                        <php>if(isset($dynamic['linkurl']) && isset($dynamic['operate_title'])){ </php><a href="{$dynamic.linkurl}" target="_blank">{$dynamic.operate_title}</a><php>} elseif(isset($dynamic['operate_title'])) { </php>{$dynamic.operate_title}<php>} </php>
+                                        <php>if(isset($dynamic['operate_desc_suffix'])) { </php><span class="tips_txt">{$dynamic.operate_desc_suffix}</span><php>} </php>
+                                    </p>
+                                    &nbsp;&nbsp;<php>if(isset($dynamic['desc'])) { </php>{$dynamic.desc}<php>} </php>
+                                <php>} </php>
+                                <!-- 标头结束 -->
+                                <!-- 转播原微博/评论原微博开始 -->
+                                <div class="relay bqwbzb">
+                                    <i class="arr"></i>
+                                    <php>if($dynamic['odata']['status'] == 1) { </php>
+                                        <p class="feed_list_content">抱歉，此啊呜已被删除。</p>
+                                    <php>} else { </php>
+                                        <p class="feed_list_content"><a href="<php>echo get_rewrite_url('Index', 'index', $dynamic['odata']['uid']);</php>" target="_blank" class="wname">@{$dynamic.ouser.nickname}</a>&nbsp; {$dynamic.odata.content}</p>
+                                        <php>if(isset($dynamic['odata']['pic_path']) && $dynamic['odata']['pic_path']) { </php>
+                                            <!--小图浏览开始-->
+                                            <ul class="pic_list wbminpic">
+                                                <li><div class="minpic"> 
+													<php>if($dynamic['dtype'] == 32) { </php><img alt="" src="<php>echo C('IMG_DIR');</php>/{$dynamic.odata.pic_path_s}" class="bigcursor"> <php>} else{ </php><a href="<php>echo get_rewrite_url('UcWeibo', 'weiboComments', $dynamic['wid']);</php>" target="_blank"><img alt="" src="<php>echo C('IMG_DIR');</php>/{$dynamic.odata.pic_path_s}" class="bigcursor"></a> <php>} </php>
+												</div></li>
+                                            </ul>
+                                            <!--小图浏览结束--> 
+                                            <!--大图浏览开始-->
+                                            <div class="pic_origin none wbpicorigin">
+                                                <p class="act_btn"> <a class="retract" href="#">收起</a> <i class="wline">|</i> <a class="show_big" href="<php>echo C('IMG_DIR');</php>/{$dynamic.odata.pic_path}" target="_blank">查看大图</a> <i class="wline">|</i> <a class="turn_left" href="#">向左转</a> <i class="wline">|</i> <a class="turn_right" href="#">向右转</a> </p>
+                                                <div class="smallcursor"><img src="<php>echo C('IMG_DIR');</php>/{$dynamic.odata.pic_path_b}" width="440" class="smimg" id="smimg"/></div>
+                                            </div>
+                                            <!--大图浏览结束-->
+                                        <php>} </php>
+                                        <p class="info"> 
+                                            <span class="date">{$dynamic.odata.format_weibo_time}</span> 
+                                            <span class="act">
+                                                <php>if($dynamic['odata']['allowrecast']) { </php>
+                                                    <php>if($dynamic['odata']['recast']) { </php>
+                                                        <span class="relay_num">已转播({$dynamic.odata.broadcasts})</span>
+                                                    <php>} else { </php>
+                                                        <a href="<php>echo get_rewrite_url('UcWeibo', 'weiboComments', $dynamic['odata']['id']);</php>" target="_blank">转播({$dynamic.odata.broadcasts})</a> 
+                                                    <php>} </php>
+                                                    <i class="wline">|</i>
+                                                <php>} </php>
+                                                <a href="<php>echo get_rewrite_url('UcWeibo', 'weiboComments', $dynamic['odata']['id']);</php>" target="_blank">评论({$dynamic.odata.comments})</a>
+                                            </span>
+                                        </p>
+                                    <php>} </php>
+                                </div>
+                                <!-- 转播原微博/评论原微博结束 -->
+                                <!-- 动态操作开始 -->
+                                <p class="info">
+                                    <span class="date">{$dynamic.format_dynamic_time}</span>
+                                    <span class="act">
+                                        <!-- 转播微博 -->
+                                        <php>if($dynamic['dtype'] == 32 ) { </php>
+                                            <php>if($dynamic['dtype'] == 32 && $userinfo['uid'] != $dynamic['uid'] ){ </php>
+                                                <php>if($dynamic['data']['recast'] == 1) { </php>
+                                                    <span class="relay_num">已转播({$dynamic.data.broadcasts})</span><i class="wline">|</i>
+                                                <php>} else { </php>
+                                                    <a class="bqwbzbbut" href="javascript:void(0);" thref="/UcWeibo/relay/wid/{$dynamic.data.id}">转播({$dynamic.data.broadcasts})</a><i class="wline">|</i>
+                                                <php>} </php>
+                                            <php>} </php>
+                                            <a class="bqplwe" href="javascript:void(0);">评论({$dynamic.data.comments})</a>
+                                        <!-- 评论微博/回复微博评论 -->
+                                        <php>} elseif($dynamic['dtype'] == 33 || $dynamic['dtype'] == 53 ) { </php>
+                                            <a class="bqplwe" href="<php>echo get_rewrite_url('UcWeibo', 'weiboComments', $dynamic['wid']);</php>#comments" target="_blank">评论</a>
+                                        <php>} </php>
+                                    </span>
+                                </p>
+                                <!-- 动态操作结束 -->
+                                <!-- 转播微博当前页面打开评论列表开始 -->
+                                <php>if( $dynamic['dtype'] == 32) { </php>
+                                    <!-- 微博评论开始 -->
+                                    <div class="repeat bqrepeat none">
+                                        <div class="arrow">
+                                            <em>◆</em>
+                                            <span>◆</span>
+                                        </div>
+                                        <div class="input_box">
+                                            <textarea name="textarea2" class="bqemocom" cols="45" rows="5"></textarea>
+                                            <span class="num bqemonum">0/140</span><!-- 超出字数 addClass('warning') -->
+                                        </div>
+                                        <div class="send_fun">
+                                            <div class="emot">
+                                                <a class="face bqemobut" href="javascript:void(0);" title="插入表情">表情</a>
+                                            </div>
+                                            <div class="pub">
+                                                <a class="submit_btn bqemoSubmit" href="javascript:void(0);" >评论</a>
+                                            </div>
+                                        </div>
+                                        <div class="comment_list">
+                                            <php>if(isset($dynamic['data']['commentlist'])) { </php>
+                                                <php>foreach($dynamic['data']['commentlist'] as $comment) { </php>
+                                                    <dl class="viw">
+                                                        <dt unm="{$comment.nickname}" wid="{$comment.wid}" cid="{$comment.id}"><a href="{$comment.url_link}"><img src="{$comment.avatar}" width="30" height="30"/></a></dt>
+                                                        <dd><a href="{$comment.url_link}" target="_blank">{$comment.nickname}</a>：{$comment.message}<em>({$comment.dateline})</em>
+                                                        <p class="info tr"><php>if(isset($comment['isuid']) && $comment['isuid'] == 1 || isset($comment['rdel']) && $comment['rdel'] == 1){</php><a href="javascript:void(0);" thref="/UcWeibo/delReply/cid/{$comment.id}" class="bqinfodel">删除</a><i class="wline">|</i><php>}</php><a href="#" class="bqinfors">回复</a></p>
+                                                        </dd>
+                                                    </dl>
+                                                <php>} </php>
+                                                <php>if($dynamic['data']['comments'] >= 10) { </php>
+                                                    <p class="more"><a href="#">查看全部{$dynamic.data.comments}条评论>></a></p>
+                                                <php>} </php>
+                                            <php>} </php>
+                                        </div>
+                                    </div>
+                                    <!-- 微博评论结束 -->
+                                <php>} </php>
+                                <!-- 转播微博当前页面打开评论列表结束 -->
+                            </dd>
+                        <!-- 转播微博/评论微博/微博评论回复动态结束 -->
+                        <php>} else { </php>
+                        <!-- 其他动态 开始 -->
+                            <dt class="head" unm="{$dynamic.user.nickname}" ><a href="{$dynamic.user.url_link}" ><img src="{$dynamic.user.avatar_m}" style="width:50px;" /></a></dt>
+                            <dd class="content">
+                                <!-- 标头开始 -->
+                                <p class="feed_list_content">
+                                    <a href="{$dynamic.user.url_link}" target="_blank" class="wname">{$dynamic.user.nickname}</a>
+                                    <span class="tips_txt">{$dynamic.operate_desc}</span>
+                                    <php>if(isset($dynamic['linkurl']) && isset($dynamic['operate_title'])){ </php>
+                                        <a href="{$dynamic.linkurl}" target="_blank">{$dynamic.operate_title}</a>
+                                    <php>} elseif(isset($dynamic['operate_title'])) { </php>
+                                        {$dynamic.operate_title}
+                                    <php>} </php>
+                                    <php>if(isset($dynamic['operate_desc_suffix'])) { </php>
+                                        <span class="tips_txt">{$dynamic.operate_desc_suffix}</span>
+                                    <php>} </php>
+                                </p>
+                                <php>if($dynamic['dtype'] == 71) {</php> 
+                                    满意指数：<span class="xxmat"><span style="width:{$dynamic.data.pscore}%"></span></span> {$dynamic.data.score}分 <a class="xmgl" href="{$dynamic.linkurl}" target="_blank">>>查看商品详情</a>
+                                <php>} elseif($dynamic['dtype'] == 72) {</php> 
+                                    原价：<span class="yjbt">￥{$dynamic.data.oprice}</span> <span class="xj">现价：<span class="xjbt">￥{$dynamic.data.cprice}</span></span><php>if($dynamic['data']['discount'] != 0 && $dynamic['data']['discount'] != 1) { </php>({$dynamic.data.discount}折)<php>} </php><a class="xmgl" href="{$dynamic.linkurl}" target="_blank">>>查看商品详情</a>
+                                <php>} else {</php>
+                                    <php>if(isset($dynamic['desc'])) { </php>{$dynamic.desc}<php>} </php> <php>if($dynamic['dtype'] == 11) { </php><a href="{$dynamic.linkurl}" target="_blank">[详细]</a><php>} </php>
+                                <php>} </php>
+                                <!-- 标头结束 -->
+                                <!-- 图片开始 -->
+                                <php>if($dynamic['dtype'] == 23) { </php> 
+                                    <!-- 照片上传(照片列表)动态开始 -->
+                                    <!--图组浏览开始-->
+                                    <php>if(isset($dynamic['photo_paths'])) {</php>
+                                        <ul class="pic_list pic_dt">
+                                            <php>foreach($dynamic['photo_paths'] as $pk => $photo_path) { </php>
+                                                <li><a href="<php> echo get_rewrite_url('UcAlbum', 'photoshow', $pk);</php>" target="_blank"><img alt="" src="<php>echo C('IMG_DIR');</php>/{$photo_path}" ></a></li>
+                                            <php>} </php>
+                                            <php>if($dynamic['photo_num'] >= 4) {</php>
+                                                <li class="more"><a href="{$dynamic.linkurl}" target="_blank">更多图片>></a></li>
+                                            <php>} </php>
+                                        </ul>
+                                    <php>} else { </php>
+                                        <php>if(isset($dynamic['first_pic']) && $dynamic['first_pic'] != '') { </php>
+                                            <!--小图浏览开始-->
+                                            <ul class="pic_list">
+                                                <li>
+                                                   <div class="minpic">
+                                                       <a href="{$dynamic.picurl}" target="_blank"><img alt="" src="<php>echo C('IMG_DIR');</php>/{$dynamic.first_pic_b}" class="bigcursor" ></a>
+                                                   </div>
+                                                </li>
+                                            </ul>
+                                            <!--小图浏览结束-->
+                                        <php>} </php>
+                                    <php>} </php>
+                                    <!--图组浏览结束-->
+                                    <!-- 照片上传(照片列表)动态结束 -->
+                                <php>} elseif($dynamic['dtype'] == 24 || $dynamic['dtype'] == 52) { </php>
+                                    <!-- 评论照片/照片评论回复动态开始 -->
+                                    <php>if(isset($dynamic['first_pic']) && $dynamic['first_pic'] != '') { </php>
+                                        <!--小图浏览开始-->
+                                        <ul class="pic_list">
+                                            <li>
+                                               <div class="minpic">
+                                                   <a href="{$dynamic.linkurl}" target="_blank"><img alt="" src="<php>echo C('IMG_DIR');</php>/{$dynamic.first_pic_b}" class="bigcursor" ></a>
+                                               </div>
+                                            </li>
+                                        </ul>
+                                        <!--小图浏览结束-->
+                                    <php>} </php>
+                                    <!-- 评论照片/照片评论回复动态结束 -->
+                                <php>} elseif($dynamic['dtype'] == 11 || $dynamic['dtype'] == 41 || $dynamic['dtype'] == 83) { </php>
+                                    <!-- 发表日志/发帖动态开始 -->
+                                    <php>if(isset($dynamic['has_first_pic']) && $dynamic['has_first_pic'] && isset($dynamic['first_pic']) && $dynamic['first_pic']!='') { </php>
+                                        <!--小图浏览开始-->
+                                        <ul class="pic_list">
+                                            <li>
+                                               <div class="minpic">
+                                                   <a href="{$dynamic.linkurl}" target="_blank"><img alt="" src="{$dynamic.first_pic}" class="bigcursor" ></a>
+                                               </div>
+                                            </li>
+                                        </ul>
+                                        <!--小图浏览结束-->
+                                    <php>} </php>
+                                    <!-- 发表日志/发帖动态结束 -->
+                                <php>} else { </php>
+                                    <!-- 其他动态开始 -->
+                                    <php>if(isset($dynamic['first_pic']) && $dynamic['first_pic'] != '') { </php>
+                                        <!--小图浏览开始-->
+                                        <ul class="pic_list">
+                                            <li>
+                                               <div class="minpic">
+                                                   <img alt="" src="{$dynamic.first_pic}" class="bigcursor" >
+                                               </div>
+                                            </li>
+                                        </ul>
+                                        <!--小图浏览结束-->
+                                    <php>} </php>
+                                    <!-- 其他结束 -->
+                                <php>} </php>
+                                <!-- 图片结束 -->
+                                <!-- 动态操作开始 -->
+                                <p class="info">
+                                    <span class="date">{$dynamic.format_dynamic_time}</span>
+                                    <span class="act">
+                                        <!-- 发表日志动态操作 -->
+                                        <php>if($dynamic['dtype'] == 11) { </php>
+                                            <a class="bqplwe" href="{$dynamic.linkurl}#comments" target="_blank">评论({$dynamic.data.comments})</a>
+                                        <!-- 评论日志/回复日志评论动态操作 -->
+                                        <php>} elseif($dynamic['dtype'] == 12 || $dynamic['dtype'] == 51) {  </php>
+                                            <a class="bqplwe" href="{$dynamic.linkurl}#comments" target="_blank">查看全部评论({$dynamic.data.comments})</a>
+                                        <!-- 评论照片/回复照片评论/回帖/帖子引用回复动态操作 -->
+                                        <php>} elseif($dynamic['dtype'] == 24 || $dynamic['dtype'] == 52 || $dynamic['dtype'] == 42 || $dynamic['dtype'] == 54  || $dynamic['dtype'] == 55  || $dynamic['dtype'] == 56  || $dynamic['dtype'] == 84  || $dynamic['dtype'] == 55) { </php>
+                                            <a class="bqplwe" href="{$dynamic.linkurl}#comments" target="_blank">查看全部评论({$dynamic.data.comments})</a>
+                                        <!-- 创建相册/修改相册动态操作 -->
+                                        <php>} elseif($dynamic['dtype'] == 21 || $dynamic['dtype'] == 22) { </php>
+                                            <a class="bqplwe" href="{$dynamic.linkurl}" target="_blank">查看全部</a>
+                                        <!-- 上传照片/发帖动态操作 -->
+                                        <php>} elseif($dynamic['dtype'] == 23 || $dynamic['dtype'] == 41  || $dynamic['dtype'] == 83 ) { </php>
+                                            <php>if($dynamic['dtype'] == 23) { </php>
+                                                <a class="bqplwe" href="{$dynamic.picurl}" target="_blank">查看</a>
+                                                <php>if(isset($dynamic['photo_num']) && $dynamic['photo_num'] == 1) { </php>
+                                                    <i class="wline">|</i>
+                                                    <a class="bqplwe" href="{$dynamic.linkurl}#comments" target="_blank">评论({$dynamic.data.0.comments})</a>
+                                                <php>} </php>
+                                            <php>} else { </php>
+                                                <a class="bqplwe" href="{$dynamic.linkurl}" target="_blank">查看</a>
+                                                    <i class="wline">|</i>
+                                                    <a class="bqplwe" href="{$dynamic.linkurl}#comments" target="_blank">评论({$dynamic.data.comments})</a>
+                                            <php>} </php>
+                                        <!-- 收藏/购买商品动态操作 -->
+                                        <php>} elseif($dynamic['dtype'] == 71 || $dynamic['dtype'] == 72) {</php>
+                                            <a class="bqplwe" href="{$dynamic.commenturl}" target="_blank">评价({$dynamic.data.comments})</a>
+                                        <!-- 评价商品动态操作 -->
+                                        <php>} elseif($dynamic['dtype'] == 73) { </php>
+                                            <a class="bqplwe" href="{$dynamic.commenturl}" target="_blank">查看全部评论({$dynamic.data.comments})</a>
+                                        <php>} </php>
+                                    </span>
+                                </p>
+                                <!-- 动态操作结束-->
+                            </dd>
+                        <!-- 其他动态 结束 -->
+                        <php>} </php> 
+                    </dl>
+                <!--1个标准列表循环单项结束-->
+                <php>} </php>
+            <php>} </php>
+        </div>
+        
+
+         <!--分页开始-->
+        <div class="page_wrap">
+            <div class="showpage">
+                {$page}
+            </div>
+        </div>
+        <!--分页结束-->
+        </div>
+        <!--全部动态结束--> 
+        
+        </div>
+        <!--中间结束-->
+        
+        <!--右侧开始-->
+        <div class="main_right">
+            <!--热门话题开始-->
+                <include file="Public:right_thread"/>
+            <!--热门话题结束-->
+
+            <!--热门宠物日记开始-->
+                <include file="Public:right_diary"/>
+            <!--热门宠物日记结束-->
+            
+            <!-- TA的好友开始 -->
+            <div class="friends" id="friends1">
+                <div class="hd">
+                    <h3>TA的好友</h3>
+                    <php>if(isset($huser['friends']) && count($huser['friends']) >= 7) { </php>
+                        <div class="act">
+                            <a class="prev_btn prev_btn_disable" href="javascript:void(0)">上一页</a>
+                            <a class="next_btn" href="javascript:void(0)">下一页</a>
+                        </div>
+                    <php>} </php>
+                </div>
+                <div class="bd">
+                    <div class="carousel_cont">
+                        <php>if(isset($huser['friends']) && $huser['friends']) { </php>
+                            <php>if(count($huser['friends']) >= 1) { </php>
+                                <ul style="width:202px">
+                                    <php>foreach($huser['friends'] as $fk=>$hfriend) { </php>
+                                        <php>if($fk < 6) { </php>
+                                            <php>if($hfriend) { </php>
+                                                <li>
+                                                    <div class="head_img"><a href="{$hfriend.url_link}" ><img src="{$hfriend.avatar}" style="width:50px;"/></a></div>
+                                                    <div class="nick_name"><a href="{$hfriend.url_link}" >{$hfriend.nickname}</a></div>
+                                                </li>
+                                            <php>} </php>
+                                        <php>} </php>
+                                    <php>} </php>
+                                </ul>
+                            <php>} </php>
+                            <php>if(count($huser['friends']) >= 7) { </php>
+                                <ul style="width:202px">
+                                    <php>foreach($huser['friends'] as $fk=>$hfriend) { </php>
+                                        <php>if(($fk >= 6) && ($fk < 12)) { </php>
+                                            <php>if($hfriend) { </php>
+                                                <li>
+                                                    <div class="head_img"><a href="{$hfriend.url_link}" ><img src="{$hfriend.avatar}" style="width:50px;"/></a></div>
+                                                    <div class="nick_name"><a href="{$hfriend.url_link}">{$hfriend.nickname}</a></div>
+                                                </li>
+                                            <php>} </php>
+                                        <php>} </php>
+                                    <php>} </php>
+                                </ul>
+                            <php>} </php>
+                            <php>if(count($huser['friends']) >= 13) { </php>
+                                <ul style="width:202px">
+                                    <php>foreach($huser['friends'] as $fk=>$hfriend) { </php>
+                                        <php>if(($fk >= 12) && ($fk < 18)) { </php>
+                                            <php>if($hfriend) { </php>
+                                                <li>
+                                                    <div class="head_img"><a href="{$hfriend.url_link}" ><img src="{$hfriend.avatar}" style="width:50px;"/></a></div>
+                                                    <div class="nick_name"><a href="{$hfriend.url_link}">{$hfriend.nickname}</a></div>
+                                                </li>
+                                            <php>} </php>
+                                        <php>} </php>
+                                    <php>} </php>
+                                </ul>
+                            <php>} </php>
+                        <php>} else { </php>
+                            <ul style="width:202px">
+                                <li><div class="date">暂无好友</div></li>
+                            </ul>
+                        <php>} </php>
+                    </div>
+                </div>
+            </div>
+            <!-- TA的好友结束 -->
+        
+            <!--最近访客开始-->
+            <div class="friends" id="friends2">
+                <div class="hd">
+                    <h3>最近访客</h3>
+                    <php>if(isset($huser['visitors']) && count($huser['visitors']) >= 7 ) { </php>
+                        <div class="act">
+                            <a class="prev_btn prev_btn_disable" href="javascript:void(0)">上一页</a>
+                            <a class="next_btn" href="javascript:void(0)">下一页</a>
+                        </div>
+                    <php>} </php>
+                </div>
+                <div class="bd">
+                    <div class="carousel_cont">
+                        <php>if(isset($huser['visitors']) && $huser['visitors'] ) { </php>
+                            <php>if(count($huser['visitors']) >= 1) { </php>
+                                <ul style="width:202px">
+                                    <php>foreach($huser['visitors'] as $vk=>$visitor) { </php>
+                                        <php>if($vk < 6){ </php>
+                                            <php>if($visitor) { </php>
+                                                <li>
+                                                    <div class="head_img"><a href="{$visitor.url_link}"><img src="{$visitor.avatar}" style="width:50px;"/></a></div>
+                                                    <div class="nick_name"><a href="{$visitor.url_link}" >{$visitor.nickname}</a></div>
+                                                    <div class="date">{$visitor.format_visit_time}</div>
+                                                </li>
+                                            <php>} </php>
+                                        <php>} </php>
+                                    <php>} </php>
+                                </ul>
+                            <php>} </php>
+                            <php>if(count($huser['visitors']) >= 7) { </php>
+                                <ul style="width:202px">
+                                    <php>foreach($huser['visitors'] as $vk=>$visitor) { </php>
+                                        <php>if(($vk >= 6) && ($vk < 12)){ </php>
+                                            <php>if($visitor) { </php>
+                                                <li>
+                                                    <div class="head_img"><a href="{$visitor.url_link}"><img src="{$visitor.avatar}" style="width:50px;"/></a></div>
+                                                    <div class="nick_name"><a href="{$visitor.url_link}" >{$visitor.nickname}</a></div>
+                                                    <div class="date">{$visitor.format_visit_time}</div>
+                                                </li>
+                                            <php>} </php>
+                                        <php>} </php>
+                                    <php>} </php>
+                                </ul>
+                            <php>} </php>
+                            <php>if(count($huser['visitors']) >= 13) { </php>
+                                <ul style="width:202px">
+                                    <php>foreach($huser['visitors'] as $vk=>$visitor) { </php>
+                                        <php>if(($vk >= 12) && ($vk < 18)){ </php>
+                                            <php>if($visitor) { </php>
+                                                <li>
+                                                    <div class="head_img"><a href="{$visitor.url_link}"><img src="{$visitor.avatar}" style="width:50px;"/></a></div>
+                                                    <div class="nick_name"><a href="{$visitor.url_link}" >{$visitor.nickname}</a></div>
+                                                    <div class="date">{$visitor.format_visit_time}</div>
+                                                </li>
+                                            <php>} </php>
+                                        <php>} </php>
+                                    <php>} </php>
+                                </ul>
+                            <php>} </php>
+                        <php>} else { </php>
+                            <ul style="width:202px">
+                                <li><div class="date">暂无访客</div></li>
+                            </ul>
+                        <php>} </php>
+                    </div>
+                </div>
+            </div>
+            <!--最近访客结束-->
+
+        </div>
+        <!--右侧结束-->
+    </div>
+</div>
+<!--主体部分结束-->
+<script type="text/javascript">
+	BQ.load("UCBQExp,UCBQMinUP,widget.ImgAdaptive,UCPet,UCIndex",function(){
+         BQ.UCIndex('otherIndex',{'I_DIR':'<php>echo C("I_DIR");</php>'}).exec();
+    });
+</script>
+<!--底部开始-->
+<include file="Public:footer"/>
+<!--底部结束-->
+

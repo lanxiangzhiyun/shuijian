@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>修改标签</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type="text/javascript" src="__ROOT__/Addons/Plugins/ueditor/editor_config_article.js"></script>  
+<script type="text/javascript" src="__ROOT__/Addons/Plugins/ueditor/editor_all.js"></script>  
+<script type="text/javascript" src="__ROOT__/Addons/Plugins/ueditor/_src/plugins/autoheight.js"></script>  
+<link rel="stylesheet" type="text/css" href="__ROOT__/Addons/Plugins/ueditor/themes/default/ueditor.css">
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Js/bq.js'></script>
+<script type='text/javascript'>
+	BQ.load("BQAjaxUP",function(){
+		BQ.BQAjaxUP('AjaxUP',{but:$('.addfield'),action:'/iadmin.php/Upload/imageUpload',data:{'type':'tag'},onSubmit:function(file,ext){
+			if(ext && /^(jpg|jpeg|png|gif)$/.test(ext)){
+				//console.log('上传中...');
+			}else{
+				alert('不支持非图片格式！');
+				return false;
+			}
+			},onComplete:function(file,response){
+				response = eval("("+response+")");
+				//返回json数据
+				if(response.status == 'ok'){
+					$('#pic_path').val(response.imgpath);
+					//$('#minimg').html('<img src="'+response.domain+response.imgpath+'" alt="" width="'+response.width+'" height="'+response.height+'">')
+					$('#minimg').html('<img src="'+response.domain+response.imgpath+'" alt="" width="64">');
+				}else if(response.status == 'noselect'){
+					alert('服务器错误、上传图片为空值。');
+				}else if(response.status == 'login'){
+					alert('请登录后操作！');
+				}else{
+					alert('上传失败，请重新上传！');
+				}
+			}}
+		);
+	})
+</script>
+<style type="text/css">
+	.ptag{
+		width:auto;height:22px;text-align:center;
+		border:1px solid #ccc;border-radius:5px;
+		float:left;background-color:#ccc;
+		margin-right:3px;padding:2px 5px;
+		<!-- background:url("__PUBLIC__/Admin/Images/popup_bg.png") 0px 5px; -->
+		position:relative;
+	}
+	.ptag em{
+		background:url("__PUBLIC__/Admin/Images/popup_bg.png") 0px -5px;
+		position:absolute;
+		right:2px;
+		width:5px;height:5px;
+	}
+</style>
+</head>
+<body>
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li><a href="__ROOT__/iadmin.php/Tag/index"><span>标签管理</span></a></li>
+        <li class="current"><a href="__ROOT__/iadmin.php/Tag/editPage?id=<?php echo $id;?>"><span>编辑标签</span></a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+	
+	<form action='__ROOT__/iadmin.php/Tag/editTag' method='post'>
+	<input type='hidden' value='<?php echo $id;?>' name='id' id="tag_id">
+    <!--修改标签开始-->
+    <div class="common_tb">
+        <ul>
+            <li>
+                <span class="text">标签名：</span>
+                <span class="input_area">
+                    <input name="tag"  type="text" <if condition="$Tag.locked eq 1">readonly</if> class="input_bk" id="textfield" value="{$Tag.name}" />
+					<font id="tishi" color="red"></font>
+                </span>
+            </li>
+			<li id="tag_pic">
+                <span class="text">标签图片：</span>
+                <span class="input_area">
+                <input type="hidden" name="pic_path" <if condition="$Tag.locked eq 1">disabled="disabled"</if> value="{$Tag.logo}" id="pic_path" />
+				<a href="#" class="addfield"></a>
+				&nbsp;&nbsp;<font color="#FF0000">*</font>(64*64像素以内)　
+				<p id="minimg"><php>if($Tag['logo']){</php>
+				<img src="<php>echo C('IMG_DIR').'/'.$Tag['logo'];</php>" width="64"/>
+				<php>}</php></p>
+                </span>
+            </li>
+			<li>
+                <span class="text">标签别名：</span>
+                <span class="input_area">
+					<input name="alias" type="text" <if condition="$Tag.locked eq 1">readonly</if> value="{$Tag.alias}" class="input_bk" id="" />
+					<br/>
+					<font class="info">标签的其他表述方式，添加别名可以便于用户找到该标签 多个别名请用空格隔开</font>
+				</span>
+            </li>
+			<li>
+                <span class="text">标签描述：</span>
+				<span class="input_area">
+					<textarea id="textfield" style="width:400px;height:80px;"  class="textarea_bk" <if condition="$Tag.locked eq 1">readonly</if> name="content">{$Tag.memo}</textarea>
+					<br/><font class="info">关于标签的详细描述，100字以内</font>
+                </span>
+			</li>
+			<li>
+				<!-- 记得添加时传入父级tag id和显示父级tag name -->
+				<span class="text">父标签：</span>
+				<span class="input_area" style="position:relative;z-index:9999">
+					<input type="text" name="ptag" class="input_bk editNewTag" value="" act="ptag" />
+					<div class="add_tag_s" url="/iadmin.php/Tag/ajaxAppendPtag"></div><br />
+					<div class="add_tag_t" url="/iadmin.php/Tag/ajaxMovePtag">
+						<php>if($tagRelation['ptag']) {</php>
+                                            <volist name="tagRelation['ptag']" id="vo">
+                                                <div class="add_tag_list" pid="{$vo.id}"><a href="__ROOT__/iadmin.php/Tag/editPage?id={$vo.id}">{$vo.name}</a><em class="delete_tag_list"></em></div>
+                                            </volist>
+                                        <php>} else {</php>
+                                            <div class="zanwu">暂无标签</div>
+                                        <php>}</php>
+
+					</div>
+                </span>
+			</li>
+			<li>
+				<!-- 记得添加时传入父级tag id和显示父级tag name -->
+				<span class="text">子标签：</span>
+				<span class="input_area" style="position:relative;z-index:9998">
+					<input type="text" name="stag" class="input_bk editNewTag" value="" act="stag" />
+					<div class="add_tag_s" url="/iadmin.php/Tag/ajaxAppendStag"></div><br />
+					<div class="add_tag_t" url="/iadmin.php/Tag/ajaxMoveStag">
+						<php>if($tagRelation['stag']) {</php>
+							<volist name="tagRelation.stag" id="vo">
+                                <div class="add_tag_list" pid="{$vo.id}"><a href="__ROOT__/iadmin.php/Tag/editPage?id={$vo.id}">{$vo.name}</a><em class="delete_tag_list"></em></div>
+                            </volist>
+                        <php>}</php>
+					</div>
+                </span>
+			</li>
+			 <li>
+				<span class="text">&nbsp;所属栏目：</span>
+                <span class="txt">{$theColumn}</span>
+				
+            </li>
+            <li>
+				<span class="text">使用次数：</span>
+                <span class="txt"><em>{$Tag.usetimes}</em></span>
+				<span class="txt">文章：<if condition="$Tag.article_num gt 0"><a href="/iadmin.php/Article/articleList?tagname={$Tag.name}">{$Tag.article_num}</a><else/>{$Tag.article_num}</if></span>
+				<span class="txt">问答：<if condition="$Tag.thread_num gt 0"><a href="/iadmin.php/Thread/askList?tag_name={$Tag.name}">{$Tag.thread_num}</a><else/>{$Tag.thread_num}</if></span>
+				<span class="txt">词条：<if condition="$Tag.entry_num gt 0"><a href="/iadmin.php/AllPet/entryList?data[tag_name]={$Tag.name}">{$Tag.entry_num}</a><else/>{$Tag.entry_num}</if></span>
+				<span class="txt">关注：<em>{$Tag.attention_num}</em></span>
+            </li>
+            <li>
+				<span class="text">&nbsp;其他：</span>
+                <span class="txt"><a href="/iadmin.php/Tag/tagTree?tagId={$id}">标签树</a></span>
+				<span class="txt"><a href="/iadmin.php/Tag/tagHistory?tagId={$id}">变更历史</a></span>
+				<span class="txt"><if condition="$Tag.locked eq 0"><a href="/iadmin.php/Tag/tagMerge?tagId={$id}">合并标签</a><else/>合并标签</if></span>
+				<span class="txt"><label><input class="pb" value='1' type="checkbox" name="locked" id="checkbox" <if condition="$Tag.locked eq 1">checked='checked'</if> />锁定</label></span>
+            </li>
+            <li>
+                <span class="text">&nbsp;</span>
+                <span class="input_area"><a class="submit_btn" href="javascript:void(0);" onClick='submitFun();' title="确定"></a><a class="cancel_btn" onClick="return backfun('/iadmin.php/Tag/index');" href="javascript:void(0);" title="取消"></a> </span>
+            </li>
+        </ul>
+    </div>
+    <!--修改标签结束-->
+
+	</form>
+</div>
+<script>
+//添加标签
+var tagId = $('#tag_id').val(); //标签id
+ //搜索标签
+$('.editNewTag').bind('click keyup',function(){
+	var _t = $(this);
+	var key = $.trim(_t.val()), tag = _t.attr('act'), oNext = _t.next();
+	if(key=='') return;
+	searchAjax(tagId, tag, key, oNext);
+	return false;
+});
+$(document).on('click',function(){
+	$('.add_tag_s').hide();
+});
+//下拉框添加标签
+$('.add_tag_s_list').live('click',function(){
+	var _t = $(this);
+	var tag_list = _t.parent().siblings('.add_tag_t'), url=_t.parent().attr('url');
+	_t.parent().prev().val(_t.text());
+	$.get(url,{id:tagId,pid:_t.attr('pid')},function(d){
+		if(d.status=='ok'){
+			tag_list.append('<div class="add_tag_list" pid="'+_t.attr('pid')+'"><a href="/iadmin.php/Tag/editPage?id='+_t.attr('pid')+'">'+_t.text()+'</a><em class="delete_tag_list"></em></div>');
+		}else{
+			alert(d.msg);
+		}
+	},'json');
+});
+//移除标签
+$('.delete_tag_list').live('click',function(){
+	var _t = $(this).parent(),url=_t.parent().attr('url');
+	$.get(url,{id:tagId,pid:_t.attr('pid')},function(d){
+		if(d.status=='ok'){
+			_t.remove();
+		}else{
+			alert(d.msg);
+		}
+	},'json');
+});
+var ajaxData = {};
+function searchAjax(tagId, tag, key, next){  //搜索标签
+	if(ajaxData[tag+key]==undefined){
+		$.get('/iadmin.php/Tag/ajaxSearchTagByName',{tagId:tagId,act:tag,keyword:key},function(d){
+			loadData(d,next);
+			ajaxData[tag+key]=d;
+		},'json');
+	}else{
+		loadData(ajaxData[tag+key],next);
+	}	
+}
+function loadData(d,next){
+	if(d.status=='ok'){
+		if(d.data){
+			var pHtml = '';
+			$.each(d.data,function(i,j){
+				pHtml += '<div class="add_tag_s_list" pid="'+j.id+'">'+j.name+'</div>';
+			});
+			next.html(pHtml).show();
+		}else{
+			next.html('').hide();
+		}
+	}else{
+		alert(d.msg);
+	}
+}
+</script>
+
+</body>
+</html>

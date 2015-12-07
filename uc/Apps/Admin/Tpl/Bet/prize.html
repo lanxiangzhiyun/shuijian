@@ -1,0 +1,301 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{$tip}</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+    <!-- <link rel="stylesheet" type="text/css" href="__PUBLIC__/Js/library/ui/static/calendar/calendar.css"/> -->
+    <script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/bq.js"></script>
+    <!-- <script type='text/javascript' src='__PUBLIC__/Js/library/ui/form/calender.js'></script> -->
+    <script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+	<script type='text/javascript'>
+	BQ.load("BQAjaxUP",function(){
+		BQ.BQAjaxUP('AjaxUP',{but:$('.addfield'),action:'/iadmin.php/Upload/imageUpload',data:{'type':'bet'},onSubmit:function(file,ext){
+			if(ext && /^(jpg|jpeg|png|gif)$/.test(ext)){
+				//console.log('上传中...');
+			}else{
+				alert('不支持非图片格式！');
+				return false;
+			}
+			},onComplete:function(file,response){
+				response = eval("("+response+")");
+				//返回json数据
+				if(response.status == 'ok'){
+					$('#pic_path').val(response.imgpath);
+					//$('#minimg').html('<img src="'+response.domain+response.imgpath+'" alt="" width="'+response.width+'" height="'+response.height+'">')
+					$('#minimg').html('<img src="'+response.domain+response.imgpath+'" alt="" width="200" >');
+					if($('#minimg').next('font').text() != ''){
+						$('#minimg').next('font').text('');
+					}
+				}else if(response.status == 'noselect'){
+					alert('服务器错误、上传图片为空值。');
+				}else if(response.status == 'login'){
+					alert('请登录后操作！');
+				}else if(response.status == 'error'){
+					alert(response.tip);
+				}else{
+					alert('上传失败，请重新上传！');
+				}
+			}});
+	})
+</script>
+</head>
+<body>
+
+<div class="common_tab">
+    <ul>
+        <li><a href="__ROOT__/iadmin.php/Bet/index"><span>兑奖中心</span></a></li>
+        <li class="current"><a href="__ROOT__/iadmin.php/Bet/prize<php>if($action == 'editGo'){</php>?action=edit&pid={$pid}<php>}</php>"><span>{$tip}</span></a></li>
+        <li ><a href="__ROOT__/iadmin.php/Bet/prize?action=list"><span>兑奖奖品列表</span></a></li>
+		<li><a href="__ROOT__/iadmin.php/Bet/prize?action=lottery"><span>抽奖奖品列表</span></a></li>
+    </ul>
+</div>
+
+
+<!--tab结束-->
+<div class="wrap">
+
+    <form action='__ROOT__/iadmin.php/Bet/prize' onsubmit="return check(this)"  method='POST' id='form1' name='form1'>
+        <!--搜索开始-->
+		<input type="hidden" name="action" value="{$action}" />
+		<input type="hidden" name="pid" value="{$detail.pid}" />
+        <div class="common_tb">
+        <ul>	
+			<li>
+				<span class="text">奖品类型：</span>
+				 <span class="input_area">
+					<label><input class="prize_type" onclick="setBobi(this)" type="radio" name="type" value="1" title="兑奖奖品" <php>if($detail['ptype'] == 0 || !$detail['ptype']){</php>checked="checked"<php>}</php>/>&nbsp兑奖奖品</label>&nbsp&nbsp&nbsp&nbsp
+					<label><input class="prize_type" onclick="setBobi(this)" type="radio" name="type" value="2" title="抽奖奖品" <php>if($detail['ptype'] == 1){</php>checked="checked"<php>}</php>/>&nbsp抽奖奖品</label>
+                </span>
+			</li>
+			<li>
+                <span class="text">奖品名称：</span>
+				<span class="input_area">
+					<input  type="text" name="name" class="input_bk"  value="{$detail.name}" />
+                </span>
+			</li>
+			<script type="text/javascript">
+				$(function(){
+					var _type = $('.prize_type:checked');
+					setBobi(_type)
+				})
+				// 点击选择类型
+				function setBobi(obj){
+					var _val = $(obj).attr('value');
+					// 兑奖类型
+					if(_val == 1){
+						
+						$('#prize_proba').hide();
+						
+						$('#prize_change').show();
+					}else{
+						$('#prize_change').hide();
+						
+						$('#prize_proba').show();
+						
+					}
+				}
+			</script>
+			<li id="entry_pic">
+                <span class="text">奖品图片：</span>
+                <span class="input_area">
+                <input type="hidden" name="pic_path" value='{$detail.attach_url}' id="pic_path" />
+				<a href="#" class="addfield"></a>
+				&nbsp;&nbsp;<font color="#FF0000">*</font>
+				<p id="minimg">
+				<php>if($detail['attach_url']){</php>
+					<img src="<php>echo C('IMG_DIR').'/'.$detail['attach_url'];</php>" width="200"/>
+				<php>}</php></p>
+                </span>
+            </li>
+			<li>
+                <span class="text">奖品说明：</span>
+				<span class="input_area">
+					<textarea id="content_init" name="content" style="width:400px;height:80px;" >{$detail.content}</textarea>
+                </span>
+			</li>
+			<li id="prize_change">
+                <span class="text">兑奖啵币：</span>
+				<span class="input_area">
+					<input  type="text" name="change" class="input_bk"  value="{$detail.djprice}" />
+					兑奖必填
+                </span>
+			</li>
+			<li id="prize_proba" rate="{$rateSum}">
+				<span class="text">中奖几率：</span>
+				<span class="input_area">
+					<input  type="text" name="draw_rate" class="input_bk"  value="{$detail.draw_rate}" />
+					抽奖必填（0.0001~0.5）
+                </span>
+			</li>
+			<li>
+				<span class="text">中奖数量/天：</span>
+				<span class="input_area">
+					<input  type="text" name="day_num_limit" class="input_bk"  value="{$detail.day_num_limit}" />
+					每日最多中奖数量，超过此数量后中奖几率为0
+                </span>
+			</li>
+			
+			<li>
+				<span class="text">特别说明：</span>
+				<span class="input_area">
+					<input  type="text" name="special_explain" class="input_bk"  value="{$detail.special_explain}" />
+					奖品为具体商品时不填
+                </span>
+			</li>
+			
+			<li>
+				<span class="text">特殊标识：</span>
+				 <span class="input_area">
+					<label><input type="radio" name="is_goods" value="0" <php>if($detail['is_goods'] == 0){</php>checked="checked"<php>}</php> />&nbsp商品</label>&nbsp&nbsp&nbsp&nbsp
+					<label><input type="radio" name="is_goods" value="1" <php>if($detail['is_goods'] == 1){</php>checked="checked"<php>}</php> />&nbsp非商品</label>&nbsp&nbsp&nbsp&nbsp
+					<label><input type="radio" name="is_goods" value="2" <php>if($detail['is_goods'] == 2){</php>checked="checked"<php>}</php>/>&nbsp啵币</label>
+                </span>
+			</li>
+            <li id="prize_price">
+				<span class="text">奖品价值（啵币）：</span>
+				<span class="input_area">
+					<input  type="text" name="prize_value" class="input_bk"  value="{$detail.prize_value}" />
+					当类别为啵币时必填，当类别为实物奖品时仅供参考
+                </span>
+			</li>
+			<li>
+				<span class="text">奖品链接：</span>
+				<span class="input_area">
+					<input  type="text" name="prize_url" class="input_bk"  value="{$detail.prize_url}" />
+					是商品填写商品id，非商品填写链接，啵币奖励不需填写
+                </span>
+			</li>
+            <li>
+                <span class="text">&nbsp;</span>
+                <span class="input_area"><a class="submit_btn" onClick='submitFunc();' href="javascript:void(0);" title="确定"></a><a class="cancel_btn" onClick="return backfun('{$url}');" href="javascript:void(0);" title="取消"></a> </span>
+            </li>
+        </ul>
+    </div>
+    </form>
+    <!--数据列表结束-->
+</div>
+<script type='text/javascript'>
+	// 控制
+	function check(obj){
+		// 奖品名称检查
+		if(obj.name.value == false){
+			//alert('请输入奖品名称！');
+			var _name = obj.name;
+			if($(_name).next('font').text() == ''){
+				$(_name).after('<font color="red"> 请输入奖品名称！</font>');
+			}
+			$(_name).focus();
+			return false;
+		}else{
+			var _name = obj.name;
+			if($(_name).next('font').text() != ''){
+				$(_name).next('font').text('');
+			}
+		}
+		// 奖品图片检查
+		if(obj.pic_path.value == false){
+			//alert('请输入奖品名称！');
+			var _name = obj.pic_path;
+			if($('#minimg').next('font').text() == ''){
+				$('#minimg').after('<font color="red"> 请上传奖品图片！</font>');
+			}
+			$('#minimg').focus();
+			return false;
+		}else{
+			if($('#minimg').next('font').text() != ''){
+				$('#minimg').next('font').text('');
+			}
+		}
+		// 奖品说明
+		if(obj.content.value == false){
+			//alert('请输入奖品说明！');
+			var _name = obj.content;
+			if($(_name).next('font').text() == ''){
+				$(_name).after('<font color="red"> 请输入奖品说明！</font>');
+			}
+			$(_name).focus();
+			return false;
+		}else{
+			var _name = obj.content;
+			if($(_name).next('font').text() != ''){
+				$(_name).next('font').text('');
+			}
+		}
+		// 兑奖啵币
+		if(obj.type.value == 1 && isNumber(obj.change.value) == false){
+			//alert('请输入奖品名称！');
+			var _name = obj.change;
+			if($(_name).next('font').text() == ''){
+				$(_name).after('<font color="red"> 请输入正确兑奖啵币数量！</font>');
+			}
+			$(_name).focus();
+			return false;
+		}else{
+			var _name = obj.change;
+			if($(_name).next('font').text() != ''){
+				$(_name).next('font').text('');
+			}
+		}
+		
+		// 中奖几率
+		if(obj.type.value == 2){
+			var _name = obj.draw_rate;
+			var _locarate = parseInt(obj.draw_rate.value*10000);
+			var _ratesum  = parseInt($('#prize_proba').attr('rate')*10000);
+			var _sum = (_locarate + _ratesum);
+			//alert(_sum);
+			if(_sum > 5000){
+				if($(_name).next('font').text() == ''){
+					$(_name).after('<font color="red"> 抽奖商品总概率不能超过0.5！</font>');
+				}
+				$(_name).focus();
+				return false;
+			}else{
+				if($(_name).next('font').text() != ''){
+					$(_name).next('font').text('');
+				}
+			}	
+		}
+		//if(obj.type.value == 2 && obj.draw_rate.value == false){
+			//alert('请输入奖品名称！');
+			//var _name = obj.draw_rate;
+			//if($(_name).next('font').text() == ''){
+				//$(_name).after('<font color="red"> 请输入兑奖几率！</font>');
+			//}
+			//$(_name).focus();
+			//return false;
+		//}else{
+			//var _name = obj.draw_rate;
+			//if($(_name).next('font').text() != ''){
+			//	$(_name).next('font').text('');
+			//}
+		//}
+		// 中奖数量/天
+		if(isNumber(obj.day_num_limit.value) == false){
+			//alert('中奖数量/天！');
+			var _name = obj.day_num_limit;
+			if($(_name).next('font').text() == ''){
+				$(_name).after('<font color="red"> 请输入正确中奖数量/天！</font>');
+			}
+			$(_name).focus();
+			return false;
+		}else{
+			var _name = obj.day_num_limit;
+			if($(_name).next('font').text() != ''){
+				$(_name).next('font').text('');
+			}
+		}
+		return true;
+	}
+	
+	
+	// 提交表单
+	function submitFunc(){
+		$('#form1').submit();
+	}
+    
+</script>
+</body>
+</html>

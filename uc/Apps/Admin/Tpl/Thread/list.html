@@ -1,0 +1,310 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>问答管理</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Js/library/ui/static/calendar/calendar.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type="text/javascript" src="__PUBLIC__/Js/bq.js"></script>
+<script type='text/javascript' src='__PUBLIC__/Js/library/ui/form/calender.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+</head>
+<body>
+<include file="Index:isdelete"/>
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li class="current"><a href="__ROOT__/iadmin.php/Thread/askList"><span>问答管理</span></a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+	<form action='__ROOT__/iadmin.php/Thread/askList' method='get'>
+    <!--搜索开始-->
+    <div class="search_box">
+        <div class="search">
+            <div class="title">
+                <span class="txt">问题标题：</span>
+                <input name="title"  id="clearText_1" val='输入问题标题关键字'  type="text" class="input_txt" value="<?php if($title){echo $title;}else{echo '输入问题标题关键字';}?>" />
+            </div>
+			 <div class="title">
+                <span class="txt">标签名称：</span>
+                <input name="tag_name"  id="clearText_1" val='输入标签关键字'  type="text" class="input_txt" value="<?php if($tag_name){echo $tag_name;}else{echo '输入标签关键字';}?>" />
+            </div>
+            <div class="date">
+                <span class="txt">提问时间：</span>
+                <input class="input_date calendar" type="text" name="starttime" id="calender1"  value="<?php if($starttime){echo $starttime;}?>"/>
+                <span class="txt">至</span>
+                <input class="input_date calendar" type="text" name="endtime" id="calender2"  value="<?php if($endtime){echo $endtime;}?>"/>
+            </div>
+			<div class="btn_box"><input type='button' class='calendarClear' name='' value='清除时间'></div>
+			<!--
+			<div >
+			<span class="txt">分类：</span>
+			<select class='select_menu' name='data[cat_id]' id='cat_id'>
+				<option value='-1' >全部</option>
+				<php>foreach($catList as $key=>$val) { </php>
+					<option value='{$val.id}' <?php if($cat_id==$val['id']){echo 'selected';}?>> {$val.name} </option>
+				<php>} </php>
+			</select>
+			</div>
+			-->
+			<div class="nick">
+                <span class="txt">分类：</span>
+                <select class="select_menu" name="firstCatId" id="firstCatId">
+                    <option value="">全部</option>
+					<volist name='catList' id='v'>
+						<option value="{$v.id}" <php>if($firstCatId == $v['id']) {echo 'selected="selected"';}</php>>{$v.name}</option>
+					</volist>
+                </select>
+				<!-- 第二级 -->
+				<span id="second"> 
+				<select class="select_menu" id="secondCatId" name="secondCatId" style="width:100px;">
+				</select> 
+				</span>
+				<!-- 第三级 -->
+				<span id="third"> 
+				<select class="select_menu" id="thirdCatId" name="thirdCatId" style="width:100px;">
+				</select> 
+				</span>
+            </div>
+			<br/><br/>
+            <div class="nick">
+                <span class="txt">提问用户：</span>
+                <input name="user" type="text"  id="clearText_2" val='输入用户呢称或id' class="input_txt" value="<?php if($user){echo $user;}else{echo '输入用户呢称或id';}?>"/>
+                <select class="select_menu" name="select" id="select">
+                    <option value='1' <?php if($select==1){echo 'selected';}?> >用户昵称</option>
+                    <option value='2' <?php if($select==2){echo 'selected';}?> >用户ID</option>
+                </select>
+            </div>
+			<div class="title">
+                <span class="txt">是否审核：</span>
+                <select class="select_menu" name="is_check">
+					<option value='-1'>请选择</option>
+                    <option value='0' <?php if(isset($is_check) && $is_check==0){echo 'selected';}?>>待审核</option>
+                    <option value='1' <?php if(isset($is_check) && $is_check==1){echo 'selected';}?> >已审核</option>
+                </select>
+            </div>
+			<div class="title">
+                <span class="txt">精华：</span>
+				<input type="checkbox" name="is_digest" value="1" <php>if($is_digest == 1){</php>checked="checked"<php>}</php>>
+			</div>
+			<div class="title">
+                <span class="txt">置顶：</span>
+				<input type="checkbox" name="is_top" value="1" <php>if($is_top == 1){</php>checked="checked"<php>}</php>>
+			</div>
+			<div class="title">
+                <span class="txt">紧急：</span>
+				<input type="checkbox" name="is_urgent" value="1" <php>if($is_urgent == 1){</php>checked="checked"<php>}</php>>
+			</div>
+            <div class="btn_box"><a class="search_btn" onClick='submitFun();' href="javascript:void(0);" title="查询">查询</a></div>
+        </div>
+    </div>
+    <!--搜索结束-->
+	</form>
+    
+    <!--数据列表开始-->
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+        <thead>
+            <tr>
+                <th width="45">选中</th>
+                <th width="5%">ID</th>
+                <th width="25%">问题标题</th>
+                <th width="9%"><a <php>if($order == 1 || $order == ''){echo 'class="sort_desc"';}</php> href="<?php echo $url;?>&order=1">提问时间<i></i></a></th>
+				<th width='6%'>分类</th>
+                <th width="8%">用户昵称</th>
+                <th width="6%">用户ID</th>
+                <th width="5%"><a <php>if($order == 2){echo 'class="sort_desc"';}</php> href="<?php echo $url;?>&order=2">浏览数<i></i></a></th>
+                <th width="5%"><a <php>if($order == 3){echo 'class="sort_desc"';}</php> href="<?php echo $url;?>&order=3">回答数<i></i></a></th>
+                <th width="5%">是否审核</th>
+                <th width="10%">状态</th>
+				<th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+
+			<volist name='threads' id='vo'>
+            <tr>
+                <td><input class="dx" type="checkbox" value="{$vo.id}" id="blogID_{$vo.id}" name="blogID"></td>
+                <td>&nbsp;{$vo.id}</td>
+                <td align="left">&nbsp;<span class="title"><php>if($vo['is_check'] == 1){</php><a href="<php>echo C('BLOG_DIR'); </php>/post/{$vo.id}.html" target='_blank'>{$vo.title}</a><php>}else{</php>{$vo.title}<php>}</php></span></td>
+                <td>&nbsp;{$vo.create_time}</td>
+				<td>&nbsp;{$vo.name}</td>
+                <td>&nbsp;{$vo.nickname}</td>
+                <td>&nbsp;{$vo.uid}</td>
+                <td>&nbsp;{$vo.view_num}</td>
+                <td>&nbsp;{$vo.comment_num}</td>
+				<td>&nbsp;<php>if($vo['is_check']==1){</php>已审核<php>}else{</php>未审核<php>}</php></td>
+				<td>&nbsp;<php>if($vo['is_digest']==1){</php>精华<php>}</php> <php>if($vo['status']==1){</php><php>if($vo['is_digest']==1){</php><span class="line">|</span><php>}</php>置顶<php>}</php> <php>if($vo['is_urgent']==1){</php><php>if($vo['is_digest']==1 || $vo['status']==1){</php><span class="line">|</span><php>}</php>紧急<php>}</php></td>
+                <td>
+					<a href="/iadmin.php/Thread/detail/id/{$vo.id}" >详细</a><span class="line">|</span>
+					<php>if($vo['is_check']==0){</php><a href="/iadmin.php/Thread/check?id={$vo.id}&page={$page}">审核通过</a><span class="line">|</span><php>}</php>
+					<a href="javascript:;" onClick="return urlDelete(2,'__ROOT__/iadmin.php/Thread/deleteThread?deleteThread={$vo.id}&page=<?php echo $page;?>');" >删除</a>
+				</td>
+            </tr>
+           </volist>
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="12" align="left"><label><input class="select_all" type="checkbox" value="全选" id="blogID" name="blogID">全选</label> 
+				<a class="del_btn" href="#" actions='20' controllers='12' title="删除"></a>
+				<!--<a class="del_btn batchCheck" href="javscript:void(0);" title="审核通过"></a>-->
+				</td>
+            </tr>
+        </tfoot>
+    </table>
+    <!--数据列表结束-->
+    
+    <!--分页开始-->
+    <?php echo $pageHtml;?>
+    <!--分页结束-->
+    <input type='hidden' value='<?php echo $url;?>' id='url'>
+</div>
+<script language="javascript">
+var secondCatId = '{$secondCatId}';
+function ajaxJson(parentId){
+	$.getJSON(
+		"/iadmin.php/Article/getSubCategory",
+		{id:parentId},
+		function(DataJSON){ 
+			var stroptions="",strselect=""; 
+			if(DataJSON != null && DataJSON.length>0){ 
+				stroptions+="<option value=''>全部</option>"; 
+				for(var i=0;i<DataJSON.length;i++){ 
+					if(secondCatId!="" && secondCatId==DataJSON[i].id){
+						strselect = 'selected="selected"';
+					}else{
+						strselect = '';
+					}
+					stroptions+="<option value="+DataJSON[i].id+" "+strselect+">"+DataJSON[i].name+"</option>"; 
+				}
+				$("#secondCatId").html(stroptions);
+				$("#second").show();
+			}else{ 
+				$("#secondCatId").empty();
+				$("#second").hide(); 
+			} 
+		}
+	); 
+}
+
+// 二级分类修改
+var thirdCatId = '{$thirdCatId}';
+function ajaxSecondChange(secondId){
+	$.getJSON(
+		"/iadmin.php/Article/getSubCategory",
+		{id:secondId},
+		function(DataJSON){ 
+			var stroptions="",strselect=""; 
+			if(DataJSON != null && DataJSON.length>0){ 
+				stroptions+="<option value=''>全部</option>"; 
+				for(var i=0;i<DataJSON.length;i++){ 
+					if(thirdCatId!="" && thirdCatId==DataJSON[i].id){
+						strselect = 'selected="selected"';
+					}else{
+						strselect = '';
+					}
+					stroptions+="<option value="+DataJSON[i].id+" "+strselect+">"+DataJSON[i].name+"</option>"; 
+				}
+				$("#thirdCatId").html(stroptions);
+				$("#third").show();
+			}else{ 
+				$("#thirdCatId").empty();
+				$("#third").hide(); 
+			} 
+		}
+	); 
+}
+
+<php>if($firstCatId){</php>
+	ajaxJson({$firstCatId});
+	<php>if($secondCatId) {</php>
+		ajaxSecondChange({$secondCatId});
+	<php>} else{ </php>
+		$("#thirdCatId").empty()
+		$("#third").hide();
+	<php>}</php>
+<php>}else{</php>
+	$("#secondCatId").empty()
+	$("#second").hide();
+	$("#thirdCatId").empty()
+	$("#third").hide();
+<php>}</php>
+
+$(function(){ 
+	// 一级分类修改
+	$("#firstCatId").change(function(){
+		secondCatId="";
+		var parentId=$("#firstCatId").val();
+		if(parentId!=false){ 
+			ajaxJson(parentId);
+			$("#thirdCatId").empty()
+			$("#third").hide(); 
+		} else{ 
+			$("#secondCatId").empty()
+			$("#second").hide(); 
+			$("#thirdCatId").empty()
+			$("#third").hide(); 
+		} 
+	});
+
+	// 二级分类修改
+	$("#secondCatId").change(function(){
+		thirdCatId="";
+		// 二级分类id
+		var secondId=$("#secondCatId").val();
+		if(secondId!=false){ 
+			ajaxSecondChange(secondId);
+		} else{ 
+			$("#thirdCatId").empty(); 
+			$("#third").hide(); 
+		} 
+	});
+}); 
+</script>
+<script type='text/javascript'>
+$(function(){
+	$('.batchCheck').click(function(){
+		if($('input[name=blogID]:checked').length==0){
+			alert('请先选择');
+			return false;
+		}
+		if(confirm('确定操作吗？'))
+		{
+			ids = [];
+			$('input[name=blogID]:checked').each(function(){
+				ids.push($(this).val());
+			});
+			ids = ids.join(',');
+			$.post('/iadmin.php/Thread/batchCheck',{ids:ids},function(msg){
+				if(msg==1){
+					window.location = '/iadmin.php/Thread/index';
+				}
+				return false;
+			});
+
+		}
+	});
+});
+//页面加载一次
+window.onload=function(){
+		/*var url = $('#url').val();
+		if(url){
+			var maxCode=parent.oMapReloadInfo['maxCode'];
+			var code=parent.oMapReloadInfo['code'];
+			var difference = maxCode-code;
+			if(difference==1){
+				parent.oMapReloadInfo['maxCode']=maxCode+1;
+				location.href=url;
+			}else{
+				parent.oMapReloadInfo['code']=code+1;
+			}
+		}*/
+}
+BQ.ui.form.Calender('#calender1');
+BQ.ui.form.Calender('#calender2');
+</script>
+</body>
+</html>

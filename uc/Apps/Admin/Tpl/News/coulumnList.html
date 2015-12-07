@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>栏目列表</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Js/library/ui/static/calendar/calendar.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type="text/javascript" src="__PUBLIC__/Js/bq.js"></script>
+<script type='text/javascript' src='__PUBLIC__/Js/library/ui/form/calender.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+</head>
+<body>
+<style>
+ .tb td{text-align:center}
+</style>
+<include file="Index:isdelete"/>
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li class="current"><a href="__ROOT__/iadmin.php/News/coulumnList"><span>栏目列表</span></a></li>
+        <li ><a href="/iadmin.php/News/saveCoulumn?parent_id ={$parent_id}"><span>添加栏目</span></a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+	
+    
+    <!--数据列表开始-->
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+        <thead>
+            <tr>
+                <th width="15%" align="center">ID</th>
+                <th width="20%" align="center">名称</th>
+                <th width="30%" align="center">介绍</th>
+                <th width="15%" align="center">资讯数</th>
+                <th width="20%" align="center">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+
+			<volist name='list' id='vo'>
+            <tr>
+                <td align="center" >{$vo.id}</td>
+                <td align="center">
+                	<span class="title"><a href="/iadmin.php/news/coulumnList?parent_id={$vo.id}">{$vo.name}</a></span>
+                </td>
+                <td align="center">{$vo.introduction}</td>
+                <td align="center">{$vo.countNews}</td>
+                <td>
+                	<a href="/iadmin.php/News/editCoulumn?id={$vo.id}">编辑</a>
+                <php>
+                	if($parent_id == 0):
+                </php>
+                	<span class="line">|</span>
+                	<a href="/iadmin.php/News/saveCoulumn?parent_id ={$vo.id}"  >添加二级分类</a>
+                	<php>endif;</php>
+                </td>
+                	
+                
+            </tr>
+           </volist>
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="9" align="left">
+                	
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    <!--数据列表结束-->
+    
+    <!--分页开始-->
+    <?php echo $pageHtml;?>
+    <!--分页结束-->
+    <input type='hidden' value='<?php echo $url;?>' id='url'>
+</div>
+
+</body>
+
+</html>

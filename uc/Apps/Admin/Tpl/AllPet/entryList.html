@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>词条管理</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Js/library/ui/static/calendar/calendar.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type="text/javascript" src="__PUBLIC__/Js/bq.js"></script>
+<script type='text/javascript' src='__PUBLIC__/Js/library/ui/form/calender.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+<style type='text/css'>
+.popup_layer .setnotice_class{
+	display:none;
+}
+.index_a1{position:relative;}
+.index_a1 a{display:block;margin:auto;}
+.index_a1 em{
+	<if condition="$a eq 1">background:url("__PUBLIC__/Admin/Images/jobline.png") no-repeat;<elseif condition="$a eq 2"/>background:url("__PUBLIC__/Admin/Images/jobline1.png") no-repeat;</if>
+    height: 16px;
+    position: absolute;
+    right: 24px;
+    top: 5px;
+    width: 10px;
+}
+.index_a2 {position:relative;}
+.index_a2 a{display:block;margin:auto;}
+.index_a2 em{
+	<if condition="$b eq 1">background:url("__PUBLIC__/Admin/Images/jobline.png") no-repeat;<elseif condition="$b eq 2"/>background:url("__PUBLIC__/Admin/Images/jobline1.png") no-repeat;</if>
+    height: 16px;
+    position: absolute;
+    right: 33px;
+    top: 5px;
+    width: 10px;
+}
+</style>
+</head>
+<body>
+<include file="Index:isdelete"/>
+<include file="Index:ispublish" />
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li class="current"><a href="__ROOT__/iadmin.php/AllPet/entryList"><span>词条管理</span></a></li>
+        <li class="btn"><a class="add_btn" href="__ROOT__/iadmin.php/AllPet/addEntry">添加词条</a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+    <!--搜索开始-->
+    <div class="search_box">
+        <div class="search">
+
+			<form action='__ROOT__/iadmin.php/AllPet/entryList' method="get">
+            <div class="title">
+                <span class="txt">词条名称：</span>
+                <input name="data[name]" type="text" class="input_txt" id="clearText_1" val='请输入词条关键字' value="<?php if($name){echo $name;}else{echo '请输入词条关键字';}?>"/>
+            </div>
+			<div class="title">
+                <span class="txt">标签名称：</span>
+                <input name="data[tag_name]" type="text" class="input_txt" id="clearText_1"  val='请输入标签关键字' value="<?php if($tag_name){echo $tag_name;}else{echo '请输入标签关键字';}?>"/>
+            </div>
+            <div class="date">
+                <span class="txt">发布时间：</span>
+                <input class="input_date calendar" type="text" name="data[start_time]" id="calender1" value="<?php if($start_time){echo $start_time;}?>"/>
+                <span class="txt">至</span>
+                <input class="input_date calendar" type="text" name="data[end_time]" id="calender2" value="<?php if($end_time){echo $end_time;}?>"/>
+            </div>
+			<div class="btn_box"><input type='button' class='calendarClear' name='' value='清除时间'></div>
+
+			<div class="first nick">
+                <span class="txt">词条一级分类：</span>
+                <select class="select_menu" name="data[first]" id="first">
+                    <option value="">全部</option>
+					<volist name='rootCatlist' id='v'>
+					<option value="{$v.id}" <if condition="$first eq $v['id']">selected="selected"</if> >{$v.name}</option>
+					</volist>
+                </select>
+            </div>
+			<div class="second nick">
+                <span class="txt">词条二级分类：</span>
+                <select class="select_menu" name="data[second]" id="second">
+                    <option value="">全部</option>
+					
+                </select>
+            </div>
+			<div class="third nick" >
+                <span class="txt">词条三级分类：</span>
+                <select class="select_menu" name="data[third]" id="third">
+                    <option value="">全部</option>
+					
+                </select>
+            </div>
+            <div class="btn_box"><a class="search_btn" onClick='submitFun();' href="javascript:void(0);" title="查询">查询</a></div>
+			</form>
+        </div>
+    </div>
+    <!--搜索结束-->
+ 
+    <!--数据列表开始-->
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+        <thead>
+            <tr>
+                <th width="5%">选中</th>
+                <th width="5%">ID</th>
+                <th width="15%">词条名称</th>
+                <th width="15%">词条一级分类</th>
+				<th width="10%">词条二级分类</th>
+				<th width="10%">词条三级分类</th>
+				<th width="10%">
+					<a <php>if($order == 2){echo 'class="sort_desc"';}</php> href="<?php echo $url;?><?php if(!$order || $order==1) echo '&order=2'; ?>">浏览数<i></i></a>
+				</th>
+                <th width="15%">
+					<a <php>if($order == 1){echo 'class="sort_desc"';}</php> href="<?php echo $url;?><?php if(!$order || $order==2) echo '&order=1'; ?>">发布时间<i></i></a>
+				</th>
+				<th width="5%">显示状态</th>
+                <th width="10%">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+			<volist name='list' id='v'>
+			<tr>
+                <th><input class="dx" type="checkbox" value="{$v.id}" id="blogID_{$v.id}" name="blogID"></th>
+                <th>{$v.id}</th>
+				<th><span class="title"><a href="<php>echo C('BLOG_DIR');</php>/entry/detail/{$v.id}.html" target='_blank'>{$v.name}</a></span></th>
+                <th>{$v.first_name}</th>
+                <th>{$v.second_name}</th>
+				<th>{$v.third_name}</th>
+				<th>{$v.view_num}</th>
+				<th>{$v.create_time}</th>
+				<th><php>if($v['status'] == -1){echo '隐藏';}else{ echo '显示';}</php></th>
+                <th><a href="javascript:;" <php>if($v['status'] == 0){</php>onCLick="return urlDelete(2,'__ROOT__/iadmin.php/AllPet/deletePet?deletePet={$v.id}&page=<?php echo $page;?>');">删除<php>}else{</php>onCLick="return urlPublish(2,'__ROOT__/iadmin.php/AllPet/publishPet?publishPet={$v.id}&page=<?php echo $page;?>');">发布<php>}</php></a><span class="line">|</span><a href="__ROOT__/iadmin.php/AllPet/addEntry?id={$v.id}&page=<?php echo $page;?>">编辑</a></th>
+            </tr>
+			</volist>
+
+		</tbody>
+        <tfoot>
+            <tr>
+                <td colspan="10" align="left"><label><input class="select_all" type="checkbox" value="全选" id="blogID" name="blogID">全选</label> <a class="del_btn" href="#" actions='25' controllers='15' title="删除"></a><a class="publish_btn" href="#" actions='26' controllers='15' title="发布"></a></td>
+            </tr>
+        </tfoot>
+    </table>
+    <!--数据列表结束-->
+    
+    <!--分页开始-->
+    <?php echo $pageHtml;?>
+    <!--分页结束-->
+    <input type='hidden' value='<?php echo $url;?>' id='url'>
+</div>
+</body>
+</html>
+<script language="javascript">
+//通过一级分类获得二级分类方法
+var smallID0 = '{$second}';
+function ajaxsub(rootId){
+	$.getJSON(
+		//"/iadmin.php/AllPet/getSubCategory",
+		"/iadmin.php/AllPet/ajaxGetSecondCatList",
+		{id:rootId},
+		function(list){ 
+			var stroptions0="",strselect0="";						
+			//二级分类
+			if(list.secCats.length>0){ 
+				stroptions0+="<option value=''>全部</option>"; 
+				for(var i=0;i<list.secCats.length;i++){ 
+					if(smallID0!="" && smallID0==list.secCats[i].id){
+						strselect0 = 'selected="selected"';
+					}else{
+						strselect0 = '';
+					}
+					stroptions0+="<option value="+list.secCats[i].id+" "+strselect0+">"+list.secCats[i].name+"</option>";
+				}
+				$(".second").show();
+				$("#second").show();
+				$("#second").html(stroptions0);
+			}else{ 
+				$("#second").html();
+				$(".second").hide(); 
+			} 
+		}
+	); 
+}
+//通过二级分类获得三级分类方法
+var smallID = '{$third}';
+function ajaxJson(parentId){
+	$.getJSON(
+		"/iadmin.php/AllPet/getSubCategory",
+		{id:parentId},
+		function(DataJSON){ 
+			var stroptions="",strselect=""; 
+			if(DataJSON!=null){ 
+				stroptions+="<option value=''>全部</option>"; 
+				for(var i=0;i<DataJSON.length;i++){ 
+					if(smallID!="" && smallID==DataJSON[i].id){
+						strselect = 'selected="selected"';
+					}else{
+						strselect = '';
+					}
+					stroptions+="<option value="+DataJSON[i].id+" "+strselect+">"+DataJSON[i].name+"</option>"; 
+				}
+				$(".third").show();
+				$("#third").show();
+				$("#third").html(stroptions);
+			}else{
+				$("#third").hide();
+				$(".third").hide();
+				$("#third").val('');
+			} 
+		}
+	); 
+}
+
+$(function(){ 
+	if($('#first').val() != false){
+		$('.second').show();	//二级分类显示
+	}else{
+		$('.second').hide();
+		$('.third').hide();
+	}
+	//当一级分类发生改变，影响二级分类
+	$('#first').change(function(){
+		if($(this).val() != false){
+			ajaxsub($(this).val());
+		}else{
+			$('.second').hide(); 		//二级分类隐藏
+			
+		}
+		$('.third').hide();			//三级分类隐藏
+		$('#second').val('');
+		$('#third').val('');
+	});
+	$("#second").change(function(){
+		smallID="";
+		var parentId=$("#second").val();
+		if(parentId!=false){ 
+			ajaxJson(parentId);
+		} else{ 
+			$("#third").hide(); 
+			$(".third").hide(); 
+		} 
+	});
+}); 
+<php>if($first){</php>
+ajaxsub({$first});
+<php>}else{</php>
+$("#second").hide();
+<php>}</php>
+<php>if($second){</php>
+ajaxJson({$second});
+<php>}else{</php>
+$(".third").hide();
+<php>}</php>
+</script>
+<script type='text/javascript'>
+window.onload=function(){
+		var url = $('#url').val();
+		if(url){
+			var maxCode=parent.oMapReloadInfo['maxCode'];
+			var code=parent.oMapReloadInfo['code'];
+			var difference = maxCode-code;
+			if(difference==1){
+				parent.oMapReloadInfo['maxCode']=maxCode+1;
+				location.href=url;
+			}else{
+				parent.oMapReloadInfo['code']=code+1;
+			}
+		}
+}
+BQ.ui.form.Calender('#calender1');
+BQ.ui.form.Calender('#calender2');
+</script>

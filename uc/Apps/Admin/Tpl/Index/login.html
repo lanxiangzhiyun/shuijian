@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>波奇内容管理系统登录页</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+<script type='text/javascript'>
+	 if (top.location != self.location){       
+            top.location = "/iadmin.php/Index/login";       
+        }  
+</script>
+</head>
+<body class="login_bd">
+
+    <div class="login">
+        <p class="error" style='display:none;'>用户名或密码错误</p>
+        <ul>
+            <li>
+                <span class="txt">用户名：</span>
+                <span class="input_box">
+                <input class="input_bk" type="text" name="username" id="username" />
+                </span>
+            </li>
+            <li>
+                <span class="txt">密&nbsp;&nbsp;&nbsp;码：</span>
+                <span class="input_box">
+                <input class="input_bk" type="password" name="password" id="password" />
+                </span>
+            </li>
+            <li>
+                <span class="txt">&nbsp;</span>
+                <span class="input_box">
+                    <a class="login_btn" href="#" title="登录"></a>
+                </span>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>批量处理标签</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/tag.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+
+</head>
+<body>
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li><a href="__ROOT__/iadmin.php/Tag/index"><span>标签管理</span></a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+	
+	<form action='__ROOT__/iadmin.php/Tag/tagBatchOperation' method='post'>
+    <!--修改标签开始-->
+    <div class="common_tb">
+        <ul>
+            <li>
+				<!-- 记得添加时传入父级tag id和显示父级tag name -->
+				<span class="text">已选择标签：</span>
+				<input type="hidden" name="tagids1" id="tagids1" value='{$tagIds}' />
+				<span class="input_area" style="position:relative;z-index:9999">
+					<input type="text"  class="input_bk editNewTag" value="" act="batch" />
+					<div class="add_tag_s1"></div><br />
+					<div class="add_tag_t1">
+						<php>if($tagList) {</php>
+							<volist name="tagList" id="vo">
+								<div class="add_tag_list" pid="{$vo.id}">{$vo.name}<em class="delete_tag_list"></em></div>
+							</volist>
+						<php>}</php>
+					</div>
+                </span>
+			</li>
+            <li>
+				<span class="text"></span>
+                <span class="txt"><label><input type="radio" value="1" checked="checked" name="type" />批量合并</label></span>
+                <span class="txt"><label><input type="radio" value="2" name="type" />批量添加父级标签</label></span>
+            </li>
+			<li>
+				<span class="text">目标标签：</span>
+				<input type="hidden" name="tagids2" id="tagids" value='' />
+                <span class="input_area" style="position:relative;z-index:9999">
+					<input name="" type="text" value='' class="input_bk addNewTag" id="tag_ipt" act='merge' />
+					<div class="add_tag_s"></div><br />
+					<div class="add_tag_t">
+						
+					</div>
+				</span>
+			</li>
+            <li>
+                <span class="text">&nbsp;</span>
+                <span class="input_area"><a class="submit_btn" href="javascript:void(0);" onClick='submitFun();' title="确定"></a><a class="cancel_btn" onClick="return backfun('/iadmin.php/Tag/index');" href="javascript:void(0);" title="取消"></a> </span>
+            </li>
+        </ul>
+    </div>
+    <!--修改标签结束-->
+
+	</form>
+</div>
+<script type="text/javascript">
+
+	var tagArr1=[];
+	var tagId1=$('#tag_id1').val();
+	if($('#tagids1').val()!=''){
+		tagArr1=$('#tagids1').val().split(',');
+	}
+	//搜索标签
+	var tagObj1=$('.add_tag_s1');
+	$('.editNewTag').bind('click keyup',function(){
+		var _t = $(this);
+		var key = $.trim(_t.val());
+		if(key=='') return;
+		searchAjax1(key, _t);
+		return false;
+	});
+	$(document).on('click',function(){
+		tagObj1.hide();
+	});
+	//下拉框添加标签
+	$('.add_tag_s_list1').live('click',function(){
+		var _t = $(this);
+		var tag_list1 = $('.add_tag_t1');
+		var length = tagArr1.length, flag1=true;
+		if(length>0){
+			if($('.editNewTag').attr('act')=='merge'){
+				if(length>=1){
+					alert('已添加过合并标签！');
+					return false;
+				}
+				
+			}else{
+				for(var i=0;i<length;i++){
+					if(tagArr1[i]==_t.attr('pid')){
+						flag1=false;
+						alert('已经添加过了，请重新选择！');
+						break;
+					}
+				}
+			}
+		}
+		if(flag1){
+			_t.parent().prev().val(_t.text());
+			tag_list1.append('<div class="add_tag_list1 add_tag_list batch" pid="'+_t.attr('pid')+'">'+_t.text()+'<em></em></div>');
+			tagArr1.push(_t.attr('pid'));
+			$('#tagids1').val(tagArr1.join(','));
+			tagObj1.html('').hide();
+		}
+	});
+	//移除标签
+	$('.add_tag_list1').live('click',function(){
+		var _t1 = $(this), url = _t1.parent().attr('url');
+		_t1.remove();
+		for(var i=0;i<tagArr1.length;i++){
+			if(tagArr1[i]==_t1.attr('pid')){
+				tagArr1.splice(i,1);
+				break;
+			}
+		}
+		$('#tagids1').val(tagArr1.join(','));
+	});
+	var ajaxData1 = {};
+	function searchAjax1(key, obj){  //搜索标签
+		if(ajaxData1[key]==undefined){
+			$.get('/iadmin.php/Tag/ajaxSearchTagByName',{tagId:tagId1,keyword:key,act:obj.attr('act')},function(d){
+				loadData1(d);
+				ajaxData1[key]=d;
+			},'json');
+		}else{
+			loadData1(ajaxData1[key]);
+		}	
+	}
+	function loadData1(d){
+		if(d.data){
+			var pHtml1 = '';
+			$.each(d.data,function(i,j){
+				pHtml1 += '<div class="add_tag_s_list1 add_tag_s_list batch" pid="'+j.id+'">'+j.name+'</div>';
+			});
+			tagObj1.html(pHtml1).show();
+		}else{
+			tagObj1.html('').hide();
+		}
+	}
+
+
+
+</script>
+</body>
+</html>

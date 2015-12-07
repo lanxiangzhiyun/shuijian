@@ -1,0 +1,303 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="<php>if(isset($huser['nickname'])) { </php>{$huser.nickname}<php>} else { </php>波奇{$huser.uid}<php>} </php>的啊呜" />
+<meta name="description" content="<php>if(isset($huser['nickname'])) { </php>{$huser.nickname}<php>} else { </php>波奇{$huser.uid}<php>} </php>的唠叨碎语<php>if(isset($p) && $p >= 2) { </php>，第{$p}页<php>} </php>，记录和宠物生活的片段" />
+<php>if($obj == "me") { if($userinfo['groupid'] >= 4 && $userinfo['groupid'] < 11) { </php><META NAME="robots" CONTENT="NOINDEX,NOFOLLOW">
+<php>} } elseif($obj == "other") { if($huser['groupid']  >= 4 && $huser['groupid'] < 11) { </php><META NAME="robots" CONTENT="NOINDEX,NOFOLLOW">
+<php>} }</php>
+<title><php>if(isset($huser['nickname'])) { </php>{$huser.nickname}<php>} else { </php>波奇{$huser.uid}<php>} </php>的啊呜<php>if(isset($p) && $p >= 2) { </php> - 页{$p}<php>} </php> – 波奇网宠物家园、分享宠物的快乐生活</title>
+<link rel="stylesheet" type="text/css" href="<php>echo autoVer('/Css/uc/global.css');</php>"/>
+<link rel="stylesheet" type="text/css" href="<php>echo autoVer('/Css/uc/main.css');</php>"/>
+</head>
+<body>
+<!--头部开始-->
+<div class="global_header">
+    <include file="Public:top" />
+    
+    <include file="Public:header" />
+</div>
+<!--头部结束-->
+
+<!--主体部分开始-->
+<div class="main clearfix">
+    <!--左侧开始-->
+    <include file="Public:left" />
+    <!--左侧结束-->
+    <div class="plc_main">
+
+        <!--中间开始-->
+        <div class="main_center" id="mainCenter">
+			<div><a href="{$midad.linkpath}" target="_blank"><img src="{$midad.pic_path}" width="540" height="150" alt="{$midad.title}"/></a></div>
+			<div class="gg"><i class="bc"></i><div id="ggmarquee">
+					<ul>
+						<php>foreach($announce as $gk => $gonggao) { </php>
+							<php>if($gk % 2 == 0) { </php>
+								<li>
+							<php>} </php>
+								<php>if($gonggao['linkurl']){ </php><a href="{$gonggao.linkurl}" target="_blank">{$gonggao.short_subject}</a> <php>} else { </php>{$gonggao.short_subject} <php>} </php>
+							<php>if($gk % 2 == 1 || $gk == count($announce)-1) { </php>
+							</li>
+							<php>} </php>
+						<php>} </php>
+					</ul>
+				</div></div>
+
+            <!--微博输入开始-->
+            <div class="talk_box" id="bqexp" <php>if($oruid){</php>style="display:none"<php>}</php>>
+                <div class="hd">
+                    <div class="hd">
+                    <div class="tab">
+                         <a class="weibo" href="#">啊呜</a>
+                         <a class="diary" href="/UcDiary/diaryAdd">宠日记</a>
+                    </div>
+                    <div class="gg"><i class="bc"></i><a href="{$announce.linkurl}" target="_blank">{$announce.subject}</a></div>
+                </div>
+                </div>
+                <div class="send_cont">
+					<input id="imgpad" type="hidden" value="">
+					<input id="publishToken" type="hidden" name="token" value="{$token}">
+                    <textarea name="textarea" id="bqcom1" cols="45" rows="5">留个足迹，问候一下吧</textarea>
+                    <i class="arr_ico"></i>
+                    <span class="num" id="bqtexsub">0/140</span><!-- 超出字数 addClass('warning') -->
+                </div>
+                <div class="send_fun">
+                    <div class="emot">
+                        <a class="face" href="#" id="bqbut1" title="插入表情">表情</a>
+                        <a class="img" href="#" id="bqminup1" title="插入图片">图片</a>
+                        <span style="display:none;" class="thumb_img" id="bqminimg"><i class="icon_img"></i><span>354.jpg</span><a class="del" href="#" title="删除">删除</a></span>
+                    </div>
+
+                    <div class="pub">
+                        <input class="disable" type="submit" name="button2" id="bqemoSubmit1" value=" " /><!-- 可发布状态removeClass(disable) -->
+                    </div>
+                    
+                    <div class="sync">
+                        <span>分享：</span>
+                        <a class="qq" href="#" title="腾讯微博"></a><!-- 选中 addClass('qq_selected') -->
+                        <a class="sina" href="#" title="新浪微博"></a><!-- 选中 addClass('sina_selected') -->
+                    </div>
+                    
+                </div>
+            </div>
+            <!--微博输入结束-->
+           
+            <!--微博列表开始-->
+        <div class="feed_tab">
+            <ul>
+                <li class="current"><a href="<php>echo get_rewrite_url('UcWeibo','weibo',$oruid);</php>">TA的啊呜</a></li>
+                <li><a href="<php>if($oruid){</php><php>echo get_rewrite_url('UcWeibo','hotWeibo',$oruid);</php><php>}else{</php><php>echo get_rewrite_url('UcWeibo','hotWeibo',$userinfo['uid']);</php><php>}</php>">热门啊呜</a><!--<span class="num">1</span>--></li>
+            </ul>
+        </div>
+		<!--我的微博开始--> 
+        <div class="feeds">
+        <div class="feed">
+				<volist name='list' id='v'>
+				<php>if($v['relayid'] == 0){</php>
+				 <dl class="feed_list" ucode="wb">
+                    <dt class="head" unm="{$v.nickname}" wid="{$v.id}" bds="{$v.broadcasts}" pnb="{$v.comments}" uid="{$userinfo.uid}" unickname="{$userinfo.nickname}" uavatar="{$userinfo.avatar}" url_link="{$userinfo.url_link}"><a href="{$v.url_link}"><img class="avatar" src="{$v.avatar}" style="width:50px;" alt="" /></a></dt>
+                    <dd class="content">
+                        <p class="feed_list_content"><a href="{$v.url_link}" class="wname">{$v.nickname}：</a>{$v.weibo_content}</p>
+						<php>if($v['weibo_picbig']){</php>
+                        <!--小图浏览开始-->
+                        <ul class="pic_list wbminpic">
+                            <li>
+                               <div class="minpic">
+                                   <img alt="" src="<php>echo C('IMG_DIR');</php>/{$v.weibo_picsml}" class="bigcursor">
+                               </div>
+                            </li>
+                        </ul>
+                        <!--小图浏览结束-->
+						 <!--大图浏览开始-->
+                        <div class="pic_origin none wbpicorigin">
+                              <p class="act_btn">
+                                  <a class="retract" href="#">收起</a>
+                                  <i class="wline">|</i>
+                                  <a class="show_big" href="<php>echo C('IMG_DIR');</php>/{$v.weibo_picbig}" target="_blank">查看大图</a>
+                                  <i class="wline">|</i>
+                                  <a class="turn_left" href="#">向左转</a>
+                                  <i class="wline">|</i>
+                                  <a class="turn_right" href="#">向右转</a>
+                               </p>
+                              <div class="smallcursor">
+								<img src="<php>echo C('IMG_DIR');</php>/{$v.weibo_picbig}" class="smimg" id="smimg"/>
+								
+							  </div>
+                        </div>
+                        <!--大图浏览结束-->
+                        <php>}</php>
+                        <p class="info">
+                            <span class="date">{$v.weibo_time}</span>
+                            <span class="act"><php>if($v['isuid'] == 1){</php><a thref="/UcWeibo/delWeibo/wid/{$v.id}" href="javascript:void(0);" class="bqdelinfo">删除</a><i class="wline">|</i><php>}else{</php><php>if($v['recast'] == 1){</php><span class="relay_num">已转播({$v.broadcasts})</span><php>}else{</php><a thref="/UcWeibo/relay/wid/{$v.id}" href="javascript:void(0);" class="bqwbzbbut">转播({$v.broadcasts})</a><php>}</php><i class="wline">|</i><php>}</php><a class="bqplwe" href="javascript:void(0);">评论({$v.comments})</a></span>
+                        </p>
+                        
+                        <!--评论开始-->
+                        <div class="repeat bqrepeat none">
+                            <div class="arrow">
+                                <em>◆</em>
+                                <span>◆</span>
+                            </div>
+                            <div class="input_box">
+                                <textarea name="textarea2" class="bqemocom" cols="45" rows="5"></textarea>
+                                <span class="num bqemonum">0/140</span><!-- 超出字数 addClass('warning') -->
+                            </div>
+                            <div class="send_fun">
+                                <div class="emot">
+                                    <a class="face bqemobut" href="javascript:void(0);" title="插入表情">表情</a>
+                                </div>
+                                <div class="pub">
+                                    <a class="submit_btn bqemoSubmit" href="javascript:void(0);" >评论</a>
+                                </div>
+                            </div>
+                            <div class="comment_list">
+								<volist name='v.commentlist' id='c'>
+                                <dl>
+                                    <dt unm="{$c.nickname}" cid="{$c.id}" wid="{$v.id}" bds="{$v.broadcasts}" pnb="{$v.comments}"><a href="{$c.url_link}"><img src="{$c.avatar}" width="30" height="30"/></a></dt>
+                                    <dd><a href="{$c.url_link}">{$c.nickname}</a>：{$c.message}<em>({$c.dateline})</em>
+                                    <p class="info tr"><php>if($v['isuid'] == 1 or $c['rdel'] == 1){</php><a thref="/UcWeibo/delReply/cid/{$c.id}" href="javascript:void(0);" class="bqinfodel">删除</a><i class="wline">|</i><php>}</php><a href="#" class="bqinfors">回复</a></p>
+                                    </dd>
+                                </dl>
+                                </volist>
+                                <php>if($v['comments'] >= 10){</php>
+                                <p class="more"><a href="<php>echo get_rewrite_url('UcWeibo','weiboComments',$v['id']);</php>" target="_blank">查看全部{$v.comments}条评论>></a></p>
+								<php>}</php>
+                            </div>
+                        </div>
+                        <!--评论结束-->
+                    </dd>
+                </dl>
+				<php>}else{</php>
+				 <dl class="feed_list" ucode="wb">
+                    <dt class="head" unm="{$v.nickname}" wid="{$v.id}" bds="{$v.broadcasts}" pnb="{$v.comments}" uid="{$userinfo.uid}" unickname="{$userinfo.nickname}" uavatar="{$userinfo.avatar}" url_link="{$userinfo.url_link}"><a href="{$v.url_link}"><img class="avatar" src="{$v.avatar}" style="width:50px;" alt="" /></a></dt>
+                    <dd class="content">
+                        <p class="feed_list_content"><a href="{$v.url_link}" class="wname">{$v.nickname}</a><span class="tips_txtwb">转发啊呜</span>{$v.oweibo_subject}</p>
+
+                        <!--转播微博开始-->
+                        <div class="relay bqwbzb <php>if($v['isdelete'] == 1){</php>relaydel<php>}</php>">
+                            <i class="arr"></i>
+							<php>if($v['isdelete'] == 1){</php>
+							<p class="feed_list_content">抱歉，此啊呜已被删除。</p>
+							<php>}else{</php>
+                            <p class="feed_list_content"><a href="{$v.ourl_link}" class="wname">{$v.onickname}：</a>{$v.oweibo_content}</p>
+                            <php>if($v['weibo_picbig']){</php>
+                            <!--小图浏览开始-->
+                            <ul class="pic_list wbminpic">
+                                <li>
+                                    <div class="minpic"> <img alt="" src="<php>echo C('IMG_DIR');</php>/{$v.oweibo_picsml}" class="bigcursor"> </div>
+                                </li>
+                            </ul>
+                            <!--小图浏览结束--> 
+                            
+                            <!--大图浏览开始-->
+                            <div class="pic_origin none wbpicorigin">
+                                <p class="act_btn"> <a class="retract" href="#">收起</a> <i class="wline">|</i> <a class="show_big" href="<php>echo C('IMG_DIR');</php>/{$v.oweibo_picbig}">查看大图</a> <i class="wline">|</i> <a class="turn_left" href="#">向左转</a> <i class="wline">|</i> <a class="turn_right" href="#">向右转</a></p>
+                                <div class="smallcursor">
+									<img src="<php>echo C('IMG_DIR');</php>/{$v.oweibo_picbig}" width="440" class="smimg" id="smimg"/>
+									
+								</div>
+                            </div>
+                            <!--大图浏览结束-->
+							<php>}</php>
+                            <p class="info"> <span class="date">{$v.oweibo_time}</span> <span class="act"><php>if($v['oisuid'] != 1){</php><php>if($v['orecast'] == 1){</php><span class="relay_num">已转播({$v.obroadcasts})</span><php>}else{</php><a href="<php>echo get_rewrite_url('UcWeibo','weiboComments',$v['oid']);</php>" target="_blank">转播({$v.obroadcasts})</a><php>}</php><i class="wline">|</i><php>}</php><a href="<php>echo get_rewrite_url('UcWeibo','weiboComments',$v['oid']);</php>" target="_blank">评论({$v.ocomments})</a></span> </p>
+							<php>}</php>
+                        </div>
+                        <!--转播微博结束-->
+
+                        <p class="info">
+                            <span class="date">{$v.weibo_time}</span>
+                            <span class="act"><php>if($v['isuid'] == 1){</php><a thref="/UcWeibo/delWeibo/wid/{$v.id}" href="javascript:void(0);" class="bqdelinfo">删除</a><i class="wline">|</i><php>}else{</php><php>if($v['recast'] == 1){</php><span class="relay_num">已转播({$v.broadcasts})</span><php>}else{</php><a thref="/UcWeibo/relay/wid/{$v.id}" href="javascript:void(0);" class="bqwbzbbut">转播({$v.broadcasts})</a><php>}</php><i class="wline">|</i><php>}</php><a class="bqplwe" href="javascript:void(0);">评论({$v.comments})</a></span>
+                        </p>
+                        
+                        <!--评论开始-->
+                        <div class="repeat bqrepeat none">
+                            <div class="arrow">
+                                <em>◆</em>
+                                <span>◆</span>
+                            </div>
+                            <div class="input_box">
+                                <textarea name="textarea2" class="bqemocom" cols="45" rows="5"></textarea>
+                                <span class="num bqemonum">0/140</span><!-- 超出字数 addClass('warning') -->
+                            </div>
+                            <div class="send_fun">
+                                <div class="emot">
+                                    <a class="face bqemobut" href="javascript:void(0);" title="插入表情">表情</a>
+                                </div>
+                                <div class="pub">
+                                    <a class="submit_btn bqemoSubmit" href="javascript:void(0);" >评论</a>
+                                </div>
+                            </div>
+                            <div class="comment_list">
+                                <volist name='v.commentlist' id='c'>
+                                <dl>
+                                    <dt unm="{$c.nickname}" cid="{$c.id}" wid="{$v.id}"><a href="{$c.url_link}"><img src="{$c.avatar}" width="30" height="30"/></a></dt>
+                                    <dd><a href="{$c.url_link}">{$c.nickname}</a>：{$c.message}<em>({$c.dateline})</em>
+                                    <p class="info tr"><php>if($v['isuid'] == 1 or $c['rdel'] == 1){</php><a thref="/UcWeibo/delReply/cid/{$c.id}" href="javascript:void(0);" class="bqinfodel">删除</a><i class="wline">|</i><php>}</php><a href="#" class="bqinfors">回复</a></p>
+                                    </dd>
+                                </dl>
+                                </volist>
+                                <php>if($v['comments'] > 10){</php>
+                                <p class="more"><a href="<php>echo get_rewrite_url('UcWeibo','weiboComments',$v['id']);</php>" target="_blank">查看全部{$v.comments}条评论>></a></p>
+								<php>}</php>
+                            </div>
+                        </div>
+                        <!--评论结束-->
+                    </dd>
+                </dl>
+		<php>}</php>
+        </volist>
+        </div>
+
+		 <!--分页开始-->
+		<div class="page_wrap">
+			<div class="showpage">
+				{$page}
+				<!--<a class="page-prev" href="#"><span>上一页</span></a>
+				<span class="page-this">1</span>
+				<a href="#">2</a>
+				<a href="#">3</a>
+				<a href="#">4</a>
+				<a href="#">5</a>
+				<span class="page-break">...</span>
+				<a href="#">20</a>
+				<a class="page-next" href="#"><span>下一页</span></a>-->
+			</div>
+		</div>
+		<!--分页结束-->
+        </div>
+		<!--我的微博结束--> 
+
+        </div>
+        <!--中间结束-->
+        
+        <!--右侧开始-->
+        <div class="main_right">
+            <!--图片广告开始-->
+            <div class="picad">
+            <a href="{$rightad.linkpath}" target="_blank"><img src="{$rightad.pic_path}" width="185" height="120" alt="{$rightad.title}"/></a>
+            </div>
+            <!--图片广告结束-->
+            
+            <!--热门话题开始-->
+				<include file="Public:right_thread"/>
+			<!--热门话题结束-->
+            
+            <!--热门宠物日记开始-->
+				<include file="Public:right_diary"/>
+			<!--热门宠物日记结束-->
+        </div>
+        <!--右侧结束-->
+    </div>
+</div>
+<!--主体部分结束-->
+
+
+<script type="text/javascript"> 
+	BQ.load("UCBQExp,UCBQMinUP,widget.ImgAdaptive,widget.Marquee,UCWeibo",function(){
+         BQ.UCWeibo('otherweibo',{'I_DIR':'<php>echo C("I_DIR");</php>'}).exec();
+    });
+</script>
+<!--底部开始-->
+<include file="Public:footer" />
+<!--底部结束-->
+

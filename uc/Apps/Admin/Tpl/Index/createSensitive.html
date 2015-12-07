@@ -1,0 +1,24 @@
+<!--添加敏感词弹窗开始-->
+<div class="popup_layer" id='createSensitive' style="top:200px; left:500px; width:380px;display:none;">
+    <div class="bg">
+        <div class="content"> <a class="close cancel_btn" href="javascript:void(0);" title="关闭">关闭</a>
+            <div class="hd">添加敏感词</div>
+            <div class="bd"> 
+                <!--替换内容开始-->
+                <div class="photo_popup">
+                    <div class="create_desc">
+                        <span class="desc">&nbsp;&nbsp;&nbsp;敏感词：</span>
+                        <textarea class="desc_textarea" name="textarea" id="keywords" cols="45" rows="5"></textarea>
+                    </div>
+                    <p class="tips">添加多个，敏感词之间用“，”“,”分隔</p>
+                    <p class="btn">
+                       <a class="submit_btn" onClick='return addSensitive();' href="javascript:void(0);" title="确定"></a>
+                       <a class="cancel_btn" href="javascript:void(0);" title="取消"></a>
+                    </p>
+                </div>
+                <!--替换内容结束--> 
+            </div>
+        </div>
+    </div>
+</div>
+<!--添加敏感词弹窗结束-->

@@ -1,0 +1,27 @@
+<!--编辑反馈状态开始-->
+<div class="popup_layer" id='editBatchFeedbackStatus' style="top:200px; left:500px; width:380px;display:none;">
+    <div class="bg">
+        <div class="content"> <a class="close cancel_btn" href="javascript:void(0);" title="关闭">关闭</a>
+            <div class="hd">批量编辑状态</div>
+            <div class="bd"> 
+                <!--替换内容开始-->
+                <div class="photo_popup">
+                    <div class="create_name">
+                        <span class="name">&nbsp;&nbsp;&nbsp;状态：</span>
+                        <select name="statusbatch" id="statusbatch">
+							<option value="0">待解决</option>
+                            <option value="1">已解决</option>
+                            <option value="2">暂缓</option>
+               			</select>
+                    </div>
+                    <p class="btn">
+                       <a class="submit_btn" onClick="return postBatchStatus();" href="javascript:void(0);" title="确定"></a>
+                       <a class="cancel_btn" href="javascript:void(0);" title="取消"></a>
+                    </p>
+                </div>
+                <!--替换内容结束--> 
+            </div>
+        </div>
+    </div>
+</div>
+<!--编辑反馈状态结束-->

@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$tip}banner</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Js/bq.js'></script>
+<script type='text/javascript'>
+	BQ.load("BQAjaxUP",function(){
+		BQ.BQAjaxUP('AjaxUP',{but:$('.addfield'),action:'/iadmin.php/Upload/imageUpload',data:{'type':'push'},onSubmit:function(file,ext){
+			if(ext && /^(jpg|jpeg|png|gif)$/.test(ext)){
+				//console.log('上传中...');
+			}else{
+				alert('不支持非图片格式！');
+				return false;
+			}
+			},onComplete:function(file,response){
+				response = eval("("+response+")");
+				//返回json数据
+				if(response.status == 'ok'){
+					$('#pic_path').val(response.imgpath);
+					//$('#minimg').html('<img src="'+response.domain+response.imgpath+'" alt="" width="'+response.width+'" height="'+response.height+'">')
+					$('#minimg').html('<img src="'+response.domain+response.imgpath+'" alt="" width="200" >');
+				}else if(response.status == 'noselect'){
+					alert('服务器错误、上传图片为空值。');
+				}else if(response.status == 'login'){
+					alert('请登录后操作！');
+				}else if(response.status == 'error'){
+					alert(response.tip);
+				}else{
+					alert('上传失败，请重新上传！');
+				}
+			}});
+	})
+</script>
+</head>
+<body>
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li><a href="__ROOT__/iadmin.php/Push/appDeploy"><span>banner列表</span></a></li>
+        <li class="current"><a class="" href=""><span>{$tip}banner</span></a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+	<form action='__ROOT__/iadmin.php/Push/saveAppDeploy' method='post'>
+	<input type='hidden' id='' value='{$banDetail.id}' name='bid'>
+    <!--创建个人中心推荐开始-->
+    <div class="common_tb">
+        <ul>
+			
+			<li>
+                <span class="text">推荐类型：</span>
+                <span class="input_area">
+                <select class="select_bk" name="type" id="select">
+					<volist name='typeArr' key='i' id='vo'>
+						<option value='{$i}' <if condition="$i eq $banDetail['input1']">selected='selected'</if>>{$vo}</option>
+					</volist>
+				</select>
+                </span>
+            </li>
+			<li id="bantitle">
+                <span class="text">标题：</span>
+				<span class="input_area">
+					<input  type="text" name="title" class="input_bk"  value="{$banDetail.title}" />
+                </span>
+			</li>
+            <li>
+                <span class="text">描述：</span>
+				<span class="input_area">
+					<textarea id="content_init" name="content" style="width:400px;height:80px;" >{$banDetail.textarea1}</textarea>
+                </span>
+			</li>
+			<li>
+                <span class="text">排序值：</span>
+				<span class="input_area">
+					 <input type="text" class="input_bk" name="position" value="{$banDetail.position}" />
+                </span>
+			</li>
+            <li id="entry_pic">
+                <span class="text">图片：</span>
+                <span class="input_area">
+                <input type="hidden" name="pic_path" value='{$banDetail.img1}' id="pic_path" />
+				<a href="#" class="addfield"></a>
+				&nbsp;&nbsp;<font color="#FF0000">*</font>
+
+图片尺寸：宽640*高200  （200px）
+
+				<p id="minimg">
+				<php>if($banDetail['img1']){</php>
+					<img src="<php>echo C('IMG_DIR').'/'.$banDetail['img1'];</php>" width="200"/>
+				<php>}</php></p>
+                </span>
+            </li>
+			<li>
+                <span class="text">值：</span>
+                <span class="input_area">
+					<input name="linkurl" type="text" value='{$banDetail.url}' class="input_bk" id="" />
+                </span>
+            </li>
+
+            <li>
+                <span class="text">&nbsp;</span>
+                <span class="input_area">
+					<a class="submit_btn"  onClick='submitFunc();' href="javascript:void(0);" title="确定"></a>
+					<a class="cancel_btn" onClick="return backfun('/iadmin.php/Push/appDeploy');" href="javascript:void(0);" title="取消"></a>
+				</span>
+            </li>
+        </ul>
+    </div>
+    <!--创建个人中心推荐结束-->
+	</form>
+</div>
+						
+</body>
+</html>
+<script type='text/javascript'>
+	//$('.select_bk').change(function(){
+	//	var _tv = $(this).val();
+	//	if(_tv == 4){
+	//		$('#bantitle').show();
+	//	}else{
+	//		$('#bantitle').hide();
+	//	}
+	//	});
+	function submitFunc(){
+	
+		$("form").submit();
+	}
+</script>

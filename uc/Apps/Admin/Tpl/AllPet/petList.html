@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>宠物管理</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Js/library/ui/static/calendar/calendar.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type="text/javascript" src="__PUBLIC__/Js/bq.js"></script>
+<script type='text/javascript' src='__PUBLIC__/Js/library/ui/form/calender.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+<style type='text/css'>
+.popup_layer .setnotice_class{
+	display:none;
+}
+</style>
+</head>
+<body>
+<include file="Index:isdelete"/>
+<include file="Index:ispublish" />
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li class="current"><a href="__ROOT__/iadmin.php/AllPet/petList"><span>宠物管理</span></a></li>
+        <li class="btn"><a class="add_btn" href="__ROOT__/iadmin.php/AllPet/addPet">添加宠物</a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+
+	
+    <!--搜索开始-->
+    <div class="search_box">
+        <div class="search">
+
+			<form action='__ROOT__/iadmin.php/AllPet/petList' method="get">
+           <div class="title">
+                <span class="txt">宠物名称：</span>
+                <input name="keyword" type="text" class="input_txt" id="clearText_1" val='输入标题关键字' value="<?php if($keyword){echo $keyword;}else{echo '输入标题关键字';}?>"/>
+            </div>
+            <div class="date">
+                <span class="txt">发布时间：</span>
+                <input class="input_date calendar" type="text" name="starttime" id="calender1" value="<?php if($starttime){echo $starttime;}?>"/>
+                <span class="txt">至</span>
+                <input class="input_date calendar" type="text" name="endtime" id="calender2" value="<?php if($endtime){echo $endtime;}?>"/>
+            </div>
+			<div class="btn_box"><input type='button' class='calendarClear' name='' value='清除时间'></div>
+
+			<div class="nick">
+                <span class="txt">分类：</span>
+                <select class="select_menu" name="parent" id="first">
+                    <option value="">全部</option>
+					<volist name='catgorylist' id='v'>
+					<option value="{$v.id}" <php>if($parent == $v['id']) {echo 'selected="selected"';}</php>>{$v.name}</option>
+					</volist>
+                </select>
+				<span id="second"> 
+				<select class="select_menu" id="category" name="category" style="width:100px;">
+				</select> 
+				</span>
+            </div>
+            <div class="btn_box"><a class="search_btn" onClick='submitFun();' href="javascript:void(0);" title="查询">查询</a></div>
+			</form>
+		
+			
+        </div>
+    </div>
+    <!--搜索结束-->
+ 
+    <!--数据列表开始-->
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+        <thead>
+            <tr>
+                <th width="5%">选中</th>
+                <th width="5%">ID</th>
+                <th width="20%">宠物名称</th>
+				<th width="10%">一级分类</th>
+				<th width="10%">二级分类</th>
+				<th width="10%"><a <php>if($order == 2){echo 'class="sort_desc"';}</php> href="<?php echo $url;?>&order=2">浏览数<i></i></a></th>
+                <th width="10%"><a <php>if($order == 1 || $order == ''){echo 'class="sort_desc"';}</php> href="<?php echo $url;?>&order=1">发布时间<i></i></a></th>
+				<th width="5%">显示状态</th>
+                <th width="10%">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+
+	
+			<volist name='list' id='v'>
+			<tr>
+                <td><input class="dx" type="checkbox" value="{$v.id}" id="blogID_{$v.id}" name="blogID"></td>
+                <td>{$v.id}</td>
+				<td><span class="title"><a href="<php>echo C('BLOG_DIR');</php>/pet-all/{$v.id}.html" target='_blank'>{$v.name}</a></span></td>
+                <td>{$v.pname}</td>
+				<td>{$v.cname}</td>
+				<td>{$v.view_num}</td>
+				<td>{$v.create_time}</td>
+				<td><php>if($v['status'] == -1){echo '隐藏';}else{ echo '显示';}</php></td>
+                <td><a href="javascript:;" <php>if($v['status'] == 0){</php>onCLick="return urlDelete(2,'__ROOT__/iadmin.php/AllPet/deletePet?deletePet={$v.id}&page=<?php echo $page;?>');">删除<php>}else{</php>onCLick="return urlPublish(2,'__ROOT__/iadmin.php/AllPet/publishPet?publishPet={$v.id}&page=<?php echo $page;?>');">发布<php>}</php></a><span class="line">|</span><a href="__ROOT__/iadmin.php/AllPet/addPet?id={$v.id}&page=<?php echo $page;?>">编辑</a></td>
+            </tr>
+			</volist>
+
+		</tbody>
+        <tfoot>
+            <tr>
+                <td colspan="9" align="left"><label><input class="select_all" type="checkbox" value="全选" id="blogID" name="blogID">全选</label> <a class="del_btn" href="#" actions='25' controllers='15' title="删除"></a><a class="publish_btn" href="#" actions='26' controllers='15' title="发布"></a></td>
+            </tr>
+        </tfoot>
+    </table>
+    <!--数据列表结束-->
+    
+    <!--分页开始-->
+    <?php echo $pageHtml;?>
+    <!--分页结束-->
+    <input type='hidden' value='<?php echo $url;?>' id='url'>
+</div>
+</body>
+</html>
+<script language="javascript">
+var smallID = '{$category}';
+function ajaxJson(parentId){
+	$.getJSON(
+		"/iadmin.php/AllPet/getSubCategory",
+		{id:parentId},
+		function(DataJSON){ 
+			var stroptions="",strselect=""; 
+			if(DataJSON.length>0){ 
+				stroptions+="<option value=''>全部</option>"; 
+				for(var i=0;i<DataJSON.length;i++){ 
+					if(smallID!="" && smallID==DataJSON[i].id){
+						strselect = 'selected="selected"';
+					}else{
+						strselect = '';
+					}
+					stroptions+="<option value="+DataJSON[i].id+" "+strselect+">"+DataJSON[i].name+"</option>"; 
+				}
+				$("#category").html(stroptions);
+				$("#second").show();
+			}else{ 
+				$("#second").hide(); 
+			} 
+		}
+	); 
+}
+
+<php>if($parent){</php>
+ajaxJson({$parent});
+<php>}else{</php>
+$("#second").hide();
+<php>}</php>
+
+$(function(){ 
+	$("#first").change(function(){
+		smallID="";
+		var parentId=$("#first").val();
+		if(parentId!=false){ 
+			ajaxJson(parentId);
+		} else{ 
+			$("#second").hide(); 
+		} 
+	});
+}); 
+</script>
+<script type='text/javascript'>
+window.onload=function(){
+		var url = $('#url').val();
+		if(url){
+			var maxCode=parent.oMapReloadInfo['maxCode'];
+			var code=parent.oMapReloadInfo['code'];
+			var difference = maxCode-code;
+			if(difference==1){
+				parent.oMapReloadInfo['maxCode']=maxCode+1;
+				location.href=url;
+			}else{
+				parent.oMapReloadInfo['code']=code+1;
+			}
+		}
+}
+BQ.ui.form.Calender('#calender1');
+BQ.ui.form.Calender('#calender2');
+</script>

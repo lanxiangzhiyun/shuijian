@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>标签合并</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/tag.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Js/bq.js'></script>
+</head>
+<body>
+<!--tab开始-->
+<div class="common_tab">
+	<ul>
+		<li><a href="__ROOT__/iadmin.php/Tag/index"><span>标签管理</span></a></li>
+        <li><a href="__ROOT__/iadmin.php/Tag/editPage?id=<?php echo $id;?>"><span>编辑标签</span></a></li>
+        <li class="current"><a href="/iadmin.php/Tag/tagMerge?tagId={$id}"><span>标签合并</span></a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap" style="overflow:visible">
+	<form action='__ROOT__/iadmin.php/Tag/mergeTag' method='post'>
+	<input type='hidden' value='<?php echo $id;?>' id="tag_id" name='id'>
+    <!--创建标签开始-->
+    <div class="common_tb">
+        <ul>
+			<li>
+                <span class="text">标签名：</span>
+                <input type="hidden" name="tagids" id="tagids" value='' />
+                <span class="input_area" style="position:relative;z-index:9999">
+					<input name="tag" type="text" value='' class="input_bk addNewTag" id="" act='merge' />
+					<div class="add_tag_s"></div><br />
+                    <div class="add_tag_t"></div>
+				</span>
+            </li> 
+			<li>
+                <span class="text">&nbsp;</span>
+                <span class="input_area">
+					<a class="submit_btn"  onClick='submitFun();' href="javascript:void(0);" title="确定"></a>
+					<a class="cancel_btn" onClick="return backfun('/iadmin.php/Tag/index');" href="javascript:void(0);" title="取消"></a>
+				</span>
+            </li>			
+        </ul>
+    </div>
+	</form>
+    <!--创建标签结束-->
+</div>
+</body>
+</html>

@@ -1,0 +1,1 @@
+BQ.add("ui.form.RatePasswd",function(i){var j={minLen:6};return function(g,e){function k(c){var f=0,d=c.length;if(d<e.minChar)return f;for(var a=0;a<d;a++){var b=c.charCodeAt(a);f|=b>=48&&b<=57?1:b>=65&&b<=90?2:b>=97&&b<=122?4:8}c=f;for(a=d=0;a<4;a++)c&1&&d++,c>>>=1;return d}var e=i.merge(j,e),h=g.length;return(h>=e.minLen?k(g):h>0?0:-1)/4*100}});

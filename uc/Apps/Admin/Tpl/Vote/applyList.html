@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>养宠报名管理</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type="text/javascript" src="__PUBLIC__/Js/bq.js"></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+<style type='text/css'>
+.popup_layer .setnotice_class{
+	display:none;
+}
+</style>
+</head>
+<body>
+<include file="Index:isdelete"/>
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li class="current"><a href="__ROOT__/iadmin.php/Vote/applyList"><span>养宠报名管理</span></a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+		<!--搜索开始-->
+		<div class="search_box">
+			<div class="search">
+				<form action='__ROOT__/iadmin.php/Vote/applyList' method="get">
+					<div class="title">
+						<span class="txt">类型：</span>
+						<select name="type">
+							<option value="0">全部</option>
+							<volist name="typeArr" id="vo" key="k">
+							<option value="{$k}" <if condition='$k eq $type'>selected='selected'</if>>{$vo}</option>
+							</volist>
+						</select>
+					</div>
+					<div class="btn_box"><a class="search_btn" onClick='submitFun();' href="javascript:void(0);" title="查询">查询</a></div>
+				</form>
+			</div>
+		</div>
+		<!--搜索结束-->
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+			<thead>
+				<tr>
+					<th width="5%">id</th>
+					<th width="5%">姓名</th>
+					<th width="8%">手机号</th>
+					<th width="8%">性别/宠物体型</th>
+					<th width="8%">年龄/出行方式</th>
+					<th width="3%">人数</th>
+					<th width="3%">狗数</th>
+					<th width="8%">所在城市</th>
+					<th width="8%">QQ</th>
+					<th width="6%">微博</th>
+					<th width="8%">微信</th>
+					<th width="10%">宠物信息</th>
+					<th width="12%">活动类型</th>
+					<th width="10%">发布时间</th>
+					<th>留言</th>					
+				</tr>
+			</thead>
+			<tbody>
+				<volist name='list' id='v'>
+				<tr>
+					<td>{$v.id}</td>
+					<td>{$v.name}</td>
+					<td>{$v.mobile}</td>
+					<td>{$v.sex}</td>
+					<td>{$v.age}</td>
+					<td>{$v.people_num}</td>
+					<td>{$v.pet_num}</td>
+					<td>{$v.city_name}</td>
+					<td>{$v.qq}</td>
+					<td>{$v.weibo}</td>
+					<td>{$v.weixin}</td>
+					<td>{$v.pet_type}</td>
+					<td>{$typeArr[$v[type]+1]}</td>
+					<td>{$v.create_time}</td>
+					<td>{$v.memo}</td>
+				</tr>
+				</volist>
+
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="13" align="left"></td>
+				</tr>
+			</tfoot>
+		</table>
+		<!--数据列表结束-->
+		
+		<!--分页开始-->
+		<?php echo $pageHtml;?>
+		<!--分页结束-->
+		<input type='hidden' value='<?php echo $url;?>' id='url'>
+</body>
+</html>
+<script type='text/javascript'>
+window.onload=function(){
+		var url = $('#url').val();
+		if(url){
+			var maxCode=parent.oMapReloadInfo['maxCode'];
+			var code=parent.oMapReloadInfo['code'];
+			var difference = maxCode-code;
+			if(difference==1){
+				parent.oMapReloadInfo['maxCode']=maxCode+1;
+				location.href=url;
+			}else{
+				parent.oMapReloadInfo['code']=code+1;
+			}
+		}
+}
+BQ.ui.form.Calender('#calender1');
+BQ.ui.form.Calender('#calender2');
+</script>

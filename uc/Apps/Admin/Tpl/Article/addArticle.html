@@ -1,0 +1,386 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><php>if($detail['id']){</php>编辑<php>}else{</php>添加<php>}</php>文章</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type="text/javascript" src="__ROOT__/Addons/Plugins/ueditor/editor_config_article.js"></script>  
+<script type="text/javascript" src="__ROOT__/Addons/Plugins/ueditor/editor_all.js"></script>  
+<script type="text/javascript" src="__ROOT__/Addons/Plugins/ueditor/_src/plugins/autoheight.js"></script>  
+<link rel="stylesheet" type="text/css" href="__ROOT__/Addons/Plugins/ueditor/themes/default/ueditor.css">
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/tag.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/jquery.ajaxupload.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/avatar.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Js/bq.js'></script>
+<script>
+//保存
+function check(obj) {
+	if(obj.title.value == '') {
+		alert('请输入标题！');
+		obj.title.focus();
+		return false;
+	}
+	if(obj.parent.value == 0) {
+		alert('请选择一级分类！');
+		obj.parent.focus();
+		return false;
+	}
+	if(obj.category.value == 0) {
+		alert('请选择二级分类！');
+		obj.category.focus();
+		return false;
+	}
+	if(obj.thirdcat.value == 0) {
+		alert('请选择三级分类！');
+		obj.thirdcat.focus();
+		return false;
+	}
+	if(obj.summary.value == '') {
+		alert('请输入摘要！');
+		obj.summary.focus();
+		return false;
+	}
+	if(obj.content.value == '') {
+		alert('请输入内容！');
+		obj.content.focus();
+		return false;
+	}
+	<php>if(!$detail['id']){</php>
+	if(obj.pic_path.value == '') {
+		alert('请上传图片！');
+		return false;
+	}
+	<php>}</php>
+	return true;
+}
+</script>
+</head>
+<body>
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li><a href="__ROOT__/iadmin.php/Article/articleList"><span>文章管理</span></a></li>
+        <li class="current"><a href="__ROOT__/iadmin.php/Article/addArticle"><span><php>if($detail['id']){</php>编辑<php>}else{</php>添加<php>}</php>文章</span></a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+	
+	<form action='__ROOT__/iadmin.php/Article/saveArticle' method='post' enctype="multipart/form-data" onsubmit="return check(this)">
+	<input type='hidden' name='id' id="tag_id" value='{$detail.id}'>
+    <!--广告开始-->
+    <div class="common_tb">
+        <ul>
+			<li>
+                <span class="text">标题：</span>
+                <span class="input_area">
+				<input name="title" type="text" value='{$detail.title}' class="input_bk" id="" />
+				</span>
+            </li>
+            <li>
+                <span class="text">文章配图：</span>
+                <span class="input_area">
+                <input type="hidden" name="pic_path" value='{$detail.pic_path}' id="pic_path" />
+				<input type="hidden" name="is_cover_default" value='{$detail.is_cover_default}' id="is_cover_default" />
+				<div class="head_main">
+	                <h3><font color="#FF0000">*</font>文章配图最低宽高度为400px*300px，建议宽度在860px以上</h3>
+					<div id="uppan1">
+						 <p class="info">请选择新的照片，文件小于2M，支持图片格式为jpg，png，gif</p>
+						 <div class="uping">
+							 <p class="input_file"><a class="filefield" id="fileField"></a></p>
+						 </div>
+						 <div class="upload_loading none">
+							 <p class="loading">上传中…… [<a href="javascript:void(0);">取消</a>]</p>
+						 </div>
+					</div>
+					<div id="uppan2" class="none">
+						<div class="head_box_tips">按个人喜好，随意拉动和调整方格的大小直至满意为止，然后按下方的保存按键即可。</div>
+						<div style="float: left;">
+	                        <div id="headbox" class="head_box"></div>
+	                        <div class="btn"><a class="save_btn2" id="saveBtnPic" href="javascript:void(0)" title="保存"></a><a class="fh_imgbut" href="javascript:void(0)" title="保存">重新上传</a></div>
+						</div>
+					</div>
+					<p id="minimg">
+						<php>if($detail['pic_path']){</php>
+							<img src="<php>echo C('IMG_DIR').'/'.$detail['pic_path'];</php>"/>
+						<php>}</php>
+					</p>
+	             </div>
+                </span>
+            </li>
+			<li>
+                <span class="text">分类：</span>
+                <span class="input_area">
+				<select class="select_menu" name="parent" id="first">
+                    <option value="0">全部</option>
+					<volist name='catList' id='v'>
+					<option value="{$v.id}" <php>if($parcat == $v['id']) {echo 'selected="selected"';}</php>>{$v.name}</option>
+					</volist>
+                </select>
+				<!-- 第二级 -->
+				<span id="second"> 
+				<select class="select_menu" id="category" name="category" style="width:100px;">
+				</select> 
+				</span>
+				<!-- 第三级 -->
+				<span id="third"> 
+				<select class="select_menu" id="thirdcat" name="thirdcat" style="width:100px;">
+				</select> 
+				</span>
+				</span>
+            </li>
+			<script language="javascript">
+			$(function(){ 
+				// 一级分类修改
+				$("#first").change(function(){
+					smallID="";
+					var parentId=$("#first").val();
+					if(parentId!=false){ 
+						ajaxJson(parentId);
+						$("#third").hide();
+					} else{ 
+						$("#second").hide(); 
+						$("#third").hide();
+					} 
+				});
+
+				// 二级分类修改
+				$("#category").change(function(){
+					thirdCatId="";
+					// 二级分类id
+					var secondId=$("#category").val();
+					if(secondId!=false){ 
+						ajaxSecondChange(secondId);
+					} else{ 
+						$("#third").hide(); 
+					} 
+				});
+			}); 
+			
+			var smallID = '{$secondCatId}';
+			function ajaxJson(parentId){
+				$.getJSON(
+					"/iadmin.php/Article/getSubCategory",
+					{id:parentId},
+					function(DataJSON){ 
+						var stroptions="",strselect=""; 
+						if(DataJSON.length>0){ 
+							stroptions+="<option value=''>全部</option>"; 
+							for(var i=0;i<DataJSON.length;i++){ 
+								if(smallID!="" && smallID==DataJSON[i].id){
+									strselect = 'selected="selected"';
+								}else{
+									strselect = '';
+								}
+								stroptions+="<option value="+DataJSON[i].id+" "+strselect+">"+DataJSON[i].name+"</option>"; 
+							}
+							$("#category").html(stroptions);
+							$("#second").show();
+						}else{ 
+							$("#second").hide(); 
+						} 
+					}
+				); 
+			}
+			
+			
+			// 二级分类修改
+			var thirdCatId = '{$thirdCatId}';
+			function ajaxSecondChange(secondId){
+				$.getJSON(
+					"/iadmin.php/Article/getSubCategory",
+					{id:secondId},
+					function(DataJSON){ 
+						var stroptions="",strselect=""; 
+						if(DataJSON.length>0){ 
+							stroptions+="<option value=''>全部</option>"; 
+							for(var i=0;i<DataJSON.length;i++){ 
+								if(thirdCatId!="" && thirdCatId==DataJSON[i].id){
+									strselect = 'selected="selected"';
+								}else{
+									strselect = '';
+								}
+								stroptions+="<option value="+DataJSON[i].id+" "+strselect+">"+DataJSON[i].name+"</option>"; 
+							}
+							$("#thirdcat").html(stroptions);
+							$("#third").show();
+						}else{ 
+							$("#third").hide(); 
+						} 
+					}
+				); 
+			}
+			// 初始化分类选项
+			// 一级分类
+			<php>if($parcat){</php>
+				ajaxJson({$parcat});
+				<php>if($secondCatId){ </php>
+					ajaxSecondChange({$secondCatId});
+				<php>}</php>
+			<php>}else{</php>
+				$("#second").hide();
+				$("#third").hide();
+			<php>}</php>
+			</script>
+			<li>
+                <span class="text">作者：</span>
+                <span class="input_area">
+				<input name="usertype" type="radio" value="5" <php>if($detail['level'] == 5){echo 'checked="checked"';}</php>/>&nbsp;&nbsp;专家&nbsp;&nbsp;
+				<select class="select_menu" name="expert">
+					<volist name='expertUser' id='v'>
+					<option value="{$v.uid}" <php>if($detail['authorid'] == $v['uid']) {echo 'selected="selected"';}</php>>{$v.name}</option>
+					</volist>
+                </select><br /><br />
+				<input <php>if(!$detail['id']){</php>checked="checked"<php>}</php> name="usertype" type="radio" value="3" <php>if($detail['level'] == 3){echo 'checked="checked"';}</php>/>&nbsp;&nbsp;小编&nbsp;&nbsp;
+				<select class="select_menu" name="editer">
+					<volist name='editUser' id='v'>
+					<option value="{$v.uid}" <php>if($detail['authorid'] == $v['uid']) {echo 'selected="selected"';}</php>>{$v.name}</option>
+					</volist>
+                </select>
+				</span>
+			</li>
+            <li>
+                <span class="text">摘要：</span>
+                <span class="input_area">
+                <textarea name="summary" cols="110" rows="6">{$detail.summary}</textarea>
+                </span>
+            </li>
+            <li>
+                <span class="text">标签：</span>
+                <input type="hidden" name="tagids" id="tagids" value='{$detail.tagids}' />
+                <span class="input_area" style="position:relative;z-index:9999">
+					<input name="tag" type="text" value='' class="input_bk addNewTag" id="tag_ipt" act='article' />
+					<div class="add_tag_s"></div><br />
+					<div class="add_tag_t">
+						<php>foreach($detail['tag'] as $k=>$vo){</php>
+						<div class="add_tag_list" pid="<php>echo $vo['id']</php>">
+						<php>echo $vo['name']</php>
+						<em></em>
+						</div>
+						<php>}</php>
+					</div>
+                </span>
+            </li>
+            <li>
+                <span class="text">内容：</span>
+                <span class="input_area">
+				<textarea id="content_init" name="content_init" style="width:755px; height:350px;">{$detail.content}</textarea>
+				<input type="hidden" id="content" name="content" value=""/>
+                <script type="text/javascript">
+					// 自定义的编辑器配置项,此处定义的配置项将覆盖editor_config.js中的同名配置
+					var editorOption = {
+						toolbars:[['Bold', 'italic', 'underline', 'removeformat', 'Undo', 'Redo', '|', 'blockquote', 'insertorderedlist', 'insertunorderedlist', 'indent', '|', 'justifyleft','justifyright','justifycenter', '|', 
+						'link', 'insertimage', 'inserttable', 'preview']],
+						//focus时自动清空初始化时的内容
+						autoClearinitialContent:false,
+						//不自动长高
+						autoHeightEnabled:false,
+						//关闭字数统计
+						wordCount:false,
+						//关闭elementPath
+						elementPathEnabled:false
+					};
+					var ueditor = new baidu.editor.ui.Editor(editorOption);
+					ueditor.render( 'content_init' );
+				</script>
+                </span>
+            </li>
+
+			<!--<li>
+                <span class="text">关键词：</span>
+                <span class="input_area">
+				<input name="keywords" type="text" value='{$detail.keywords}' class="input_bk" id="keywords" />
+				</span>
+            </li>-->
+            <li>
+                <span class="text">&nbsp;</span>
+                <span class="input_area"><a class="submit_btn" onClick='submitFunc();' href="javascript:void(0);" title="确定"></a><a class="cancel_btn" onClick="return backfun('/iadmin.php/Article/articleList');" href="javascript:void(0);" title="取消"></a> </span>
+            </li>
+        </ul>
+    </div>
+    <!--广告结束-->
+	</form>
+</div>
+<script type='text/javascript'>
+function submitFunc(){
+	var message = encodeURIComponent(ueditor.getContent());
+	$('#content').val(message);
+	$("form").submit();
+}
+</script>
+<script type='text/javascript'>
+	var _bajaxp;
+	new AjaxUpload('#fileField', {
+	action: '/iadmin.php/Upload/imageUpload',   //上传地址
+	name:'upload',
+	data:{'type':'article'},
+	//选择后自动开始上传
+	//autoSubmit:true,  //返回Text格式数据
+	//responseType: false,  //上传的时候按钮不可用
+	onSubmit: function(filename,ext){
+	   if(ext && /^(jpg|png|gif)$/.test(ext)){      //设置允许上传的文件格式
+			_bajaxp = 1;
+			$('#uppan1 .uping').hide();
+			$('#uppan1 .upload_loading').show().click(function(e){
+				e.preventDefault();
+				$('#uppan1 .uping').show();
+				$('#uppan1 .upload_loading').hide();
+				_bajaxp = 0;
+			});
+		}else{
+			alert('图片上传只支持jpg，png，gif格式');
+			return false;
+		}
+	},
+	onComplete: function(filename,msg) {  //上传完成后取得文件名filename为本地取得的文件名，msg为服务器返回的信息
+			msg = eval("("+msg+")");
+			if(msg.status == 'fail'){
+				$('#uppan1 .uping').show();
+				$('#uppan1 .upload_loading').hide();
+				return;
+			}
+			if(!_bajaxp)return;
+
+			if(msg.is_cover_default==1) {  //上传图片小于400像素，就用默认图片
+				$('#uppan1 .upload_loading').hide();
+				$('#pic_path').val(msg.imgpath);
+				$('#is_cover_default').val(msg.is_cover_default);
+				$('#minimg').html('<img class="imgmin" src="'+msg.domain+msg.imgpath+'">');
+				$('#uppan1 .uping').show();
+				return;
+			};
+
+			$('#uppan1').hide().next().show();
+			
+			//$('#minimg').html('<img class="imgmin" src="'+msg.domain+msg.imgpath+'">');
+			var getCut = loadAvatar('#headbox',msg.domain+msg.imgpath,"",{'width':860,'height':350},function(){},'article',msg.width,msg.height);
+			$('#saveBtnPic').unbind().click(function(e){
+				e.preventDefault();
+				$.post("/iadmin.php/Upload/imageIntercept",getCut(),function(d){
+					if (d.status == 'login') {
+                        alert('请登录！');
+                    }else if(d.status == 'ok'){
+						$('#pic_path').val(d.imgy);
+						$('#minimg').html('<img class="imgmin" src="'+d.domain+d.imgy+'" >');
+						$('#uppan1').show().next().hide();
+						$('.uping').show();
+						$('.upload_loading').hide();
+					}else{
+						alert(d.msg);
+					}
+				},'json')
+			})
+		}
+	});
+	$('.fh_imgbut').click(function(e){
+		e.preventDefault();
+		$('#uppan1').show().next().hide();
+		$('.uping').show();
+		$('.upload_loading').hide();
+		//$('#minimg').hide();
+	});
+</script>
+</body>
+</html>

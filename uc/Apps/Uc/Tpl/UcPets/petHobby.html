@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <php>if($obj == "me") { if($userinfo['groupid'] >= 4 && $userinfo['groupid'] < 11) { </php><META NAME="robots" CONTENT="NOINDEX,NOFOLLOW">
+    <php>} } elseif($obj == "other") { if($huser['groupid']  >= 4 && $huser['groupid'] < 11) { </php><META NAME="robots" CONTENT="NOINDEX,NOFOLLOW">
+    <php>} }</php>
+    <title>个性爱好</title>
+    <link rel="stylesheet" type="text/css" href="<php>echo autoVer('/Css/uc/global.css');</php>"/>
+    <link rel="stylesheet" type="text/css" href="<php>echo autoVer('/Css/uc/main.css');</php>"/>
+</head>
+<body>
+<!--头部开始-->
+<div class="global_header">
+    <!--头部导航开始-->
+    <include file="Public:top"/>
+
+    <include file="Public:header"/>
+</div>
+<!--头部结束-->
+
+<!--主体部分开始-->
+<div class="main two_side clearfix">
+    <!--左侧开始-->
+    <include file="Public:left"/>
+    <!--左侧结束-->
+    <div class="plc_main">
+        <!--右侧开始-->
+        <div class="main_cont">
+            <include file="UcPets:petListHobby"/>
+            <!--宠物列表结束-->
+
+            <div class="common_tab">
+                <ul>
+                    <li><a href="/UcPets/petFiles/id/{$currentId}">基本资料</a></li>
+                    <li><a href="/UcPets/petHead/id/{$currentId}">宠物头像</a></li>
+                    <li class="current"><a href="/UcPets/petHobby/id/{$currentId}">个性爱好</a></li>
+                </ul>
+            </div>
+
+            <!--个性爱好开始-->
+            <php>
+                session_start();
+                session('code',time());
+            </php>
+            <form action="/UcPets/addPetHoppy" method="post" id="formsm">
+                <input type="hidden" name='id' value="{$currentId}">
+                <div class="basic_info">
+                    <ul>
+                        <li><span class="text">上一次免疫时间：</span>
+                           <span class="input_area ckcalarea">
+                                <input name="calender1" type="text" class="input_bk calendar" id="calender1" value="{$petHobbyMsg.immune_time}"/>
+                           </span>
+                            <span class="check_wrap"><label><input class="set_no ckcal" type="checkbox" name="checkbox1" id="checkbox"/>没有接受过免疫</label></span>
+                        </li>
+                        <li><span class="text">上一次驱虫时间：</span>
+                            <span class="input_area ckcalarea">
+                            <input name="textfield7" type="text" class="input_bk calendar" id="calender2" value="{$petHobbyMsg.repell_time}"/></span>
+                            <span class="check_wrap"><label><input class="set_no ckcal" type="checkbox" name="checkbox2"/>没有接受过驱虫</label></span>
+                        </li>
+                        <li><span class="text">性 格：</span> <span class="input_area">
+						 <input id="publishToken" name="token" type="hidden" value="{$token}">
+                        <textarea name="textfield1" class="textarea_bk" id="textfield3">{$petHobbyMsg.character}</textarea><p class="tips_txt">如：活泼 安静 懒惰</p>
+                        </span><span class="tips_txt_r">多个词请用空格分隔开</span><span class="error"><span class="info">请保持2-20个词。</span></span></li>
+                        <li><span class="text">喜欢的食物：</span> <span class="input_area">
+                        <textarea name="textfield2" class="textarea_bk">{$petHobbyMsg.foods}</textarea><p class="tips_txt">如：狗粮 猫粮</p>
+                        </span><span class="tips_txt_r">多个词请用空格分隔开</span><span class="error"><span class="info">请保持2-20个词。</span></span></li>
+                        <li><span class="text">喜欢的玩具：</span> <span class="input_area">
+                        <textarea name="textfield3" class="textarea_bk">{$petHobbyMsg.toys}</textarea><p class="tips_txt">如：球形玩具 发声玩具</p>
+                        </span><span class="tips_txt_r">多个词请用空格分隔开</span><span class="error"><span class="info">请保持2-20个词。</span></span></li>
+                        <li><span class="text">拿手好戏：</span> <span class="input_area">
+                        <textarea name="textfield4" class="textarea_bk">{$petHobbyMsg.specialty}</textarea><p class="tips_txt">如：掷飞碟 跑步</p>
+                        </span><span class="tips_txt_r">多个词请用空格分隔开</span><span class="error"><span class="info">请保持2-20个词。</span></span></li>
+                        <li><span class="text">掌握的指令：</span> <span class="input_area">
+                        <textarea name="textfield5" class="textarea_bk">{$petHobbyMsg.instructions}</textarea><p class="tips_txt">如：跑 跳 蹲 </p>
+                        </span><span class="tips_txt_r">多个词请用空格分隔开</span><span class="error"><span class="info">请保持2-20个词。</span></span></li>
+                        <!--<li> <span class="text">&nbsp;</span> <span class="input_area"> <a class="submit_btn" href="javascript:void(0);">完成</a></span> </li>-->
+                        <li><span class="text">&nbsp;</span> <span class="input_area"> <a href="javascript:void(0);" class="submit_btn" id="formsmbut">完成</a></span>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+            <!--个性爱好结束-->
+
+        </div>
+        <!--右侧结束-->
+    </div>
+</div>
+<!--主体部分结束-->
+<link rel="stylesheet" href="__PUBLIC__/Js/library/ui/static/calendar/calendar.css" media="all" />
+<script type="text/javascript">
+	BQ.load("UCPet,ui.form.Calender,UCPets",function(){
+         BQ.UCPets('petHobby',{'isImmued':'<php>echo $petHobbyMsg['is_immnued'];</php>','isRepellend':'<php>echo $petHobbyMsg['is_repellend'];</php>'}).exec();
+    });
+</script>
+<!--底部开始-->
+<include file="Public:footer" />
+<!--底部结束-->
+

@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>日记编辑</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<script type='text/javascript' src="__PUBLIC__/Js/jquery.js"></script>
+<script type="text/javascript" src="__ROOT__/Addons/Plugins/ueditor/editor_config.js"></script>  
+<script type="text/javascript" src="__ROOT__/Addons/Plugins/ueditor/editor_all.js"></script>  
+<script type="text/javascript" src="__ROOT__/Addons/Plugins/ueditor/_src/plugins/autoheight.js"></script>  
+<link rel="stylesheet" type="text/css" href="__ROOT__/Addons/Plugins/ueditor/themes/default/ueditor.css">
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+</head>
+<body>
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li><a href="__ROOT__/iadmin.php/Diary/index"><span>日记管理</span></a></li>
+        <li class="current"><a href="__ROOT__/iadmin.php/Diary/editPage?diaryid={$diary.id}"><span>日记编辑</span></a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+
+    <!--日记编辑开始-->
+	<form action='__ROOT__/iadmin.php/Diary/editDiary' method='post'>
+	<input type='hidden' value='{$diary.id}' name='data[id]'>
+    <div class="common_tb">
+        <ul>
+            <li>
+                <span class="text">日记标题：</span>
+                <span class="input_area"><input name="data[title]" type="text" class="input_bk" id="" value="{$diary.title}" /></span>
+            </li>
+            <li>
+                <span class="txt">发布时间：{$diary.cretime|date="y-m-d H:i:s",###}</span>
+                <span class="txt">发布人：{$diary.username}</span>
+            </li>
+            <li>
+                <span class="text">日记内容：</span>
+                <span class="input_area"><textarea id="content_init" name="content_init" style="width:755px; height:350px;">{$diary.content}</textarea></span>
+				<input type="hidden" id="content" name="content" value=""/>
+            </li>
+            <li>
+                <span class="text">&nbsp;</span>
+                <span class="input_area"><a class="submit_btn" href="javascript:void(0);" onClick='submitFunc();' title="确定"></a><a class="cancel_btn" onClick="return backfun('/iadmin.php/Diary/index');" href="javascript:void(0);" title="取消"></a> </span>
+            </li>	
+        </ul>
+    </div>
+	</form>
+    <!--日记编辑结束-->
+
+</div>
+						<script type="text/javascript">
+                            // 自定义的编辑器配置项,此处定义的配置项将覆盖editor_config.js中的同名配置
+                            var editorOption = {
+                                toolbars:[['FullScreen', 'fontfamily', 'fontsize', 'forecolor', 'backcolor','Undo', 'Redo','Bold', 'italic', 'underline', 'removeformat', 'justifyleft','justifyright','justifycenter','link']],
+                                //focus时自动清空初始化时的内容
+                                autoClearinitialContent:false,
+                                //不自动长高
+                                autoHeightEnabled:false,
+                                //关闭字数统计
+                                wordCount:false,
+                                //关闭elementPath
+                                elementPathEnabled:false
+                            };
+                            var ueditor = new baidu.editor.ui.Editor(editorOption);
+                            ueditor.render( 'content_init' );
+                        </script>
+</body>
+</html>
+<script type='text/javascript'>
+function submitFunc(){
+	var message = encodeURIComponent(ueditor.getContent());
+	$('#content').val(message);
+	$("form").submit();
+}
+</script>

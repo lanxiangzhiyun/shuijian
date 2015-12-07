@@ -1,0 +1,564 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><php>if($detail['id']){</php>编辑<php>}else{</php>添加<php>}</php>宠物</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type="text/javascript" src="__ROOT__/Addons/Plugins/ueditor/editor_config_article.js"></script>  
+<script type="text/javascript" src="__ROOT__/Addons/Plugins/ueditor/editor_all.js"></script>  
+<script type="text/javascript" src="__ROOT__/Addons/Plugins/ueditor/_src/plugins/autoheight.js"></script>  
+<link rel="stylesheet" type="text/css" href="__ROOT__/Addons/Plugins/ueditor/themes/default/ueditor.css">
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Js/bq.js'></script>
+<script type='text/javascript'>
+	BQ.load("BQAjaxUP",function(){
+		BQ.BQAjaxUP('AjaxUP',{but:$('.addfield'),action:'/iadmin.php/Upload/imageUpload',data:{'type':'pettype'},onSubmit:function(file,ext){
+			if(ext && /^(jpg|jpeg|png|gif)$/.test(ext)){
+				//console.log('上传中...');
+			}else{
+				alert('不支持非图片格式！');
+				return false;
+			}
+			},onComplete:function(file,response){
+				response = eval("("+response+")");
+				//返回json数据
+				if(response.status == 'ok'){
+					$('#pic_path').val(response.imgpath);
+					//$('#minimg').html('<img src="'+response.domain+response.imgpath+'" alt="" width="'+response.width+'" height="'+response.height+'">')
+					$('#minimg').html('<img src="'+response.domain+response.imgpath+'" alt="" width="200" >');
+				}else if(response.status == 'noselect'){
+					alert('服务器错误、上传图片为空值。');
+				}else if(response.status == 'login'){
+					alert('请登录后操作！');
+				}else{
+					alert('上传失败，请重新上传！');
+				}
+			}});
+		BQ.BQAjaxUP('AjaxUP',{but:$('.pet_addfield'),action:'/iadmin.php/Upload/imageUpload',data:{'type':'pettype'},onSubmit:function(file,ext){
+			if(ext && /^(jpg|jpeg|png|gif)$/.test(ext)){
+				//console.log('上传中...');
+			}else{
+				alert('不支持非图片格式！');
+				return false;
+			}
+			},onComplete:function(file,response){
+				response = eval("("+response+")");
+				//返回json数据
+				if(response.status == 'ok'){
+//					var photo = $('#photo').val();
+//					var newphoto='';
+//					if(response.imgpath) {
+//						if(photo !== '') {
+//							newphoto = photo + ',' + response.imgpath;
+//						} else {
+//							newphoto = response.imgpath;
+//						}
+//					} 
+//					$('#photo').val(newphoto);
+//					$('#minimg_2').append('<img src="'+response.domain+response.imgpath+'" alt="" width="'+response.width+'" height="'+response.height+'">')
+					$('#minimg_2').append('<div><img src="'+response.domain+response.imgpath+'" alt="" width="200" ><input type="hidden" name="pics[]" value="'+response.imgpath+'"><div onclick="javascript:delPhoto(this);" class="del_photo">删除相片</div></div>');
+				}else if(response.status == 'noselect'){
+					alert('服务器错误、上传图片为空值。');
+				}else if(response.status == 'login'){
+					alert('请登录后操作！');
+				}else{
+					alert('上传失败，请重新上传！');
+				}
+			}});
+	})
+</script>
+<script>
+	/**
+	 * 删除图片
+	 */
+	function delPhoto(obj){
+		$(obj).parent().remove();
+	}
+
+//保存
+function check(obj) {
+	if(obj.title.value == '') {
+		alert('请输入标题！');
+		obj.title.focus();
+		return false;
+	}
+	if(obj.parent.value == 0) {
+		alert('请选择大类！');
+		obj.parent.focus();
+		return false;
+	}
+/*	if(obj.Pet.value == 0) {
+		alert('请选择二级分类！');
+		obj.category.focus();
+		return false;
+	}
+
+	if(obj.summary.value == '') {
+		alert('请输入摘要！');
+		obj.summary.focus();
+		return false;
+	}
+	if(obj.content.value == '') {
+		alert('请输入内容！');
+		obj.content.focus();
+		return false;
+	}
+	*/
+	<php>if(!$detail['id']){</php>
+	if(obj.pic_path.value == '') {
+		alert('请上传图片！');
+		return false;
+	}
+	<php>}</php>
+
+	return true;
+
+}
+</script>
+</head>
+<body>
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li><a href="__ROOT__/iadmin.php/AllPet/petList"><span>宠物管理</span></a></li>
+        <li class="current"><a href="__ROOT__/iadmin.php/AllPet/addPet"><span><php>if($detail['id']){</php>编辑<php>}else{</php>添加<php>}</php>宠物</span></a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+	
+	<form action='__ROOT__/iadmin.php/AllPet/savePet' method='post' enctype="multipart/form-data" onsubmit="return check(this)">
+	<input type='hidden' name='id' value='{$detail.id}'>
+	<input type="hidden" name="page" value='{$page}' id="page" />
+    <!--广告开始-->
+    <div class="common_tb">
+        <ul>
+			<li>
+                <span class="text">标题：</span>
+                <span class="input_area">
+				<input name="name" type="text" value='{$detail.name}' class="input_bk" id="" />
+				</span>
+            </li>
+			<li>
+                <span class="text">分类：</span>
+                <span class="input_area">
+				<select class="select_menu" name="parent" id="first">
+                    <option value="0">全部</option>
+					<volist name='catgorylist' id='v'>
+					<option value="{$v.id}" <php>if($detail['parent_id'] == $v['id']) {echo 'selected="selected"';}</php>>{$v.name}</option>
+					</volist>
+                </select>&nbsp;&nbsp;
+				<span id="second"> 
+				<select class="select_menu" id="category" name="category" style="width:100px;">
+				</select> 
+				</span>
+				</span>
+            </li>
+			<li>
+                <span class="text">首字母：</span>
+                <span class="input_area">
+				<input name="letter" type="text" value='{$detail.letter}' class="input_bk" id="" style="width:60px"/>
+				</span>
+            </li>
+			<li>
+                <span class="text">对应论坛板块ID：</span>
+                <span class="input_area">
+				<input name="relation_forum" type="text" value='{$detail.relation_forum}' class="input_bk" style="width:60px" id="" />
+				</span>
+				</span>
+            </li>
+			<li>
+                <span class="text">拼音：</span>
+                <span class="input_area">
+				<input name="pinyin" type="text" value='{$detail.pinyin}' class="input_bk" id="" />
+				</span>
+            </li>
+			<script language="javascript">
+			$(function(){ 
+				$("#first").change(function(){
+					smallID="";
+					var parentId=$("#first").val();
+					if(parentId!=false){ 
+						ajaxJson(parentId);
+					} else{ 
+						$("#second").hide(); 
+					} 
+				});
+			}); 
+			
+			var smallID = '{$category}';
+			function ajaxJson(parentId){
+				$.getJSON(
+					//"/iadmin.php/AllPet/getSubCategory",
+					"/iadmin.php/AllPet/ajaxGetFuncCatList",
+					{id:parentId},
+					function(data){ 
+						var stroptions="",strselect=""; 
+						//二级分类
+						if(data.subCats.length>0){ 
+							stroptions+="<option value=''>全部</option>"; 
+							for(var i=0;i<data.subCats.length;i++){ 
+								if(smallID!="" && smallID==data.subCats[i].id){
+									strselect = 'selected="selected"';
+								}else{
+									strselect = '';
+								}
+								stroptions+="<option value="+data.subCats[i].id+" "+strselect+">"+data.subCats[i].name+"</option>";
+							}
+							$("#category").html(stroptions);
+							$("#second").show();
+						}else{ 
+							$("#category").html();
+							$("#second").hide(); 
+						} 
+						//毛长
+						if(data.hair > 0) {
+							$("#li_hair").attr('style', 'display:block;');
+						} else {
+							$("#li_hair").attr('style', 'display:none;');
+						}
+						//功能
+						if(data.funcCats > 0) {
+							$("#li_func_cat").attr('style', 'display:block;');
+						} else {
+							$("#li_func_cat").attr('style', 'display:none;');
+						}
+					}
+				); 
+			}
+			
+			<php>if($detail['parent_id']){</php>
+			ajaxJson({$detail.parent_id});
+			<php>}else{</php>
+			$("#second").hide();
+			<php>}</php>
+			</script>
+            <li style="display:none;">
+                <span class="text">摘要：</span>
+                <span class="input_area">
+                <textarea name="summary" cols="110" rows="6">{$detail.summary}</textarea>
+                </span>
+            </li>
+            <li style="display:none;">
+                <span class="text">内容：</span>
+                <span class="input_area">
+				<textarea id="content_init" name="content_init" style="width:755px; height:350px;">{$detail.content}</textarea>
+				<input type="hidden" id="content" name="content" value=""/>
+                <script type="text/javascript">
+					// 自定义的编辑器配置项,此处定义的配置项将覆盖editor_config.js中的同名配置
+					var editorOption = {
+						toolbars:[['FullScreen', 'fontfamily', 'fontsize', 'forecolor', 'backcolor','Undo', 'Redo','Bold', 'italic', 'underline', 'removeformat', 'justifyleft','justifyright','justifycenter','emotion', 'insertimage','insertvideo','link']],
+						//focus时自动清空初始化时的内容
+						autoClearinitialContent:false,
+						//不自动长高
+						autoHeightEnabled:false,
+						//关闭字数统计
+						wordCount:false,
+						//关闭elementPath
+						elementPathEnabled:false,
+						//imageUrl
+						imageUrl:'<php>echo C("I_DIR");</php>/iadmin.php/Upload/bkPettypeImageUpload'
+					};
+					var ueditor = new baidu.editor.ui.Editor(editorOption);
+					ueditor.render( 'content_init' );
+				</script>
+                </span>
+            </li>
+			<li style="display:none;">
+                <span class="text">相关知识：</span>
+                <span class="input_area">
+				<textarea id="content_init1" name="content_init1" style="width:755px; height:350px;">{$detail.knowledge}</textarea>
+				<input type="hidden" id="knowledge" name="knowledge" value=""/>
+                <script type="text/javascript">
+					// 自定义的编辑器配置项,此处定义的配置项将覆盖editor_config.js中的同名配置
+					var editorOption = {
+						toolbars:[['FullScreen', 'fontfamily', 'fontsize', 'forecolor', 'backcolor','Undo', 'Redo','Bold', 'italic', 'underline', 'removeformat', 'justifyleft','justifyright','justifycenter','emotion', 'insertimage','insertvideo','link']],
+						//focus时自动清空初始化时的内容
+						autoClearinitialContent:false,
+						//不自动长高
+						autoHeightEnabled:false,
+						//关闭字数统计
+						wordCount:false,
+						//关闭elementPath
+						elementPathEnabled:false
+					};
+					var editor = new baidu.editor.ui.Editor(editorOption);
+					editor.render( 'content_init1' );
+				</script>
+                </span>
+            </li>
+            <li>
+                <span class="text">宠物头像(330x250)：</span>
+                <span class="input_area">
+                <input type="hidden" name="pic_path" value='{$detail.pic_path}' id="pic_path" />
+				<a href="#" class="addfield"></a>
+				&nbsp;&nbsp;<font color="#FF0000">*</font>宠物详情配图
+				<p id="minimg"><php>if($detail['pic_path']){</php>
+				<img src="<php>echo C('IMG_DIR').'/'.$detail['pic_path'];</php>" width="200"/>
+				<php>}</php></p>
+                </span>
+            </li>
+			<li id='li_hair' style="display:none;">
+				<span class="text">毛长：</span>
+				<span class="input_area">
+					<input type="radio" name="hair" id="hair1" value="0" <php> if($detail['hair'] == 0){ echo "checked='checked'";}</php>>无
+					<input type="radio" name="hair" id="hair2" value="1" <php> if($detail['hair'] == 1){ echo "checked='checked'";}</php>>短毛
+					<input type="radio" name="hair" id="hair3" value="2" <php> if($detail['hair'] == 2){ echo "checked='checked'";}</php>>长毛
+				</span>
+			</li>
+			<!-- 功能分类 -->
+			<li id='li_func_cat' style="display:none;">
+				<span class="text">功能：</span>
+				<span class="input_area" >
+					<php> foreach($funcCatList as $key => $val) { </php>
+						<input type="checkbox" id="func{$val.id}" name="func_cat[]" value="{$val.id}" <php>if(in_array($val['id'], $detail['func_cats'])){ </php>checked="checked"<php>}</php>>{$val.name}
+					<php>}</php>
+				</span>
+			</li>
+			<!-- 初始浏览量 -->
+			<li>
+				<span class="text">初始浏览量：</span>
+				<span class="input_area"><input name="init_view_num" type="text" value='{$detail.init_view_num}' class="input_bk" style="width:60px"/> </span>
+			</li>
+			<!-- 宠物身份证 -->
+			<li>
+				<span class="">宠物身份证</span>
+			</li>
+			<li>
+				<span class="text">英文名：</span>
+				<span class="input_area"><input name="enname" type="text" value='{$detail.enname}' class="input_bk"  /> </span>
+				<span class="text">性格：</span>
+				<span class="input_area"><input name="nature" type="text" value='{$detail.nature}' class="input_bk" /> </span>
+			</li>
+			<li>
+				<span class="text">祖籍：</span>
+				<span class="input_area"><input name="ancestry" type="text" value='{$detail.ancestry}' class="input_bk" /> </span>
+				<span class="text">易患病：</span>
+				<span class="input_area"><input name="sick" type="text" value='{$detail.sick}' class="input_bk" /> </span>
+			</li>
+			<li>
+				<span class="text">寿命：</span>
+				<span class="input_area"><input name="life" type="text" value='{$detail.life}' class="input_bk" /> </span>
+				<span class="text">价格：</span>
+				<span class="input_area"><input name="price" type="text" value='{$detail.price}' class="input_bk"/> </span>
+			</li>
+			<!-- 属性打分 -->
+			<li>
+				<span class="">属性打分</span>
+			</li>
+			<li>
+				<span class="text">友善程度：</span>
+				<span class="input_area">
+					<select class="select_menu" name="friendly_degree" id="friendly_degree">
+					<php>foreach($degreeList as $key=>$val) {</php>
+						<option id="friendly_degree{$val}" value="{$val}" <if condition="$val eq $detail['friendly_degree']">selected="selected"</if>>{$val}</option>
+					<php>}</php>
+					</select>
+				</span>
+				<span class="text">运动量：</span>
+				<span class="input_area">
+					<select class="select_menu" name="sport_degree" id="sport_degree" >
+					<php> foreach($degreeList as $key => $val) { </php>
+						<option id="sport_degree{$val}" value="{$val}" <if condition="$val eq $detail['sport_degree']">selected="selected"</if>>{$val}</option>
+					<php>}</php>
+					</select>
+				</span>
+				<span class="text">体味程度：</span>
+				<span class="input_area">
+					<select class="select_menu" name="odor_degree" id="odor_degree" >
+					<php> foreach($degreeList as $key => $val) { </php>
+						<option id="odor_degree{$val}" value="{$val}" <if condition="$val eq $detail['odor_degree']">selected="selected"</if>>{$val}</option>
+					<php>}</php>
+					</select>
+				</span>
+				<span class="text">城市适应：</span>
+				<span class="input_area">
+					<select class="select_menu" name="city_degree" id="city_degree" >
+					<php> foreach($degreeList as $key => $val) { </php>
+						<option id="city_degree{$val}" value="{$val}" <if condition="$val eq $detail['city_degree']">selected="selected"</if>>{$val}</option>
+					<php>}</php>
+					</select>
+				</span>
+			</li>
+			<li>
+				<span class="text">初养适应：</span>
+				<span class="input_area">
+					<select class="select_menu" name="adapt_degree" id="adapt_degree" >
+					<php> foreach($degreeList as $key => $val) { </php>
+						<option id="adapt_degree{$val}" value="{$val}" <if condition="$val eq $detail['adapt_degree']">selected="selected"</if>>{$val}</option>
+					<php>}</php>
+					</select>
+				</span>
+				<span class="text">可训练度：</span>
+				<span class="input_area">
+					<select class="select_menu" name="training_degree" id="training_degree" >
+					<php> foreach($degreeList as $key => $val) { </php>
+						<option id="training_degree{$val}" value="{$val}" <if condition="$val eq $detail['training_degree']">selected="selected"</if>>{$val}</option>
+					<php>}</php>
+					</select>
+				</span>
+				<span class="text">吵闹程度：</span>
+				<span class="input_area">
+					<select class="select_menu" name="noise_degree" id="noise_degree" >
+					<php> foreach($degreeList as $key => $val) { </php>
+						<option id="noise_degree{$val}" value="{$val}" <if condition="$val eq $detail['noise_degree']">selected="selected"</if>>{$val}</option>
+					<php>}</php>
+					</select>
+				</span>
+				<span class="text">耐热程度：</span>
+				<span class="input_area">
+					<select class="select_menu" name="hot_degree" id="hot_degree" >
+					<php> foreach($degreeList as $key => $val) { </php>
+						<option id="hot_degree{$val}" value="{$val}" <if condition="$val eq $detail['hot_degree']">selected="selected"</if>>{$val}</option>
+					<php>}</php>
+					</select>
+				</span>
+			</li>
+			<li>
+				<span class="text">掉毛程度：</span>
+				<span class="input_area">
+					<select class="select_menu" name="dropping_degree" id="dropping_degree" >
+					<php> foreach($degreeList as $key => $val) { </php>
+						<option id="dropping_degree{$val}" value="{$val}" <if condition="$val eq $detail['dropping_degree']">selected="selected"</if>>{$val}</option>
+					<php>}</php>
+					</select>
+				</span>
+				<span class="text">口水程度：</span>
+				<span class="input_area">
+					<select class="select_menu" name="saliva_degree" id="saliva_degree" >
+					<php> foreach($degreeList as $key => $val) { </php>
+						<option id="saliva_degree{$val}" value="{$val}" <if condition="$val eq $detail['saliva_degree']">selected="selected"</if>>{$val}</option>
+					<php>}</php>
+					</select>
+				</span>
+				<span class="text">关爱需求：</span>
+				<span class="input_area">
+					<select class="select_menu" name="love_degree" id="love_degree" >
+					<php> foreach($degreeList as $key => $val) { </php>
+						<option id="love_degree{$val}" value="{$val}" <if condition="$val eq $detail['love_degree']">selected="selected"</if>>{$val}</option>
+					<php>}</php>
+					</select>
+				</span>
+				<span class="text">耐寒程度：</span>
+				<span class="input_area">
+					<select class="select_menu" name="cold_degree" id="cold_degree">
+					<php> foreach($degreeList as $key => $val) { </php>
+						<option id="cold_degree{$val}" value="{$val}" <if condition="$val eq $detail['cold_degree']">selected="selected"</if>>{$val}</option>
+					<php>}</php>
+					</select>
+				</span>
+			</li>
+			<!-- 宠物介绍 -->
+			<li>
+				<span class="">宠物介绍</span>
+			</li>
+			<li>
+			<php>if($detail['id']){ </php>
+				<volist name="detail['extends']" id="vo">
+            	<div class="add_pet">
+                    <div class="add_pet_list">
+                        <span class="text">小标题：</span>
+                        <span class="input_area">
+                            <input id="extend_title" name="extend_title1[]" type="text" value='{$vo.title}' class="input_bk" /> 
+                        </span>
+                        <span class="text">链接：</span>
+                        <span class="input_area">
+                            <input id="extend_url" name="extend_url1[]" type="text" value='{$vo.url}' class="input_bk" /> 
+                        </span>
+                     </div>
+                     <div class="add_pet_list">
+                        <span class="text">&nbsp;</span>
+                        <span class="input_area">
+                            <textarea id="extend_content" name="extend_content1[]" style="width:555px; height:150px;">{$vo.content}</textarea>
+                        </span>
+                     </div>
+                 </div>
+				</volist>
+				<php>} else { </php>
+            	<div class="add_pet">
+                    <div class="add_pet_list">
+                        <span class="text">小标题：</span>
+                        <span class="input_area">
+                            <input id="extend_title" name="extend_title1[]" type="text" value='' class="input_bk" /> 
+                        </span>
+                        <span class="text">链接：</span>
+                        <span class="input_area">
+                            <input id="extend_url" name="extend_url1[]" type="text" value='' class="input_bk" /> 
+                        </span>
+                     </div>
+                     <div class="add_pet_list">
+                        <span class="text">&nbsp;</span>
+                        <span class="input_area">
+                            <textarea id="extend_content" name="extend_content1[]" style="width:555px; height:150px;"></textarea>
+                        </span>
+                     </div>
+                 </div>
+				<php>}</php>
+                 <div class="add_pro">
+                 	<span class="text">&nbsp;</span>
+					<a class="common_btn" id="add_jieshao" href="javascript:void(0);" title="添加介绍">添加介绍</a>
+                 </div>
+			</li>
+			<!-- 宠物相册 -->
+			<li>
+				<span class="">宠物相册（宽度650px为佳）</span>
+			</li>
+			<li>
+            	<span class="text">&nbsp;</span>
+                <a href="#" class="pet_addfield"></a>
+                &nbsp;&nbsp;<font color="#FF0000">*</font>宠物相片
+                <p id="minimg_2" style="margin-left:85px;">
+				<php>if($detail['photos']){ foreach($detail['photos'] as $val) {</php>
+					<div ><img src="<php>echo C('IMG_DIR').'/'.$val;</php>" width="200"/> <input type="hidden" name="pics[]" value="{$val}"><div onclick="javascript:delPhoto(this);" class="del_photo">删除相片</div></div>
+                <php>}}</php>
+				</p>
+            </li>
+			<li>
+                <span class="text">&nbsp;</span>
+                <span class="input_area"><a class="submit_btn" onClick='submitFunc();' href="javascript:void(0);" title="确定"></a><a class="cancel_btn" onClick="return backfun('/iadmin.php/AllPet/petList');" href="javascript:void(0);" title="取消"></a> </span>
+            </li>
+
+        </ul>
+    </div>
+    <!--广告结束-->
+	</form>
+</div>
+
+<script type='text/javascript'>
+function submitFunc(){
+	var message = encodeURIComponent(ueditor.getContent());
+	$('#content').val(message);
+	var message1 = encodeURIComponent(editor.getContent());
+	$('#knowledge').val(message1);
+	$("form").submit();
+}
+$('#add_jieshao').click(function(){
+	var addHtml = '<div class="add_pet">
+                    <div class="add_pet_list">
+                        <span class="text">小标题：</span>
+                        <span class="input_area">
+                            <input id="extend_title" name="extend_title[]" type="text" class="input_bk" /> 
+                        </span>
+                        <span class="text">链接：</span>
+                        <span class="input_area">
+                            <input id="extend_url" name="extend_url[]" type="text" class="input_bk" /> 
+                        </span>
+                     </div>
+                     <div class="add_pet_list">
+                        <span class="text">&nbsp;</span>
+                        <span class="input_area">
+                            <textarea id="extend_content" name="extend_content[]" style="width:555px; height:150px;"></textarea>
+                        </span>
+                        <div class="del_pro">删除介绍</div>
+                     </div>
+                 </div>';
+	$(addHtml).insertBefore($(this).parent());
+	$('.del_pro').click(function(){
+		$(this).parent().parent().remove();	
+	});
+});
+</script>
+
+</body>
+</html>

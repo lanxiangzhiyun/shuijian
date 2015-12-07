@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{$tip}</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+    <!-- <link rel="stylesheet" type="text/css" href="__PUBLIC__/Js/library/ui/static/calendar/calendar.css"/> -->
+    <script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/bq.js"></script>
+    <!-- <script type='text/javascript' src='__PUBLIC__/Js/library/ui/form/calender.js'></script> -->
+    <script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+</head>
+<body>
+
+<div class="common_tab">
+    <ul>
+        <li><a href="__ROOT__/iadmin.php/Bet/index"><span>兑奖中心</span></a></li>
+        <li ><a href="__ROOT__/iadmin.php/Bet/prize"><span>添加奖品</span></a></li>
+        <li class="current"><a href="__ROOT__/iadmin.php/Bet/prize?action=list"><span>{$tip}</span></a></li>
+		<li><a href="__ROOT__/iadmin.php/Bet/prize?action=lottery"><span>抽奖奖品列表</span></a></li>
+    </ul>
+</div>
+
+
+<!--tab结束-->
+<div class="wrap">
+
+    <form action='__ROOT__/iadmin.php/Bet/index' method='get' id='form1'>
+        <!--搜索开始-->
+        <div class="search_box">
+            <div class="search">
+            </div>
+        </div>
+        <!--搜索结束-->
+        <!--数据列表开始-->
+
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+            <thead>
+            <tr>
+                <th width="7%">序号</th>
+                <th width="7%">类别</th>
+                <th width="14%">奖品图片</th>
+                <th width="14%">奖品名称</th>
+                <th width="21%">奖品说明</th>
+                <th width="7%">兑奖啵币</th>
+                <!-- <th width="7%">抽奖啵币</th> -->
+                <!-- <th width="7%">中奖几率</th> -->
+                <th width="7%">中奖数量/天</th>
+                <th width="14%">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <volist name="arrPrizeList" id="vo" >
+                <tr>
+                    <th width="7%">{$vo.pid}</th>
+                    <th width="7%">{$type[$vo['ptype']]}</th>
+                    <th width="14%"><img width="120" height="80" src="<php>echo C('IMG_DIR').'/'.$vo['attach_url']</php>" /> </th>
+                    <th width="14%">{$vo.name}</th>
+                    <th width="21%">{$vo.content}</th>
+                    <th width="7%">{$vo.djprice}</th>
+                    <!-- <th width="7%">{$vo.cjprice}</th> -->
+                    <!-- <th width="7%">{$vo.draw_rate}</th> -->
+                    <th width="7%">{$vo.day_num_limit}</th>
+                    <th width="21%">
+                        <a href="?action=edit&pid={$vo.pid}">修改</a>
+                        |
+                        <a onclick="if(confirm('确定删除吗?')){return true;}else{return false;}" href="?action=delete&pid={$vo.pid}&attachurl={$vo.attachurl}">删除</a>
+                        
+                    </th>
+                </tr>
+            </volist>
+            </tbody>
+            <tfoot>
+            </tfoot>
+        </table>
+    </form>
+    <!--数据列表结束-->
+
+    <!--分页开始-->
+    <?php echo $pageHtml;?>
+    <!--分页结束-->
+</div>
+<script type='text/javascript'>
+    //页面加载一次
+    window.onload=function(){
+        var url = $('#url').val();
+        if(url){
+            var maxCode=parent.oMapReloadInfo['maxCode'];
+            var code=parent.oMapReloadInfo['code'];
+            var difference = maxCode-code;
+            if(difference==1){
+                parent.oMapReloadInfo['maxCode']=maxCode+1;
+                location.href=url;
+            }else{
+                parent.oMapReloadInfo['code']=code+1;
+            }
+        }
+    }
+   // BQ.ui.form.Calender('#calender1');
+    //BQ.ui.form.Calender('#calender2');
+</script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!--左侧开始-->
+<div class="main_left">
+    <php>if($obj == "other"){ </php>
+        <!--TA人信息开始-->
+        <div class="person_info">
+            <div class="user_head">
+            <table width="100%" border="0" cellspacing="1" cellpadding="1">
+              <tr>
+                <td height="120" align="center"><a href="{$huser.url_link}"><img src="{$huser.avatar}" /></a></td>
+              </tr>
+            </table>
+            </div>
+            <div class="nick_name"><a href="{$huser.url_link}">{$huser.nickname}<php>if($huser['gender']==2) {</php><i class="female">女</i><php>} elseif($huser['gender']==1) {</php> <i class="male">男</i><php>} </php></a></div>
+            <div class="level">等级：{$huser.grouptitle}</div>
+            <div class="area">{$huser.city_data}</div>
+            <div class="concern">
+                <php>if($userinfo['uid']){</php>
+                    <php>if($userinfo['uid'] != $huser['uid']){</php>
+                        <php>if($huser['friendstatus'] == 1){</php>
+                            <a class="cancel_add_btn" href="javascript:void(0);" thref="/UcRelation/delMyCare/uid/{$userinfo.uid}/bUid/{$huser.uid}/fid/1" title="取消关注">取消关注</a>
+                        <php>}elseif($huser['friendstatus'] == 3){</php>
+                            <a class="cancel_add_btn" thref="/UcRelation/delMyCare/uid/{$userinfo.uid}/bUid/{$huser.uid}/fid/3" title="取消关注">取消关注</a>
+                             <a href="javascript:void(0);" uid="{$huser.uid}" id="bqpublicmsg">发消息</a>
+                        <php>}elseif($huser['friendstatus'] == 2){</php>
+                            <a class="add_btn" href="javascript:void(0);" thref="/UcRelation/addCareOne/uid/{$userinfo.uid}/bUid/{$huser.uid}" title="加关注">加关注</a>
+                        <php>}elseif($huser['friendstatus'] == 4){</php>
+                            <a class="add_btn" href="javascript:void(0);" thref="/UcRelation/addCareOne/uid/{$userinfo.uid}/bUid/{$huser.uid}/blackid/1" title="加关注">加关注</a>
+                        <php>}elseif($huser['friendstatus'] == 5){</php>
+                            <a class="add_btn" href="javascript:void(0);" thref="/UcRelation/addCareOne/uid/{$userinfo.uid}/bUid/{$huser.uid}/tBlackid/1" title="加关注">加关注</a>
+                        <php>} elseif($huser['friendstatus'] == 7){ </php>
+                             <a href="javascript:void(0);" uid="{$huser.uid}" id="bqpublicmsg">发消息</a>
+						<php>}</php>
+                    <php>}</php>
+                   
+                <php>} else {</php>
+					<a class="add_btn" href="javascript:void(0);" thref="/UcRelation/addCareOne/uid/{$userinfo.uid}/bUid/{$huser.uid}" title="加关注">加关注</a>
+				<php>} </php>
+            </div>
+            <div class="info">
+               <ul>
+                   <li><a href="<php>echo get_rewrite_url('UcWeibo', 'weibo', $huser['uid']);</php>">{$huser.weiboCnt}</a><span>啊呜</span></li>
+                   <li><a href="<php>echo get_rewrite_url('UcRelation', 'follow', $huser['uid']);</php>">{$huser.attentionsCnt}</a><span>关注</span></li>
+                   <li class="no_border"><a href="<php>echo get_rewrite_url('UcRelation', 'fans', $huser['uid']);</php>">{$huser.fansCnt}</a><span>粉丝</span></li>
+               </ul>
+            </div>
+        </div>
+        <!--TA人信息结束-->
+        <!--左侧导航开始-->
+        <div class="left_nav">
+            <ul>
+                <li <php>if($location == "otherIndex") { </php>class="current"<php>} </php>><a class="icon01" href="{$huser.url_link}">TA的主页 </a></li>
+                <li <php>if($location == "otherWeibo") { </php>class="current"<php>} </php>><a class="icon02" href="<php>echo get_rewrite_url('UcWeibo', 'weibo', $huser['uid']);</php>">啊呜</a></li>
+                <li <php>if($location == "otherDiaryList") { </php>class="current"<php>} </php>><a class="icon03" href="<php>echo get_rewrite_url('UcDiary', 'diaryList', 'u:'.$huser['uid']);</php>">宠日志</a></li>
+                <li <php>if($location == "otherAlbum") { </php>class="current"<php>} </php>><a class="icon04" href="<php> echo get_rewrite_url('UcAlbum', 'photo', $huser['uid']);</php>">相册</a></li>
+				<li <php>if($location == "otherBaikes") { </php>class="current"<php>} </php>><a class="icon14" href="<php>echo get_rewrite_url('UcBaike', 'collection', $huser['uid']);</php>">百科</a></li>
+                <li <php>if($location == "otherThreads") { </php>class="current"<php>} </php>><a class="icon05" href="<php>echo get_rewrite_url('UcForum', 'forum', $huser['uid']);</php>">社区</a></li>
+                <!--<li><a class="icon06" href="#">问问</a></li>-->
+            </ul>
+            <fieldset class="sub_title"><legend>关系</legend></fieldset>
+            <ul>
+                <li <php>if($location == "otherFollow") { </php>class="current"<php>} </php>><a class="icon10" href="<php>echo get_rewrite_url('UcRelation', 'follow', $huser['uid']);</php>">TA的关注(<i>{$huser.attentionsCnt}</i>)</a></li>
+                <li <php>if($location == "otherFans") { </php>class="current"<php>} </php>><a class="icon11" href="<php>echo get_rewrite_url('UcRelation', 'fans', $huser['uid']);</php>">TA的粉丝(<i>{$huser.fansCnt}</i>)</a></li>
+                <li <php>if($location == "otherFriends") { </php>class="current"<php>} </php>><a class="icon12" href="<php>echo get_rewrite_url('UcRelation', 'friends', $huser['uid']);</php>">TA的好友(<i>{$huser.friendsCnt}</i>)</a></li>
+            </ul>
+        </div>
+        <!--左侧导航结束-->
+    <php>} else { </php>
+        <!--个人信息开始-->
+        <div class="person_info">
+            <div class="user_head">
+            <table width="100%" border="0" cellspacing="1" cellpadding="1">
+              <tr>
+                <td height="120" align="center"><a href="{$userinfo.url_link}"><img src="{$userinfo.avatar}" /></a></td>
+              </tr>
+            </table>
+            </div>
+            <div class="nick_name"><a href="{$userinfo.url_link}">{$userinfo.nickname}</a></div>
+            <div class="num">
+                <span>啵币：<i>{$userinfo.extinfo.extcredits2}</i></span>
+                <span>积分：<i>{$userinfo.extinfo.extcredits4}</i></span>
+            </div>
+            <div class="info">
+               <ul>
+                   <li><a href="<php>echo get_rewrite_url('UcDiary', 'diaryList', 'u:'.$userinfo['uid']);</php>">{$userinfo.diaryCnt}</a><span>日志</span></li>
+                   <li><a href="<php> echo get_rewrite_url('UcAlbum', 'photo', $userinfo['uid']);</php>">{$userinfo.photoCnt}</a><span>照片</span></li>
+                   <li class="no_border"><a href="<php>echo get_rewrite_url('UcWeibo', 'weibo', $userinfo['uid']);</php>">{$userinfo.weiboCnt}</a><span>啊呜</span></li>
+               </ul>
+            </div>
+        </div>
+        <!--个人信息结束-->
+        <!--左侧导航开始-->
+        <div class="left_nav">
+            <ul>
+                <li <php>if($location == "myIndex") { </php>class="current"<php>} </php>><a class="icon01" href="{$userinfo.url_link}">我的主页 </a></li>
+                <li <php>if($location == "myWeibo") { </php>class="current"<php>} </php>><a class="icon02" href="<php>echo get_rewrite_url('UcWeibo', 'weibo', $userinfo['uid']);</php>">啊呜</a></li>
+                <li <php>if($location == "myDiaryList") { </php>class="current"<php>} </php>><a class="icon03" href="<php>echo get_rewrite_url('UcDiary', 'diaryList', 'u:'.$userinfo['uid']);</php>">宠日记</a></li>
+                <li <php>if($location == "myAlbum") { </php>class="current"<php>} </php>><a class="icon04" href="<php> echo get_rewrite_url('UcAlbum', 'photo', $userinfo['uid']);</php>">相册</a></li>
+				<li <php>if($location == "myBaikes") { </php>class="current"<php>} </php>><a class="icon14" href="<php>echo get_rewrite_url('UcBaike', 'collection', $userinfo['uid']);</php>">百科</a></li>
+                <li <php>if($location == "myThreads") { </php>class="current"<php>} </php>><a class="icon05" href="<php>echo get_rewrite_url('UcForum', 'forum', $userinfo['uid']);</php>">社区</a></li>
+                <li <php>if($location == "myComments") { </php>class="current"<php>} </php>><a class="icon13" href="<php>echo get_rewrite_url('UcComment', 'commentList', '');</php>">评论</a></li>
+                <!--<li><a class="icon06" href="#">问问</a></li>-->
+                <!--<li><a class="icon07" href="#">兑奖</a></li>-->
+            </ul>
+            <fieldset class="sub_title"><legend>我的宠物</legend></fieldset>
+            <ul>
+                <li <php>if($location == "petFiles") { </php>class="current"<php>} </php>><a class="icon08" href="/UcPets/petFiles">宠物档案</a></li>
+                <!--<li><a class="icon09" href="#">宠物门诊</a></li>-->
+            </ul>
+            <fieldset class="sub_title"><legend>关系</legend></fieldset>
+            <ul>
+                <li <php>if($location == "myFollow") { </php>class="current"<php>} </php>><a class="icon10" href="<php>echo get_rewrite_url('UcRelation', 'follow', $userinfo['uid']);</php>">我的关注(<i>{$userinfo.attentionsCnt}</i>)</a></li>
+                <li <php>if($location == "myFans") { </php>class="current"<php>} </php>><a class="icon11" href="<php>echo get_rewrite_url('UcRelation', 'fans', $userinfo['uid']);</php>">我的粉丝(<i>{$userinfo.fansCnt}</i>)</a></li>
+                <li <php>if($location == "myFriends") { </php>class="current"<php>} </php>><a class="icon12" href="<php>echo get_rewrite_url('UcRelation', 'friends', $userinfo['uid']);</php>">我的好友(<i>{$userinfo.friendsCnt}</i>)</a></li>
+            </ul>
+        </div>
+        <!--左侧导航结束-->
+        
+        <!--我的好友开始-->
+        <div class="friends" id="friends1">
+            <div class="hd">
+                <h3>我的好友</h3>
+                <php>if(isset($userinfo['friends']) && count($userinfo['friends']) >= 5) { </php>
+                    <div class="act">
+                        <a class="prev_btn prev_btn_disable" href="javascript:void(0)">上一页</a>
+                        <a class="next_btn" href="javascript:void(0)">下一页</a>
+                    </div>
+                <php>} </php>
+            </div>
+            <div class="bd">
+                <div class="carousel_cont" style="">
+                    <php>if(isset($userinfo['friends']) && $userinfo['friends']) { </php>
+                       <php>if(count($userinfo['friends']) >= 1){ </php>
+                            <ul>
+                                <php>foreach($userinfo['friends'] as $fk=>$friend) { </php>
+                                    <php>if($fk < 4){ </php>
+                                        <php>if($friend) { </php>
+                                        <li>
+                                            <div class="head_img"><a href="{$friend.url_link}" ><img src="{$friend.avatar}" style="width:50px;"/></a></div>
+                                            <div class="nick_name"><a href="{$friend.url_link}">{$friend.nickname}</a></div>
+                                        </li>
+                                        <php>} </php>
+                                    <php>}</php>
+                                <php>} </php>
+                            </ul>
+                        <php>} </php>
+                        <php>if(count($userinfo['friends']) >= 5){ </php>
+                            <ul>
+                                <php>foreach($userinfo['friends'] as $fk=>$friend) { </php>
+                                    <php>if(($fk >= 4) && ($fk < 8)){ </php>
+                                        <php>if($friend) { </php>
+                                        <li>
+                                            <div class="head_img"><a href="{$friend.url_link}" ><img src="{$friend.avatar}" style="width:50px;"/></a></div>
+                                            <div class="nick_name"><a href="{$friend.url_link}">{$friend.nickname}</a></div>
+                                        </li>
+                                        <php>} </php>
+                                    <php>}</php>
+                                <php>} </php>
+                            </ul>
+                        <php>} </php>
+                        <php>if(count($userinfo['friends']) >= 9){ </php>
+                            <ul>
+                                <php>foreach($userinfo['friends'] as $fk=>$friend) { </php>
+                                    <php>if(($fk >= 8) && ($fk < 12)){ </php>
+                                        <php>if($friend) { </php>
+                                        <li>
+                                            <div class="head_img"><a href="{$friend.url_link}" ><img src="{$friend.avatar}" style="width:50px;"/></a></div>
+                                            <div class="nick_name"><a href="{$friend.url_link}">{$friend.nickname}</a></div>
+                                        </li>
+                                        <php>} </php>
+                                    <php>}</php>
+                                <php>} </php>
+                            </ul>
+                        <php>} </php>
+                    <php>} else { </php>
+                        <ul>
+                            <li><div class="date">暂无好友</div></li>
+                        </ul>
+                    <php>} </php>
+                </div>
+            </div>
+        </div>
+        <!--我的好友结束-->
+        
+        <!--最近访客开始-->
+        <div class="friends" id="friends2">
+            <div class="hd">
+                <h3>最近访客</h3>
+                <php>if(isset($userinfo['visitors']) && count($userinfo['visitors']) >= 5) { </php>
+                    <div class="act">
+                        <a class="prev_btn prev_btn_disable" href="javascript:void(0)">上一页</a>
+                        <a class="next_btn" href="javascript:void(0)">下一页</a>
+                    </div>
+                <php>} </php>
+            </div>
+            <div class="bd">
+                <div class="carousel_cont" style="">
+                    <php>if(isset($userinfo['visitors']) && $userinfo['visitors']) { </php>
+                        <php>if(count($userinfo['visitors']) >= 1){ </php>
+                            <ul>
+                                <php>foreach($userinfo['visitors'] as $vk=>$visitor) { </php>
+                                    <php>if($vk < 4){ </php>
+                                        <php>if($visitor) { </php>
+                                            <li>
+                                                <div class="head_img"><a href="{$visitor.url_link}"><img src="{$visitor.avatar}" style="width:50px;"/></a></div>
+                                                <div class="nick_name"><a href="{$visitor.url_link}">{$visitor.nickname}</a></div>
+                                                <div class="date">{$visitor.format_visit_time}</div>
+                                            </li>
+                                        <php>} </php>
+                                    <php>} </php>
+                                <php>} </php>
+                            </ul>
+                        <php>} </php>
+                        <php>if(count($userinfo['visitors']) >= 5){ </php>
+                            <ul>
+                                <php>foreach($userinfo['visitors'] as $vk=>$visitor) { </php>
+                                    <php>if(($vk >= 4) && ($vk < 8)){ </php>
+                                        <php>if($visitor) { </php>
+                                            <li>
+                                                <div class="head_img"><a href="{$visitor.url_link}"><img src="{$visitor.avatar}" style="width:50px;"/></a></div>
+                                                <div class="nick_name"><a href="{$visitor.url_link}">{$visitor.nickname}</a></div>
+                                                <div class="date">{$visitor.format_visit_time}</div>
+                                            </li>
+                                        <php>} </php>
+                                    <php>} </php>
+                                <php>} </php>
+                            </ul>
+                        <php>} </php>
+                        <php>if(count($userinfo['visitors']) >= 9){ </php>
+                            <ul>
+                                <php>foreach($userinfo['visitors'] as $vk=>$visitor) { </php>
+                                    <php>if(($vk >= 8) && ($vk < 12)){ </php>
+                                        <php>if($visitor) { </php>
+                                            <li>
+                                                <div class="head_img"><a href="{$visitor.url_link}"><img src="{$visitor.avatar}" style="width:50px;"/></a></div>
+                                                <div class="nick_name"><a href="{$visitor.url_link}">{$visitor.nickname}</a></div>
+                                                <div class="date">{$visitor.format_visit_time}</div>
+                                            </li>
+                                        <php>} </php>
+                                    <php>} </php>
+                                <php>} </php>
+                            </ul>
+                        <php>} </php>
+                    <php>} else { </php>
+                        <ul>
+                            <li><div class="date">暂无访客</div></li>
+                        </ul>
+                    <php>} </php>
+                </div>
+            </div>
+        </div>
+        <!--最近访客结束-->
+    <php>} </php>
+</div>
+<!--左侧结束-->

@@ -1,0 +1,30 @@
+<div class="popup_layer none" id="receivedmsg" style="width: 403px;">
+    <div class="bg">
+        <div class="content"> <a title="关闭" href="javascript:void(0);" class="close closes">关闭</a>
+            <div class="hd">发消息</div>
+            <div class="bd">
+                <!--替换内容开始-->
+                <div class="send_msg_popup">
+                    <p class="error none" id="msgerror">请填写内容</p>
+					<ul>
+                        <li> <span class="txt">内&#12288;容：</span>
+                            <div class="input_box">
+                                <textarea rows="5" cols="45" id="msgtextarea" name="textarea" class="input_info"></textarea>
+                            </div>
+                        </li>
+                        <li class="info"><span class="txt">&nbsp;</span><span class="tips">最多不超过<span id="receivedmsgnum">0/150</span>字</span></li>
+                        <li class="send_btn"><span class="txt">&nbsp;</span><a href="javascript:void(0);" class="submit_btn" id="sbBtn">确定</a> <a href="javascript:void(0);" class="cancel_btn" id="cancel_close">取消</a></li>
+                    </ul>
+                </div>
+                <div class="loading send_msg_popup_h">正在发送……</div>
+                <div class="succ_tips send_msg_popup_h"><i class="icon_succ"></i>恭喜，发送成功！</div>
+                <!--替换内容结束-->
+            </div>
+        </div>
+    </div>
+</div>
+<div id="gotop">
+	<a class="gotop1" title="意见反馈" href="<php>echo C('BLOG_DIR');</php>/complaints.php">意见反馈</a>
+	<a class="gotop" title="返回顶部" href="#">返回顶部</a>
+</div>
+<include file="./../frame/ThinkPHP3.1.3/Tpl/footer.html" />

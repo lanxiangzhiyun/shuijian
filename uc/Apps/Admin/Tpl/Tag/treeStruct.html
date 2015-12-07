@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>完整标签结构</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Js/bq.js'></script>
+</head>
+<body>
+<!--tab开始-->
+<div class="common_tab">
+	<ul>
+		<li><a href="__ROOT__/iadmin.php/Tag/treeStruct"><span>完整标签结构</span></a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+	<form action='__ROOT__/iadmin.php/Tag/mergeTag' method='post'>
+    <!--创建标签开始-->
+    <div class="common_tb">
+       <select class="select_bk" name="type" id="select">
+			<option value="11">百科标签</option>
+		</select><br><br>
+		
+        <ul id="root" style="margin-left:60px;">
+			<span>●&nbsp;&nbsp;根标签</span><br>
+			<php>foreach($subTagList as $k=>$vo){</php>
+				<span><php>echo $vo['msg']</php></span>
+			<php>}</php>
+			<php>if($subTagList['loadMoreTagList']){</php>
+				<php>echo $subTagList['loadMoreTagList'];</php>
+			<php>}</php>
+		</ul>
+    </div>
+	</form>
+    <!--创建标签结束-->
+</div>
+
+ <script>
+	function loadMore(obj){
+		var space = $(obj).attr("space");
+		var tagid = $(obj).attr("tagid");
+		var page  = $(obj).attr("page");
+		if(tagid){
+			$.getJSON(
+				"/iadmin.php/Tag/ajaxGetSubRelation",
+				{tagId:tagid,space:space,page:page},
+				function(list){ 
+					if(list.status == "ok"){
+						var _str = "";
+						for (var i=0; i < list.num; i++) { 
+							_str += list[i]["msg"];
+							if (list[i]["submsg"]) {
+								_str += list[i]["submsg"];
+							}	
+						}
+						//alert(_str);
+						if(list.loadMoreTagList){
+							_str += list.loadMoreTagList;
+						}
+						if(list.page > 1){
+							$(obj).before(_str).remove();
+							
+						}else{
+							$(obj).html(_str);
+							
+						}
+						
+						$(obj).removeAttr("onclick");
+						$(obj).removeAttr("id");
+					}else{
+						alert(list.msg);
+					}
+				}
+			)
+		}
+	}
+</script>
+</body>
+</html>

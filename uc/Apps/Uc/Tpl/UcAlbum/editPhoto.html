@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <php>if($obj == "me") { if($userinfo['groupid'] >= 4 && $userinfo['groupid'] < 11) { </php><META NAME="robots" CONTENT="NOINDEX,NOFOLLOW">
+    <php>} } elseif($obj == "other") { if($huser['groupid']  >= 4 && $huser['groupid'] < 11) { </php><META NAME="robots" CONTENT="NOINDEX,NOFOLLOW">
+    <php>} }</php>
+<title>编辑照片信息</title>
+<link rel="stylesheet" type="text/css" href="<php>echo autoVer('/Css/uc/global.css');</php>"/>
+<link rel="stylesheet" type="text/css" href="<php>echo autoVer('/Css/uc/main.css');</php>"/>
+</head>
+<body>
+<!--头部开始-->
+<div class="global_header">
+    <!--头部导航开始-->
+    <include file="Public:top"/>
+
+    <include file="Public:header"/>
+    <!--nav导航结束-->
+</div>
+<!--头部结束-->
+
+<!--主体部分开始-->
+<div class="main two_side clearfix">
+    <!--左侧开始-->
+    <include file="Public:left"/>
+    <!--左侧结束-->
+    <div class="plc_main">
+        <!--右侧开始-->
+        <div class="main_cont">
+            <div class="path_title">
+                <span class="photo_title">编辑照片信息</span>
+                <a class="return" href="<php>echo get_rewrite_url('UcAlbum', 'photo', $uid);</php>" title="返回相册首页>>">返回相册首页>></a>
+            </div>
+
+            <!--编辑照片信息开始-->
+            <div class="every_photo_edit">
+                <div class="add_allphoto_info">
+                    <h4><a class="submit_btn submitBtn" href="javascript:void(0)">保存</a>统一添加照片信息<span class="info">(为所有照片统一添加相同的名称、描述)</span></h4>
+                    <div class="add_allphoto_name">
+                        <span class="name">照片名称：</span>
+                        <input name="textfield2" type="text" class="name_input" id="picname" value="请输入照片信息" />
+                        <span class="input_max_num"><span class="num picnamenum" id="picnamenum">0</span></span><!-- 超出数字 addClass('warning') -->
+                    </div>
+                    <div class="add_allphoto_desc">
+                        <span class="desc">照片描述：</span>
+                        <textarea class="desc_textarea" name="textarea" id="piccom" cols="45" rows="5">请输入照片描述</textarea>
+                        <span class="input_max_num"><span class="num piccomnum" id="piccomnum">0</span></span><!-- 超出数字 addClass('warning') -->
+                    </div>
+                </div>
+                  <form action="/UcAlbum/updatePhotoPl" method="post" id="BtnPost">
+                <div class="add_single_photo_info" id="photolist">
+                    <ul>
+                        <volist name="arrPhotoBaseMsg" id="vo">
+                        <li pid="{$vo.pid}">
+                            <input type="hidden" value="{$vo.pid}" name="pid[]">
+                            <div class="img_show"><!-- mouseover addClass('hover') -->
+                                <a href="#"><img src="<php>echo C('IMG_DIR');</php>/{$vo.phopath}" width="160" height="160" /></a>
+                                <span class="act">
+                                    <a href="javascript:void(0)" class="set_cover" title="设为封面"></a>
+                                    <a href="javascript:void(0)" class="del_photo" title="删除"></a>
+                                </span>
+                                <switch name="vo.iscover">
+                                    <case value="1"><i class="cover_icon"></i></case>
+                                    <default />
+                                </switch>
+
+                            </div>
+                            <div class="edit_name">
+                                <span class="name">照片名称：</span>
+                                <input name="textfield3[]" type="text" class="name_input picname" id="textfield3" value="{$vo.pname}" />
+                                <span class="input_max_num"><span class="num picnamenum">0</span></span><!-- 超出数字 addClass('warning') -->
+                            </div>
+                            <div class="edit_desc">
+                                <span class="desc">照片描述：</span>
+                                <textarea class="desc_textarea piccom" name="textarea[]" id="textarea" cols="45" rows="5">{$vo.pdesc}</textarea>
+                                <span class="input_max_num"><span class="num piccomnum">0</span></span><!-- 超出数字 addClass('warning') -->
+                            </div>
+                        </li>
+                         </volist>
+                    </ul>
+                </div>
+				<div class="clear"></div>
+                  </form>
+                <div class="save_btn"><a class="submit_btn submitBtn" href="javascript:void(0)">保存</a> <a class="c_btn" href="javascript:void(0)">取消</a></div>
+                  </form>
+            </div>
+            <!--编辑照片信息结束-->
+
+        </div>
+        <!--右侧结束-->
+    </div>
+</div>
+<!--主体部分结束-->
+
+<script type="text/javascript">
+	BQ.load("util.KeyMap,UCAlbum",function(){
+         BQ.UCAlbum('editPhoto',{'I_DIR':'<php>echo C("I_DIR");</php>'}).exec();
+    });
+</script>
+
+<!--底部开始-->
+<include file="Public:footer"/>
+<!--底部结束--> 
+

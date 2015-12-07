@@ -1,0 +1,386 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <meta http-equiv="pragma" content="no-cache"  />
+ <meta http-equiv="content-type" content="no-cache, must-revalidate" />
+ <meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT"/>
+<title>资讯列表</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/easydialog.css"/>	
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Js/library/ui/static/calendar/calendar.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type="text/javascript" src="__PUBLIC__/Js/bq.js"></script>
+<script type='text/javascript' src='__PUBLIC__/Js/library/ui/form/calender.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/easydialog.min.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/easydialog.js'></script>
+</head>
+<body>
+<include file="Index:isdelete"/>
+
+
+
+
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li class="current"><a href="__ROOT__/iadmin.php/News/newsList"><span>资讯列表</span></a></li>
+        <li ><a href="__ROOT__/iadmin.php/News/addNews"><span>添加资讯</span></a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+	<form action='__ROOT__/iadmin.php/News/newsList' method='get'>
+    <!--搜索开始-->
+    <div class="search_box">
+        <div class="search">
+            <div class="title">
+                <span class="txt">资讯标题：</span>
+                <input name="data[title]"  id="clearText_1" val='输入标题关键字'  type="text" class="input_txt" value="<?php if($title){echo $title;}else{echo '输入标题关键字';}?>" />
+            </div>
+            <div class="date">
+                <span class="txt">创建时间：</span>
+                <input class="input_date calendar" type="text" name="data[starttime]" id="calender1"  value="<?php if($starttime){echo $starttime;}?>"/>
+                <span class="txt">至</span>
+                <input class="input_date calendar" type="text" name="data[endtime]" id="calender2"  value="<?php if($endtime){echo $endtime;}?>"/>
+            </div>
+			<div class="btn_box"><input type='button' class='calendarClear' name='' value='清除时间'></div>
+            <div class="nick">
+                <span class="txt">资讯状态：</span>
+                <select class="select_menu" name="data[status]" id="select">
+                	<option value = 'all'  >--所有--</option>
+                	<option value='1' <?php if(isset($status) && $status==1){echo 'selected';}?>  >已审核</option>
+                    <option value='0' <?php if(isset($status) && $status==0){echo 'selected';}?> >待审核</option>
+                </select>
+            </div>
+           
+        </div>
+        <div class="search">
+        	<div class="nick">
+        		<span class="txt">大栏目</span>
+        		<select class="select_menu" name="data[big_column_id]" id="big_column_id" >
+        			<option value = ''>--所有--</option>
+        			<volist name="bigColumn" id="vo">
+        				 <option value="{$vo.id}" <php>if($vo['id'] == $big_column_id ){ echo "selected"; }</php> >{$vo.name}</option>
+        			</volist>
+        		</select>
+        	</div>
+        		<div class="nick" id="xiaolanmu" <php>if(!isset($columnInfo)):</php> style="display:none"<php>endif;</php>>
+        		<span class="txt">小栏目</span>
+        		<select class="select_menu" name="data[column_id]" id="column_id" >
+        			<option value = ''>--所有--</option>
+        			
+        				<volist name="columnInfo" id="vo">
+        				 	<option value="{$vo.id}" <php>if($vo['id'] == $column_id ){ echo "selected"; }</php> >{$vo.name}</option>
+        				</volist>
+        			
+        		</select>
+        	</div>
+        	 <div class="btn_box"><a class="search_btn" onClick='submitFun();' href="javascript:void(0);" title="查询">查询</a></div>
+        </div>
+    </div>
+    <!--搜索结束-->
+	</form>
+	
+    <!--数据列表开始-->
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+        <thead>
+            <tr>
+                <th width="45">选中</th>
+                <th width="6%">ID</th>
+                <th width="30%">资讯标题</th>
+                <th width="12%">发布时间</th>
+                <th width="10%" colspan ="2">分类</th>
+                <th width="8%"  colspan ="2">浏览数</th>
+                <th width="8%">状态</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+
+			<volist name='list' id='vo'>
+            <tr>
+                <td><input class="dx" type="checkbox" value="{$vo.id}" id="blogID_{$vo.id}" name="blogID"></td>
+                <td>{$vo.id}</td>
+                <td align="left"><span class="title">{$vo.title}</span></td>
+                <td>{$vo.create_time|date="Y-m-d H:i:s",### }</td>
+                <td><php>echo $allColumn[$vo['big_column_id']];</php></td>
+                <td><php>echo $allColumn[$vo['column_id']];</php></td>
+                <td>{$vo.total_visits_number}</td>
+                <td>{$vo.really_visits_number}</td>
+                <td><php>echo $statusArray[$vo['status']];</php></td>
+                <td>
+                	<php>if($vo['status'] == 1):</php>
+                		<a href="javascript:void(0)" onclick="AuditNews({$vo.id},0);" >取消审核</a><span class="line">|</span>
+                	<php>else:</php>
+                		<a href="javascript:void(0)" onclick="AuditNews({$vo.id},1);" >审核</a><span class="line">|</span>
+                	<php>endif;</php>
+                	<a href="/iadmin.php/News/editNews?id={$vo.id}">编辑</a><span class="line">|</span>
+                	<a href="javascript:void(0)" onclick="AuditNews({$vo.id},-1);" >删除</a>
+                </td>
+                	
+                </td>
+            </tr>
+           </volist>
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="10" align="left">
+                	<label><input class="select_all" type="checkbox" value="全选" id="blogID" name="blogID">全选</label> 
+                	&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="批量删除" onclick="BatchAuditNews(-1)"  />
+                	&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="批量审核" onclick="BatchAuditNews(1)"  />
+                	&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="批量取消审核" onclick="BatchAuditNews(0)"  />
+                	&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="批量设置分类" onclick="setClassification()"  />
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    <!--数据列表结束-->
+    
+    <!--分页开始-->
+    <?php echo $pageHtml;?>
+    <!--分页结束-->
+    <input type='hidden' value='<?php echo $url;?>' id='url'>
+    
+    <!-- 弹出层 star  -->
+    <div id="massTransfer" style="width:600px;height:300px;border:1px #ccc solid;display:none;background:#fff">
+    	<font style="float:right;font-size:16px; margin: 10px 20px 0 0; cursor:pointer" onclick="easyDialog.close();" >X</font>
+    	<div class="" style ="float:left ;margin-top:30px;margin-left:20px;">
+        		<span class="txt">一级分类:</span>
+        		<select class="select_menu" name="data[big_column_id]" id="big_column_id_1" >
+        			<option value = ''>--请选择一级分类--</option>
+        			<volist name="bigColumn" id="vo">
+        				 <option value="{$vo.id}"  >{$vo.name}</option>
+        			</volist>
+        		</select>
+        		<span class="txt" style="margin-left:15px;">二级分类:</span>
+        		<select class="select_menu" name="data[column_id]" id="column_id_1" >
+        			<option value = ''>--请选择二级分类--</option>
+        			
+        				<volist name="columnInfo" id="vo">
+        				 	<option value="{$vo.id}" <php>if($vo['id'] == $column_id ){ echo "selected"; }</php> >{$vo.name}</option>
+        				</volist>
+        			
+        		</select>
+        	</div>
+        	
+        	<div class="" style ="float:left;width:100%;margin-top:10px;margin-left:20px;">
+        		三级分类:<input type="text" name="three_level_search" id="three_level_search" />
+        		&nbsp;&nbsp;<font style="color:red">完全匹配</font>&nbsp;&nbsp;
+        		 <a class="search_btn" onClick='searchThreelevel()' href="javascript:void(0);" title="查询">查询</a>
+        	</div>
+        	
+        	<div id="three_level_conn" style ="float:left;width:520px;height:100px; margin-top:10px;margin-left:20px;border:1px #ccc solid; padding:20px; "></div>
+        	<input type="hidden" name="newsIds" id ='newsIds' value="" />
+        	<div style="margin-top:10px;padding-left:390px;width:100%;float:left;" ><a href="javascript:void(0);" onClick='Determine()' >设置完成</a></div>
+    </div>
+    <!-- 弹出层end  -->
+</div>
+<script type='text/javascript'>
+document.getElementById('big_column_id_1').selectedIndex = 0;
+document.getElementById('column_id_1').selectedIndex = 0;
+$("#three_level_search").val('');
+function Determine(){
+	var ids = $('#newsIds').val();
+	var big_column_id_1 = $("#big_column_id_1").val();
+	var column_id_1 = $("#column_id_1").val();
+	var three_column_id = $('input:radio[name="three_column_id"]:checked').val();
+	if( three_column_id == undefined){
+		alert("请选择三级分类");
+	}else{
+		$.ajax({
+			type:'post',
+			url:'/iadmin.php/news/AjaxCheckNewsThreeColumn',
+			data:'&three_column_id='+three_column_id+'&ids='+ids+'&big_column_id='+big_column_id_1+'&column_id='+column_id_1,
+			dataType:'json',
+			success:function(data){
+				if(data.status == 'ok'){
+					alert("操作成功");
+					window.location.reload();
+				}
+			}
+		});
+	}
+}
+
+function setClassification(){
+	var ids = getIds();
+	if(ids){
+		$('#newsIds').val(ids);
+		easyDialog.open({
+			  container : 'massTransfer',
+			  fixed : false
+			});
+	}
+	
+}
+function searchThreelevel(){
+	
+	var big_column_id_1 = $("#big_column_id_1").val();
+	var column_id_1 = $("#column_id_1").val();
+	var three_level_search = $("#three_level_search").val();
+	
+	if(!big_column_id_1){
+		alert("请选择一级分类");
+		return false;
+	}
+	if(!column_id_1){
+		alert("请选择二级分类");
+		return false;
+	}
+	if(!three_level_search){
+		alert("请选择三级分类");
+		return false;
+	}
+	$.ajax({
+		type:'post',
+		url:'/iadmin.php/news/AjaxGetThreeLevelColumnInfo',
+		data:'&column_id='+column_id_1+'&search_name='+three_level_search,
+		dataType:'json',
+		success:function(data){
+			html = '<input type="radio" name = "three_column_id" id="three_column_id" value="'+data.id+'" />&nbsp;&nbsp;'+data.name
+			$('#three_level_conn').html(html);
+		}
+	});
+}
+
+
+//页面加载一次
+window.onload=function(){
+		var url = $('#url').val();
+		if(url){
+			var maxCode=parent.oMapReloadInfo['maxCode'];
+			var code=parent.oMapReloadInfo['code'];
+			var difference = maxCode-code;
+			if(difference==1){
+				parent.oMapReloadInfo['maxCode']=maxCode+1;
+				location.href=url;
+			}else{
+				parent.oMapReloadInfo['code']=code+1;
+			}
+		}
+}
+BQ.ui.form.Calender('#calender1');
+BQ.ui.form.Calender('#calender2');
+</script>
+</body>
+<script>
+
+$('#big_column_id').change(function(){
+	var big_column_id = $(this).val();
+	if(big_column_id){
+		$.ajax({
+			type:'post',
+			url:'/iadmin.php/news/AjaxGetColumnInfo',
+			data:'id='+big_column_id,
+			dataType:'json',
+			success:function(data){
+				if(data == null){
+					html="<option value =''>--请选择子栏目--</option>";
+				}else{
+					$("#xiaolanmu").show();
+					var len = data.length,html="<option value =''>--请选择子栏目--</option>";
+					if(len){
+						for(var i=0;i<len;i++){
+							html+='<option value="'+data[i].id+'">'+data[i].name+'</option>';
+						}		
+					}
+				}
+				$("#column_id").html(html);
+				
+			}
+		});
+	}else{
+		html="<option value =''>--所有子栏目--</option>";
+		$("#column_id").html(html);
+		$("#xiaolanmu").hide();
+	}
+});
+
+$('#big_column_id_1').change(function(){
+	var big_column_id_1 = $(this).val();
+	if(big_column_id_1){
+		$.ajax({
+			type:'post',
+			url:'/iadmin.php/news/AjaxGetColumnInfo',
+			data:'id='+big_column_id_1,
+			dataType:'json',
+			success:function(data){
+				if(data == null){
+					html="<option value =''>--所有子栏目--</option>";
+				}else{
+					var len = data.length,html="<option value =''>--所有子栏目--</option>";
+					if(len){
+						for(var i=0;i<len;i++){
+							html+='<option value="'+data[i].id+'">'+data[i].name+'</option>';
+						}		
+					}
+				}
+				$("#column_id_1").html(html);
+			}
+		});
+	}else{
+		html="<option value =''>--所有子栏目--</option>";
+		$("#column_id").html(html);
+		
+	}
+});
+
+/**
+ * 修改资讯状态
+ */
+function AuditNews(id,status){
+		$.ajax({
+			type:'post',
+			url:'/iadmin.php/News/updateNews',
+			data:'id='+id+'&status='+status,
+			dataType:'json',
+			success:function(data){
+				alert("操作成功");
+				window.location.reload();
+			}
+		});
+	
+}
+/**
+ * 批量修改资讯
+ */
+function BatchAuditNews(status){
+	
+	ids = getIds();
+	$.ajax({
+		type:'post',
+		url:'/iadmin.php/News/updateNews',
+		data:'id='+ids+'&status='+status,
+		dataType:'json',
+		success:function(data){
+			alert("操作成功");
+			window.location.reload();
+		}
+	});
+}
+
+/**
+ * 返回选中ID
+ */
+function getIds(){
+	var ids = '';
+	var i=0;
+	$("[id^='blogID_']").each(function(){
+		if($(this).attr('checked')=='checked'){
+			ids +=$(this).val()+',';
+			i++;
+		}
+	});
+	if(i == 0 ){
+		alert("至少选择一个资讯");
+		return false;
+	}
+	return ids;
+}
+
+
+</script>
+</html>

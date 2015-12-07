@@ -1,0 +1,15 @@
+﻿.add_subject{margin-left:20px;}
+.add_subject table tr td{ text-align:center;}
+.add_subject .s_t{vertical-align:middle;}
+.add_subject .s_b{ text-align:left; padding:3px; }
+.add_subject .s_b input{ width:150px; height:26px;border:none; border-right:1px solid #ccc;line-height:26px;padding-left:5px; }
+.add_subject .s_b span input{ margin-left:20px; }
+.subject_content{width:950px;  height:auto; overflow:hidden; padding:10px 0; margin-top:20px; }
+.change_content{color:#666;}
+.subject_content table tr td{text-align:center;}
+.subject_content .c_b{text-align:left; padding:3px;}
+.subject_content .c_b input{width:150px; height:26px;border:none; border-right:1px solid #ccc;line-height:26px;padding-left:5px;}
+.subject_submit{width:300px; padding-left:200px; margin-top:20px;}
+.subject_submit .submit{ width:100px; height:32px; border-radius:5px; color:white; border:none; cursor:pointer; background:#66CC66;}
+.subject_submit a{margin-left:10px; margin-bottom:10px;display:inline-block; text-decoration:none; width:100px; height:32px; line-height:32px; text-align:center; color:white; font-size:14px; background: #66CC66; border-radius:5px;}
+.yangshi{color:#666;}

@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>微博评论管理</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Js/library/ui/static/calendar/calendar.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type="text/javascript" src="__PUBLIC__/Js/bq.js"></script>
+<script type='text/javascript' src='__PUBLIC__/Js/library/ui/form/calender.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+</head>
+<body>
+<include file="Index:isdelete"/>
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li><a href="__ROOT__/admin.php/Weibo/index"><span>微博内容管理</span></a></li>
+        <li class="current"><a href="__ROOT__/admin.php/Weibo/weiboComment"><span>微博评论管理</span></a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+	
+	<form action='__ROOT__/admin.php/Weibo/weiboComment' method='get'>
+	<input type='hidden' value='<?php echo $wid;?>' name='wid'>
+    <!--搜索开始-->
+    <div class="search_box">
+        <div class="search">
+            <div class="title">
+                <span class="txt">评论内容：</span>
+                <input name="data[content]" type="text" class="input_txt" id="clearText_1" val='输入评论内容关键字' value="<?php if($content){echo $content;}else{echo '输入评论内容关键字';}?>" />
+            </div>
+            <div class="date">
+               <span class="txt">创建时间：</span>
+                <input class="input_date calendar" type="text" name="data[starttime]" id="calender1" readonly="readonly" value="<?php if($starttime){echo $starttime;}?>"/>
+                <span class="txt">至</span>
+                <input class="input_date calendar" type="text" name="data[endtime]" id="calender2" readonly="readonly" value="<?php if($endtime){echo $endtime;}?>"/>
+            </div>
+			<div class="btn_box"><input type='button' class='calendarClear' name='' value='清除时间'></div>
+            <div class="id">
+                <span class="txt">所属微博ID：</span>
+                <input name="data[wid]" type="text" class="input_txt" id="clearText_2" val='输入微博ID' value="<?php if($wid){echo $wid;}else{echo '输入微博ID';}?>" />
+            </div>
+            <div class="nick">
+                <span class="txt">用户搜索：</span>
+                <input name="data[user]" type="text" class="input_txt" id="clearText_3" val='输入用户呢称或id' value="<?php if($user){echo $user;}else{echo '输入用户呢称或id';}?>"/>
+                <select class="select_menu" name="data[select]" id="select">
+                    <option value='1' <?php if($select==1){echo 'selected';}?> >用户昵称</option>
+                    <option value='2' <?php if($select==2){echo 'selected';}?> >用户ID</option>
+                </select>
+            </div>
+            <div class="btn_box"><a class="search_btn" onClick='submitFun();' href="javascript:void(0);" title="查询">查询</a></div>
+        </div>
+    </div>
+    <!--搜索结束-->
+	</form>
+    
+    <!--数据列表开始-->
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+        <thead>
+            <tr>
+                <th width="45">选中</th>
+                <th width="5%">ID</th>
+                <th width="25%">评论内容</th>
+                <th width="10%">所属微博ID</th>
+                <th width="25%">所属微博内容</th>
+                <th width="12%"><a class="sort_desc" href="javascript:void(0);">发布时间<i></i></a></th>
+                <th width="10%">用户昵称/ID</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+
+			<volist name='WeiboReplys' id='vo'>
+            <tr>
+                <td><input class="dx" type="checkbox" value="{$vo.id}" id="blogID_{$vo.id}" name="blogID"></td>
+                <td>{$vo.id}</td>
+                <td align="left"><span class="title">{$vo.message}</span></td>
+                <td>{$vo.wid}</td>
+                <td align="left"><span class="title"><a href='<php>echo C("I_DIR")</php>/weibo/w/{$vo.wid}' target='_blank'>{$vo.weibo_content}</span></td>
+                <td>{$vo.dateline|date="y-m-d H:i:s",###}</td>
+                <td>{$vo.nickname}</td>
+                <td><a href="javascript:;" onCLick="return urlDelete(2,'__ROOT__/iadmin.php/Weibo/deleteWeiboReply?deleteWeiboReply={$vo.id}&page=<?php echo $page;?>');">删除</a></td>
+            </tr>
+			</volist>
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="8" align="left"><label><input class="select_all" type="checkbox" value="全选" id="blogID" name="blogID">全选</label> <a class="del_btn" actions='6' controllers='3' href="#" title="删除"></a></td>
+            </tr>
+        </tfoot>
+    </table>
+    <!--数据列表结束-->
+    
+    <!--分页开始-->
+    <?php echo $pageHtml;?>
+    <!--分页结束-->
+    <input type='hidden' value='<?php echo $url;?>' id='url'>
+</div>
+<script type='text/javascript'>
+window.onload=function(){
+		var url = $('#url').val();
+		if(url){
+			var maxCode=parent.oMapReloadInfo['maxCode'];
+			var code=parent.oMapReloadInfo['code'];
+			var difference = maxCode-code;
+			if(difference==1){
+				parent.oMapReloadInfo['maxCode']=maxCode+1;
+				location.href=url;
+			}else{
+				parent.oMapReloadInfo['code']=code+1;
+			}
+		}
+}
+BQ.ui.form.Calender('#calender1');
+BQ.ui.form.Calender('#calender2');
+</script>
+</body>
+</html>

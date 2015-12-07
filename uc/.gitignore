@@ -1,0 +1,5 @@
+.svn
+cache/tpl_c
+application/logs
+applicationv*/logs
+.idea

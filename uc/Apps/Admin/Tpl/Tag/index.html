@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>标签管理</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+<style type='text/css'>
+.popup_layer .setnotice_class{
+	display:none;
+}
+</style>
+</head>
+<body>
+<include file="Index:isdelete"/>
+<include file="Index:islocked"/>
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li class="current"><a href="__ROOT__/iadmin.php/Tag/index"><span>标签管理</span></a></li>
+        <li class="btn"><a class="add_btn" href="__ROOT__/iadmin.php/Tag/createTag">创建标签</a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+	
+	<form action='__ROOT__/iadmin.php/Tag/index' method='get'>
+    <!--搜索开始-->
+    <div class="search_box">
+        <div class="search">
+            <div class="title">
+                <span class="txt">标签名：&nbsp;&nbsp;&nbsp;</span>
+                <input name="data[keyword]" type="text" class="input_txt" id="clearText_1" val='输入标签名关键字' value="<?php if($keyword){echo $keyword;}else{echo '输入标签名关键字';}?>" />
+            </div>
+            <div class="time">
+                <span class="txt">创建时间：</span>
+                <select class="select_menu" name="data[createtime]" id="select">
+                    <option value=''>全部</option>
+					<volist name='theDate' key='i' id='vo'>
+					<option value='{$i}' <if condition="$createtime eq $i">selected='selected'<else/></if> >{$vo.name}</option>
+                    </volist>
+                </select>
+            </div>
+            <div class="title">
+                <span class="txt">&nbsp;&nbsp;创建人：</span>
+                <input name="data[username]" type="text" class="input_txt" id="clearText_2" val='输入创建人关键字' value="<?php if($username){echo $username;}else{echo '输入创建人关键字';}?>" />
+            </div>
+            <div class="cats">
+                <span class="txt">栏目：</span>
+                <select class="select_menu" name="data[type]" id="select">
+					<option value=''>请选择</option>
+					<php>
+					foreach($theColumn as $key=>$val){
+						if($key==$type){
+							echo "<option value='".$key."' selected='selected'>".$val."</option>";
+						}else{
+							echo "<option value='".$key."'>".$val."</option>";
+						}
+					}
+					</php>
+				</select>
+            </div>
+            <div class="num">
+                <span class="txt">使用次数：</span>
+                <input name="data[startuse]" type="text" value="<?php if($startuse){echo $startuse;}?>" class="input_num" id="textfield" />
+                <span class="txt">-</span>
+                <input name="data[enduse]" type="text" value="<?php if($enduse){echo $enduse;}?>" class="input_num" id="textfield" />
+            </div>
+			<!-- modified by fongson 2014-05-22 隐藏资源数量
+            <div class="num">
+                <span class="txt">资源数量：</span>
+                <input name="data[startresour]" value="<?php if($startresour){echo $startresour;}?>" type="text" class="input_num" id="textfield" />
+                <span class="txt">-</span>
+                <input name="data[endresour]" value="<?php if($endresour){echo $endresour;}?>" type="text" class="input_num" id="textfield" />
+            </div>
+			-->
+            <div class="sort">
+                <span class="txt">排序方式：</span>
+                <select class="select_menu" name="data[sort]" id="select">
+                    <option value='id' <if condition="$sort eq 'id'">selected='selected'<else/></if>>添加时间</option>
+                    <option value='usetimes' <if condition="$sort eq 'usetimes'">selected='selected'<else/></if>>使用次数</option>
+                    <!-- modified by fongson 2014-05-22 隐藏资源数量<option value='resourtimes' <if condition="$sort eq 'resourtimes'">selected='selected'<else/></if>>资源数量</option>-->
+                </select>
+                <select class="select_menu" name="data[desc]" id="select">
+                    <option value='desc' <if condition="$desc eq 'desc'">selected='selected'<else/></if>>降序</option>
+                    <option value='asc' <if condition="$desc eq 'asc'">selected='selected'<else/></if>>升序</option>
+                </select>
+            </div>
+			 <div class="cats">
+                <span class="txt">状态：</span>
+                <select class="select_menu" name="data[locked]" id="select">
+					<option value=''>请选择</option>
+					<option value='1' <if condition="$locked eq 1">selected="selected"</if> >已锁定</option>
+					<option value='2' <if condition="$locked eq 2">selected="selected"</if> >未锁定</option>
+				</select>
+            </div>
+            <div class="btn_box"><a class="search_btn"  onClick='submitFun();' href="javascript:void(0);" title="查询">查询</a></div>
+        </div>
+    </div>
+    <!--搜索结束-->
+    </form>
+
+
+
+    <!--数据列表开始-->
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+        <thead>
+            <tr>
+                <th width="5%">选中</th>
+                <th width="5%">ID</th>
+                <th width="10%">标签名</th>
+                <th width="10%"><a class="sort_desc" href="{$urlOrder}data[sort]=usetimes">使用次数<i></i></a></th>
+				<th width="10%">父级标签</th>
+				<th width="10%">状态</th>
+                <!--modified by fongson 2014-05-22 隐藏资源数量 
+				<th width="10%"><a class="sort_desc" href="{$urlOrder}data[sort]=resourtimes">资源数量<i></i></a></th>
+				-->
+                <th width="10%">栏目</th>
+                <th width="10%">创建人</th>
+                <th width="12%"><a href="javascript:void(0);">创建时间<i></i></a></th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+
+			<volist name='tags' id='vo'>
+            <tr>
+                <th><input class="dx" type="checkbox" value="{$vo.id}" id="blogID_{$vo.id}" name="blogID"></th>
+                <td>{$vo.id}</td>
+                <td><a href="__ROOT__/iadmin.php/Tag/editPage?id={$vo.id}">{$vo.name}</a></td>
+                <td>{$vo.usetimes}</td>
+                <td>{$vo.ptagStr}</td>
+                <td><if condition="$vo.locked eq 1">已锁定<else/>未锁定</if></td>
+				<!--modified by fongson 2014-05-22 隐藏资源数量
+                <td>{$vo.resourtimes}</td>
+				-->
+                <td>{$vo.typeName}</td>
+                <td>{$vo.username}</td>
+                <td>{$vo.dateline|date="Y-m-d H:i:s",###}</td>
+                <td align="left">
+				<div class="act">
+					<a href="__ROOT__/iadmin.php/Tag/editPage?id={$vo.id}">编辑</a>
+					<span class="line">|</span>
+					<a href="javascript:;" onClick="return urlDelete(2,'__ROOT__/iadmin.php/Tag/deleteTag?deleteTag={$vo.id}&page=<?php echo $page;?>');" >删除</a>
+					<span class="line">|</span>
+					<if condition="$vo.locked eq 1">
+					<a href="__ROOT__/iadmin.php/Tag/lockedTag?lockedTag={$vo.id}&locked=0&page=<?php echo $page;?>">取消锁定</a>
+					<else/>
+					<a href='__ROOT__/iadmin.php/Tag/lockedTag?lockedTag={$vo.id}&locked=1&page=<?php echo $page;?>'>锁定</a>
+					</if>
+					</div>
+				</td>
+            </tr>
+            </volist>
+        
+		</tbody>
+        <tfoot>
+            <tr>
+				<!--modified by fongson 2014-05-22 隐藏资源数量-->
+                <td colspan="10" align="left">
+					<label><input class="select_all" type="checkbox" value="全选" id="blogID" name="blogID">全选</label> 
+					<a class="del_btn" actions='11' controllers='6' href="javascript:void(0);" title="删除"></a>
+					&nbsp;&nbsp;
+					<a class="locked_btn" href="javascript:void(0);" actions='34' controllers='6' title="锁定">锁定</a>
+					&nbsp;&nbsp;
+					<a class="batch_btn" onclick="return isbatch(1,'');" href="javascript:void(0);" actions='37' controllers='6' title="批量处理">批量处理</a>
+				</td>
+            </tr>
+        </tfoot>
+    </table>
+    <!--数据列表结束-->
+    
+    <!--分页开始-->
+    <?php echo $pageHtml;?>
+    <!--分页结束-->
+    <input type='hidden' value='<?php echo $url;?>' id='url'>
+</div>
+<script type='text/javascript'>
+window.onload=function(){
+		var url = $('#url').val();
+		if(url){
+			var maxCode=parent.oMapReloadInfo['maxCode'];
+			var code=parent.oMapReloadInfo['code'];
+			var difference = maxCode-code;
+			if(difference==1){
+				parent.oMapReloadInfo['maxCode']=maxCode+1;
+				location.href=url;
+			}else{
+				parent.oMapReloadInfo['code']=code+1;
+			}
+		}
+}
+</script>
+</body>
+</html>

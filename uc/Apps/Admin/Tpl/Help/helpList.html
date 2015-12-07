@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>友情链接管理</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Js/library/ui/static/calendar/calendar.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type="text/javascript" src="__PUBLIC__/Js/bq.js"></script>
+<script type='text/javascript' src='__PUBLIC__/Js/library/ui/form/calender.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+<style type='text/css'>
+.popup_layer .setnotice_class{
+	display:none;
+}
+</style>
+</head>
+<body>
+<include file="Index:isdelete"/>
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li class="current"><a href="__ROOT__/iadmin.php/Help/getList"><span>友情链接列表</span></a></li>
+        <li class="btn"><a class="add_btn" href="__ROOT__/iadmin.php/Help/addHelpLIst">新增友情链接</a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+
+	
+    <!--搜索开始-->
+    <div class="search_box">
+        <div class="search">
+
+			<form action='__ROOT__/iadmin.php/Help/getList' method="get">
+           <div class="title">
+                <span class="txt">友情链接名称：</span>
+                <input name="data[title]" type="text" class="input_txt" id="clearText_1" val='输入友情链接内容关键字' value="<?php if($data['title']){echo $title;}else{echo '输入友情链接内容关键字';}?>"/>
+            </div>
+            <div class="date">
+                <span class="txt">发布时间：</span>
+                <input class="input_date calendar" type="text" name="data[start_time]" id="calender1" value="{$data[start_time]}"/>
+                <span class="txt">至</span>
+                <input class="input_date calendar" type="text" name="data[end_time]" id="calender2" value="{$data[end_time]}"/>
+            </div>
+			<div class="btn_box"><input type='button' class='calendarClear' name='' value='清除时间'></div>
+
+            <div class="title">
+                <span class="txt">友情链接类型：</span>
+                <select name="data[type]">
+				  <option value="">不限</option>
+                    <volist name='arrType' id='vo'>
+                        <option value="{$key}"  <if condition="$type eq $key ">selected</if> >{$vo}</option>
+                    </volist>
+                </select>
+            </div>
+
+            <div class="btn_box"><a class="search_btn" onClick='submitFun();' href="javascript:void(0);" title="查询">查询</a></div>
+			</form>
+		
+			
+        </div>
+    </div>
+    <!--搜索结束-->
+ 
+    <!--数据列表开始-->
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+        <thead>
+            <tr>
+                <th width="5%">选中</th>
+                <th width="5%">ID</th>
+                <th width="15%">帮助名称</th>
+                <th width="15%">链接</th>
+				<th width="10%">创建时间</th>
+				<th width="10%">友情链接类型</th>
+                <th width="10%">排序</th>
+                <th width="20%">操作</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+	
+			<volist name='arrList' id='vo'>
+			<tr>
+                <th><input class="dx" type="checkbox" value="{$vo.id}" id="blogID_{$vo.id}" name="blogID"></th>
+                <th>{$vo.id}</th>
+                <th>{$vo.title}</th>
+                <th>{$vo.url}</th>
+                <th>{$vo.create_time}</th>
+                <th>{$vo.typeName}</th>
+                <th>{$vo.sort}</th>
+                <th><a href="__ROOT__/iadmin.php/Help/addHelpList?id={$vo.id}">编辑</a>
+                    | <a href="javascript:;" onCLick="return urlDelete(2,'__ROOT__/iadmin.php/Help/ajaxDelList?ajaxDelList={$vo.id}&page=<?php echo $page;?>');">删除</a>
+                </th>
+            </tr>
+			</volist>
+
+		</tbody>
+        <tfoot>
+            <tr>
+                <td colspan="9" align="left"><label><input class="select_all" type="checkbox" value="全选" id="blogID" name="blogID">全选</label> <a class="del_btn" actions='24' controllers='14' href="#" title="删除"></a></td>
+            </tr>
+        </tfoot>
+    </table>
+    <!--数据列表结束-->
+    
+    <!--分页开始-->
+    <?php echo $pageHtml;?>
+    <!--分页结束-->
+    <!--<input type='hidden' value='<?php echo $url;?>' id='url'>-->
+</div>
+</body>
+</html>
+<script type='text/javascript'>
+window.onload=function(){
+		var url = $('#url').val();
+		if(url){
+			var maxCode=parent.oMapReloadInfo['maxCode'];
+			var code=parent.oMapReloadInfo['code'];
+			var difference = maxCode-code;
+			if(difference==1){
+				parent.oMapReloadInfo['maxCode']=maxCode+1;
+				location.href=url;
+			}else{
+				parent.oMapReloadInfo['code']=code+1;
+			}
+		}
+}
+BQ.ui.form.Calender('#calender1');
+BQ.ui.form.Calender('#calender2');
+</script>

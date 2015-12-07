@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$tip}</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Js/bq.js'></script>
+</head>
+<body>
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li><a href="__ROOT__/iadmin.php/Subject/getList"><span>专题列表</span></a></li>
+        <li class="current"><a class="add_btn" href="__ROOT__/iadmin.php/Subject/addSubject">{$tip}</a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+	
+	<form action='__ROOT__/iadmin.php/Subject/addZt' method='get' enctype="multipart/form-data">
+        <input type='hidden'  name='data[id]' value='{$arrInfo.id}'/>
+    <div class="common_tb">
+        <ul>
+
+            <li>
+                <span class="text">专题名称：</span>
+                <span class="input_area">
+                    <input name="data[name]" type="text" class="input_bk" value='{$arrInfo.name}' id="" />
+                </span>
+            </li>
+
+            <li>
+                <span class="text">专题URL：</span>
+                <span class="input_area">
+                    <input name="data[url]" type="text" class="input_bk" value='{$arrInfo.url}' id="" />
+                </span>
+            </li>
+
+            <li>
+                <span class="text">专题类型：</span>
+                <span class="input_area">
+                <select name="data[type]" id="user_type">
+                    <volist name='arrType' id='vo'>
+                        <option value="{$key}"  <if condition="$arrInfo['type'] eq $key ">selected</if> >{$vo}</option>
+                    </volist>
+                </select>
+                </span>
+            </li>
+
+            <li>
+                <span class="text">简介：</span>
+                <span class="input_area">
+                <textarea name="data[content]" cols="90" rows="6" id="content">{$arrInfo.content}</textarea>
+                </span>
+            </li>
+
+            <li>
+
+                <span class="text">专题配图：</span>
+                <span class="input_area">
+				 <a href="#" class="addfield">点击上传</a>*专题配图尺寸206*113
+                <input name="data[img_path]" type="hidden" value="{$arrInfo.img_path}" class="input_bk" id="fileField" />
+                </span>
+                <span id='disSmallPic'></span>
+            </li>
+            <!-- <li>
+                <span class="text">宠物类别：</span>
+                <span class="input_area">
+                <select name="data[pettype]" id="pet_type">
+					<option value='0'>无</option>
+                    <volist name='arrPetType' id='vo'>
+                        <option value="{$key}"  <if condition="$arrInfo['pettype'] eq $key ">selected</if> >{$vo}</option>
+                    </volist>
+                </select>
+                </span>
+            </li> -->
+            <li>
+                <span class="text">&nbsp;</span>
+                <span class="input_area"><a class="submit_btn" onClick='submitFunc();' href="javascript:void(0);" title="确定"></a><a class="cancel_btn" onClick="return backfun('/iadmin.php/Subject/getList');" href="javascript:void(0);" title="取消"></a> </span>
+            </li>
+        </ul>
+    </div>
+    <!--广告结束-->
+	</form>
+</div>
+
+<script type='text/javascript' src='__PUBLIC__/Js/bq.js'></script>
+<script type='text/javascript'>
+    BQ.load("BQAjaxUP",function(){
+        BQ.BQAjaxUP('AjaxUP',{but:$('.addfield'),action:'/iadmin.php/Upload/imageUpload',data:{'type':'subject'},onSubmit:function(file,ext){
+            if(ext && /^(jpg|jpeg|png|gif)$/.test(ext)){
+                //console.log('上传中...');
+            }else{
+                alert('不支持非图片格式！');
+                return false;
+            }
+        },onComplete:function(file,response){
+            response = eval("("+response+")");
+            //返回json数据
+            if(response.status == 'ok'){
+                $('#fileField').val(response.imgpath);
+                $('#disSmallPic').html('<img width="206" height="113" src="'+response.domain+response.imgpath+'" ">')
+            }else if(response.status == 'noselect'){
+                alert('服务器错误、上传图片为空值。');
+            }else if(response.status == 'login'){
+                alert('请登录后操作！');
+            }else{
+                alert('上传失败，请保持图片不超过2M');
+            }
+        }});
+    })
+</script>
+
+<script type='text/javascript'>
+function submitFunc(){
+	$("form").submit();
+}
+</script>
+</body>
+</html>

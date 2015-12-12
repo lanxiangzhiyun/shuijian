@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>创建个人中心推荐</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+</head>
+<body>
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li><a href="__ROOT__/iadmin.php/Push/index"><span>热门话题排序</span></a></li>
+        <li><a href="__ROOT__/iadmin.php/Push/pushIndex"><span>热门话题推荐</span></a></li>
+		<li><a href="__ROOT__/iadmin.php/Push/noticePage"><span>公告管理</span></a></li>
+		<li><a href="__ROOT__/iadmin.php/Push/baiKePage"><span>百科小知识</span></a></li>
+        <li class="current"><a href="__ROOT__/iadmin.php/Push/addPushPage"><span>创建个人中心推荐</span></a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+	<form action='__ROOT__/iadmin.php/Push/savePush' method='post'>
+	<input type='hidden' id='' value='{$push.id}' name='data[id]'>
+    <!--创建个人中心推荐开始-->
+    <div class="common_tb">
+        <ul>
+			<li>
+                <span class="text">用户ID：</span>
+                <span class="input_area">
+                <input name="data[uid]" type="text" value='{$push.uid}' class="input_bk" id="" />系统公告不必添加用户id
+                </span>
+            </li>
+			
+			<li>
+                <span class="text">推荐类型：</span>
+                <span class="input_area">
+                <select class="select_bk" name="data[type]" id="select">
+					<volist name='pushType' key='i' id='vo'>
+						<if condition='$i neq 1'>
+							<option value='{$i}' <if condition="$i eq $push['type']">selected='selected'</if>>{$vo}</option>
+						</if>
+					</volist>
+				</select>
+                </span>
+            </li>
+			
+			<li>
+                <span class="text">链接：</span>
+                <span class="input_area">
+                <input name="data[linkurl]" type="text" value='{$push.linkurl}' class="input_bk" id="" />系百科不必添加链接
+                </span>
+            </li>
+
+            <li>
+                <span class="text">内容：</span><span class="input_area">
+                <textarea id="content_init" name="data[content]" style="width:755px; height:350px;">{$push.content}</textarea>
+                </span>
+			</li>
+            
+            <li>
+                <span class="text">&nbsp;</span>
+                <span class="input_area"><a class="submit_btn"  onClick='submitFunc();' href="javascript:void(0);" title="确定"></a><a class="cancel_btn" onClick="return backfun('/iadmin.php/Push/index');" href="javascript:void(0);" title="取消"></a> </span>
+            </li>
+        </ul>
+    </div>
+    <!--创建个人中心推荐结束-->
+	</form>
+</div>
+						
+</body>
+</html>
+<script type='text/javascript'>
+function submitFunc(){
+	var data = $("form").serialize();
+	$.ajax({
+		type:'post',
+		url:'__ROOT__/iadmin.php/Push/savePush',
+		data:data,
+		success:function(msg){
+			if(msg==1){
+				alert('标题,用户ID,链接,内容不能为空！');
+			}else if(msg==2){
+				location.href='/iadmin.php/Push/baiKePage';
+			}else if(msg==3){
+				location.href='/iadmin.php/Push/noticePage';
+			}
+		}
+	});
+	//$("form").submit();
+}
+</script>

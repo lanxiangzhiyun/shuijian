@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <php>if($obj == "me") { if($userinfo['groupid'] >= 4 && $userinfo['groupid'] <= 11) { </php><META NAME="robots" CONTENT="NOINDEX,NOFOLLOW">
+    <php>} } elseif($obj == "other") { if($huser['groupid']  >= 4 && $huser['groupid'] <= 11) { </php><META NAME="robots" CONTENT="NOINDEX,NOFOLLOW">
+    <php>} }</php>
+<title>帐号设置</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/global.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/main.css"/>
+</head>
+<body>
+<!--头部开始-->
+<div class="global_header">
+    <!--头部导航开始-->
+    <include file="Public:top"/>
+
+    <include file="Public:header"/>
+    <!--nav导航结束-->
+</div>
+<!--头部结束-->
+
+<!--主体部分开始-->
+<div class="main two_side clearfix">
+    <!--左侧开始-->
+    <include file="Public:left"/>
+    <!--左侧结束-->
+    <div class="plc_main">
+        <!--右侧开始-->
+        <div class="main_cont">
+            <div class="common_tab">
+                <ul>
+                    <li class="current"><a href="/UcUser/setInfo">帐号设置</a></li>
+                    <li><a href="/UcUser/setHead">头像设置</a></li>
+                    <li><a href="/UcUser/setPassword">修改密码</a></li>
+                </ul>
+            </div>
+
+            <!--基本信息开始-->
+           <php>
+               session_start();
+               $code = mt_rand(0,1000000);
+               session('code',$code);
+           </php>
+            <div class="basic_info">
+                <h3>基本信息</h3>
+                <form action="/UcUser/UpdateUserPets" method="post" id="formsm">
+                <ul>
+                    <input type="hidden" id="originator" value="<php>echo session('code');</php>" />
+                    <li> <span class="word">昵 称：</span> <span class="input_area">
+                        <input name="textfield1" type="text" class="input_bk" id="textfield1" value="{$arrUserInfo.nickname}" />
+                        </span>  <span class="error"></span><span class="info none">请保持在2-10字符</span> </li>
+                    <li> <span class="word">性 别：</span> <span class="input_area" id="gender">
+                        <label>
+                            <input name="RadioGroup1" class="radios" type="radio" id="RadioGroup1_0" value="1" />
+                        男</label>
+                        <label>
+                            <input type="radio" name="RadioGroup1" class="radios" value="2" id="RadioGroup1_1" checked/>
+                        女</label>
+                        </span> </li>
+                    <li> <span class="word">生 日：</span> <span class="input_area">
+                        <input name="textfield2" type="text" class="input_bk calendar" id="calender1" value="{$arrUserInfo.bday}"/>
+                        </span></li>
+                    <li> <span class="word">所在地：</span> <span class="input_area" id = "cityInfo">
+                        {$cityInfo}
+                        </span> </li>
+                    <li> <span class="word">详细地址：</span> <span class="input_area">
+                        <textarea name="textfield3" class="textarea_bk" id="textfield3">{$arrUserInfo.detailaddress}</textarea>
+                        <label>
+                            <input class="set_addr" type="checkbox" name="checkbox" id="butucenter1" />使用默认收货地址(<a href="<php>echo C('SHOP_DIR');</php>/userinfo.php?m=address">管理收货地址</a>)</label>
+                        </span> </li>
+                    <li> <span class="word">职 业：</span> <span class="input_area">
+                        <select class="select_bk" name="select4" id="select4">
+                            <option value="请选择职业" >请选择职业</option>
+                            <option value="计算机硬件" >计算机硬件</option>
+                            <option value="计算机软件" >计算机软件</option>
+                            <option value="IT-管理" >IT-管理</option>
+                            <option value="IT-品管、技术支持及其它" >IT-品管、技术支持及其它</option>
+                            <option value="通信技术" >通信技术</option>
+                            <option value="电子/电器/半导体/仪器仪表" >电子/电器/半导体/仪器仪表</option>
+                            <option value="销售管理" >销售管理</option>
+                            <option value="销售人员" >销售人员</option>
+                            <option value="销售行政及商务" >销售行政及商务</option>
+                            <option value="客服及技术支持" >客服及技术支持</option>
+                            <option value="财务/审计/税务" >财务/审计/税务</option>
+                            <option value="证券/金融/投资" >证券/金融/投资</option>
+                            <option value="银行" >银行</option>
+                            <option value="保险" >保险</option>
+                            <option value="生产/营运" >生产/营运</option>
+                            <option value="质量/安全管理" >质量/安全管理</option>
+                            <option value="工程/机械/能源" >工程/机械/能源</option>
+                            <option value="汽车" >汽车</option>
+                            <option value="技工" >技工</option>
+                            <option value="服装/纺织/皮革" >服装/纺织/皮革</option>
+                            <option value="采购" >采购</option>
+                            <option value="贸易" >贸易</option>
+                            <option value="物流/仓储" >物流/仓储</option>
+                            <option value="生物/制药/医疗器械" >生物/制药/医疗器械</option>
+                            <option value="化工" >化工</option>
+                            <option value="医院/医疗/护理" >医院/医疗/护理</option>
+                            <option value="广告" >广告</option>
+                            <option value="公关/媒介" >公关/媒介</option>
+                            <option value="市场/营销" >市场/营销</option>
+                            <option value="影视/媒体" >影视/媒体</option>
+                            <option value="写作/出版/印刷" >写作/出版/印刷</option>
+                            <option value="艺术/设计" >艺术/设计</option>
+                            <option value="建筑工程" >建筑工程</option>
+                            <option value="房地产" >房地产</option>
+                            <option value="物业管理" >物业管理</option>
+                            <option value="人力资源" >人力资源</option>
+                            <option value="高级管理" >高级管理</option>
+                            <option value="行政/后勤" >行政/后勤</option>
+                            <option value="咨询/顾问" >咨询/顾问</option>
+                            <option value="律师/法务" >律师/法务</option>
+                            <option value="教师" >教师</option>
+                            <option value="科研人员" >科研人员</option>
+                            <option value="餐饮/娱乐" >餐饮/娱乐</option>
+                            <option value="酒店/旅游" >酒店/旅游</option>
+                            <option value="美容/健身" >美容/健身</option>
+                            <option value="百货/连锁/零售服务" >百货/连锁/零售服务</option>
+                            <option value="交通运输服务" >交通运输服务</option>
+                            <option value="保安/家政/其他服务" >保安/家政/其他服务</option>
+                            <option value="公务员" >公务员</option>
+                            <option value="翻译" >翻译</option>
+                            <option value="在校学生" >在校学生</option>
+                            <option value="储备干部/培训生/实习生" >储备干部/培训生/实习生</option>
+                            <option value="兼职" >兼职</option>
+                            <option value="其他" >其他</option>
+                        </select>
+                        </span> </li>
+					<li> <span class="word">QQ：</span> <span class="input_area"><input class="input_bk" type="text" value="{$arrUserInfo.qq}" name="buteqq" id="buteqq"  /></span></li>
+                    <li> <span class="word">E-mail：</span> <span class="input_area">{$arrUserInfo.email}</span> <span class="info"><a href="<php>echo C('BLOG_DIR');</php>/user/submit_succeed.php?referer=/index.php">修改</a></span> </li>
+                    <li> <span class="word">手 机：</span> <span class="input_area">
+                        <input name="textfield4" type="text" value='{$arrUserInfo.mobile}' class="input_bk" id="textfield4" />
+                        <label><input class="set_addr" type="checkbox" name="checkbox" id="butucenter2" />使用商城联系手机,不会公开</label>
+                        </span> </li>
+					<li id="mobilPhotoerr"><span class="word"></span><span class="input_area">请填写正确格式的手机号码</span></li>
+					<li> <span class="word">论坛签名：</span> <span class="input_area"><textarea name="sightml" class="textarea_bk" id="sightml">{$sigHtml}</textarea></span> </li>
+                </ul>
+
+                <h3>兴趣爱好</h3>
+                <ul>
+                    <li>
+                        <span class="txt">喜欢的宠物种类：</span>
+						<span class="input_area">
+							<input type="hidden" name='lovePet' value="{$arrUserInfo.lovepet}" id="petid">
+							<span></span>
+                            <a class="add_pets" href="javascript:void(0);" id="bqpetbut">+点击添加</a>
+                            <span class="info">(最多可以添加5个)</span>
+                        </span>
+                    </li>
+                    <li><span class="txt">您对哪些方面有兴趣：</span> <span class="checkbox_area" id="checkbox_area">
+                        <label>
+                            <input type="checkbox" name="CheckboxGroup1[]" value="1" id="CheckboxGroup1_0" />
+                            结识更多的宠友</label>
+                        <label>
+                            <input type="checkbox" name="CheckboxGroup1[]" value="2" id="CheckboxGroup1_1" />
+                            记录爱宠的成长</label>
+                        <label>
+                            <input type="checkbox" name="CheckboxGroup1[]" value="3" id="CheckboxGroup1_2" />
+                            学习、分享养护知识</label>
+                        <label>
+                            <input type="checkbox" name="CheckboxGroup1[]" value="4" id="CheckboxGroup1_3" />
+                            学习、分享宠物训练方法</label>
+                        <label>
+                            <input type="checkbox" name="CheckboxGroup1[]" value="5" id="CheckboxGroup1_4" />
+                            在线问诊，得到宠物医院的帮助</label>
+                        <label>
+                            <input type="checkbox" name="CheckboxGroup1[]" value="6" id="CheckboxGroup1_5" />
+                            更丰富的宠物用品</label>
+                        <label>
+                            <input type="checkbox" name="CheckboxGroup1[]" value="7" id="CheckboxGroup1_6" />
+                            线下宠友交流活动</label>
+                        <label>
+                            <input type="checkbox" name="CheckboxGroup1[]" value="8" id="CheckboxGroup1_7" />
+                            领养或转让宠物</label>
+                        <label>
+                            <input type="checkbox" name="CheckboxGroup1[]" value="9" id="CheckboxGroup1_8" />
+                            宠物朦照、趣照分享</label>
+                        </span> </li>
+                    <li> <span class="word">&nbsp;</span> <span class="input_area"> <a class="submit_btn" id="submit_btn" href="javascript:void(0);">确定</a> <a class="cancel_btn" href="javascript:void(0);">取消</a> </span> </li>
+                </ul>
+                </form>
+            </div>
+            <!--基本信息结束-->
+
+        </div>
+        <!--右侧结束-->
+    </div>
+</div>
+<!--主体部分结束-->
+<link rel="stylesheet" href="__PUBLIC__/Js/library/ui/static/calendar/calendar.css" media="all" />
+<script type="text/javascript">
+	BQ.load("ui.form.Calender,UCPet,UCUser",function(){
+         BQ.UCUser('setInfo',{'jsonData':<php>echo $jsonData;</php>,'SHOP_DIR':'<php>echo C('SHOP_DIR');</php>'}).exec();
+    });
+</script>
+<!--底部开始-->
+<include file="Public:footer"/>
+<!--底部结束-->

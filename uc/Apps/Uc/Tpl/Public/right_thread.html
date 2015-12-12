@@ -1,0 +1,26 @@
+<!--热门话题开始-->
+<php>if($hotThreads) { </php>
+<div class="topic">
+    <div class="hd">
+        <h3>热门话题</h3>
+    </div>
+    <div class="bd">
+        <ul>
+            <php>foreach($hotThreads as $hk => $threads) { </php>
+                <php>if($hk == 0){ </php>
+                    <li class="selected"><!-- mouseover addClass('selected') -->
+                        <p><span class="num">{$threads.views}</span><a href="<php>echo C('BBS_DIR');</php>/content/viewthread-{$threads.tid}.html" target="_blank"  class="hotdiarys" title="{$threads.subject}">{$threads.subject}</a></p>
+                        <div class="tips">
+                            <i class="arr"></i>
+                            <p>{$threads.short_content}</p>
+                        </div>
+                    </li>
+                <php>} else { </php>
+                    <li><span class="num">{$threads.views}</span><a href="<php>echo C('BBS_DIR');</php>/content/viewthread-{$threads.tid}.html" target="_blank"  class="hotdiarys" title="{$threads.subject}">{$threads.subject}</a></li>
+                <php>} </php>
+            <php>} </php>
+        </ul>
+    </div>
+</div>
+<php>}  </php>
+<!--热门话题结束-->

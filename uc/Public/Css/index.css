@@ -1,0 +1,80 @@
+@charset "utf-8";
+
+/*用户注册*/
+.none{display:none;}
+.nobg{ background:none #FFF; }
+.user_reg{ overflow:hidden; zoom:1; background:url(../Images/reg_bg.gif) no-repeat 670px 70px;}
+.user_login{ overflow:hidden; zoom:1; background:url(../Images/login_bg.gif) no-repeat 530px 70px;height: 380px;}
+.reg_field{ float:left; overflow:hidden; *zoom:1; }
+.reg_field p{ padding-left:20px;}
+.login_field{width:500px;}
+.login_field p{ padding-left:10px;}
+.reg_field .reg_title{ height:25px; background:url(../Images/reg_txt.png) no-repeat;}
+.reg_field .login_title{ height:50px; background:url(../Images/reg_txt.png) no-repeat 0 -28px;}
+.reg_field .reg_txt{ padding:20px 0 30px 40px; color:#666;}
+.reg_field .login_error{padding:0 0 10px 150px; color:#F00;}
+.reg_field .tips{ color:#A8A8A8; padding:5px 0 0 10px; float:left;}
+.reg_field .txt{ width:90px; font-size:14px; float:left; text-align:right; padding-top:5px; color:#666;}
+.reg_field .txt i{ color:#F00; padding-right:4px; font-style:normal; font-family:"SimSun";}
+.reg_field .input_bk{ border:1px solid #CCC; background:url(../Images/reg_input_bg.gif) repeat-x top #FFF; width:250px; height:32px; line-height:32px; padding-left:5px; float:left; font-size:14px;}
+.reg_field .input_bk_c{ border:1px solid #FFA644; background:url(../Images/reg_input_bg.gif) repeat-x top #FFF; height:32px; line-height:32px; padding-left:5px; float:left;}
+.reg_field .input_bk:focus{border:1px solid #FFA644;}
+.reg_field .w100{ width:100px;}
+.reg_field .ck{ vertical-align:-2px; margin-right:5px;}
+
+.reg_field .skp{background: url("../Images/ilogbg.jpg") no-repeat scroll 0 4px transparent;color: #333333;display: block;font-size: 14px;height: 30px;line-height: 25px;padding-left: 28px;padding-top: 0px;width: 122px;margin: 50px 0 0 50px; font-weight: bold;font-size:14px;}
+.t5rg{margin:0 10px;}
+.reg_field .conlis{ float: left;margin: 0 0 50px 50px;}
+.reg_field .conlis dl{ float: left;width: 432px; padding: 12px 15px 12px 5px;border-bottom: 1px dashed #E3E3E3;}
+.reg_field .conlis dl dt{float: left; height: 50px;padding: 0 5px;width: 50px;}
+.reg_field .conlis dl dd a{color:#f96f0a;font-weight:bold;}
+.reg_field .ldl dd span{float:right;color:#a8a8a8;}
+.reg_field .ldl dd{float: left;width: 240px;line-height: 18px;}
+.reg_field .conlis .bfot{background-color: #FFFFFF;display: block;height: 2px;position: relative;top: -1px;width: 100%;}
+.reg_field .conlis dd{line-height:18px;width: 370px;overflow:hidden; float:left;}
+.reg_field .conlis dd span{float:right; color:#BFBFBF;}
+
+
+.reg_field .field{ overflow:hidden; padding-bottom:25px; clear:both; zoom:1;}
+.reg_field .field .pwlv1,.reg_field .field .pwlv2,.reg_field .field .pwlv3{ float:left; padding-top:5px;}
+.reg_field .field .pwlv1{ color:#FF0000;}
+.reg_field .field .pwlv2{ color:#FF5400;}
+.reg_field .field .pwlv3{ color:#4F9200;}
+.reg_field .agreement{ overflow:hidden; padding-bottom:15px; margin-top:-5px; clear:both; zoom:1; color:#666;}
+.rigok{display:none;}
+.reg_field .error { background:url(../Images/ico.png) no-repeat 0 -343px; padding-left:25px; float:left; margin-left:10px; margin-top:7px; height:18px; line-height:18px; color:#F00;display:none;}
+.reg_field .right { background:url(../Images/ico.png) no-repeat 0 -383px; width:25px; text-indent:-9999px; float:left; margin-left:10px; margin-top:7px; color:#fff;}
+.reg_field .yzm{ float:left;margin-left:5px; margin-top:7px; display:inline;}
+.reg_field .change_yzm{ float:left;margin-left:10px; margin-top:7px; display:inline;}
+
+.reg_field .reg_btn{ width:120px; height:38px; background:url(../Images/common_bg2.png) no-repeat 0 -524px; float:left;}
+.reg_field a.reg_btn:hover{ background-position: -121px -524px;}
+.reg_field .login_btn{ width:100px; height:38px; background:url(../Images/common_bg2.png) no-repeat 0 -563px; float:left;}
+.reg_field a.login_btn:hover{background-position: -101px -563px;}
+.reg_field .forgot_password{ float:left; margin:7px 0 0 12px;}
+.login_field .field{ position:relative;}
+.reg_field .password_tips{ color:#a8a8a8; position:absolute; top:6px; left:157px; font-size:14px; cursor:auto;}
+
+.reg_right{ float:right; padding:50px 30px 0 30px; width:230px;}
+.login_right{ width:330px;}
+.reg_right p{ padding-right: 10px;}
+.reg_right .txt1{ font-size:14px; padding-bottom:10px; border-bottom:1px dotted #ccc; color:#666;}
+.reg_right a.sina{ background:url(../Images/ico.png) no-repeat 0 3px; padding-left:22px; display:inline-block; white-space:nowrap;}
+.reg_right a.qq{ background:url(../Images/ico.png) no-repeat 0 -25px; padding-left:20px; display:inline-block; white-space:nowrap;}
+.reg_right a.alipay{ background:url(../Images/ico.png) no-repeat 0 -693px; padding-left:20px; display:inline-block; white-space:nowrap;}
+.reg_right .txt2{ padding-top:10px; color:#a8a8a8;}
+.reg_right .txt3{ padding-top:40px;}
+.reg_right .txt4{ color: #BCBCBC;float: left; height: 25px;padding-bottom: 25px;}
+.reg_right .txt5{padding-top:30px; color:#666;padding-bottom: 15px;}
+.reg_right .reg_photo{ height:105px; background:url(../Images/reg_photo.gif) no-repeat left;}
+
+.reg_right .reg_btn{ width:110px; height:35px; background:url(../Images/common_bg2.png) no-repeat -202px -564px; float:left;}
+.reg_right a.reg_btn:hover{ background-position: -313px -564px;}
+
+
+.noseccode{display:none;}
+.seccode{display:block;}
+.treg{height:39px;width: 351px;padding-bottom: 25px;}
+
+#icofx {height: 25px;width: 231px; float: left;padding-bottom: 25px;}
+#icofx *{float:left;}

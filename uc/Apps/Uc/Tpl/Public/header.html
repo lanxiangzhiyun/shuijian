@@ -1,0 +1,44 @@
+    <!--banner开始-->
+    <div class="hd">
+        <div class="logo"><a href="<php>echo C('BLOG_DIR');</php>">波奇网</a></div>
+        <div class="banner"><a href="#" target="_blank"><img src="<php>echo C('STATIC_DIR');</php>/Images/uc/banner.jpg" width="775" height="95" /></a></div>
+    </div>
+    <!--banner开始-->
+    
+    <!--nav导航开始-->
+    <div class="nav">
+        <ul>
+            <li><a href="<php>echo C('BLOG_DIR');</php>" target="_blank">波奇首页</a></li>
+            <li class="line"></li>
+            <li><a href="<php>echo C('SHOP_DIR');</php>" target="_blank">波奇商城</a></li>
+            <li class="line"></li>
+            <li><a href="<php>echo C('BBS_DIR');</php>" target="_blank">宠物论坛</a></li>
+            <li class="line"></li>
+            <li><a href="<php>echo C('BK_DIR');</php>" target="_blank">宠物百科</a></li>
+            <li class="line"></li>
+            <!--<li><a href="<php>echo C('BLOG_DIR');</php>/wenwen/" target="_blank">波奇问问</a></li>
+            <li class="line"></li>-->
+            <li><a href="<php>echo C('VET_DIR');</php>" target="_blank">宠物服务</a></li>
+            <li class="line"></li>
+            <li><a href="<php>echo C('BBS_DIR');</php>/meitu.html" target="_blank">美宠秀秀</a></li>
+        </ul>
+        <div class="search">
+			<form id="search" method='GET' action="<php>echo get_rewrite_url('UcSearch','search');</php>" target="_blank">
+			<div class="select_box">
+                <select name="t" id="t" style="display:none;">
+                    <option value="1">找人</option>
+                    <option value="2">社区</option>
+                    <option value="3">商品</option>
+                    <option value="4">百科</option>
+					<option value="5">商户</option>
+                </select>
+            </div>
+            <div class="input_box">
+                <input name="keyword" type="text" id="keyword" value="<php>if(isset($keyword)){</php>{$keyword}<php>}else{</php>关键字<php>}</php>" />
+            </div>
+            <div class="search_btn"><input class="btn" type="button" name="button" id="button" value="搜索"/></div>
+			</form>
+        </div>
+    </div>
+    <input type="hidden" id='careSession' value="{$careSession_1}" />
+    <!--nav导航结束-->

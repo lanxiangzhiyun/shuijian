@@ -1,0 +1,62 @@
+@charset "UTF-8";
+
+body{ background: #e5e5e5;}
+.main_table{ width: 990px; margin: 0 auto; padding-top: 50px;}
+
+table{ width: 990px; margin-bottom: 30px; background: #f5f5f5;}
+th{ height: 40px; border: #666 solid 1px; background: #e3e3e3; font:bold 14px/40px "微软雅黑"; vertical-align:middle;}
+td{ height: 40px; border: #666 solid 1px; padding: 0 10px; font:normal 14px/40px "微软雅黑"; vertical-align:middle;}
+input{ vertical-align: 1px; }
+.colorred{ color: red !important; font-style:normal; font-size:16px;}
+
+.filepath{ margin-right: -50px;}
+.addmodule{ text-align: center;}
+.modulechose p{ float: left; padding: 0 10px; cursor: pointer;}
+.modulechose input{ vertical-align: -1px;}
+.modulepreview{ height: 360px;}
+.modulepreview p{ font:normal 24px/40px "微软雅黑"; margin: 0 0 15px 20px; color: #666;}
+.previewimg{ height: 285px; width: 80%; margin: 0 auto;}
+.modulepreview img{ display: block; margin: 0 auto; }
+.tjmk{ width: 78px;}
+
+.modulecontent{ width: 990px;}
+.contnetbox{ width: 100%; margin-bottom: 30px;}
+.con_title{ height: 60px; line-height: 40px;}
+.con_title h3{ float: left; font-size: 32px;}
+.con_title p{ float: left; line-height: 60px; padding-left: 15px;}
+.con_title p input{ width: 80px;}
+.removemodule{ float: right; margin-top: 18px;}
+.con_slt{ margin-bottom:20px; width:990px; }
+
+.con_table{ margin-bottom: 10px;}
+.con_link input{ width: 680px;}
+.con_link span{ margin-right: -100px;}
+.con_link textarea{ width: 680px; height: 80px; resize: none; margin:10px 0 0 0;}
+.tit_place p{ float: left; padding: 0 10px; cursor: pointer;}
+.tit_place input{ vertical-align: -1px;}
+
+.gdmk1{margin-left: 5px;}
+.gdmk2{margin-left: 5px;}
+.modulesubmit input{ vertical-align: -2px;}
+.con_link2{ width: 700px;}
+.con_link2 span{ cursor: pointer;margin-right: 15px;}
+.con_link4{ width: 700px;}
+.con_link4 span{ cursor: pointer; margin-right: 15px;}
+.questionnaire{ width: 680px;}
+.con_link4 textarea{ width: 680px; height: 80px; resize: none; margin:10px 0 0 0;}
+.submitbtn{ text-align: center;}
+.wjdz{ text-align: center;}
+
+
+.navmodule{ margin:12px 0; width: 966px;}
+.navmodule input{ vertical-align: 0;}
+.con_link3 .txtwrite{ width: 600px; }
+.con_link3 .navremove{ position: relative; left: 20px;}
+.con_link3 textarea{ width: 680px; height: 80px; resize: none; margin:10px 0 0 0;}
+.addnav{ text-align: center;}
+
+
+.input_area{ float: left;}
+.btn{ position: relative; overflow: hidden;display: inline-block;padding: 4px 10px 4px; font-size: 14px; line-height: 18px; color: #fff;text-align: center;vertical-align: middle;cursor: pointer;background: #999; border-radius: 4px; margin-right: 5px;}
+.btn:hover{ background: #888;}
+.btn input{position: absolute; top: 0;right: 0; border: solid transparent 1px; opacity: 0; filter: alpha(opacity=0); cursor: pointer;}

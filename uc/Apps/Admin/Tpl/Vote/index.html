@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>投票管理</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type="text/javascript" src="__PUBLIC__/Js/bq.js"></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+<style type='text/css'>
+.popup_layer .setnotice_class{
+	display:none;
+}
+</style>
+</head>
+<body>
+<include file="Index:isdelete"/>
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li class="current"><a href="__ROOT__/iadmin.php/Vote/index"><span>投票管理</span></a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+    <!--搜索开始-->
+    <div class="search_box">
+        <div class="search">
+        </div>
+    </div>
+    <!--搜索结束-->
+	<php>if($type){</php>
+    <!--数据列表开始-->
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+        <thead>
+            <tr>
+                <th width="5%">选手ID</th>
+                <th width="10%">选手名</th>
+                <th width="10%">当前票数</th>
+                <th width="30%">最后编辑时间</th>
+                <th width="10%">最后编辑人</th>
+                <th width="5%">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+
+	
+			<volist name='list' id='v'>
+			<tr>
+                <td>{$v.uid}</td>
+                <td>{$v.username}</td>
+                <td>{$v.vote_num}</td>
+				<td><php>if($v['update_time']){</php>{$v.update_time|date="Y-m-d H:i:s",###}<php>}else{</php>&nbsp;<php>}</php></td>
+				<td>{$v.admin}</td>
+				<td><a href="/iadmin.php/Vote/edit/id/{$v.id}">修改</a></td>
+            </tr>
+			</volist>
+
+		</tbody>
+        <tfoot>
+            <tr>
+                <td colspan="6" align="left"></td>
+            </tr>
+        </tfoot>
+    </table>
+    <!--数据列表结束-->
+    
+    <!--分页开始-->
+    <?php echo $pageHtml;?>
+    <!--分页结束-->
+    <input type='hidden' value='<?php echo $url;?>' id='url'>
+	<php>}else{</php>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+        <thead>
+            <tr>
+                <th width="10%">专题ID</th>
+                <th width="90%">主题</th>
+            </tr>
+        </thead>
+        <tbody>
+
+			<tr>
+                <td>&nbsp;1</td>
+                <td>&nbsp;<a href="/iadmin.php/Vote/index/type/1">宠物好声音</a></td>
+            </tr>
+			
+			<tr>
+                <td>&nbsp;2</td>
+                <td>&nbsp;<a href="/iadmin.php/Vote/index/type/2">宠物diy</a></td>
+            </tr>
+			
+			<tr>
+                <td>&nbsp;3</td>
+                <td>&nbsp;<a href="/iadmin.php/Vote/index/type/3">我是土豪</a></td>
+            </tr>
+			
+			<tr>
+                <td>&nbsp;4</td>
+                <td>&nbsp;<a href="/iadmin.php/Vote/index/type/4">琶洲论奇投票</a></td>
+            </tr>
+			
+			<tr>
+                <td>&nbsp;5</td>
+                <td>&nbsp;<a href="/iadmin.php/Vote/index/type/5">宝贝台历投票</a></td>
+            </tr>
+			
+			<tr>
+                <td>&nbsp;6</td>
+                <td>&nbsp;<a href="/iadmin.php/Vote/index/type/6">粑粑去哪里投票</a></td>
+            </tr>
+			
+			<tr>
+                <td>&nbsp;7</td>
+                <td>&nbsp;<a href="/iadmin.php/Vote/index/type/7">与爱宠默契度投票</a></td>
+            </tr>
+			
+			<tr>
+                <td>&nbsp;8</td>
+                <td>&nbsp;<a href="/iadmin.php/Vote/index/type/8">扯脸照投票</a></td>
+            </tr>
+			
+			<tr>
+                <td>&nbsp;9</td>
+                <td>&nbsp;<a href="/iadmin.php/Vote/index/type/9">侧颜挑战赛终极选美大PK</a></td>
+            </tr>
+
+		</tbody>
+        <tfoot>
+            <tr>
+                <td colspan="6" align="left"></td>
+            </tr>
+        </tfoot>
+    </table>
+	<php>}</php>
+</div>
+</body>
+</html>
+<script type='text/javascript'>
+window.onload=function(){
+		var url = $('#url').val();
+		if(url){
+			var maxCode=parent.oMapReloadInfo['maxCode'];
+			var code=parent.oMapReloadInfo['code'];
+			var difference = maxCode-code;
+			if(difference==1){
+				parent.oMapReloadInfo['maxCode']=maxCode+1;
+				location.href=url;
+			}else{
+				parent.oMapReloadInfo['code']=code+1;
+			}
+		}
+}
+BQ.ui.form.Calender('#calender1');
+BQ.ui.form.Calender('#calender2');
+</script>

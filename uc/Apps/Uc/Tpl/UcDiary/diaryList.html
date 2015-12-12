@@ -1,0 +1,313 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<php>if($obj == "me") { if($userinfo['groupid'] >= 4 && $userinfo['groupid'] < 11) { </php><META NAME="robots" CONTENT="NOINDEX,NOFOLLOW">
+<php>} } elseif($obj == "other") { if($huser['groupid']  >= 4 && $huser['groupid'] < 11) { </php><META NAME="robots" CONTENT="NOINDEX,NOFOLLOW">
+<php>} }</php>
+<meta name="keywords" content="{$htmlHeaderInfo['keywords']}"/>
+<meta name="description" content="{$htmlHeaderInfo['description']}" />
+<title>{$htmlHeaderInfo['title']}</title>
+<link rel="stylesheet" type="text/css" href="<php>echo autoVer('/Css/uc/global.css');</php>"/>
+<link rel="stylesheet" type="text/css" href="<php>echo autoVer('/Css/uc/main.css');</php>"/>
+</head>
+<body>
+<!--头部开始-->
+<div class="global_header"> 
+    <!--头部导航开始-->
+    <include file="Public:top"/>
+    <!--头部导航结束--> 
+    
+    <!--nav导航开始-->
+    <include file="Public:header"/>
+    <!--nav导航结束--> 
+</div>
+<!--头部结束--> 
+
+<!--主体部分开始-->
+<div class="main two_side clearfix"> 
+    <!--左侧开始-->
+    <include file="Public:left"/>
+    <!--左侧结束-->
+
+    <div class="plc_main"> 
+        <!--右侧开始-->
+        <div class="main_cont">
+            <div class="path_title">
+                <span class="blog_title">宠日记</span>
+            </div>
+            <div class="blog_main">
+                
+                <!--中间列表开始-->
+                <div class="blog_left" id="popblog_left">
+                
+                    <div class="entry_wrap">
+                        <a class="w_blog_btn" href="javascript:;">写日记</a>
+                        <a class="manage" href="#">批量管理</a>
+                        <div class="list_toolbar">
+							<php>if($switch == 1){</php>
+								<php>if(isset($typeid)){</php>
+									<a class="switch" href="<php>echo get_rewrite_url('UcDiary', 'diaryList','u:'.$uid.',t:'.$typeid.',o:'.$orderby.',w:0,y:'.$ymonth);</php>">切换到摘要</a>
+								<php>}else{</php>
+									<a class="switch" href="<php>echo get_rewrite_url('UcDiary', 'diaryList','u:'.$uid.',o:'.$orderby.',w:0,y:'.$ymonth);</php>">切换到摘要</a>
+								<php>}</php>
+							<php>}else{</php>
+								<php>if(isset($typeid)){</php>
+									<a class="switch" href="<php>echo get_rewrite_url('UcDiary', 'diaryList','u:'.$uid.',t:'.$typeid.',o:'.$orderby.',w:1,y:'.$ymonth);</php>">切换到列表</a>
+								<php>}else{</php>
+									<a class="switch" href="<php>echo get_rewrite_url('UcDiary', 'diaryList','u:'.$uid.',o:'.$orderby.',w:1,y:'.$ymonth);</php>">切换到列表</a>
+								<php>}</php>
+							<php>}</php>
+                            <i class="wline">|</i>
+                            <div class="toolbar_other"><!-- click addClass('select_order') -->
+								<php>if(isset($typeid)){</php>
+									<a class="order" href="<php>echo get_rewrite_url('UcDiary', 'diaryList','u:'.$uid.',t:'.$typeid.',o:'.$orderby.',w:'.$switch.',y:'.$ymonth);</php>" title="{$orderList[$orderby]}">{$orderList[$orderby]}<i class="blog_arr"></i></a>
+								<php>}else{</php>
+									<a class="order" href="<php>echo get_rewrite_url('UcDiary', 'diaryList','u:'.$uid.',o:'.$orderby.',w:'.$switch.',y:'.$ymonth);</php>" title="{$orderList[$orderby]}">{$orderList[$orderby]}<i class="blog_arr"></i></a>
+								<php>}</php>
+                                <div class="order_drop">
+                                    <ul>
+										<php>foreach($orderList as $key => $val){</php>
+											<php>if($key!=$orderby){</php>
+												<php>if(isset($typeid)){</php>
+													<li><a href="<php>echo get_rewrite_url('UcDiary', 'diaryList','u:'.$uid.',t:'.$typeid.',o:'.$key.',w:'.$switch.',y:'.$ymonth);</php>" title="{$val}">{$val}</a></li>
+												<php>}else{</php>
+													<li><a href="<php>echo get_rewrite_url('UcDiary', 'diaryList','u:'.$uid.',o:'.$key.',w:'.$switch.',y:'.$ymonth);</php>" title="{$val}">{$val}</a></li>
+												<php>}</php>
+												
+											<php>}</php>
+										<php>}</php>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="group_edit blog_select">
+                        <input type="checkbox" id="ckeckAll" name="ckeckAll"><label for="ckeckAll">全选</label>
+                        <a class="del_all_diary_link" href="javascript:void(0);" style="">删除</a>
+                        <a class="modify_type" href="#" data_type_id="{$typeid}">修改分类</a>
+                    </div>
+                    
+                    <!--日记列表开始-->
+                    <div class="blog_list <php>if($switch!=1){</php>none<php>}</php>" id="bloglist">
+						<php>if(count($diaryList)>0){</php>
+                        <ul>
+							<php>foreach($diaryList as $dk => $diary) {</php>
+                            <li data_id="{$diary.id}" data_type_id="{$diary.type_id}" <php>if($dk % 2 == 1) { </php> class="bg" <php>} </php>>
+                                <div class="list_tit">
+                                    <input class="blog_select" type="checkbox" name="diaryid" value="{$diary.id}"><span class="title"><a href="<php>echo get_rewrite_url('UcDiary', 'diary',$diary['id']);</php>" target="_parent" title="<php>echo remove_xss($diary['title']);</php>">
+									<php>echo remove_xss($diary['title']);</php>
+									</a></span>
+                                </div>
+                                <div class="blog_op">
+                                    <div class="more_wrap"><!-- click addClass('bg_drop') -->
+                                        <a class="more" href="#" title="更多操作"></a>
+                                        <div class="more_drop"> 
+                                            <ul>
+                                                <li><a href="#" class="del_diary_link" data_id="{$diary.id}" title="删除">删除</a></li>
+                                                <li><a href="#" class="edit" title="修改分类" data_id="{$diary.id}" data_type_id="{$diary.type_id}">修改分类</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <a class="edit" href="/UcDiary/diaryEdit/id/{$diary.id}" title="编辑">编辑</a>
+                                    <span class="view" title="评论:{$diary.comments}/阅读:{$diary.views}">({$diary.comments}/{$diary.views})</span>
+                                    <span class="date" title="{$diary.format_updatetime}">{$diary.format_updatetime}</span>
+                                </div>
+                            </li>
+                            <php>} </php>
+                        </ul>
+						<php>}else{</php>
+							<span style="color:#A8A8A8;padding-left:5px;">还没有发表过日记，现在就去发</span>
+						<php>}</php>
+                    </div>
+                    <!--日记列表结束-->
+                    
+                    <!--日记简介列表开始-->
+                    <div class="blog_summary <php>if($switch==1){</php>none<php>}</php>" id="blog_summary">
+						<php>if(count($diaryList)>0){</php>
+                        <ul>
+							<php>foreach($diaryList as $lk => $mdiary) {</php>
+                            <li data_id="{$mdiary.id}" data_type_id="{$mdiary.type_id}">
+                                <h4><input class="blog_select" type="checkbox" name="diaryid" value="{$mdiary.id}"><a href="<php>echo get_rewrite_url('UcDiary', 'diary',$mdiary['id']);</php>" title="<php>echo remove_xss($mdiary['title']);</php>"><php>echo remove_xss($mdiary['title']);</php></a></h4>
+                                <div class="article_info">{$mdiary.summary|strip_tags}</div>
+                                <div class="ft">
+                                    <div class="info">
+                                        <span class="date">{$mdiary.format_updatetime}</span>
+                                        <a href="<php>echo get_rewrite_url('UcDiary', 'diary',$mdiary['id']);</php>">查看全文</a>
+										<a href="<php>echo get_rewrite_url('UcDiary', 'diary',$mdiary['id']);</php>">阅读({$mdiary.views})</a>
+                                        <a href="<php>echo get_rewrite_url('UcDiary', 'diary',$mdiary['id']);</php>#bpl">评论({$mdiary.comments})</a>
+										<a href="/UcDiary/diaryEdit/id/{$mdiary.id}">编辑</a>
+                                    </div>
+                                     <div class="more_wrap"><!-- click addClass('bg_drop') -->
+                                        <a class="more" href="#" title="更多操作"></a>
+                                        <div class="more_drop"> 
+                                            <ul>
+                                                <li><a href="#" class="del del_diary_link" data_id="{$mdiary.id}" title="删除">删除</a></li>
+                                                <li><a href="#" class="edit" data_id="{$mdiary.id}" data_type_id="{$mdiary.type_id}" title="修改分类">修改分类</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <php>} </php>
+                        </ul>
+						<php>}else{</php>
+							<span style="color:#A8A8A8;padding-left:5px;">还没有发表过日记，现在就去发</span>
+						<php>}</php>
+                    </div>
+                    <!--日记简介列表结束-->
+                    
+                    <!--分页开始-->
+                    <div class="page_wrap">
+    	                <div class="showpage">
+	                        {$page}
+	                     </div>
+                    </div>
+                    <!--分页结束-->
+    
+                </div>
+                <!--中间列表结束-->
+                
+                <!--右侧开始-->
+                <div class="blog_right">
+                
+                    <!--日记分类开始-->
+                    <div class="blog_cats">
+                        <div class="hd">
+                           <h3>日记分类</h3>
+                           <span class="act"><a href="#" id="addcats">管理</a></span>
+                        </div>
+                        <div class="bd">
+                            <ul>
+								<li <php>if(!isset($typeid)) { </php>class="current"<php>} </php>>
+									<span class="left_cat"><a href="/diary/u/{$uid}" title="全部日记">全部日记</a></span>
+                                    <span class="right_num">({$diaryTotalNum})</span>
+								</li>
+								<php> foreach($diaryTypeList as $tk => $type) { </php>
+                                <li <php>if(isset($typeid) && $type['id'] == $typeid) { </php>class="current"<php>} </php>>
+                                    <span class="left_cat">
+										<!--<a href="<php>echo get_rewrite_url('UcDiary', 'diaryList','u:'.$uid.',t:'.$type['id']);</php>" title="{$type.name}">{$type.name}</a>-->
+										<a href="/diary/u/{$uid}/t_{$type.id}/" title="{$type.name}">{$type.name}</a>
+									</span>
+                                    <span class="right_num">({$type.num})</span>
+                                </li>
+								<php>} </php>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--日记分类结束-->
+                    
+                    <!--归档开始-->
+					<php>if($diaryYMonthList) { </php>
+                    <div class="blog_date_cats">
+                        <div class="hd">
+                           <h3>归档</h3>
+                        </div>
+                        <div class="bd">
+                            <ul id="datecats">
+							<php>foreach($diaryYMonthList as $yk => $ymonths) { </php>
+                                <li <php>if($yk == $year) { </php>class="open"<php>} </php>> <!-- click addClass('open') -->
+                                    <div class="year">{$yk}年<i class="arr"></i></div>
+                                    <div class="month">
+										<php>foreach($ymonths as $mk => $ymonth) { </php>
+											<php>if($ymonth['cnt']>0){</php>
+												<p><a href="/diary/u/{$uid}/y/{$yk}{$ymonth.ymonth}">{$ymonth.ymonth}月({$ymonth.cnt})</a></p>
+											<php>}</php>
+										<php>} </php>
+                                    </div>
+                                </li>
+							<php>} </php>
+                            </ul>
+                        </div>
+                    </div>
+					<php>} </php>
+                    <!--归档结束-->           
+                    
+                </div>
+                <!--右侧结束-->
+            </div>
+            
+            
+        </div>
+        <!--右侧结束--> 
+    </div>
+</div>
+<!--主体部分结束--> 
+
+<div class="popup_layer none" id="popcats" style="width:401px;">
+    <div class="bg">
+        <div class="content"> <a title="关闭" href="javascript:void(0);" class="close">关闭</a>
+            <div class="hd">管理分类</div>
+            <div class="bd" style="width: 361px;"> 
+                <!--替换内容开始-->
+                <div class="blog_cats_popup">
+                    <ul>
+						<php> foreach($diaryTypeList as $key => $val) { </php>
+                        <li cid="{$key}">
+                            <div class="cats_box">
+                                <span class="name" id="span_name_show{$val.id}">{$val.name}</span>
+								<php>if($val['name']!='我的宠日记'){ </php>
+                                <a href="javascript:void(0);" class="del_link" data_id="{$val.id}">删除</a>
+                                <a href="javascript:void(0);" class="edit_link">编辑</a>
+								<php>}else{</php>
+									<span style="color:#A8A8A8;padding-left:5px;">(此分类不支持编辑及删除操作)</span>
+								<php>}</php>
+                            </div>
+                            <div class="input_box none">
+                                <input type="text" value="{$val.name}" id="type_name{$val.id}" class="mod_cats" name="textfield" data_id="{$val.id}">
+                                <a href="javascript:void(0);" class="submit_btn">确定</a> <a href="javascript:void(0);" class="cancel_btn" data_id="{$val.id}">取消</a>
+                            </div>
+                        </li>
+						<php> } </php>
+                     </ul>
+                </div>
+                <!--替换内容结束--> 
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="popup_layer none" id="popedit" style="*width:300px;">
+    <div class="bg">
+        <div class="content"> <a title="关闭" href="javascript:void(0);" class="close">关闭</a>
+            <div class="hd">修改分类</div>
+            <div class="bd"> 
+                <!--替换内容开始-->
+                <div class="blog_cats_popup">
+                    <ul>
+                        <li> <span class="txt">选择分类：</span>
+                            <div class="input_box">
+                                 <select id="select" name="select" class="select_cats">
+									<php>foreach($diaryTypeList as $key => $val){</php>
+										<option value="{$val.id}">{$val.name}</option>
+									<php>}</php><input type="hidden" id="modify_diary_type_ids" name="modify_diary_type_ids" value=""/>
+                                 </select>
+                                 <a href="#" class="create_link">创建分类</a>
+                            </div>
+                        </li>
+                        <li class="send_btn"><span class="txt">&nbsp;</span><a id="modify_diary_type_id_submit" href="javascript:void(0);" class="submit_btn">确定</a> <a href="javascript:void(0);" class="cancel_btn" id="popeditcan2">取消</a></li>
+                     </ul>
+                     <ul class="none">    
+                        <li> <span class="txt">分类名称：</span>
+                            <div class="input_box">
+                                <input type="text" value="" id="popeditadd" class="input_cats" name="name">
+                                <span class="num" id="popeditaddnum">0/8</span><!-- 超出字数 addClass('warning') -->
+                            </div>
+                        </li>
+                        <li class="send_btn"><span class="txt">&nbsp;</span><a href="javascript:void(0);" class="submit_btn" id="popeditsub">确定</a> <a href="javascript:void(0);" class="cancel_btn" id="popeditcan">取消</a></li>
+                    </ul>
+                </div>
+                <!--替换内容结束--> 
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+	BQ.load("UCBQSubInfo,UCDiary",function(){
+         BQ.UCDiary('diaryList',{'I_DIR':'<php>echo C("I_DIR");</php>'}).exec();
+    });
+</script>
+<!--底部开始-->
+<include file="Public:footer"/>
+<!--底部结束-->

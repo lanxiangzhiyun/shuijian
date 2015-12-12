@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>操作日志</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Js/library/ui/static/calendar/calendar.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type="text/javascript" src="__PUBLIC__/Js/bq.js"></script>
+<script type='text/javascript' src='__PUBLIC__/Js/library/ui/form/calender.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+</head>
+<body>
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li class="current"><a href="javascript:void(0);"><span>操作日志</span></a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+    <!--搜索开始-->
+	<form action='__ROOT__/iadmin.php/Operation/baikeOperation' method='get'>
+    <div class="search_box">
+        <div class="search">
+            <div class="id">
+                <span class="txt">操作者昵称：</span>
+                <input name="data[truename]" type="text" class="input_txt" id="clearText_1" val='输入操作者关键字' value="<?php if($truename){echo $truename;}else{echo '输入操作者关键字';}?>" />
+            </div>
+            <div class="date">
+            <span class="txt">创建时间：</span>
+                <input class="input_date calendar" type="text" name="data[starttime]" id="calender1"  value="<?php if($starttime){echo $starttime;}?>"/>
+                <span class="txt">至</span>
+                <input class="input_date calendar" type="text" name="data[endtime]" id="calender2" value="<?php if($endtime){echo $endtime;}?>"/>
+            </div>
+			<div class="btn_box"><input type='button' class='calendarClear' name='' value='清除时间'></div>
+            <div class="cats">
+                <span class="txt">操作类型：</span>
+                <select class="select_menu" name="data[select]" id="select">
+                    <option value=''>全部</option>
+                    <option value='1'  <?php if($select==1){echo 'selected';}?>>增</option>
+                    <option value='2'  <?php if($select==2){echo 'selected';}?>>删</option>
+                    <option value='3'  <?php if($select==3){echo 'selected';}?>>改</option>
+                </select>
+            </div>
+            <div class="btn_box"><a class="search_btn" onClick='submitFun();' href="javascript:void(0);" title="查询">查询</a></div>
+        </div>
+    </div>
+	</form>
+    <!--搜索结束-->
+    
+    <!--数据列表开始-->
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+        <thead>
+            <tr>
+                <th width="17%">操作时间</th>
+                <th width="10%">操作者账号</th>
+                <th width="10%">操作者昵称</th>
+                <th width="25%">操作位置</th>
+                <th width="10%">操作类型</th>
+                <th>操作日志</th>
+            </tr>
+        </thead>
+        <tbody>
+			<volist name='Operations' id='vo'>
+            <tr>
+                <td>{$vo.operationtime|date="y-m-d H:i:s",###}</td>
+                <td>{$vo.username}</td>
+                <td>{$vo.truename}</td>
+                <td>{$vo.logUrl}</td>
+                <td>{$vo.logType}</td>
+                <td>{$vo.operationtext}</td>
+            </tr>
+			</volist>
+		</tbody>
+    </table>
+    <!--数据列表结束-->
+    
+    <!--分页开始-->
+	 <?php echo $pageHtml;?>
+    <!--分页结束-->
+</div>
+<script type='text/javascript'>
+BQ.ui.form.Calender('#calender1');
+BQ.ui.form.Calender('#calender2');
+</script>
+</body>
+</html>

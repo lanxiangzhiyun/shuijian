@@ -1,0 +1,50 @@
+<div class="header_cont">
+    <div class="header_bj clearfix">
+        <div class="header_c1">
+            <div class="logo"><a href="<php>echo C('BLOG_DIR');</php>"><img src="<php>echo C('STATIC_DIR');</php>/Images/site/logo.jpg" alt="波奇宠物网" title="波奇宠物网" /></a></div>
+            <h1 class="slogan pngFix">波奇全面关爱宠物生活！</h1>
+            <div class="search_cont" <?php if($current!="site"){echo 'style="margin-top:15px;"';}?>>
+                <form id="search_form" method="get" action="<php>echo C('I_DIR');</php>/search" >
+                <div class="search">
+                    <em><?php if($current=="site"){echo '商品';}else if($current=="bbs" || $current=="meitu"){echo '社区';}else if($current=="vet"){echo '商户';}else if($current=="baike"){ echo '百科';}else if($current=="uc"){echo '找人';}?></em>
+                    <div class="input_box">
+                        <input id="keyword" type="text" value="请输入您感兴趣的内容" name="keyword" />
+                        <input type="hidden" name="t" id="type" value="<?php if($current=="site"){echo 3;}else if($current=="bbs" || $current=="meitu"){echo 2;}else if($current=="vet"){echo 5;}else if($current=="baike"){ echo 4;}else if($current=="uc"){echo 1;}?>" />
+                    </div>
+                    <div class="search_btn"><input type="button" value="搜索" id="button" name="button" class="btn" /></div>
+                </div>
+                <ul id="search_type">
+                    <li><a href="javascript:void(0)" v='3'>商品</a></li>
+                    <li><a href="javascript:void(0)" v='5'>商户</a></li>
+                    <li><a href="javascript:void(0)" v='2'>社区</a></li>
+                    <li><a href="javascript:void(0)" v='1'>找人</a></li>
+                    <li><a href="javascript:void(0)" v='4'>百科</a></li>
+                </ul>
+                </form>
+            </div>
+            
+			<?php if($current=="site"){?>
+				<div class="notice">
+					<strong class="pngFix"></strong>
+					<div class="notice_cont">
+						<ul>
+							<volist name="arrNotice" id='vo'>
+								<li><em></em><if condition="!empty($vo['url'])"><a href="{$vo.url}" target="_blank">{$vo.title}</a><else />{$vo.title}</if></li>
+							</volist>
+						</ul>
+					</div>
+				</div>
+			<?php }?>
+
+            <div class="nav">
+                <span <?php if($current=="site"){echo 'class="current"';}?>><a href="<php>echo C('BLOG_DIR');</php>" target="_blank">波奇首页</a></span>
+                <span><a href="<php>echo C('SHOP_DIR');</php>" target="_blank">波奇商城</a></span>
+                <span <?php if($current=="bbs"){echo 'class="current"';}?>><a href="<php>echo C('BBS_DIR');</php>" target="_blank">宠物论坛</a></span>
+                <span <?php if($current=="vet"){echo 'class="current"';}?>><a href="<php>echo C('VET_DIR');</php>" target="_blank">宠物服务</a><em class="pngFix"></em></span>
+                <span <?php if($current=="baike"){echo 'class="current"';}?>><a href="<php>echo C('BK_DIR')</php>" target="_blank">宠物百科</a></span>
+                <span <?php if($current=="meitu"){echo 'class="current"';}?>><a href="<php>echo C('BBS_DIR')</php>/meitu.html" target="_blank">美宠秀秀</a></span>
+                <span><a href="<php>echo C('BLOG_DIR');</php>/subject/mobile/" target="_blank">手机版</a></span>
+            </div>
+        </div>
+    </div>
+</div>

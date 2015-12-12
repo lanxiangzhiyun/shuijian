@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <php>if($obj == "me") { if($userinfo['groupid'] >= 4 && $userinfo['groupid'] < 11) { </php><META NAME="robots" CONTENT="NOINDEX,NOFOLLOW">
+    <php>} } elseif($obj == "other") { if($huser['groupid']  >= 4 && $huser['groupid'] < 11) { </php><META NAME="robots" CONTENT="NOINDEX,NOFOLLOW">
+    <php>} }</php>
+    <title>宠物档案</title>
+    <link rel="stylesheet" type="text/css" href="<php>echo autoVer('/Css/uc/global.css');</php>"/>
+    <link rel="stylesheet" type="text/css" href="<php>echo autoVer('/Css/uc/main.css');</php>"/>
+</head>
+<body>
+<!--头部开始-->
+<div class="global_header">
+    <!--头部导航开始-->
+    <include file="Public:top"/>
+
+    <include file="Public:header"/>
+</div>
+<!--头部结束-->
+
+<!--主体部分开始-->
+<div class="main two_side clearfix">
+    <!--左侧开始-->
+    <include file="Public:left"/>
+    <!--左侧结束-->
+    <div class="plc_main">
+        <!--右侧开始-->
+        <div class="main_cont">
+            <include file="UcPets:petList" />
+            <!--宠物列表结束-->
+
+            <div class="common_tab">
+                <ul>
+                    <li class="current"><a href="/UcPets/petFiles/id/{$currentId}">基本资料</a></li>
+                    <li class="nocur"><a href="/UcPets/petHead/id/{$currentId}">宠物头像</a></li>
+                    <li class="nocur"><a href="/UcPets/petHobby/id/{$currentId}">个性爱好</a></li>
+                </ul>
+            </div>
+
+            <!--基本信息开始-->
+            <php>
+                session_start();
+                session('code',time());
+            </php>
+            <div class="basic_info">
+                <p class="intro">最多可添加3只宠物，请完整填写宠物的资料，方便使用全部功能。</p>
+                <notpresent name="display">
+                    <form action="/UcPets/updatePets" method="post" id="formsm">
+                        <input type="hidden" name='id' value="{$petBaseMsg.id}"/>
+                        <ul>
+							<li>
+								<span class="text">宠物昵称：</span>
+								<span class="input_area">
+									<input name="textfield1" type="text" class="input_bk" id="textfield1"value="{$petBaseMsg.petname}"/>
+									<input id="publishToken" name="token" type="hidden" value="{$token}">
+								</span>
+								<span class="error">请保持2-20个字符。</span>
+								<span class="info none">请保持2-20个字符。</span>
+							</li>
+                            <li>
+								<span class="text">宠物种类：</span>
+								<span class="input_area">
+									<input type="hidden" id="petid" name="petId" value="{$petBaseMsg.pettype}"/>
+										<span><a class="tags_txt" href="javascript:void(0);"> <i class="close" title="删除"></i></a></span>
+										<a class="add_pets" href="#" id="bqpetbut">选择种类</a>
+								</span>
+                            </li>
+                            <li><span class="text">性 别：</span> <span class="input_area">
+                        <label>
+                            <input type="radio" name="RadioGroup1" value="1" class="radiogroup"/>
+                            公</label>
+                        <label>
+                            <input type="radio" name="RadioGroup1" value="2" class="radiogroup"/>
+                            母</label>
+                        </span></li>
+                            <li><span class="text">体 重：</span> <span class="input_area">
+							<input name="textfield4" type="text" class="input_bk short" id="textfield4"
+                               value="{$petBaseMsg.weight}"/>
+                        </span><span class="unit">kg</span> <span class="error"></span><span class="info none">请输入的数字。</span></li>
+                            <li><span class="text">生 日：</span> <span class="input_area">
+                        <input name="textfield3" type="text" class="input_bk calendar" id="calender1"
+                               value="{$petBaseMsg.petbday}"/>
+                        </span></li>
+                            <li><span class="text">与主人相识：</span> <span class="input_area">
+                        <input name="textfield2" type="text" class="input_bk calendar" id="calender2"
+                               value="{$petBaseMsg.adopte_time}"/>
+                        </span></li>
+                            <li><span class="text">血 统：</span> <span class="input_area">
+                        <label>
+                            <input type="radio" name="RadioGroup2" value="1" checked="checked" class="radiogroup2"/>
+                            纯种</label>
+                        <label>
+                            <input type="radio" name="RadioGroup2" value="2" class="radiogroup2"/>
+                            混血（串串）</label>
+                        </span></li>
+                            <li><span class="text">状 态：</span> <span class="input_area">
+                        <select class="select_bk" name="select1" id="select1">
+                            <option value=0>正常</option>
+                            <option value=1>征婚</option>
+                            <option value=2>需要被领养</option>
+                            <option value=3>已经去世了</option>
+                            <option value=4>已送人</option>
+                            <option value=5>已走失</option>
+                            <option value=6>希望出售/转让</option>
+                        </select>
+                        </span></li>
+                            <li><span class="text">每个月约需花费：</span> <span class="input_area">
+                        <select class="select_bk" name="select2" id="select2">
+                            <option value=0>0-100元</option>
+                            <option value=1>100-200元</option>
+                            <option value=2>200-500元</option>
+                            <option value=3>500元以上</option>
+                        </select>
+                        </span></li>
+                            <li><span class="text">&nbsp;</span>
+                        <span class="input_area">
+                        <label><input class="set_dang" type="checkbox" name="checkbox" id="checkbox"
+                                      <php>if($petBaseMsg['is_default'] == 1){echo 'checked'; }</php> />设置为当家宠物</label>
+                        </span>
+                                <span class="info">当你拥有多个宠物时，优先显示当家宠物，并拥有标识<i class="pet_dang" title="当家宠物"></i></span>
+                            </li>
+                            <li><span class="text">&nbsp;</span> <span class="input_area">
+							<a class="submit_btn" href="#" id="formsmbut">保存并继续</a>
+							<a class="cancel_btn" href="javascript:void(0);">取消</a> </span></li>
+                        </ul>
+                    </form>
+                    <else/>
+                    <form action="/UcPets/addPets" method="post" id="formsm">
+                        <ul>
+                            <li>
+								<span class="text">宠物昵称：</span>
+								<span class="input_area">
+									<input name="textfield1" type="text" class="input_bk" id="textfield1" value=""/>
+									<input id="publishToken" name="token" type="hidden" value="{$token}">
+								</span>
+								<span class="error">请保持2-20个字符。</span>
+								<span class="info none">请保持2-20个字符。</span>
+							</li>
+                            <li>
+								 <span class="text">宠物种类：</span>
+                                 <span class="input_area">
+									<input type="hidden" id="petid" name="petId"/>
+									<span></span>
+									<a class="add_pets" href="#" id="bqpetbut">选择种类</a>
+								</span>
+                            </li>
+                            <li><span class="text">性 别：</span> <span class="input_area">
+                        <label>
+                            <input name="RadioGroup1" type="radio" id="RadioGroup1_0" value="1" checked="checked"/>
+                            公</label>
+                        <label>
+                            <input type="radio" name="RadioGroup1" value="2" id="RadioGroup1_1"/>
+                            母</label>
+                        </span></li>
+                            <li><span class="text">体 重：</span> <span class="input_area">
+                        <input name="textfield4" type="text" class="input_bk short" id="textfield4" value=""/>
+                        </span><span class="unit">kg</span> <span class="error"></span><span class="info none">请输入的数字。</span></li>
+                            <li><span class="text">生 日：</span> <span class="input_area">
+                        <input name="textfield3" type="text" class="input_bk calendar" id="calender1" value=""/>
+                        </span></li>
+                            <li><span class="text">与主人相识：</span> <span class="input_area">
+                        <input name="textfield2" type="text" class="input_bk calendar" id="calender2" value=""/>
+                        </span></li>
+                            <li><span class="text">血 统：</span> <span class="input_area">
+                        <label>
+                            <input type="radio" name="RadioGroup2" id="RadioGroup2_0" value="1" checked="checked"/>
+                            纯种</label>
+                        <label>
+                            <input type="radio" name="RadioGroup2" value="2" id="RadioGroup2_1"/>
+                            混血（串串）</label>
+                        </span></li>
+                            <li><span class="text">状 态：</span> <span class="input_area">
+                        <select class="select_bk" name="select1">
+                            <option value=0>正常</option>
+                            <option value=1>征婚</option>
+                            <option value=2>需要被领养</option>
+                            <option value=3>已经去世了</option>
+                            <option value=4>已送人</option>
+                            <option value=5>已走失</option>
+                            <option value=6>希望出售/转让</option>
+                        </select>
+                        </span></li>
+                            <li><span class="text">每个月约需花费：</span> <span class="input_area">
+                        <select class="select_bk" name="select2">
+                            <option value=0>0-100元</option>
+                            <option value=1>100-200元</option>
+                            <option value=2>200-500元</option>
+                            <option value=3>500元以上</option>
+                        </select>
+                        </span></li>
+                            <li><span class="text">&nbsp;</span>
+                        <span class="input_area">
+                        <label><input class="set_dang" type="checkbox" name="checkbox" id="checkbox"
+                                      checked/>设置为当家宠物</label>
+                        </span>
+                                <span class="info">当你拥有多个宠物时，优先显示当家宠物，并拥有标识<i class="pet_dang" title="当家宠物"></i></span>
+                            </li>
+                           <li><span class="text">&nbsp;</span> <span class="input_area">
+							<a class="submit_btn" href="#" id="formsmbut">保存并继续</a>
+							<a class="cancel_btn" href="javascript:void(0);">取消</a> </span></li>
+                        </ul>
+                    </form>
+
+                </notpresent>
+            </div>
+            <!--基本信息结束-->
+
+        </div>
+        <!--右侧结束-->
+    </div>
+</div>
+<!--主体部分结束-->
+<link rel="stylesheet" href="__PUBLIC__/Js/library/ui/static/calendar/calendar.css" media="all" />
+<script type="text/javascript">
+	BQ.load("UCPet,ui.form.Calender,UCPets",function(){
+	var selectGender = '{$petBaseMsg.petgender}',selectLineages = '{$petBaseMsg.lineages}',petstatus = '{$petBaseMsg.petstatus}',spending = '{$petBaseMsg.spending}',pettype ='{$petBaseMsg.pettype}',d = '{$display}';
+         BQ.UCPets('petFiles',{'petgender':selectGender,'lineages':selectLineages,'petstatus':petstatus,'spending':spending,'pettype':pettype,'display':d}).exec();
+    });
+
+</script>
+<!--底部开始-->
+<include file="Public:footer"/>
+<!--底部结束-->

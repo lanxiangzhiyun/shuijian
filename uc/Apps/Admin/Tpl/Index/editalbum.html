@@ -1,0 +1,31 @@
+<!--编辑相册信息弹窗开始-->
+<div class="popup_layer" id='editAlbum' style="top:220px; left:500px; width:380px; display:none;">
+    <div class="bg">
+        <div class="content"> <a class="close cancel_btn" href="javascript:void(0);" title="关闭">关闭</a>
+            <div class="hd">编辑相册信息</div>
+			<input type='hidden' value='' name='' id='albumid'>
+            <div class="bd"> 
+                <!--替换内容开始-->
+                <div class="photo_popup">
+                    <div class="create_name">
+                        <span class="name">相册名称：</span>
+                        <input class="name_input" name="" type="text" id="title" value="" />
+                    </div>
+                    <div class="create_desc">
+                        <span class="desc">相册描述：</span>
+                        <textarea class="desc_textarea" name="" id="content" cols="45" rows="5"></textarea>
+                    </div>
+                    <p class="btn">
+                       <a class="submit_btn" onClick='return ajaxEdit();' href="javascript:void(0);" title="确定"></a>
+                       <a class="cancel_btn" href="javascript:void(0);" title="取消"></a>
+					    <span class='setnotice_class'>
+						<input type='checkbox' value='1' name='setNotice' id='setNotice'>发私信
+					    </span>
+                    </p>
+                </div>
+                <!--替换内容结束--> 
+            </div>
+        </div>
+    </div>
+</div>
+<!--编辑相册信息弹窗结束-->

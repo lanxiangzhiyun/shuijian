@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<php>if($obj == "me") { if($userinfo['groupid'] >= 4 && $userinfo['groupid'] < 11) { </php><META NAME="robots" CONTENT="NOINDEX,NOFOLLOW">
+<php>} } elseif($obj == "other") { if($huser['groupid']  >= 4 && $huser['groupid'] < 11) { </php><META NAME="robots" CONTENT="NOINDEX,NOFOLLOW">
+<php>} }</php>
+<title>系统通知</title>
+<link rel="stylesheet" type="text/css" href="<php>echo autoVer('/Css/uc/global.css');</php>"/>
+<link rel="stylesheet" type="text/css" href="<php>echo autoVer('/Css/uc/main.css');</php>"/>
+</head>
+<body>
+<!--头部开始-->
+<div class="global_header"> 
+	<include file="Public:top" />
+	
+    <include file="Public:header" />
+</div>
+<!--头部结束--> 
+
+<!--主体部分开始-->
+<div class="main two_side clearfix"> 
+    <!--左侧开始-->
+    <include file="Public:left" />
+    <!--左侧结束-->
+    <div class="plc_main"> 
+        <!--右侧开始-->
+        <div class="main_cont">
+            <div class="common_tab">
+                <ul>
+                    <li><a href="/UcMsg/myInbox">我的消息</a></li>
+                    <li class="current"><a href="/UcMsg/myNotice">系统通知</a></li>
+                </ul>
+            </div>
+
+            <!--系统通知列表开始-->
+            <div class="sys_msg">
+				<volist name='notice' id='v'>
+                <dl>
+                    <dt><a href="<php>echo get_rewrite_url('Index','index',$v['sendid']);</php>"><img src="{$v.sendavatar}" /></a><php>if($v['readstatus'] == 0){</php><i class="unread">未读</i><php>}</php></dt>
+                    <dd>
+                        <p class="title">[系统通知]</p>
+                        <p class="cont">{$v.content}</p>
+                        <p class="date">{$v.dateline}</p>
+                    </dd>
+                </dl>
+      			</volist>
+            </div>
+            <!--系统通知列表结束--> 
+            
+    <!--分页开始-->
+    <div class="page_wrap">
+    	<div class="showpage">
+			{$page}
+	       <!-- <a class="page-prev" href="#"><span>上一页</span></a>
+            <span class="page-this">1</span>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <span class="page-break">...</span>
+            <a href="#">20</a>
+            <a class="page-next" href="#"><span>下一页</span></a>-->
+	    </div>
+    </div>
+    <!--分页结束-->
+            
+        </div>
+        <!--右侧结束--> 
+    </div>
+</div>
+<!--主体部分结束--> 
+
+<!--底部开始-->
+<include file="Public:footer" />
+<!--底部结束--> 
+

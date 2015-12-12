@@ -1,0 +1,1 @@
+BQ.add("widget.Slide",function(b){function a(c,d){if(!(this instanceof a))return new a(c,d);a.superclass.constructor.call(this,c,b.merge(e,d))}var e={navCls:"wy-slide-nav",contentCls:"wy-slide-content",autoplay:!0,circular:!0};b.extend(a,b.widget.Switchable);b.namespace("widget").Slide=a});

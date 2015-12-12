@@ -1,0 +1,488 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <php>if($obj == "me") { if($userinfo['groupid'] >= 4 && $userinfo['groupid'] < 11) { </php><META NAME="robots" CONTENT="NOINDEX,NOFOLLOW">
+    <php>} } elseif($obj == "other") { if($huser['groupid']  >= 4 && $huser['groupid'] < 11) { </php><META NAME="robots" CONTENT="NOINDEX,NOFOLLOW">
+    <php>} }</php>
+<title>上传照片</title>
+<link rel="stylesheet" type="text/css" href="<php>echo autoVer('/Css/uc/global.css');</php>"/>
+<link rel="stylesheet" type="text/css" href="<php>echo autoVer('/Css/uc/main.css');</php>"/>
+</head>
+<body>
+<!--头部开始-->
+<div class="global_header">
+    <!--头部导航开始-->
+    <include file="Public:top"/>
+
+    <include file="Public:header"/>
+    <!--nav导航结束-->
+</div>
+<!--头部结束-->
+
+<!--主体部分开始-->
+<div class="main two_side clearfix">
+    <!--左侧开始-->
+    <include file="Public:left"/>
+    <!--左侧结束-->
+    <div class="plc_main">
+        <!--右侧开始-->
+        <div class="main_cont">
+            <div class="path_title">
+                <span class="photo_title">上传照片</span>
+                <a class="return" href="<php>echo get_rewrite_url('UcAlbum', 'photo', $uid );</php>" title="返回相册首页>>">返回相册首页>></a>
+            </div>
+
+            <div class="photo_nav">
+                <span class="select_album">选择相册：
+                    <select name="select" id="select">
+                        <volist name="arrSelectAlbum" id="vo">
+                        <option value="{$vo.id}">{$vo.title}</option>
+                        </volist>
+                    </select>
+                </span>
+                <a class="add_cats" href="#" id="new_album">创建相册</a>
+                <div class="photo_space">
+                    <span class="title">容量：</span>
+                    <div class="box">
+                        <span class="percent" style="width:{$strSize['1']}%"></span>
+                    </div>
+                    <div class="tips"><span class="num">{$strSize['0']}</span>/1G</div>
+                </div>
+            </div>
+
+            <!--上传图片开始-->
+            <div class="upload_area" id="phhotoup">
+                <div class="add_photo_wrap" id="addphoto">
+                    <div class="add_photo_btn">
+                        <a href="javascript:void(0);" id="fileMask">
+                            <a class="file_mask" ></a>
+                        </a>
+                    </div>
+
+                    <div class="info_tips">
+                        <p>上传说明：</p>
+                        <p>1、照片格式支持.jpg .gif .png .bmp</p>
+                        <p>2、单张照片请小于2M，一次最多可上传10张</p>
+                    </div>
+                </div>
+
+                <!--上传图片列表开始-->
+				<div id="photoupListPan" class="none">
+                <div class="photoup_list">
+                    <ul id="photoupList">
+
+                    </ul>
+                </div>
+                <!--上传图片列表结束-->
+                <div class="btn">
+					<div class="btncom">
+                     <a class="con_add_btn" href="javascript:void(0);" title="继续添加" id="fileMask2"></a>
+                     <a class="upload_btn" id="upload_btn" href="javascript:void(0);" title="开始上传"></a>
+					</div>
+					<div class="btncom">
+                     <a class="combg con_add_btn_on" href="javascript:void(0);" title="继续添加"></a>
+                     <a class="combg upload_btn_on" id="upload_btn_on" href="javascript:void(0);" title="终止上传"></a>
+					</div>
+                </div>
+                </div>
+            </div>
+            <!--上传图片结束-->
+            <div id="photo_edit" class="none">
+            <!--编辑照片信息开始-->
+            <p class="upload_suc_tips"><i class="icon_succ"></i>共<span id="pocount"></span>张照片上传成功！请添加照片的描述，完善照片信息,然后点击“保存”按钮。</p>
+            <form method="post" id="modifyPhotoPost" action="/UcAlbum/addPhotoPl"><div class="edit_photo_list"></div></form>
+            <div class="edit_photo_btn">
+                <a class="save_edit_btn" id="save_edit_btn" href="javascript:void(0);" title="保存照片信息"></a>
+                <a href="<php>echo get_rewrite_url('UcAlbum', 'photoList', $aid );</php>" id="backmsg">返回相册</a>
+            </div>
+			</div>
+            <!--编辑照片信息结束-->
+        </div>
+        <!--右侧结束-->
+    </div>
+</div>
+
+<div class="popup_layer none" id="picadd" style="width:390px;">
+    <div class="bg">
+        <div class="content"> <a title="关闭" href="javascript:void(0);" class="close">关闭</a>
+            <div class="hd">创建相册</div>
+            <div class="bd">
+                <!--替换内容开始-->
+                <div class="photo_popup">
+                    <p class="error none">请填写相册名称</p>
+                    <div class="create_name">
+                        <span class="name">相册名称：</span>
+                        <input type="text" value="请输入相册信息" id="addcnm" name="textfield2" class="name_input">
+                        <span class="input_max_num"><span class="num" id="addcnmnub">0/30</span></span><!-- 超出数字 addClass('warning') -->
+                    </div>
+                    <div class="create_desc">
+                        <span class="desc">相册描述：</span>
+                        <textarea rows="5" cols="45" id="picadddesc" name="textarea" class="desc_textarea">请输入相册描述</textarea>
+                        <span class="input_max_num"><span class="num" id="picadddescnum">0/200</span></span><!-- 超出数字 addClass('warning') -->
+                    </div>
+                    <div class="con_pets">
+                        <span class="pets">关联宠物：</span>
+                        <select id="picaddgl" name="select2">
+                            <option value='0'>不关联宠物</option>
+                            <volist name='arrPetMsg' id='vo'>
+                            <option value="{$vo.pid}">{$vo.petname}</option>
+                            </volist>
+                        </select>
+                    </div>
+                    <p class="btn">
+                       <a href="javascript:void(0);" class="submit_btn" id="addsubmit">创建</a>
+                       <a href="javascript:void(0);" class="cancel_btn">取消</a>
+                    </p>
+                </div>
+                <!--替换内容结束-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="popup_layer none" id="picaddok">
+    <div class="bg">
+         <div class="mini_content tips_height">
+              <p class="info">
+                  <i class="icon_succ"></i>创建成功
+              </p>
+        </div>
+    </div>
+</div>
+
+<div class="popup_layer none" id="picedditok">
+    <div class="bg">
+         <div class="mini_content tips_height">
+              <p class="info">
+                  <i class="icon_succ"></i>创建成功
+              </p>
+        </div>
+    </div>
+</div>
+
+<!--主体部分结束-->
+<script type="text/javascript" src="__PUBLIC__/Js/bq.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/library/user/public.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/library/public/jquery.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/library/public/upload/swfupload.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/library/public/upload/handlers.js"></script>
+<script type="text/javascript">
+
+    var _burl = '<php>echo C("I_DIR");</php>';
+    var albumId = '<php>echo $aid;</php>';
+    var uid = '<php>echo $uid;</php>';
+	var C_DIR = '<php>echo C("I_DIR");</php>';
+	var settings = {
+				flash_url : "__PUBLIC__/Js/library/public/upload/swfupload.swf",
+				upload_url:C_DIR+ "/Upload/imageUpload",
+				post_params: {"type" : "album","uid":uid},
+				file_size_limit : "2 MB",
+				file_types : "*.jpg;*.gif;*.png;*.bmp",
+				file_types_description : "All Files",
+				file_upload_limit : 10,
+				file_queue_limit : 0,
+				file_post_name:'upload',
+				//debug: true,
+				button_image_url: '<php>echo C('STATIC_DIR');</php>/Images/uc/upload.png',
+				button_width: 160,
+				button_height: 40,
+				button_placeholder_id: 'fileMask',
+				file_queued_handler : fileQueued,
+				file_queue_error_handler : fileQueueError,
+				upload_start_handler : uploadStart,
+				upload_progress_handler : uploadProgress,
+				upload_error_handler : uploadError,
+				upload_success_handler : uploadSuccess,
+				button_window_mode:SWFUpload.WINDOW_MODE.TRANSPARENT
+			};
+
+	var settings2 = {
+				flash_url : "__PUBLIC__/Js/library/public/upload/swfupload.swf",
+				upload_url:C_DIR+ "/Upload/imageUpload",
+				post_params: {"type" : "album","uid":uid},
+				file_size_limit : "2 MB",
+				file_types : "*.jpg;*.gif;*.png;*.bmp",
+				file_types_description : "All Files",
+				file_upload_limit : 10,
+				file_queue_limit : 0,
+				file_post_name:'upload',
+				//debug: true,
+				button_image_url: '<php>echo C('STATIC_DIR');</php>/Images/uc/upload2.png',
+				button_width: 120,
+				button_height: 35,
+				button_placeholder_id: 'fileMask2',
+				file_queued_handler : fileQueued,
+				file_queue_error_handler : fileQueueError,
+				upload_start_handler : uploadStart,
+				upload_progress_handler : uploadProgress,
+				upload_error_handler : uploadError,
+				upload_success_handler : uploadSuccess,
+				button_window_mode:SWFUpload.WINDOW_MODE.TRANSPARENT
+			};
+
+	var swfu,swfu2,tm,acut= 1,ttm;
+
+	$.getJSON('/UcAlbum/getIsUpload',function(d){
+		if(d.status == 'true'){
+			swfu = new SWFUpload(settings);
+			swfu2 = new SWFUpload(settings2);
+		}else if(d.status == 'false') {
+			BQ.UCPublic.msgsuc('相册容量已满，请先删除部分图片再上传','提示',250,135);
+		}else{
+			BQ.UCPublic.msgsuc('请先登录','提示',250,135);
+		}
+	});
+
+	function fileQueued (e) {
+		//选择响应事件
+		//console.log('选择响应事件',e);
+		var f1 , f2 , cut;
+		try {
+			f1 =swfu.getStats()
+			f2 = swfu2.getStats();
+		} catch (ex) {
+		}
+		//console.log(f1,f2,e);
+		//console.log(f1,f2,e);
+		cut = f1.files_queued;
+		cut += f2 == undefined ? 0 : f2.files_queued;
+		if(cut>10){
+			swfu2.cancelUpload(e.id);
+			if(acut){
+				alert('一次最多可上传10张');
+				acut = 0;
+				clearTimeout(ttm);
+				ttm = setTimeout(function(){acut=1},100);
+			}
+			return;
+		}
+		acut = 1;
+		$('#photoupList').append('<li id="'+e.id+'" pid="'+e.id+'" name="'+e.name+'"><div class="progress"><div class="bg"></div><p class="current" id="cur_'+e.id+'" style="width:0%;"></p><p class="tips">'+e.name+'</p></div></li>');
+		clearTimeout(tm);
+		tm = setTimeout(function(){
+			//$('#addphoto').hide().next().show();
+			$('#addphoto').css('height',1);
+			$('#photoupListPan').show();
+		},50);
+	}
+	function uploadStart (e) {
+		//选择响应事件 上传前响应事件
+		//console.log('上传前响应事件',e);
+		//console.log($('#'+e.id));
+	}
+	//uploadProgress(file object, bytes complete, total bytes)
+	function uploadProgress (e,b,t) {
+		//上传进度
+		//console.log('上传进度',e,b,t);
+		$('#cur_'+e.id).css('width',(b/t*100)+'%');
+		//console.log($('#'+e.id));
+	}
+	var imgpag = [],imgpagtb = 1;
+	function uploadSuccess (e,serverData) {
+		//上传的处理已经完成
+		//console.log('上传的处理已经完成',e,serverData);
+		//console.log($('#'+e.id));
+		var f1 , f2 , cut;
+		try {
+			f1 =swfu.getStats()
+			f2 = swfu2.getStats();
+		} catch (ex) {
+		}
+		if(imgpagtb){
+			if(f1.files_queued != 0){
+				swfu.startUpload();
+			}else{
+				if(f2.files_queued != 0){
+					swfu2.startUpload();
+				}
+			}
+		}
+		//console.log(f1,f2);
+		//console.log(serverData);
+		serverData = eval("("+serverData+")");
+		imgpag.push(serverData);
+		if(f1.files_queued == 0 && f2.files_queued == 0){
+			imgshow();
+		}
+	}
+
+	function imgshow(){
+		var pdom = [];
+		//console.log(imgpag);
+		$.each(imgpag,function(i,d){
+			if(d.title.length > 20){
+				d.title = d.title.substring(d.title.length-20,d.title.length);
+			}
+			pdom.push('<dl><dt><img src="'+d.domain+d.imgpath+'" width="120" height="120"></dt><dd><p><input type="hidden" name="height[]" id="receverid" value="'+d.height+'"><input type="hidden" name="width[]" id="receverid" value="'+d.width+'"><input type="hidden" name="size[]" id="receverid" value="'+d.size+'"><input type="hidden" name="aid[]" id="receverid" value="'+albumId+'"><input type="hidden" name="path[]" id="receverid" value="'+d.imgpath+'"><input type="text" value="'+d.title+'" id="textfield1" class="name_input" name="names[]"></p><p><textarea rows="5" cols="45" id="textarea" name="descs[]" class="desc_textarea">请输入照片描述</textarea></p><p><label><input type="radio" id="RadioGroup1_0" value="'+i+'" name="covers" class="cover_input covers">设为封面<input type="hidden" name="cover[]" id="receverid" value="'+(i==0?'1':'0')+'"></label></p></dd></dl>');
+		});
+		$('#photo_edit .edit_photo_list').html(pdom.join(''));
+		$('#phhotoup').hide();
+		$('#photo_edit').show();
+		$('#pocount').html(imgpag.length);
+		$('.covers').click(function(){
+			$(this).nextAll('input').val(1);
+		});
+		pfocusab($('#photo_edit .desc_textarea'),'请输入照片描述');
+	}
+	function  pfocusab(o,v,tpye) {
+			o.unbind().focusin(function(){
+				if(this.value == v){
+					this.value = "";
+				}
+			});
+
+			o.focusout(function(){
+				if(this.value == v || this.value == ''){
+					this.value = v;
+				}
+			});
+	}
+	(function(){setTimeout(function(){$('#select').val(albumId)})})();
+	$('#select').change(function(){
+		location.href="/UcAlbum/uploadPhoto/aid/"+this.value;
+	});
+
+	//开始上传
+	$('#upload_btn').click(function(e){
+		e.preventDefault();
+        //禁言
+        $.get('/UcAlbum/ajaxCheckUserGroup',{},function(d){
+            if(d == 'login'){
+                BQ.UCPublic.msgsuc('请登录后进行操作。','提示',250,135);
+            }else if(d == 'false'){
+                BQ.UCPublic.msgsuc('您可能涉及违规内容发布，暂时无法进行该操作，如有问题，请联系论坛管理员。','提示',230,170);
+            } else {
+                if(imgpagtb){
+                    swfu.startUpload();
+                }else{
+                    swfu.startUpload();
+                    swfu2.startUpload();
+                    imgpagtb = 1;
+                }
+                $('.btncom').css('top','-45px');
+            }
+        },'json');
+
+	});
+
+	$('#upload_btn_on').click(function(e){
+		e.preventDefault();
+		imgpagtb = 0;
+		$('.btncom').css('top','0px');
+	});
+
+
+	$('#save_edit_btn').click(function(){
+		//$('#modifyPhotoPost').submit();
+        $.get(_burl+'/ajaxCheckUserGroup',{},function(d){
+            if(d == 'login'){
+                BQ.UCPublic.msgsuc('请登录后进行操作。','提示',250,135);
+                return false;
+            }
+            if(d == 'false'){
+                BQ.UCPublic.msgsuc('您可能涉及违规内容发布，暂时无法进行该操作，如有问题，请联系论坛管理员。','提示',230,170);
+                return false;
+            }
+        },'json');
+
+		var iptbol = 0,fount;
+		$('.edit_photo_list>dl').each(function(i,d){
+			var _t = $(this),nipt = _t.find('.name_input'),dtxt = _t.find('.desc_textarea');
+			if(nipt.val().trim().length < 2 || nipt.val().trim().length > 30){
+				//console.log(nipt.val().trim() , nipt.val().trim());
+				fount = nipt;
+				iptbol=1;
+				return false;
+			}
+			if(dtxt.val().trim().length > 200){
+				fount = dtxt;
+				iptbol=1;
+				return false;
+			}
+		});
+		if(iptbol){
+			BQ.UCPublic.msgalno('字段不符合规定','提示',250,135);
+			fount.focus();
+			return;
+		}
+
+		$.post('/UcAlbum/addPhotoPl',$("#modifyPhotoPost").serialize(),function(d){
+			if(d=='ok'){
+				BQ.UCPublic.msgalok('保存成功','提示',250,135);
+				(function(){setTimeout(function(){location.href="/photo/a/"+albumId; },2000)})();
+			}else if (d=='login') {
+				BQ.UCPublic.msgalno('请登录后进行操作','提示',250,135);
+			}else{
+				BQ.UCPublic.msgalno('操作失败','提示',250,135);
+			}
+			//ok false login
+		})
+		//console.log($("#modifyPhotoPost").serialize());
+
+	});
+
+    $('#backmsg').click(function(e){
+        e.preventDefault();
+        BQ.UCPublic.msgcwar('确定要放弃上传吗？ ','提示',function(){
+           setTimeout(function(){ window.location.href =  _burl+'/photo/a/'+albumId;})
+        },function(){
+
+        },300,175);
+    });
+
+
+	BQ.load("jQuery,util.KeyMap",function(){
+		var _burl = '/UcAlbum';
+		//创建相册并转移
+		var _bqpicadd = BQ.widget.LayerBox('struc',{struc:'#picadd',drag:true,dragTags:'.hd',zIndex:'9999'});
+		$('#new_album').click(function(e){
+			e.preventDefault();
+			_bqpicadd.alert();
+		});
+		BQ.UCPublic.focusab($('#addcnm'),'请输入相册信息');
+		BQ.UCPublic.focusab($('#picadddesc'),'请输入相册描述');
+		var bqpiaddcnm = BQ.UCBQSubInfo('',{con:$('#addcnm'),text:$('#addcnmnub'),max:30});//输入长度
+		var bqpicadddesc = BQ.UCBQSubInfo('',{con:$('#picadddesc'),text:$('#picadddescnum'),max:200});//输入长度
+		$('#addsubmit').click(function(e){
+			e.preventDefault();
+			var addcm = $('#addcnm'),picdc = $('#picadddesc');
+			if(addcm.val() == '' || addcm.val() == '请输入相册信息'){
+					BQ.UCPublic.msgalno('相册名称不能为空','提示',250,135);
+					picnm.focus();
+					return;
+			}
+			if(!bqpiaddcnm.getSubV()){
+				BQ.UCPublic.msgalno('相册名称已超出最大限制字数。','提示',250,135);
+				return;
+			}
+			if(picdc.val() != '' && !bqpicadddesc.getSubV()){
+				BQ.UCPublic.msgalno('相册描述已超出最大限制字数。','提示',250,135);
+				picdc.focus();
+				return;
+			}
+			//创建相册
+			$.post(_burl+'/addAlbumInfo',{'textfield2':$('#addcnm').val(),'textarea':$('#picadddesc').val(),'select2':$('#picaddgl').val()},function(d){
+				if(d.add == 'ok'){
+					var _bqpicaddok = BQ.widget.LayerBox('struc',{struc:'#picaddok',drag:true,dragTags:'.hd',zIndex:'99'});
+					_bqpicaddok.show();
+					setTimeout(function(){location.href=_burl+"/uploadPhoto/aid/"+d.aid;},1000);//创建成功后跳转
+				}else{
+					BQ.UCPublic.msgalno('操作失败、请稍候再试。','提示',250,135);
+				}
+			},'json');
+		});
+		
+		$('.cancel_btn').click(function(e){
+			_bqpicadd.close();
+		})
+
+		});
+
+	</script>
+
+
+<!--底部开始-->
+<include file="Public:footer"/>
+<!--底部结束-->
+

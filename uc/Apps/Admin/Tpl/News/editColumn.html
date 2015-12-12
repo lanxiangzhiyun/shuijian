@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>编辑栏目</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type="text/javascript" src="__ROOT__/Addons/Plugins/ueditor/editor_config_article.js"></script>  
+<script type="text/javascript" src="__ROOT__/Addons/Plugins/ueditor/editor_all.js"></script>  
+<script type="text/javascript" src="__ROOT__/Addons/Plugins/ueditor/_src/plugins/autoheight.js"></script>  
+<link rel="stylesheet" type="text/css" href="__ROOT__/Addons/Plugins/ueditor/themes/default/ueditor.css">
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Js/bq.js'></script>
+
+<script>
+//保存
+function check(obj) {
+	if(obj.name.value == '') {
+		alert('栏目名称不得为空！');
+		obj.title.focus();
+		return false;
+	}
+
+	return true;
+}
+</script>
+</head>
+<body>
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li><a href="__ROOT__/iadmin.php/News/columnList?parent_id={$idInfo.parent_id}"><span>栏目管理</span></a></li>
+        <li class="current"><a href="javascript:void(0)"><span>编辑栏目</span></a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+	
+	<form action='__ROOT__/iadmin.php/News/editColumn' id="form1" method='post' enctype="multipart/form-data" onsubmit="return check(this)">
+	<div class="common_tb">
+        <ul>
+        	<li>
+                <span class="text">上一级分类：</span>
+                <span class="input_area">
+					<font>{$parent_name}</font>
+				</span>
+            </li>
+        
+			<li>
+                <span class="text">栏目名称：</span>
+                <span class="input_area">
+				<input name="name" type="text" value='{$idInfo.name}' class="input_bk" id="couLumnName" />
+				</span>
+            </li>
+            
+            <li>
+            	<span class="text" >栏目排序：</span>
+            	<span class="input_area">
+            		<input name = "sort" type="text" class="input_bk w200" value="{$idInfo.sort}" >
+            	</span>
+            </li>
+           
+        
+			
+           
+            <span class="text">栏目介绍：</span>
+                <span class="input_area">
+				<textarea id="content_init" name="introduction" style="width:755px; height:350px;">{$idInfo.introduction}</textarea>
+				<input type="hidden" id="introduction" name="introduction" value=""/>
+                <script type="text/javascript">
+					// 自定义的编辑器配置项,此处定义的配置项将覆盖editor_config.js中的同名配置
+					var editorOption = {
+						toolbars:[['FullScreen', 'fontfamily', 'fontsize', 'forecolor', 'backcolor','Undo', 'Redo','Bold', 'italic', 'underline', 'removeformat', 'justifyleft','justifyright','justifycenter','link']],
+						//focus时自动清空初始化时的内容
+						autoClearinitialContent:false,
+						//不自动长高
+						autoHeightEnabled:false,
+						//关闭字数统计
+						wordCount:false,
+						//关闭elementPath
+						elementPathEnabled:false,
+						
+					};
+					var ueditor = new baidu.editor.ui.Editor(editorOption);
+					ueditor.render( 'content_init' );
+				</script>
+                </span>
+           
+          
+            
+				<input type="hidden" name="parent_id" value="{$idInfo.parent_id}"  />
+				<input type="hidden" name="type" value="{$idInfo.type}" />
+				<input type="hidden" name="id" value="{$idInfo.id}" id="couLumnId" />
+            <li>
+                <span class="text">&nbsp;</span>
+                <span class="input_area"><a class="submit_btn" onClick='submitFunc();' href="javascript:void(0);" title="确定"></a> </span>
+            </li>
+        </ul>
+    </div>
+    
+    </form>
+</div>
+
+<script type='text/javascript'>
+function submitFunc(){
+	var name = $("#couLumnName").val();
+	var id = $("#couLumnId").val();
+	var message = encodeURIComponent(ueditor.getContent());
+	$('#introduction').val(message);
+	$.ajax({
+		type:'post',
+		url:'/iadmin.php/news/AjaxCheckColumnName',
+		data:'id='+id+'&name='+name,
+		dataType:'json',
+		success:function(data){
+			if(data == 1){
+				alert("该栏目名称已经存在，不得重复栏目名称");
+				return false;				
+			}
+		}
+	});
+	$("#form1").submit();
+}
+
+
+</script>
+
+</body>
+</html>

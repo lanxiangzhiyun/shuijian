@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+sitemap£ºhttp://i.boqii.com/huiyuan-url.xml

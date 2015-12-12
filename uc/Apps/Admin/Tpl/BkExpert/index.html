@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>奖品</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Js/library/ui/static/calendar/calendar.css"/>
+    <script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/bq.js"></script>
+    <script type='text/javascript' src='__PUBLIC__/Js/library/ui/form/calender.js'></script>
+    <script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+</head>
+<body>
+
+<div class="common_tab">
+    <ul>
+        <li class="current"><a href="__ROOT__/iadmin.php/BkExpert/index"><span>用户列表</span></a></li>
+        <li><a href="__ROOT__/iadmin.php/BkExpert/addMember/action/add"><span>添加成员</span></a></li>
+    </ul>
+</div>
+
+
+<!--tab结束-->
+<div class="wrap">
+
+    <form action='__ROOT__/iadmin.php/Bet/index' method='get' id='form1'>
+        <!--搜索开始-->
+        <div class="search_box">
+            <div class="search">
+                </div>
+        </div>
+        <!--搜索结束-->
+
+        <!--数据列表开始-->
+
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+            <thead>
+            <tr bgcolor="#add8e6">
+                <td  colspan="8" align="left">成员管理</td>
+                <td  colspan="1" ></a></td>
+            </tr>
+            <tr>
+                <th width="7%">uid</th>
+                <th width="7%">类别</th>
+                <th width="7%">名称</th>
+                <th width="14%">头像</th>
+                <th width="21%">简介</th>
+                <th width="14%">文章数</th>
+                <th width="7%">关注数</th>
+                <th width="7%">创建时间</th>
+                <th width="14%">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <volist name="arrList" id="vo" >
+                <tr>
+                    <td width="7%">{$vo.uid}</td>
+                    <td width="7%"><php>if($vo['level'] == 3){echo '小编';}else if($vo['level'] == 5){echo '专家';}else if($vo['level'] == 1){echo '系统管理员';}else{echo '角色不存在';}</php></td>
+                    <td width="7%">{$vo.name}</td>
+                    <td width="14%"><center>
+                        <php>if($vo['pic_path']){
+                            echo "<img  src=".$vo['pic_path'] ." />";
+                    }else{echo "无";};</php></center></td>
+                    <td width="21%">{$vo.introduce}</td>
+                    <td width="14%">{$vo.article_num}</td>
+                    <td width="7%">{$vo.attention_num}</td>
+                    <td width="7%">
+                        {$vo.create_time|date="Y-m-d H:i:s",###}</td>
+                    <td width="14%"> <a href="__ROOT__/iadmin.php/BkExpert/addMember?action=edit&uid={$vo.uid}">编辑</a>
+                        <!--|-->
+                        <!--<a onclick="if(confirm('确定删除吗?')){return true;}else{return false;}" href="?action=delete&pid={$vo.pid}&attachurl={$vo.attachurl}">删除</a>-->
+                    </td>
+                </tr>
+            </volist>
+            </tbody>
+            <tfoot>
+            <tr>
+            </tr>
+            </tfoot>
+        </table>
+    </form>
+    <!--数据列表结束-->
+
+    <!--分页开始-->
+    <?php echo $pageHtml;?>
+    <!--分页结束-->
+</div>
+<script type='text/javascript'>
+    //页面加载一次
+    window.onload=function(){
+        var url = $('#url').val();
+        if(url){
+            var maxCode=parent.oMapReloadInfo['maxCode'];
+            var code=parent.oMapReloadInfo['code'];
+            var difference = maxCode-code;
+            if(difference==1){
+                parent.oMapReloadInfo['maxCode']=maxCode+1;
+                location.href=url;
+            }else{
+                parent.oMapReloadInfo['code']=code+1;
+            }
+        }
+    }
+    BQ.ui.form.Calender('#calender1');
+    BQ.ui.form.Calender('#calender2');
+</script>
+</body>
+</html>

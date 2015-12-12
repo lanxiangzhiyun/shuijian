@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>编辑宠物详情</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Js/library/ui/static/calendar/calendar.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type="text/javascript" src="__PUBLIC__/Js/bq.js"></script>
+<script type='text/javascript' src='__PUBLIC__/Js/library/ui/form/calender.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+</head>
+<body>
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li><a href="__ROOT__/iadmin.php/Pet/petIndex"><span>宠物管理</span></a><a class="close" href="javascript:void(0);" title="关闭标签"></a></li>
+        <li class="current"><a href="__ROOT__/iadmin.php/Pet/petEdit?id={$id}"><span>编辑宠物</span></a><a class="close" href="javascript:void(0);" title="关闭标签"></a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+
+	<form action='__ROOT__/iadmin.php/Pet/petSave' method='post'>
+	 <input name="data[id]" type="hidden" class="input_bk w130" id="textfield1" value="{$id}" />
+    <!--修改宠物开始-->
+    <div class="common_tb">
+                <ul>
+                    <li> <span class="text">宠物昵称：</span> <span class="input_area">
+                        <input name="data[petname]" type="text" class="input_bk w130" id="textfield1" value="{$pet.petname}" />
+                        </span></li>
+                    <li> <span class="text">宠物头像：</span> <span class="input_area">
+                         <img <php>if($pet['picpath']!=''){</php> src="<php>echo C('IMG_DIR');</php>/{$pet.picpath}" <php>}else{</php> src='__PUBLIC__/Admin/Images/no_pet80.gif' <php>}</php> width="80" height="80" />
+                        </span>
+                        <span class="tips_txt"><label><input class="pb" type="checkbox" name="is_deletepic" value='1' id="checkbox" />删除头像</label></span>
+                    </li>
+                    <li>
+                        <span class="text">宠物种族：</span>
+                        <span class="input_area">
+                            <span class="pets_name">{$pet.raceName}</span>
+                          <!--  <a href="javascript:void(0);">修改</a>-->
+                        </span>
+                    </li>
+                    <li>
+                        <span class="text">宠物家族：</span>
+                        <span class="input_area">
+                            <span class="pets_name">{$pet.familyName}</span>
+                          <!--  <a href="javascript:void(0);">修改</a>-->
+                        </span>
+                    </li>
+					<li> <span class="text">性 别：</span> <span class="input_area">
+                        <label>
+                            <input type="radio" <?php if($pet['petgender']==1){echo 'checked';}?> name="data[petgender]" value="1"/>
+                        公</label>
+                        <label>
+                            <input type="radio" <?php if($pet['petgender']==2){echo 'checked';}?> name="data[petgender]" value="2"/>
+                        母</label>
+                        </span> </li>
+
+                    <li> <span class="text">生 日：</span> <span class="input_area">
+                        <input name="data[petbday]" type="text" class="input_bk calendar" id='calender1' <php>if($pet['petbday']){</php>value="{$pet.petbday|date='Y-m-d',###}"<php>}</php>/>
+                        </span></li>
+                    <li> <span class="text">血 统：</span> <span class="input_area">
+                        <label>
+                            <input type="radio" <?php if($pet['lineages']==1){echo 'checked';}?> name="data[lineages]" value="1"/>
+                        纯种</label>
+                        <label>
+                            <input type="radio" <?php if($pet['lineages']==2){echo 'checked';}?> name="data[lineages]" value="2"/>
+                        混血（串串）</label>
+                        </span> </li>
+                    <li> <span class="text">&nbsp;</span> <span class="input_area"> <a class="submit_btn" onClick='submitFun();' href="javascript:void(0);" title="确定"></a> <a class="cancel_btn" href="javascript:void(0);" onClick="return backfun('/iadmin.php/Pet/petIndex');" title="取消"></a></span> </li>
+                </ul>
+    </div>
+    <!--修改宠物结束-->
+	</form>
+
+</div>
+</body>
+</html>
+<script type='text/javascript'>
+BQ.ui.form.Calender('#calender1');
+BQ.ui.form.Calender('#calender2');
+BQ.ui.form.Calender('#calender3');
+BQ.ui.form.Calender('#calender4');
+</script>

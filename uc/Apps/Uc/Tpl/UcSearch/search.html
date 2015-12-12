@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<php>if($obj == "me") { if($userinfo['groupid'] >= 4 && $userinfo['groupid'] < 11) { </php><META NAME="robots" CONTENT="NOINDEX,NOFOLLOW">
+<php>} } elseif($obj == "other") { if($huser['groupid']  >= 4 && $huser['groupid'] < 11) { </php><META NAME="robots" CONTENT="NOINDEX,NOFOLLOW">
+<php>} }</php>
+<title><php>if($keyword){</php>{$keyword}<php>}else{</php>搜索<php>}</php><php>if(isset($p) && $p >= 2) { </php> – 页{$p}<php>} </php> – 波奇网宠物家园、分享宠物的快乐生活</title>
+<link rel="stylesheet" type="text/css" href="<php>echo autoVer('/Css/uc/global.css');</php>"/>
+<link rel="stylesheet" type="text/css" href="<php>echo autoVer('/Css/uc/main.css');</php>"/>
+</head>
+<body>
+<!--头部开始-->
+<div class="global_header"> 
+    <include file="Public:top" />
+    
+    <include file="Public:header" />
+</div>
+<!--头部结束--> 
+
+<!--主体部分开始-->
+<div class="main two_side clearfix"> 
+    <!--左侧开始-->
+    <include file="Public:left" />
+    <!--左侧结束-->
+    <div class="plc_main"> 
+        <!--右侧开始-->
+        <div class="main_cont">
+		<php>if($total>0){</php>
+            <div class="follow_title search_list_title">
+                <h3>已搜到<span class="num">{$total}</span>条结果</h3>
+				<div class="act">
+                    <a href="javascript:history.go(-1)" class="prev_btn prev_btn_disable">返回上一页</a>
+                </div>
+            </div>
+            <!--搜索列表开始-->
+            <div class="follow_list" id="followlist">
+                <volist name='list' id='v'>
+                <dl>
+                    <dt><a href="{$v.url_link}" target="_blank"><img class="avatar" src="{$v.avatar}" style="width:50px;" alt="" /></a></dt>
+                    <dd>
+                        <div class="name"><a href="{$v.url_link}" target="_blank">{$v.nickname}</a>
+                            <php>if($v['baike_level'] == 5) {echo '<img class="avatar" src="'.C('STATIC_DIR').'/Images/uc/zj.jpg"/></dd>';}else {</php>
+                            <php>if($v['gender'] == 1){</php>
+                            <i class="male" title="男">男</i>
+                            <php>}elseif($v['gender'] == 2){</php>
+                            <i class="female">女</i>
+                            <php>}else{</php> <i class="female">女</i>
+                            <php>}</php>
+                            <span class="area">{$v.city_data}</span></div>
+                        <div class="concern">
+                         <div class="info">关注 <a href="<php>echo get_rewrite_url('UcRelation', 'follow', $v['uid']);</php>" target="_blank">{$v.attentions}</a><i class="wline">|</i>粉丝 <a href="<php>echo get_rewrite_url('UcRelation', 'fans', $v['uid']);</php>" target="_blank">{$v.fans}</a><i class="wline">|</i> 好友 <a href="<php>echo get_rewrite_url('UcRelation', 'friends', $v['uid']);</php>" target="_blank">{$v.friends}</a></div>
+						 <php>if($userinfo['uid'] != $v['uid']){</php>
+                         <php>if($v['status'] == 1){</php>
+						 <div class="act">
+                                <span class="follow_state"><i class="icon_follow"></i>已关注</span>
+						 </div>
+						 <php>}elseif($v['status'] == 2){</php>
+						 <div class="act">
+                                <span class="follow_state"><a class="a_btn c_ajxbut" thref="/UcRelation/addCareOne/uid/{$userinfo.uid}/bUid/{$v.uid}" href="javascript:void(0);" title="加关注"></a></span>
+                        </div>
+						<php>}elseif($v['status'] == 4){</php>
+						 <div class="act">
+                                <span class="follow_state"><a class="a_btn c_ajxbut" thref="/UcRelation/addCareOne/uid/{$userinfo.uid}/bUid/{$v.uid}/blackid/1" href="javascript:void(0);" title="加关注"></a></span>
+                        </div>
+						 <php>}elseif($v['status'] == 3){</php>
+						 <div class="act">
+                                <span class="follow_state"><i class="icon_arr"></i>互相关注</span>
+                        </div>
+						<php>}elseif($v['status'] == 5){</php>
+						 <div class="act">
+                                <span class="follow_state"><a class="a_btn c_ajxbut" thref="/UcRelation/addCareOne/uid/{$userinfo.uid}/bUid/{$v.uid}/tBlackid/1" href="javascript:void(0);" title="加关注"></a></span>
+                        </div>
+						 <php>}</php>
+						 <php>}</php>
+						 </div>
+                        <php>if($v['pet']['petname']){</php><div class="pets"><i class="icon_pets"></i><a href="<php>echo get_rewrite_url('Index','index',$v['uid']);</php>" target="_blank">{$v.pet.petname}</a></div><php>}</php>
+                    </dd>
+                    <php>}</php>
+                </dl>
+                </volist>
+            </div>
+            <!--搜索列表结束-->
+            <!--分页开始-->
+            <div class="page_wrap">
+                <div class="showpage">{$page}
+				 <!--<a class="page-prev" href="#"><span>上一页</span></a> <span class="page-this">1</span> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">5</a> <span class="page-break">...</span> <a href="#">20</a> <a class="page-next" href="#"><span>下一页</span></a>-->
+				  </div>
+            </div>
+            <!--分页结束-->
+			<php>}else{</php>
+            
+            <!--搜索无人开始-->
+            <div class="search_list_nofind">没有找到<php>if($keyword){</php>与 "<span class="name">{$keyword}</span>" <php>}</php>相关的用户，换一个关键词试试吧!</div>
+            <div class="search_list_sug">
+                <p><strong>提示：</strong></p>
+                <p>1、请尽量使用简洁的关键词</p>
+                <p>2、可用空格将多个关键词分开</p>
+            </div>
+            
+            <div class="maybe_people" id="maybepeople">
+                <h3>你可能感兴趣的用户</h3>
+                <div class="bd">
+					<volist name='list' id='v'>
+                    <dl>
+                        <dt>
+                            <div class="img_show"><a href="{$v.url_link}" target="_blank"><img class="avatar" src="{$v.avatar}" style="width:50px;" alt="" /></a></div>
+                            <div class="add"><a class="a_btn c_ajxbut" thref="/UcRelation/addCareOne/uid/{$userinfo.uid}/bUid/{$v.uid}" href="javascript:void(0);" title="加关注"></a></div>
+                        </dt>
+                        <dd>
+                            <p class="name"><a href="{$v.url_link}" target="_blank">{$v.nickname}</a></p>
+                            <p class="area">{$v.city_data}</p>
+                            <php>if($v['pet']['petname']){</php><p class="pets"><i class="icon_pets"></i><a href="{$v.url_link}" target="_blank">{$v.pet.petname}</a></p><php>}</php>
+                        </dd>
+                    </dl>
+                 	</volist>
+                </div>
+            </div>
+            <!--搜索无人结束-->
+            <php>}</php>
+			
+        </div>
+        <!--右侧结束--> 
+    </div>
+</div>
+<!--主体部分结束--> 
+<script>
+	BQ.load("UCSearch",function(){
+         BQ.UCSearch('search').exec();
+    });
+</script>
+<include file="Public:footer" />
+

@@ -1,0 +1,24 @@
+<!--编辑敏感词弹窗开始-->
+<div class="popup_layer" id='editSensitive' style="top:200px; left:500px; width:380px;display:none;">
+    <div class="bg">
+        <div class="content"> <a class="close cancel_btn" href="javascript:void(0);" title="关闭">关闭</a>
+            <div class="hd">编辑敏感词</div>
+            <div class="bd"> 
+                <!--替换内容开始-->
+                <div class="photo_popup">
+                    <div class="create_name">
+                        <span class="name">&nbsp;&nbsp;&nbsp;敏感词：</span>
+                        <input class="name_input" name="" type="text" id="keyword" value="" />
+						<input class="name_input" name="" type="hidden" id="sensitiveid" value="" />
+                    </div>
+                    <p class="btn">
+                       <a class="submit_btn" onClick="return postSensitive();" href="javascript:void(0);" title="确定"></a>
+                       <a class="cancel_btn" href="javascript:void(0);" title="取消"></a>
+                    </p>
+                </div>
+                <!--替换内容结束--> 
+            </div>
+        </div>
+    </div>
+</div>
+<!--编辑敏感词弹窗结束-->

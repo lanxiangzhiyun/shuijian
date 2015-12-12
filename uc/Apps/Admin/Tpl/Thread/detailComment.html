@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>问题回答</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Js/bq.js'></script>
+
+</head>
+<body>
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li class="current"><span>百科问题回答</span></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+	
+    <div class="common_tb">
+        <ul>
+			<li>
+                <span class="text">问题标题：</span>
+                <span class="input_area">
+				{$detail.title}
+				</span>
+            </li>
+
+			<li>
+                <span class="text">回答时间：</span>
+                <span class="input_area">
+					{$detail.create_time}
+				</span>
+            </li>
+            <li>
+                <span class="text">回答用户：</span>
+                <span class="input_area">
+					{$detail.nickname}
+				</span>
+            </li>
+			<li>
+                <span class="text">审核状态：</span>
+                <span class="input_area">
+					<php>if($detail['is_check']==1){</php>已审核<php>}else{</php>未审核<php>}</php>
+				</span>
+            </li>	
+			<li>
+                <span class="text">回答内容：</span>
+                <span class="input_area">
+					{$detail.content}
+                </span>
+            </li>
+
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

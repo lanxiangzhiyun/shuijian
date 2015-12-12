@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>发站内信</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type="text/javascript" src="__ROOT__/Addons/Plugins/ueditor/editor_config_article.js"></script>  
+<script type="text/javascript" src="__ROOT__/Addons/Plugins/ueditor/editor_all.js"></script>  
+<script type="text/javascript" src="__ROOT__/Addons/Plugins/ueditor/_src/plugins/autoheight.js"></script>  
+<link rel="stylesheet" type="text/css" href="__ROOT__/Addons/Plugins/ueditor/themes/default/ueditor.css">
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Js/bq.js'></script>
+</head>
+<body>
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li><a href="__ROOT__/iadmin.php/SysMsg/msgList"><span>站内信管理</span></a></li>
+        <li class="current"><a class="add_btn" href="__ROOT__/iadmin.php/SysMsg/addMsg">发站内信</a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+	
+	<form action='__ROOT__/iadmin.php/SysMsg/sendMsg' method='post' enctype="multipart/form-data">
+    <!--广告开始-->
+    <div class="common_tb">
+        <ul>
+			<li>
+                <span class="text">目标人群：</span>
+                <span class="input_area">
+                <select name="user_type" id="user_type">
+				  <option value="0">请选择目标人群</option>
+                  <option value="1">全站</option>
+				  <!--<option value="2">上海地区</option>-->
+				  <option value="3">部分自定义</option>
+                </select>
+                </span>
+            </li>
+           <li id="text1">
+		   <span class="text">导入：</span>
+				<span class="input_area">
+				<input type="file" name="excel" id="excel">&nbsp;&nbsp;<font color="#FF0000">*选择需要导入的excel文件，如果直接填写uid则无需选择文件</font>
+				</span>
+		   </li>
+		   <li id="text2">
+                <span class="text">发送给：</span>
+                <span class="input_area">
+				<input name="uids" type="text" class="input_bk" id="uids"/>&nbsp;&nbsp;<font color="#FF0000">*多个用户ID用空格隔开</font>
+				</span>
+            </li>
+            <li>
+                <span class="text">内容：</span>
+                <span class="input_area">
+					<textarea id="content_init" name="content_init" style="width:755px; height:350px;"></textarea>
+					<input type="hidden" id="content" name="content" value=""/>
+					<script type="text/javascript">
+						// 自定义的编辑器配置项,此处定义的配置项将覆盖editor_config.js中的同名配置
+						var editorOption = {
+							toolbars:[['FullScreen', 'fontfamily', 'fontsize', 'forecolor', 'backcolor','Undo', 'Redo','Bold', 'italic', 'underline', 'removeformat', 'justifyleft','justifyright','justifycenter','emotion', 'insertimage','insertvideo','link']],
+							//focus时自动清空初始化时的内容
+							autoClearinitialContent:false,
+							//不自动长高
+							autoHeightEnabled:false,
+							//关闭字数统计
+							wordCount:false,
+							//关闭elementPath
+							elementPathEnabled:false,
+							//imageUrl
+							imageUrl:'<php>echo C("I_DIR");</php>/iadmin.php/Upload/ucMsgUpload'
+						};
+						var ueditor = new baidu.editor.ui.Editor(editorOption);
+						ueditor.render( 'content_init' );
+					</script>
+				</span>
+            </li>
+           
+
+            <li>
+                <span class="text">&nbsp;</span>
+                <span class="input_area"><a class="submit_btn" onClick='submitFunc();' href="javascript:void(0);" title="确定"></a><a class="cancel_btn" onClick="return backfun('/iadmin.php/SysMsg/msgList');" href="javascript:void(0);" title="取消"></a> </span>
+            </li>
+        </ul>
+    </div>
+    <!--广告结束-->
+	</form>
+</div>
+
+<script type='text/javascript'>
+$(document).ready(function () {   
+	$("#user_type").change(function(){
+		if($('#user_type').val() == 1 || $('#user_type').val() == 2){
+			$("#text1").hide();
+			$("#text2").hide();
+		}else{
+			$("#text1").show();
+			$("#text2").show();
+		}
+	});
+	$("#excel").change(function(){
+		if($("#excel").val() != ''){
+			$("#text2").hide();
+		}else{
+			$("#text2").show();
+		}
+	});
+});
+function submitFunc(){
+	if($('#user_type').val() == 0) {
+		alert('请选择目标人群.');
+		$('#user_type').focus();
+		return false;
+	}
+	var message = encodeURIComponent(ueditor.getContent());
+	$('#content').val(message);
+
+	if($.trim(message) == '') {
+		alert('请输入内容.');
+		$('#content_init').focus();
+		return false;
+	}
+	$("form").submit();
+}
+</script>
+</body>
+</html>

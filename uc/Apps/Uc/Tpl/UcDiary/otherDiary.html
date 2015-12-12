@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<php>if($obj == "me") { if($userinfo['groupid'] >= 4 && $userinfo['groupid'] < 11) { </php><META NAME="robots" CONTENT="NOINDEX,NOFOLLOW">
+<php>} } elseif($obj == "other") { if($huser['groupid']  >= 4 && $huser['groupid'] < 11) { </php><META NAME="robots" CONTENT="NOINDEX,NOFOLLOW">
+<php>} }</php>
+<meta name="keywords" content="{$htmlHeaderInfo['keywords']}"/>
+<meta name="description" content="{$htmlHeaderInfo['description']}" />
+<title>{$htmlHeaderInfo['title']}</title>
+<script type='text/javascript' src="__PUBLIC__/Js/jquery.js"></script>
+<link rel="stylesheet" type="text/css" href="<php>echo autoVer('/Css/uc/global.css');</php>"/>
+<link rel="stylesheet" type="text/css" href="<php>echo autoVer('/Css/uc/main.css');</php>"/>
+
+</head>
+<body>
+<!--头部开始-->
+<div class="global_header"> 
+    <!--头部导航开始-->
+    <include file="Public:top"/>
+    <!--头部导航结束--> 
+    
+    <!--nav导航开始-->
+    <include file="Public:header"/>
+    <!--nav导航结束--> 
+</div>
+<!--头部结束--> 
+
+<!--主体部分开始-->
+<div class="main two_side clearfix"> 
+    <!--左侧开始-->
+    <include file="Public:left"/>
+    <!--左侧结束-->
+
+    <div class="plc_main"> 
+        <!--右侧开始-->
+        <div class="main_cont">
+        <!--查看日志详细内容开始--> 
+            <div class="path_title">
+                <span class="blog_title">宠日记<em class="blog_path">>> 当前日记</em></span>
+                <a class="return" href="<php>echo get_rewrite_url('UcDiary','diaryList','u:'.$huser['uid']);</php>" title="返回日志首页>>">返回日记首页>></a>
+            </div>
+            
+            <div class="blog_main">
+                <!--中间列表开始-->
+                <div class="blog_left">
+					<div class="title_article">
+						<h2><php>echo remove_xss($diary['title']);</php></h2>
+						<div class="info">
+							<span class="date">{$diary.format_cretime}</span>
+							<span class="cats">分类：<a href="<php>echo get_rewrite_url('UcDiary','diaryList','u:'.$huser['uid'].',t:'.$diary['type_id']);</php>"><php>if($diary['type_id']){ </php>{$diary.name}<php>} else { </php>我的宠日记<php>} </php></a></span>
+						</div>
+					</div>
+					<div class="blog_content"> 　　
+						<php>echo remove_xss($diary['content']);</php>
+					</div>
+					<div class="stat_info">
+					<div class="bqinfo"><span class="wline">|</span>
+					阅读({$diary.views})<span class="wline">|</span>评论({$diary.comments})</div>
+					<div id="bdsharrzs">
+						<!-- Baidu Button BEGIN -->
+								<div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare"> <span class="bds_mores">分享到<b></b></span></div>
+								<script type="text/javascript" id="bdshare_js" data="type=tools" ></script> 
+								<script type="text/javascript" id="bdshell_js"></script> 
+								<script type="text/javascript">
+									var bds_config = {'bdText':'日志标题-波奇网'};
+									document.getElementById("bdshell_js").src = "http://share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+									document.getElementById("search").parentNode.style.zIndex = 9999;
+							</script> 
+					   <!-- Baidu Button END -->
+					</div>
+					</div>
+					<div class="blog_comment">
+						<!--评论列表开始-->
+						<div class="comment_list" id="commentlist" pnb="{$total}" wid="{$diary.id}" uavatar="{$user.avatar}" unickname="{$user.nickname}">
+							<php>foreach($diary['commentList'] as $ck => $comment) { </php>
+							<dl class="viw">
+								<dt unm="{$comment.nickname}" uid="{$comment.uid}" cid="{$comment.id}"><a href="<php>echo get_rewrite_url('Index', 'index', $comment['uid'])</php>"><img src="{$comment.avatar}" width="50" height="50" /></a></dt>
+								<dd><a href="<php>echo get_rewrite_url('Index', 'index', $comment['uid'])</php>">{$comment.nickname}</a><php>if(isset($comment['reply_uid'])) { </php> 回复 <a href="<php>echo get_rewrite_url('Index', 'index', $comment['uid'])</php>" target="_blank">{$comment.reply_nickname}</a> <php>} </php>：
+								<php>echo remove_xss($comment['content']);</php>
+									<p class="info tr"><span class="date">{$comment.format_dateline}</span>
+									<php>if($user['uid'] == $comment['uid']){</php>
+										<a class="bqinfodel" href="/UcDiary/ajaxDeleteDiaryComment/cid/{$comment.id}">删除</a><i class="wline">|</i>
+									<php>}</php>
+									<a class="bqrepeat" href="#">回复</a>
+									</p>
+								</dd>
+							</dl>
+							<php>} </php>
+						</div>
+						<!--评论列表结束--> 
+                    
+						<!--分页开始-->
+						<div class="page_wrap page_wrap2">
+							<div class="showpage">{$page}</div>
+						</div>
+						<!--分页结束--> 
+						 <a name="Reply"></a>
+						 <!--评论输入框开始-->
+						<div class="input_box">
+							<input id="publishToken" name="token" type="hidden" value="{$token}">
+							<textarea name="textarea2" id="bqcom1" cols="45" rows="5" replynickname="<php>if(!empty($replyUser)){echo $replyUser['nickname'];}</php>">说点什么吧……</textarea>
+							<span class="num" id="bqtexsub">1/140</span><!-- 超出字数 addClass('warning') --> 
+						</div>
+						<div class="send_fun">
+							<div class="emot"> <a class="face"id="bqbut1" href="#" title="插入表情">表情</a></div>
+							<div class="pub"> <a class="submit_btn" href="#" id="bqemoSubmit1">评论</a> </div>
+						</div>
+						<!--评论输入框结束--> 
+                    </div>
+                </div>
+                <!--中间列表结束--> 
+
+				<!--右侧开始-->
+                <div class="blog_right"> 
+					<php>if(count($moreDiaries)>0){</php>
+                    <!--TA的更多日记开始-->
+					<div class="hot_diary">
+                        <div class="hd">
+                            <h3>TA的更多日记</h3>
+                        </div>
+                        <div class="bd">
+                            <ul>
+								<php>foreach($moreDiaries as $key=>$val){</php>
+									<li><a href="<php>echo get_rewrite_url('UcDiary','diary',$val['id']);</php>">{$val['short_title']}</a></li>
+								<php>}</php>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--TA的更多日记结束-->
+					<php>}</php>
+					<!--热门宠物日记开始-->
+					<include file="Public:right_diary"/>
+					<!--热门宠物日记结束-->                    
+                </div>
+                <!--右侧结束--> 
+            </div>
+            
+        </div>
+        <!--右侧结束--> 
+    </div>
+</div>
+<!--主体部分结束--> 
+<script>
+	BQ.load("UCBQExp,UCDiary",function(){
+         BQ.UCDiary('otherDiary',{'I_DIR':'<php>echo C("I_DIR");</php>'}).exec();
+    });
+</script>
+<!--底部开始-->
+<include file="Public:footer"/>
+<!--底部结束-->

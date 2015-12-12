@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>添加广告</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+    <script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+    <script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+</head>
+<body>
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li><a href="__ROOT__/iadmin.php/BkExpert/index"><span>用户列表</span></a></li>
+        <li class="current">
+            <?php if($action == 'editok') {?>
+                    <a href="__ROOT__/iadmin.php/BkExpert/addMember/action/edit/uid/<php>echo $uid;</php>"><span><php>echo $lang;</php></span></a>
+            <?php } else {?>
+                    <a href="__ROOT__/iadmin.php/BkExpert/addMember/action/add"><span><php>echo $lang;</php></span></a>
+            <?php } ?>
+        </li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+
+    <form action='__ROOT__/iadmin.php/BkExpert/addMember' method='post' enctype="multipart/form-data" id='formsm'>
+        <input type="hidden" value='{$action}' name="action" />
+        <input type="hidden" value='{$uid}' name="data[uid]" />
+        <!--广告开始-->
+        <div class="common_tb">
+            <ul>
+               <?php if($action == 'addok') {?>
+                <li>
+                    <span class="text">用户ID：</span>
+                    <span class="input_area">
+                         <input name="data[uid]" type="text" value='' class="input_bk" id="" />
+                    </span>
+                </li>
+                <li>
+                    <span class="text">角色：</span>
+                <span class="input_area">
+                <select class="select_bk" name="data[level]" id="select">
+                    <option value='1'>系统管理员</option>
+                    <option value='3'>小编</option>
+                    <option value='5'>专家</option>
+                </select>
+                </span>
+                </li>
+                <?php } else if($action == 'editok') {?>
+                <li>
+                    <span class="text">角色：</span>
+                <span class="input_area" >
+                    <input type="hidden" value='<php>echo $arrInfo[0]['level'];</php>' name="data[level]" />
+                   <php>if($arrInfo[0]['level'] == 1) {echo '系统管理员';}else if($arrInfo[0]['level'] == 5) {echo '专家';}else if($arrInfo[0]['level'] ==3){echo '小编';}</php>
+                </span>
+                </li>
+                <li>
+                    <span class="text">名称：</span>
+                <span class="input_area">
+                    <input name="data[name]" type="text" value="{$arrInfo[0]['name']}" class="input_bk" id="" />
+                </span>
+                </li>
+                <?php }?>
+				<li>
+                    <span class="text">擅长科目：</span>
+                <span class="input_area">
+                    <input name="data[skill_subject]" type="text" value="{$arrInfo[0]['skill_subject']}" class="input_bk" id="" />
+                </span>
+                </li>
+                <li>
+                <li>
+                    <span class="text">简介：</span>
+                <span class="input_area">
+                    <textarea cols="60" rows="10" name="data[introduce]" >{$arrInfo[0]['introduce']}</textarea>
+                </span>
+                </li>
+                <li>
+                    <span class="text">&nbsp;</span>
+                    <span class="input_area"><a class="submit_btn" id='formsmbut' href="javascript:void(0);" title="确定"></a><a class="cancel_btn" onClick="return backfun('/iadmin.php/BkExpert/index');" href="javascript:void(0);" title="取消"></a> </span>
+                </li>
+            </ul>
+        </div>
+        <!--广告结束-->
+    </form>
+	<script type='text/javascript' src='__PUBLIC__/Js/bq.js'></script>
+	<script type='text/javascript'>
+       var action = '{$action}';
+       var role = '{$arrInfo[0]['level']}';
+		BQ.load("BQAjaxUP",function(){
+			BQ.BQAjaxUP('AjaxUP',{but:$('.addfield'),action:'/iadmin.php/Upload/imageUpload',data:{'type':'expert'},onSubmit:function(file,ext){
+				if(ext && /^(jpg|jpeg|png|gif)$/.test(ext)){
+					//console.log('上传中...');
+				}else{
+					alert('不支持非图片格式！');
+					return false;
+				}
+				},onComplete:function(file,response){
+
+					response = eval("("+response+")");
+					//返回json数据
+					if(response.status == 'ok'){
+                        $('#fileField').val(response.imgpath);
+                        $('#minimg').html('<img src="'+response.domain+response.imgpath+'" ">')
+                    }else if(response.status == 'noselect'){
+						alert('服务器错误、上传图片为空值。');
+					}else if(response.status == 'login'){
+						alert('请登录后操作！');
+					}else{
+						alert('上传失败，请保持图片不超过2M');
+					}
+				}});
+		}) ;
+       $('#formsmbut').click(function(e){
+           //检测角色
+           //编辑
+           if(action == 'editok') {
+               //获取编辑角色
+               if(role == '3')  {
+//                        console.log(response);return;
+                   //小编提交表单
+                   $.post($("#formsm").attr('action'),$("#formsm").serialize(),function(d){
+                       if(d.status == 'true') {
+                           alert('编辑成功');
+                           location.href='/iadmin.php/BkExpert/index';
+                       }else {
+                           alert('编辑失败');
+                           return;
+                       }
+                   },'json');
+                   return ;
+               }
+           } else {
+               //获取角色
+               role = $('#select').val();
+               if(role == 3)  {
+                   //小编提交表单
+                   $.post($("#formsm").attr('action'),$("#formsm").serialize(),function(d){
+                       if(d.status == 'true') {
+                           alert('创建成功');
+                           location.href='/iadmin.php/BkExpert/index';
+                       }else if(d.status == 'emptyuser') {
+                           alert('uid对应的用户不存在');
+                           return;
+                       }else if(d.status == 'levelerror'){
+                           alert('角色必须是数字');
+                           return;
+                       }else {
+                           alert('创建失败');
+                           return;
+                       }
+                   },'json');
+                   return ;
+//专家
+               }
+           }
+           //提交 form 表单
+           $.post($("#formsm").attr('action'),$("#formsm").serialize(),function(d){
+               if(d.status == 'true') {
+                   alert('操作成功');
+                   location.href='/iadmin.php/BkExpert/index';
+               } else if(d.status == 'emptyphoto') {
+                   alert('图片不能为空');
+               } else {
+                   alert('操作失败');
+                   history.back(-1);
+               }
+
+           },'json');
+       });
+       //其他情况都是 默认专家图片必须上传
+	</script>
+
+</div>
+</body>
+</html>

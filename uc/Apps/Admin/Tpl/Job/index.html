@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>招聘管理</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Js/library/ui/static/calendar/calendar.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type="text/javascript" src="__PUBLIC__/Js/bq.js"></script>
+<script type='text/javascript' src='__PUBLIC__/Js/library/ui/form/calender.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+<style type='text/css'>
+.popup_layer . {
+	display:none;
+}
+.index_a1{position:relative;}
+.index_a1 a{display:block;margin:auto;}
+.index_a1 em{
+	<if condition="$a eq 1">background:url("__PUBLIC__/Admin/Images/jobline.png") no-repeat;<elseif condition="$a eq 2"/>background:url("__PUBLIC__/Admin/Images/jobline1.png") no-repeat;</if>
+    height: 16px;
+    position: absolute;
+    right: 66px;
+    top: 5px;
+    width: 10px;
+}
+.index_a2 {position:relative;}
+.index_a2 a{display:block;margin:auto;}
+.index_a2 em{
+	<if condition="$b eq 1">background:url("__PUBLIC__/Admin/Images/jobline.png") no-repeat;<elseif condition="$b eq 2"/>background:url("__PUBLIC__/Admin/Images/jobline1.png") no-repeat;</if>
+    height: 16px;
+    position: absolute;
+    right: 33px;
+    top: 5px;
+    width: 10px;
+}
+</style>
+</head>
+<body>
+<include file="Index:isdelete"/>
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li class="current"><a href="__ROOT__/iadmin.php/Job/index"><span>职位列表</span></a></li>
+        <li class="btn"><a class="add_btn"  href="__ROOT__/iadmin.php/Job/addJob">新增职位</a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+    <!--搜索开始-->
+    <div class="search_box">
+        <div class="search">
+			<form action='__ROOT__/iadmin.php/Job/index' method="get">
+			<div class="title">
+                <span class="txt">职位类型：</span>
+                <select name="data[type]">
+				  <option value="0">不限</option>
+                    <volist name='typeList' id='vo'>
+                        <option value="{$vo.id}"  <if condition="$type eq $vo.id ">selected="selected"</if> >{$vo.type_name}</option>
+                    </volist>
+                </select>
+            </div>
+			<div class="title">
+                <span class="txt">工作地点：</span>
+                <select name="data[city]">
+				  <option value="0">不限</option>
+                    <volist name='cityList' id='vo'>
+                        <option value="{$vo.id}"  <if condition="$city eq $vo.id ">selected="selected"</if> >{$vo.city_name}</option>
+                    </volist>
+                </select>
+            </div>
+			<div class="title">
+                <span class="txt">状态：</span>
+                <select name="data[is_show]">
+					<option value="0">不限</option>
+					<option value="1" <if condition="$is_show eq 1">selected="selected"</if> >正常</option>
+					<option value="2" <if condition="$is_show eq 2">selected="selected"</if> >暂停</option>
+                </select>
+            </div>
+			<div class="title">
+                <span class="txt">是否推荐：</span>
+                <select name="data[is_recommend]">
+					<option value="0">不限</option>
+					<option value="1" <if condition="$is_recommend eq 1">selected="selected"</if> >是</option>
+					<option value="2" <if condition="$is_recommend eq 2">selected="selected"</if> >否</option>
+                </select>
+            </div>
+			<div class="title">
+                <span class="txt">是否常招：</span>
+                <select name="data[is_resident]">
+					<option value="0">不限</option>
+					<option value="1" <if condition="$is_resident eq 1">selected="selected"</if> >是</option>
+					<option value="2" <if condition="$is_resident eq 2">selected="selected"</if> >否</option>
+                </select>
+            </div>
+            <div class="date">
+                <span class="txt">发布时间：</span>
+                <input class="input_date calendar" type="text" name="data[start_time]" id="calender1" value="{$start_time}"/>
+                <span class="txt">至</span>
+                <input class="input_date calendar" type="text" name="data[end_time]" id="calender2" value="{$end_time}"/>
+            </div>
+			<div class="btn_box"><input type='button' class='calendarClear' name='' value='清除时间'></div>
+			<div class="title">
+                <span class="txt">职位关键字：</span>
+                <input name="data[name]" type="text" class="input_txt" id="clearText_1" val='输入职位关键字' value="<?php if($name){echo $name;}else{echo '输入职位关键字';}?>"/>
+            </div>
+            <div class="btn_box"><a class="search_btn" onClick='submitFun();' href="javascript:void(0);" title="查询">查询</a></div>
+			</form>
+        </div>
+    </div>
+    <!--搜索结束-->
+ 
+    <!--数据列表开始-->
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+        <thead>
+            <tr>
+                <th width="5%">选中</th>
+                <th width="5%">编号</th>
+                <th width="15%">职位名称</th>
+				<th width="10%">职位类型</th>
+                <th width="10%">工作地点</th>
+				<th class="index_a1" width="15%">
+					<a href="{$turl}">发布时间</a>
+					<em style="display:block;"></em>
+				</th>
+				<th class="index_a2" width="10%">
+					<a href="{$nurl}">招聘人数</a>
+					<em style="display:block;"></em>
+				</th>
+				<th width="5%">状态</th>
+				<th width="5%">是否推荐</th>
+				<th width="5%">是否常招</th>
+                <th width="15%">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+			<volist name="jobList" id="vo">
+			<tr>
+                <th><input class="" type="checkbox" value="{$vo.id}" id="blogID_{$vo.id}" name="blogID"></th>
+                <th>{$vo.id}</th>
+                <th>{$vo.job_name}</th>
+                <th>{$vo.type_name}</th>
+                <th title="{$vo.city_name}">{$vo.city_name}</th>
+				<th>{$vo.update_time}</th>
+				<th>{$vo.invite_number}</th>
+				<th><if condition="$vo.is_show eq 0">正常<else/>暂停</if></th>
+				<th><if condition="$vo.is_recommend eq 1">是<else/>否</if></th>
+				<th><if condition="$vo.is_resident eq 1">是<else/>否</if></th>
+                <th><a href="__ROOT__/iadmin.php/Job/addJob?id={$vo.id}">编辑</a>
+                    | 
+					<a href="javascript:;" onCLick="return urlDelete(2,'__ROOT__/iadmin.php/Job/ajaxDelJob?ajaxDelJob={$vo.id}&page=<?php echo $page;?>');">删除</a>
+                </th>
+            </tr>
+			</volist>
+		</tbody>
+        <tfoot>
+            <tr>
+                <td colspan="11" align="left">
+					<label><input class="select_all" type="checkbox" value="全选" id="blogID" name="blogID">全选</label> 
+					<a class="del_btn" actions='31' controllers='17' href="#" title="删除"></a>
+				</td>
+            </tr>
+        </tfoot>
+    </table>
+    <!--数据列表结束-->
+    
+    <!--分页开始-->
+    <?php echo $pageHtml;?>
+    <!--分页结束-->
+    <!--<input type='hidden' value='<?php echo $url;?>' id='url'>-->
+</div>
+</body>
+</html>
+<script type='text/javascript'>
+window.onload=function(){
+		var url = $('#url').val();
+		if(url){
+			var maxCode=parent.oMapReloadInfo['maxCode'];
+			var code=parent.oMapReloadInfo['code'];
+			var difference = maxCode-code;
+			if(difference==1){
+				parent.oMapReloadInfo['maxCode']=maxCode+1;
+				location.href=url;
+			}else{
+				parent.oMapReloadInfo['code']=code+1;
+			}
+		}
+}
+BQ.ui.form.Calender('#calender1');
+BQ.ui.form.Calender('#calender2');
+</script>

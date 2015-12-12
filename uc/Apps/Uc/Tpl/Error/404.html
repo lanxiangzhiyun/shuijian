@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>波奇网-您访问的页面可能已被删除或暂时不可用</title>
+<link rel="stylesheet" type="text/css" href="/Public/Css/global.css"/>
+<link rel="stylesheet" type="text/css" href="/Public/Css/main.css"/>
+</head>
+<body>
+<div class="global_header"> 
+    <!--头部导航开始-->
+    <include file="Public:top"/>
+    <!--头部导航结束--> 
+    
+    <!--nav导航开始-->
+    <include file="Public:header"/>
+    <!--nav导航结束--> 
+</div>
+<!--主体部分开始-->
+<div class="main404">
+    <p class="title">啊哦，出错了~</p>
+    <p class="info">您访问的页面可能已被删除或暂时不可用</p>
+    <p class="youcan">您可以：</p>
+    <p class="go"><a href="<php>echo get_rewrite_url('Index', 'index', $uid);</php>">去TA的首页逛逛吧</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">关闭本页</a></p>
+</div>
+<!--主体部分结束--> 
+
+<!--底部开始-->
+<include file="Public:footer"/>
+<!--底部结束-->

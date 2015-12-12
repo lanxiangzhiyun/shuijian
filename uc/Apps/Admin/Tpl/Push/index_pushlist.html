@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>推送内容列表</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+</head>
+<body>
+<div class="common_tab">
+    <ul>
+        <li class="current"><a href="__ROOT__/iadmin.php/Push/indexPushlist"><span>论坛推荐</span></a></li>
+        <li><a href="__ROOT__/iadmin.php/Push/indexPush"><span>论坛推荐添加</span></a></li>
+		<li><a href="__ROOT__/iadmin.php/Push/xmlList"><span>xml列表页</span></a></li>
+		<li><a href="__ROOT__/iadmin.php/Push/createXml"><span>创建站点xml</span></a></li>
+    </ul>
+</div>
+<div id="wrap" >
+	<form id="fm" name="fm" method="post" action="__ROOT__/iadmin.php/Push/indexPushlist" enctype="multipart/form-data">
+			<!--搜索开始-->
+			<div class="search_box">
+				<div class="search">
+					<div class="title">
+						<span class="txt">选择版块：</span>
+						<select name="s_type">
+					<option value="0" <?php if(empty($type)) { ?>selected="selected"<?php } ?> >全部</option>
+					<?php foreach($typelist as $tk => $s_type) { ?>	    
+					   <option value="{$tk}" <?php if($tk == $type) { ?>selected="selected"<?php } ?> >{$s_type}</option>
+					<?php } ?>
+				 </select>
+					</div>
+				   
+					<div class="nick">
+						<span class="txt">输入标题：</span>
+						<input type="text" name="s_subject" style="width:200px;" value="{$subject}" class="input_txt">
+					</div>
+					<div class="btn_box"><a class="search_btn" onClick='submitFun();' href="javascript:void(0);" title="查询">查询</a><font color="Red">[模糊匹配]</font></div>
+				</div>
+			</div>
+			<!--搜索结束-->
+			</form>
+  <div class="content"> 
+    
+    <div class="block">
+      <div class="top"><span></span></div>
+      <div class="main">
+	  <div class="bd box">
+        <div class="content_box">
+		 
+		  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+		    <tr>
+			  <th>序号</th>
+			  <th>版块</th>
+			  <th>标题</th>
+			  <th>发布时间</th>
+			  <th>操作</th>
+			</tr>
+			<?php foreach($pushlist as $rk=>$push) { ?>
+ 			<tr>
+			  <td>{$push.bid}</td>
+			  <td>{$push.typename}</td>
+			  <td>{$push.subject}</td>
+			  <td>{$push.postdate}</td>
+			  <td><a name="btnEdit" href="javascript:editPush('edit',{$push.bid});">修改</a> | <a onclick="if(confirm('确定删除吗?')){return true;}else{return false;}" href="__ROOT__/iadmin.php/Push/indexPush/act/del/bid/{$push.bid}">删除</a></td>
+            </tr>
+			<?php } ?>
+		  </table>
+		  <div class="pager"> <?php echo $pageHtml;?></div>
+		  <input type="hidden" id="type" name="type" value="{$type}">
+
+        </div>
+      </div>
+    </div>
+   
+  </div>
+</div>
+<script type="text/JavaScript">
+
+
+/**
+ * 编辑推送内容
+ */
+function editPush(act, bid) {
+	var param = "act/"+act+"/bid/"+bid;	
+	//搜索参数：类型
+	var s_type = $('select[name=s_type] option:selected').val();
+	param = param + "/typeid/" + s_type;
+	
+	//搜索参数：标题
+	var s_subject = $('input[name=s_subject]').val();	
+	if(s_subject != "") {
+		param = param + "/subject/" + encodeURI(s_subject);
+	}
+	window.location.href='__ROOT__/iadmin.php/Push/editPush/'+param;
+
+}
+</script>
+
+</body>
+</html>

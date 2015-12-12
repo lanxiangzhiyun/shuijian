@@ -1,0 +1,351 @@
+[ 2015-11-21T09:09:55+08:00 ] 127.0.0.1 /newadmin/index.php/Admin/Sys/admin_list
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000375s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000609s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000715s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0049s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0049s ]
+SQL: SELECT `condition`,`name` FROM `mr_auth_rule` WHERE `id` IN ('1','2','6','10','19','26','3','4','5','15','16','17','18','7','8','11','12','25','9','13','14','22','23','24','27','29','30','28','31') AND `type` = 1 AND `status` = 1  [ RunTime:0.0028s ]
+SQL: SHOW COLUMNS FROM `mr_admin` [ RunTime:0.0051s ]
+NOTIC: [8] Undefined variable: map E:\wamp\www\newadmin\Application\Admin\Controller\SysController.class.php 第 65 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `mr_admin` LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined variable: map E:\wamp\www\newadmin\Application\Admin\Controller\SysController.class.php 第 68 行.
+NOTIC: [2] Invalid argument supplied for foreach() E:\wamp\www\newadmin\Application\Admin\Controller\SysController.class.php 第 68 行.
+NOTIC: [8] Undefined variable: map E:\wamp\www\newadmin\Application\Admin\Controller\SysController.class.php 第 73 行.
+SQL: SELECT * FROM `mr_admin` ORDER BY admin_id LIMIT 0,10   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0036s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='2' and g.status='1' )  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0036s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='3' and g.status='1' )  [ RunTime:0.0004s ]
+NOTIC: [8] Undefined offset: 0 E:\wamp\www\newadmin\Application\Admin\Controller\SysController.class.php 第 77 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000551s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000904s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0045s ]
+SQL: SELECT `id`,`name`,`title`,`css` FROM `mr_auth_rule` WHERE ( pid=0 AND status=1 ) ORDER BY sort  [ RunTime:0.0005s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 1 AND `status` = 1  [ RunTime:0.0005s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 7 AND `status` = 1  [ RunTime:0.0005s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 27 AND `status` = 1  [ RunTime:0.0005s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 35 AND `status` = 1  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 28 AND `status` = 1  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 22 AND `status` = 1  [ RunTime:0.0004s ]
+NOTIC: [8] Use of undefined constant admin_open - assumed 'admin_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\4180b128332bb55c64012cd90a13c6c1.php 第 501 行.
+NOTIC: [8] Use of undefined constant admin_open - assumed 'admin_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\4180b128332bb55c64012cd90a13c6c1.php 第 501 行.
+NOTIC: [8] Use of undefined constant admin_open - assumed 'admin_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\4180b128332bb55c64012cd90a13c6c1.php 第 501 行.
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 15 AND `status` = 1  [ RunTime:0.0005s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.140659s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.140836s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001008s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001185s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001379s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001563s ]
+
+[ 2015-11-21T09:09:58+08:00 ] 127.0.0.1 /newadmin/index.php/Admin/Sys/admin_list_add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000038s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000882s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001068s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001257s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group` [ RunTime:0.0022s ]
+SQL: SELECT * FROM `mr_auth_group`  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000156s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000253s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0023s ]
+SQL: SELECT `id`,`name`,`title`,`css` FROM `mr_auth_rule` WHERE ( pid=0 AND status=1 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0019s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0020s ]
+SQL: SELECT `condition`,`name` FROM `mr_auth_rule` WHERE `id` IN ('1','2','6','10','19','26','3','4','5','15','16','17','18','7','8','11','12','25','9','13','14','22','23','24','27','29','30','28','31') AND `type` = 1 AND `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 7 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 27 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 35 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 28 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 22 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 15 AND `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.044966s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.045046s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000367s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000429s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000584s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000647s ]
+
+[ 2015-11-21T09:10:02+08:00 ] 127.0.0.1 /newadmin/index.php/Admin/Plug/plug_link_list/s/31.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000018s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000481s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000541s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000630s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0019s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0018s ]
+SQL: SELECT `condition`,`name` FROM `mr_auth_rule` WHERE `id` IN ('1','2','6','10','19','26','3','4','5','15','16','17','18','7','8','11','12','25','9','13','14','22','23','24','27','29','30','28','31') AND `type` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_plug_linktype` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `mr_plug_linktype`  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_plug_link` [ RunTime:0.0021s ]
+NOTIC: [8] Undefined variable: map E:\wamp\www\newadmin\Application\Admin\Controller\PlugController.class.php 第 20 行.
+SQL: SELECT * FROM `mr_plug_link` ORDER BY plug_link_addtime desc  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_plug_linktype` [ RunTime:0.0017s ]
+SQL: SELECT * FROM `mr_plug_linktype` WHERE ( 1=1 AND plug_linktype_id='1' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_plug_linktype` WHERE ( 1=1 AND plug_linktype_id='11' ) LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000184s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000272s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name`,`title`,`css` FROM `mr_auth_rule` WHERE ( pid=0 AND status=1 ) ORDER BY sort  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 7 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 27 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 35 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 28 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 22 AND `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant plug_link_open - assumed 'plug_link_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\82583699a88eb22f70c9b6a6956a9da7.php 第 508 行.
+NOTIC: [8] Use of undefined constant plug_link_open - assumed 'plug_link_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\82583699a88eb22f70c9b6a6956a9da7.php 第 508 行.
+NOTIC: [8] Undefined variable: page E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\82583699a88eb22f70c9b6a6956a9da7.php 第 523 行.
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 31 AND `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.030752s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.030839s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000396s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000472s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000493s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000568s ]
+
+[ 2015-11-21T09:14:05+08:00 ] 127.0.0.1 /newadmin/index.php/Admin/Sys/admin_list
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000315s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000453s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000528s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0020s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0018s ]
+SQL: SELECT `condition`,`name` FROM `mr_auth_rule` WHERE `id` IN ('1','2','6','10','19','26','3','4','5','15','16','17','18','7','8','11','12','25','9','13','14','22','23','24','27','29','30','28','31') AND `type` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_admin` [ RunTime:0.0017s ]
+NOTIC: [8] Undefined variable: map E:\wamp\www\newadmin\Application\Admin\Controller\SysController.class.php 第 65 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `mr_admin` LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined variable: map E:\wamp\www\newadmin\Application\Admin\Controller\SysController.class.php 第 68 行.
+NOTIC: [2] Invalid argument supplied for foreach() E:\wamp\www\newadmin\Application\Admin\Controller\SysController.class.php 第 68 行.
+NOTIC: [8] Undefined variable: map E:\wamp\www\newadmin\Application\Admin\Controller\SysController.class.php 第 73 行.
+SQL: SELECT * FROM `mr_admin` ORDER BY admin_id LIMIT 0,10   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0015s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='2' and g.status='1' )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0015s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='3' and g.status='1' )  [ RunTime:0.0002s ]
+NOTIC: [8] Undefined offset: 0 E:\wamp\www\newadmin\Application\Admin\Controller\SysController.class.php 第 77 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000119s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000191s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0017s ]
+SQL: SELECT `id`,`name`,`title`,`css` FROM `mr_auth_rule` WHERE ( pid=0 AND status=1 ) ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 7 AND `status` = 1  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 27 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 35 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 28 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 22 AND `status` = 1  [ RunTime:0.0001s ]
+NOTIC: [8] Use of undefined constant admin_open - assumed 'admin_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\4180b128332bb55c64012cd90a13c6c1.php 第 501 行.
+NOTIC: [8] Use of undefined constant admin_open - assumed 'admin_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\4180b128332bb55c64012cd90a13c6c1.php 第 501 行.
+NOTIC: [8] Use of undefined constant admin_open - assumed 'admin_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\4180b128332bb55c64012cd90a13c6c1.php 第 501 行.
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 31 AND `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.024677s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.024746s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000408s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000470s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000489s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000552s ]
+
+[ 2015-11-21T09:14:08+08:00 ] 127.0.0.1 /newadmin/index.php/Admin/Plug/plug_link_list/s/31.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000035s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000850s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001083s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001258s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0019s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0016s ]
+SQL: SELECT `condition`,`name` FROM `mr_auth_rule` WHERE `id` IN ('1','2','6','10','19','26','3','4','5','15','16','17','18','7','8','11','12','25','9','13','14','22','23','24','27','29','30','28','31') AND `type` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_plug_linktype` [ RunTime:0.0015s ]
+SQL: SELECT * FROM `mr_plug_linktype`  [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `mr_plug_link` [ RunTime:0.0016s ]
+NOTIC: [8] Undefined variable: map E:\wamp\www\newadmin\Application\Admin\Controller\PlugController.class.php 第 20 行.
+SQL: SELECT * FROM `mr_plug_link` ORDER BY plug_link_addtime desc  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_plug_linktype` [ RunTime:0.0016s ]
+SQL: SELECT * FROM `mr_plug_linktype` WHERE ( 1=1 AND plug_linktype_id='1' ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_plug_linktype` WHERE ( 1=1 AND plug_linktype_id='11' ) LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000169s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000249s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0019s ]
+SQL: SELECT `id`,`name`,`title`,`css` FROM `mr_auth_rule` WHERE ( pid=0 AND status=1 ) ORDER BY sort  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 7 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 27 AND `status` = 1  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 35 AND `status` = 1  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 28 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 22 AND `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant plug_link_open - assumed 'plug_link_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\82583699a88eb22f70c9b6a6956a9da7.php 第 508 行.
+NOTIC: [8] Use of undefined constant plug_link_open - assumed 'plug_link_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\82583699a88eb22f70c9b6a6956a9da7.php 第 508 行.
+NOTIC: [8] Undefined variable: page E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\82583699a88eb22f70c9b6a6956a9da7.php 第 523 行.
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 31 AND `status` = 1  [ RunTime:0.0001s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.027659s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.027734s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000341s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000403s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000506s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000569s ]
+
+[ 2015-11-21T09:17:46+08:00 ] 127.0.0.1 /newadmin/index.php/Admin/Sys/admin_list/s/15.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000036s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000840s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001128s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001318s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0024s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0021s ]
+SQL: SELECT `condition`,`name` FROM `mr_auth_rule` WHERE `id` IN ('1','2','6','10','19','26','3','4','5','15','16','17','18','7','8','11','12','25','9','13','14','22','23','24','27','29','30','28','31') AND `type` = 1 AND `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `mr_admin` [ RunTime:0.0022s ]
+NOTIC: [8] Undefined variable: map E:\wamp\www\newadmin\Application\Admin\Controller\SysController.class.php 第 65 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `mr_admin` LIMIT 1   [ RunTime:0.0001s ]
+NOTIC: [8] Undefined variable: map E:\wamp\www\newadmin\Application\Admin\Controller\SysController.class.php 第 68 行.
+NOTIC: [2] Invalid argument supplied for foreach() E:\wamp\www\newadmin\Application\Admin\Controller\SysController.class.php 第 68 行.
+NOTIC: [8] Undefined variable: map E:\wamp\www\newadmin\Application\Admin\Controller\SysController.class.php 第 73 行.
+SQL: SELECT * FROM `mr_admin` ORDER BY admin_id LIMIT 0,10   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0020s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='2' and g.status='1' )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0020s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='3' and g.status='1' )  [ RunTime:0.0002s ]
+NOTIC: [8] Undefined offset: 0 E:\wamp\www\newadmin\Application\Admin\Controller\SysController.class.php 第 77 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000167s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000271s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0029s ]
+SQL: SELECT `id`,`name`,`title`,`css` FROM `mr_auth_rule` WHERE ( pid=0 AND status=1 ) ORDER BY sort  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 7 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 27 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 35 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 28 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 22 AND `status` = 1  [ RunTime:0.0001s ]
+NOTIC: [8] Use of undefined constant admin_open - assumed 'admin_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\4180b128332bb55c64012cd90a13c6c1.php 第 501 行.
+NOTIC: [8] Use of undefined constant admin_open - assumed 'admin_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\4180b128332bb55c64012cd90a13c6c1.php 第 501 行.
+NOTIC: [8] Use of undefined constant admin_open - assumed 'admin_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\4180b128332bb55c64012cd90a13c6c1.php 第 501 行.
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 15 AND `status` = 1  [ RunTime:0.0001s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.031993s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.032073s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000356s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000418s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000464s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000530s ]
+
+[ 2015-11-21T09:17:47+08:00 ] 127.0.0.1 /newadmin/index.php/Admin/Sys/admin_list_edit/admin_id/1.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000866s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000988s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001143s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `mr_auth_group`  [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `mr_admin` [ RunTime:0.0017s ]
+SQL: SELECT * FROM `mr_admin` WHERE `admin_id` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0016s ]
+SQL: SELECT `group_id` FROM `mr_auth_group_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0001s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000122s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000201s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0019s ]
+SQL: SELECT `id`,`name`,`title`,`css` FROM `mr_auth_rule` WHERE ( pid=0 AND status=1 ) ORDER BY sort  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0019s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0016s ]
+SQL: SELECT `condition`,`name` FROM `mr_auth_rule` WHERE `id` IN ('1','2','6','10','19','26','3','4','5','15','16','17','18','7','8','11','12','25','9','13','14','22','23','24','27','29','30','28','31') AND `type` = 1 AND `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 7 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 27 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 35 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 28 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 22 AND `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant id - assumed 'id' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\ccf0fd139b403f8d88ca289d9a24ac51.php 第 531 行.
+NOTIC: [8] Use of undefined constant id - assumed 'id' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\ccf0fd139b403f8d88ca289d9a24ac51.php 第 531 行.
+NOTIC: [8] Use of undefined constant admin_open - assumed 'admin_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\ccf0fd139b403f8d88ca289d9a24ac51.php 第 585 行.
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 15 AND `status` = 1  [ RunTime:0.0001s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.035351s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.035445s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000407s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000472s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000544s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000612s ]
+
+[ 2015-11-21T14:36:49+08:00 ] 127.0.0.1 /newadmin/index.php/Admin/Sys/admin_list_edit/admin_id/1.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000802s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000835s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000971s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `mr_auth_group`  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_admin` [ RunTime:0.0024s ]
+SQL: SELECT * FROM `mr_admin` WHERE `admin_id` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0023s ]
+SQL: SELECT `group_id` FROM `mr_auth_group_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0001s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000120s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000202s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0026s ]
+SQL: SELECT `id`,`name`,`title`,`css` FROM `mr_auth_rule` WHERE ( pid=0 AND status=1 ) ORDER BY sort  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `mr_auth_group_access` [ RunTime:0.0020s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM mr_auth_group_access a INNER JOIN mr_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `mr_auth_rule` [ RunTime:0.0022s ]
+SQL: SELECT `condition`,`name` FROM `mr_auth_rule` WHERE `id` IN ('1','2','6','10','19','26','3','4','5','15','16','17','18','7','8','11','12','25','9','13','14','22','23','24','27','29','30','28','31') AND `type` = 1 AND `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 1 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 7 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 27 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 35 AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 28 AND `status` = 1  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 22 AND `status` = 1  [ RunTime:0.0001s ]
+NOTIC: [8] Use of undefined constant id - assumed 'id' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\ccf0fd139b403f8d88ca289d9a24ac51.php 第 531 行.
+NOTIC: [8] Use of undefined constant id - assumed 'id' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\ccf0fd139b403f8d88ca289d9a24ac51.php 第 531 行.
+NOTIC: [8] Use of undefined constant admin_open - assumed 'admin_open' E:\wamp\www\newadmin\Application\Runtime\Cache\Admin\ccf0fd139b403f8d88ca289d9a24ac51.php 第 585 行.
+SQL: SELECT * FROM `mr_auth_rule` WHERE `pid` = 15 AND `status` = 1  [ RunTime:0.0001s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.032604s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.032684s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000559s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000627s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000497s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000564s ]
+

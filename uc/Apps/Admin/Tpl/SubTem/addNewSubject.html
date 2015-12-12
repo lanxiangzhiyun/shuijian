@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html>
+<head>  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="__PUBLIC__/Admin/Css/base.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/BaikeModule.css" />
+    <script src="http://a.boqiicdn.com/Js1/core/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Js/library/ui/static/calendar/calendar.css"/>
+    <script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/bq.js"></script>
+    <script type='text/javascript' src='__PUBLIC__/Js/library/ui/form/calender.js'></script>
+    <script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+    <script src="__PUBLIC__/Admin/Js/jquery.form.js"></script>
+    <script src="__PUBLIC__/Admin/Js/upload.js"></script>
+    <script src="__PUBLIC__/Admin/Js/subtem/BaikeModule.js"></script>
+</head> 
+<body>
+    <!-- 导航start -->
+    <div class="common_tab">
+        <ul>
+            <li><a href="__ROOT__/iadmin.php/SubTem/index"><span>专题管理</span></a></li>
+            <li><a class="" href="__ROOT__/iadmin.php/SubTem/addSubject">新增专题</a></li>
+            <li><a href="__ROOT__/iadmin.php/SubTem/newIndex"><span>新专题管理</span></a></li>
+            <li class="current"><a class="add_btn" href="__ROOT__/iadmin.php/SubTem/addNewSubject<php>if($id){</php>?id={$id}<php>}</php>">{$tip}</a></li>
+        </ul>
+    </div>
+    <!-- 导航end -->
+    
+    <!-- 内容start -->
+    <div class="main_table">
+        <form action="/iadmin.php/SubTem/saveNewSubject" id="pageform" name="pageform" method="post">
+		<input type="hidden" name="tem[id]" value="{$id}" />
+        <!-- banner，背景设置开始 -->
+        <table>
+			<tr>
+                <th>标题<em class="colorred">*</em></th>
+                <td colspan="3">
+                    <input type="text" value="{$temInfo.title}" name="tem[title]" class="themecolor noempty" data-empty="专题名称" >
+                </td>
+            </tr>
+            <tr>
+                <th>banner<em class="colorred">*</em></th>
+                <td>
+                    <span class="input_area">
+                        <div class="btn coupon_btn">
+                           <span>选择图片</span>
+                           <input  type="file" name="upload" >
+                           <input type="hidden" value="{$temInfo.ban_pic}" name="tem[ban_pic]" class="pic_path noempty" data-empty="banner图片">
+                        </div>
+						<php>if($temInfo['ban_pic']){</php>
+                        <img src="<php>echo C('IMG_DIR');</php>/{$temInfo.ban_pic}" class="show_img" width="30" height="30"  />
+						<php>}else{</php>
+						<img src="" class="show_img" width="30" height="30" style="display:none" />
+						<php>}</php>
+                        <!-- <a href="javascript:void(0)" id='delMoreImg'>删除</a> -->
+                    </span>
+                    <span class="filepath">(尺寸1190*450)</span>
+                </td>
+                <th>banner背景颜色<em class="colorred">*</em></th>
+                <td>
+                    <input type="text" placeholder="#RRGGBB" value="{$temInfo.ban_color}"  name="tem[ban_color]" class="bancolor noempty" data-empty="banner背景色">
+                </td>
+            </tr>
+            <tr>
+                <th>页面背景</th>
+                <td>
+                    <span class="input_area">
+                        <div class="btn coupon_btn">
+                           <span>选择图片</span>
+                           <input  type="file" name="upload">
+                           <input type="hidden" value="{$temInfo.bg_pic}" name="tem[bg_pic]" class="pic_path">
+                        </div>
+						<php>if($temInfo['bg_pic']){</php>
+                        <img src="<php>echo C('IMG_DIR');</php>/{$temInfo.bg_pic}" class="show_img" width="30" height="30"  />
+						<php>}else{</php>
+						<img src="" class="show_img" width="30" height="30" style="display:none" />
+						<php>}</php>
+                        <!-- <a href="javascript:void(0)" id='delMoreImg'>删除</a> -->
+                    </span>
+                    <span class="filepath">(此图在页面显示为无限复制,建议宽高10*10以内)</span>
+                </td>
+                <th>页面主题颜色<em class="colorred">*</em></th>
+                <td colspan="3" >
+                    <input type="text" placeholder="#000000" value="{$temInfo.bg_fcolor}" name="tem[bg_fcolor]" class="themecolor noempty" data-empty="页面主题色">
+                </td>
+            </tr>
+        </table>
+        <!-- banner，背景设置结束 -->
+
+        <!-- 添加模块选择开始 -->
+        <div class="modulecontent">
+			<php>if($temInfo['moduleList']){</php>
+				<volist name="temInfo.moduleList" id="v" key="k">
+					<if condition="$v.type eq 1">
+					<!-- 模块1 -->
+					<div class="tuwen1 contnetbox module1" id="module_1_0{$v.typeCount}">
+						<div class="con_title clearfix">
+							<h3>图文1</h3>
+							<p>序号：<input type="text" value="{$v.order}" name="module[1][{$v.typeCount}][modid]" class="noempty idnum" data-empty="图文1模块序号"><em class="colorred">*</em></p>
+							<input type="button" value="删除模块" class="removemodule">
+						</div>
+						<div class="con_slt">
+							<img src="__PUBLIC__/Admin/Images/images/tuwen1_s.png" height="248" width="801">
+						</div>
+						<table class="con_table">
+							<tr>
+								<th>图片1<em class="colorred">*</em></th>
+								<td>
+									<span class="input_area">
+										<div class="btn coupon_btn">
+										   <span>选择图片</span>
+										   <input  type="file" name="upload" >
+										   <input type="hidden" value="{$v.subList.0.pic}" name="module[1][{$v.typeCount}][0][pic]" class="pic_path noempty" data-empty="图文1图片1">
+										</div>
+										<php>if($v['subList'][0]['pic']){</php>
+										<img src="<php>echo C('IMG_DIR');</php>/{$v.subList.0.pic}" class="show_img" width="30" height="30"  />
+										<php>}else{</php>
+										<img src="" class="show_img" width="30" height="30" style="display:none" />
+										<php>}</php>
+									</span>
+									<span>(尺寸260*120)</span>
+								</td>
+							</tr>
+							<tr>
+								<th>图片1超链接</th>
+								<td class="con_link">
+									<input type="text" value="{$v.subList.0.url}" name="module[1][{$v.typeCount}][0][link]" class="bhttp">
+									<span>(请以http://开头)</span>
+								</td>
+							</tr>
+							<tr>
+								<th>图片1标签<em class="colorred">*</em></th>
+								<td class="con_link">
+									<input type="text" value="{$v.subList.0.title}" name="module[1][{$v.typeCount}][0][tab]" class="noempty" data-empty="图文1图片1标签">
+								</td>
+							</tr>
+						</table>
+						<table class="con_table">
+							<tr>
+								<th>文章1标题<em class="colorred">*</em></th>
+								<td  class="con_link">
+									<input type="text" value="{$v.subList.1.title}" name="module[1][{$v.typeCount}][1][tit]" class="noempty" data-empty="图文1文章1标题">
+								</td>
+							</tr>
+							<tr>
+								<th>文章1超链接<em class="colorred">*</em></th>
+								<td class="con_link">
+									<input type="text" value="{$v.subList.1.url}" name="module[1][{$v.typeCount}][1][link]" class="noempty bhttp" data-empty="图文1文章1超链接">
+									<span>(请以http://开头)</span>
+								</td>
+							</tr>
+							<tr>
+								<th>文章1简介<em class="colorred">*</em></th>
+								<td class="con_link">
+									<textarea name="module[1][{$v.typeCount}][1][art]" class="noempty" data-empty="图文1文章1简介">{$v.subList.1.content}</textarea>
+								</td>
+							</tr>
+						</table>
+						<table class="con_table">
+							<tr>
+								<th>文章2标题<em class="colorred">*</em></th>
+								<td  class="con_link">
+									<input type="text" value="{$v.subList.2.title}" name="module[1][{$v.typeCount}][2][tit]" class="noempty" data-empty="图文1文章2标题">
+									<span>(请保持14字以内)</span>
+								</td>
+							</tr>
+							<tr>
+								<th>文章2超链接<em class="colorred">*</em></th>
+								<td class="con_link">
+									<input type="text" value="{$v.subList.2.url}" name="module[1][{$v.typeCount}][2][link]" class="noempty bhttp" data-empty="图文1文章2超链接">
+									<span>(请以http://开头)</span>
+								</td>
+							</tr>
+							<tr>
+								<th>文章2简介<em class="colorred">*</em></th>
+								<td class="con_link">
+									<textarea name="module[1][{$v.typeCount}][2][art]" class="noempty" data-empty="图文1文章2简介">{$v.subList.2.content}</textarea>
+									<span>(请保持76字以内)</span>
+								</td>
+							</tr>
+						</table>
+						<table class="con_table">
+							<tr>
+								<th>文章3标题<em class="colorred">*</em></th>
+								<td  class="con_link">
+									<input type="text" value="{$v.subList.3.title}" name="module[1][{$v.typeCount}][3][tit]" class="noempty" data-empty="图文1文章3标题">
+									<span>(请保持14字以内)</span>
+								</td>
+							</tr>
+							<tr>
+								<th>文章3超链接<em class="colorred">*</em></th>
+								<td class="con_link">
+									<input type="text" value="{$v.subList.3.url}" name="module[1][{$v.typeCount}][3][link]" class="noempty bhttp" data-empty="图文1文章2超链接">
+									<span>(请以http://开头)</span>
+								</td>
+							</tr>
+							<tr>
+								<th>文章3简介<em class="colorred">*</em></th>
+								<td class="con_link">
+									<textarea name="module[1][{$v.typeCount}][3][art]" class="noempty" data-empty="图文1文章3简介">{$v.subList.3.content}</textarea>
+									<span>(请保持76字以内)</span>
+								</td>
+							</tr>
+						</table>
+						<table class="con_table">
+							<tr>
+								<th>图片2<em class="colorred">*</em></th>
+								<td>
+									<span class="input_area">
+										<div class="btn coupon_btn">
+										   <span>选择图片</span>
+										   <input  type="file" name="upload" >
+										   <input type="hidden" value="{$v.subList.4.pic}" name="module[1][{$v.typeCount}][4][pic]" class="pic_path noempty" data-empty="图文1图片2">
+										</div>
+										<php>if($v['subList'][4]['pic']){</php>
+										<img src="<php>echo C('IMG_DIR');</php>/{$v.subList.4.pic}" class="show_img" width="30" height="30"  />
+										<php>}else{</php>
+										<img src="" class="show_img" width="30" height="30" style="display:none" />
+										<php>}</php>
+									</span>
+									<span>(尺寸260*120)</span>
+								</td>
+							</tr>
+							<tr>
+								<th>文章4超链接<em class="colorred">*</em></th>
+								<td class="con_link">
+									<input type="text" value="{$v.subList.4.url}" name="module[1][{$v.typeCount}][4][link]" class="noempty bhttp" data-empty="图文1文章4超链接">
+									<span>(请以http://开头)</span>
+								</td>
+							</tr>
+							<tr>
+								<th>图片2标签<em class="colorred">*</em></th>
+								<td class="con_link">
+									<input type="text" value="{$v.subList.4.title}" name="module[1][{$v.typeCount}][4][tab]" class="noempty" data-empty="图文1图片2标签">
+								</td>
+							</tr>
+							<tr>
+								<th>文章4简介<em class="colorred">*</em></th>
+								<td class="con_link">
+									<textarea name="module[1][{$v.typeCount}][4][art]" class="noempty" data-empty="图文1文章4简介">{$v.subList.4.content}</textarea>
+									<span>(请保持76字以内)</span>
+								</td>
+							</tr>
+						</table>
+						<table class="con_table">
+							<tr>
+								<th>图片3<em class="colorred">*</em></th>
+								<td>
+									<span class="input_area">
+										<div class="btn coupon_btn">
+										   <span>选择图片</span>
+										   <input  type="file" name="upload" >
+										   <input type="hidden" value="{$v.subList.5.pic}" name="module[1][{$v.typeCount}][5][pic]" class="pic_path noempty" data-empty="图文1图片3">
+										</div>
+										<php>if($v['subList'][5]['pic']){</php>
+										<img src="<php>echo C('IMG_DIR');</php>/{$v.subList.5.pic}" class="show_img" width="30" height="30"  />
+										<php>}else{</php>
+										<img src="" class="show_img" width="30" height="30" style="display:none" />
+										<php>}</php>
+									</span>
+									<span>(尺寸260*120)</span>
+								</td>
+							</tr>
+							<tr>
+								<th>文章5超链接<em class="colorred">*</em></th>
+								<td class="con_link">
+									<input type="text" value="{$v.subList.5.url}" name="module[1][{$v.typeCount}][5][link]" class="noempty bhttp" data-empty="图文1文章5超链接">
+									<span>(请以http://开头)</span>
+								</td>
+							</tr>
+							<tr>
+								<th>图片3标签<em class="colorred">*</em></th>
+								<td class="con_link">
+									<input type="text" value="{$v.subList.5.title}" name="module[1][{$v.typeCount}][5][tab]" class="noempty" data-empty="图文1图片3标签">
+								</td>
+							</tr>
+							<tr>
+								<th>文章5简介<em class="colorred">*</em></th>
+								<td class="con_link">
+									<textarea name="module[1][{$v.typeCount}][5][art]" class="noempty" data-empty="图文1文章5简介">{$v.subList.5.content}</textarea>
+									<span>(请保持76字以内)</span>
+								</td>
+							</tr>
+						</table>
+					
+					</div>	
+					<!-- 模块1 -->
+					
+					<elseif condition="$v.type eq 2"/>
+					<!-- 模块2 -->
+					<div class="tuwen2 contnetbox module2" id="module_2_0{$v.typeCount}">
+						<div class="con_title clearfix">
+							<h3>图文2</h3>
+							<p>序号：<input type="text" value="{$v.order}" name="module[2][{$v.typeCount}][modid]" class="noempty idnum" data-empty="图文2模块序号"><em class="colorred">*</em></p>
+							<input type="button" value="删除模块" class="removemodule">
+						</div>
+						<div class="con_slt">
+							<img src="__PUBLIC__/Admin/Images/images/tuwen2_s.png" height="99" width="775">
+						</div>
+						<volist name="v.subList" id="vo" key="ko">
+						<table class="con_table">
+							<tr>
+								<th>文章{$ko}图片<em class="colorred">*</em></th>
+								<td>
+									<span class="input_area">
+										<div class="btn coupon_btn">
+										   <span>选择图片</span>
+										   <input  type="file" name="upload" >
+										   <input type="hidden" value="{$vo.pic}" name="module[2][{$v.typeCount}][{$ko}][pic]" class="pic_path noempty" data-empty="图文2文章{$ko}图片">
+										</div>
+										<php>if($vo['pic']){</php>
+										<img src="<php>echo C('IMG_DIR');</php>/{$vo.pic}" class="show_img" width="30" height="30" />
+										<php>}else{</php>
+										<img src="" class="show_img" width="30" height="30" style="display:none" />
+										<php>}</php>
+									</span>
+									<span>(尺寸200*150)</span>
+								</td>
+							</tr>
+							<tr>
+								<th>文章{$ko}标题<em class="colorred">*</em></th>
+								<td class="con_link">
+									<input type="text" value="{$vo.title}" name="module[2][{$v.typeCount}][{$ko}][tit]" class="noempty" data-empty="图文2文章{$ko}标题">
+									<span>(请保持14字以内)</span>
+								</td>
+							</tr>
+							<tr>
+								<th>文章{$ko}链接<em class="colorred">*</em></th>
+								<td class="con_link">
+									<input type="text" value="{$vo.url}" name="module[2][{$v.typeCount}][{$ko}][link]" class="noempty bhttp" data-empty="图文2文章{$ko}链接">
+									<span>(请以http://开头)</span>
+								</td>
+							</tr>
+							<tr>
+								<th>文章{$ko}简介<em class="colorred">*</em></th>
+								<td class="con_link">
+									<textarea name="module[2][{$v.typeCount}][{$ko}][art]" class="noempty" data-empty="图文2文章{$ko}简介">{$vo.content}</textarea>
+									<span>(请保持66字以内)</span>
+								</td>
+							</tr>
+						</table>
+						</volist>
+					</div>
+					<!-- 模块2 -->
+					
+					<elseif condition="$v.type eq 3"/>
+					<!-- 模块3 -->
+					<div class="tuwen3 contnetbox module3" id="module_3_0{$v.typeCount}">
+						<div class="con_title clearfix">
+							<h3>图文3</h3>
+							<p>序号：<input type="text" value="{$v.order}" name="module[3][{$v.typeCount}][modid]" class="noempty" data-empty="图文3模块序号"><em class="colorred">*</em></p>
+							<input type="button" value="删除模块" class="removemodule">
+						</div>
+						<div class="con_slt">
+							<img src="__PUBLIC__/Admin/Images/images/tuwen3_s.png" height="218" width="700" >
+						</div>
+						<volist name="v.subList" id="vo" key="ko">
+						<table class="con_table">
+							<tr>
+								<th>文章{$ko}图片<em class="colorred">*</em></th>
+								<td>
+									<span class="input_area">
+										<div class="btn coupon_btn">
+										   <span>选择图片</span>
+										   <input  type="file" name="upload" >
+										   <input type="hidden" value="{$vo.pic}" name="module[3][{$v.typeCount}][{$ko}][pic]" class="pic_path noempty" data-empty="图文3文章{$ko}图片">
+										</div>
+										<php>if($vo['pic']){</php>
+										<img src="<php>echo C('IMG_DIR');</php>/{$vo.pic}" class="show_img" width="30" height="30"  />
+										<php>}else{</php>
+										<img src="" class="show_img" width="30" height="30" style="display:none" />
+										<php>}</php>
+									</span>
+									<span>(尺寸960*330)</span>
+								</td>
+							</tr>
+							<tr>
+								<th>文章{$ko}标题<em class="colorred">*</em></th>
+								<td class="con_link">
+									<input type="text" value="{$vo.title}" name="module[3][{$v.typeCount}][{$ko}][tit]" class="noempty" data-empty="图文3文章{$ko}标题">
+									<span>(请保持14字以内)</span>
+								</td>
+							</tr>
+							<tr>
+								<th>文章{$ko}链接<em class="colorred">*</em></th>
+								<td class="con_link">
+									<input type="text" value="{$vo.url}" name="module[3][{$v.typeCount}][{$ko}][link]" class="noempty bhttp" data-empty="图文3文章{$ko}链接">
+									<span>(请以http://开头)</span>
+								</td>
+							</tr>
+							<tr>
+								<th>文章{$ko}简介<em class="colorred">*</em></th>
+								<td class="con_link">
+									<textarea  name="module[3][{$v.typeCount}][{$ko}][art]" class="noempty" data-empty="图文3文章{$ko}简介">{$vo.content}</textarea>
+									<span>(请保持82字以内)</span>
+								</td>
+							</tr>
+						</table>
+						</volist>
+					</div>
+					<!-- 模块3 -->
+					
+					<elseif condition="$v.type eq 4"/>
+					<!-- 模块4 -->
+					<div class="tuwen4 contnetbox module4" id="module_4_0{$v.typeCount}">
+						<div class="con_title clearfix">
+							<h3>图文4</h3>
+							<p>序号：<input type="text" value="{$v.order}" name="module[4][{$v.typeCount}][modid]" class="noempty" data-empty="图文4模块序号"><em class="colorred">*</em></p>
+							<input type="button" value="删除模块" class="removemodule">
+						</div>
+						<div class="con_slt">
+							<img src="__PUBLIC__/Admin/Images/images/tuwen4_s.png" height="275" width="784">
+						</div>
+						<table class="con_table">
+							<tr>
+								<th>图片<em class="colorred">*</em></th>
+								<td>
+									<span class="input_area">
+										<div class="btn coupon_btn">
+										   <span>选择图片</span>
+										   <input  type="file" name="upload" >
+										   <input type="hidden" value="{$v.subList.0.pic}" name="module[4][{$v.typeCount}][0][pic]" class="pic_path noempty" data-empty="图文4图片">
+										</div>
+										<php>if($v['subList'][0]['pic']){</php>
+										<img src="<php>echo C('IMG_DIR');</php>/{$v.subList.0.pic}" class="show_img" width="30" height="30"  />
+										<php>}else{</php>
+										<img src="" class="show_img" width="30" height="30" style="display:none" />
+										<php>}</php>
+									</span>
+									<span>(尺寸320*410)</span>
+								</td>
+							</tr>
+							<tr>
+								<th>图片标签<em class="colorred">*</em></th>
+								<td class="con_link">
+									<input type="text" value="{$v.subList.0.title}" name="module[4][{$v.typeCount}][0][tab]" class="noempty" data-empty="图文4图片标签">
+									<span>(请保持16字以内)</span>
+								</td>
+							</tr>
+						</table>
+						<table class="con_table">
+							<tr>
+								<th>文章1标题<em class="colorred">*</em></th>
+								<td class="con_link">
+									<input type="text" value="{$v.subList.1.title}"  name="module[4][{$v.typeCount}][1][tit]" class="noempty" data-empty="图文4文章1标题">
+									<span>(请保持14字以内)</span>
+								</td>
+							</tr>
+							<tr>
+								<th>文章1链接</th>
+								<td class="con_link">
+									<input type="text" value="{$v.subList.1.url}" name="module[4][{$v.typeCount}][1][link]" class="bhttp">
+									<span>(请以http://开头)</span>
+								</td>
+							</tr>
+							<tr>
+								<th>文章1简介<em class="colorred">*</em></th>
+								<td class="con_link">
+									<textarea name="module[4][{$v.typeCount}][1][art]" class="noempty" data-empty="图文4文章1简介">{$v.subList.1.content}</textarea>
+									<span>(请保持66字以内)</span>
+								</td>
+							</tr>
+						</table>
+						<table class="con_table">
+							<tr>
+								<th>文章2标题<em class="colorred">*</em></th>
+								<td class="con_link">
+									<input type="text" value="{$v.subList.2.title}" name="module[4][{$v.typeCount}][2][tit]" class="noempty" data-empty="图文4文章2标题">
+									<span>(请保持14字以内)</span>
+								</td>
+							</tr>
+							<tr>
+								<th>文章2链接</th>
+								<td class="con_link">
+									<input type="text" value="{$v.subList.2.url}" name="module[4][{$v.typeCount}][2][link]" class="bhttp">
+									<span>(请以http://开头)</span>
+								</td>
+							</tr>
+							<tr>
+								<th>文章2简介<em class="colorred">*</em></th>
+								<td class="con_link">
+									<textarea name="module[4][{$v.typeCount}][2][art]" class="noempty" data-empty="图文4文章2简介">{$v.subList.2.content}</textarea>
+									<span>(请保持66字以内)</span>
+								</td>
+							</tr>
+						</table>
+						<table class="con_table">
+							<tr>
+								<th>文章3标题<em class="colorred">*</em></th>
+								<td class="con_link">
+									<input type="text" value="{$v.subList.3.title}" name="module[4][{$v.typeCount}][3][tit]" class="noempty" data-empty="图文4文章3标题">
+									<span>(请保持14字以内)</span>
+								</td>
+							</tr>
+							<tr>
+								<th>文章3链接</th>
+								<td class="con_link">
+									<input type="text" value="{$v.subList.3.url}" name="module[4][{$v.typeCount}][3][link]" class="bhttp">
+									<span>(请以http://开头)</span>
+								</td>
+							</tr>
+							<tr>
+								<th>文章3简介<em class="colorred">*</em></th>
+								<td class="con_link">
+									<textarea name="module[4][{$v.typeCount}][3][art]" class="noempty" data-empty="图文4文章3简介">{$v.subList.3.content}</textarea>
+									<span>(请保持66字以内)</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<!-- 模块4 -->
+					
+					<elseif condition="$v.type eq 5"/>
+					<!-- 模块5 -->
+					<div class="bigimg contnetbox module5" id="module_5_0{$v.typeCount}">
+						<div class="con_title clearfix">
+							<h3>图片</h3>
+							<p>序号：<input type="text" value="{$v.order}" name="module[5][{$v.typeCount}][modid]" class="noempty" data-empty="大图片模块序号"><em class="colorred">*</em></p>
+							<input type="button" value="删除模块" class="removemodule">
+						</div>
+						<div class="con_slt">
+							<img src="__PUBLIC__/Admin/Images/images/bigimg.png" height="265" width="771">
+						</div>
+						<table class="con_table">
+							<tr>
+								<th>图片1<em class="colorred">*</em></th>
+								<td>
+									<span class="input_area">
+										<div class="btn coupon_btn">
+										   <span>选择图片</span>
+										   <input  type="file" name="upload" >
+										   <input type="hidden" value="{$v.subList.0.pic}" name="module[5][{$v.typeCount}][1][pic]" class="pic_path noempty" data-empty="大图片">
+										</div>
+										<php>if($v['subList'][0]['pic']){</php>
+										<img src="<php>echo C('IMG_DIR');</php>/{$v.subList.0.pic}" class="show_img" width="30" height="30"  />
+										<php>}else{</php>
+										<img src="" class="show_img" width="30" height="30" style="display:none" />
+										<php>}</php>
+									</span>
+									<span>(宽度保持1000)</span>
+								</td>
+							</tr>
+							<tr>
+								<th>图片1标签<em class="colorred">*</em></th>
+								<td class="con_link">
+									<input type="text" value="{$v.subList.0.title}" name="module[5][{$v.typeCount}][1][tit]" class="noempty" data-empty="大图片1标签">
+								</td>
+							</tr>
+							<tr>
+								<th>图片1链接</th>
+								<td class="con_link">
+									<input type="text" value="{$v.subList.0.url}"  name="module[5][{$v.typeCount}][1][link]" class="bhttp">
+									<span>(请以http://开头)</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<!-- 模块5 -->
+					
+					<elseif condition="$v.type eq 6"/>
+					<!-- 模块6 -->
+					<div class="album contnetbox module6" id="module_6_0{$v.typeCount}">
+						<div class="con_title clearfix">
+							<h3>相册</h3>
+							<p>序号：<input type="text" value="{$v.order}" name="module[6][{$v.typeCount}][modid]" class="noempty" data-empty="相册模块序号"><em class="colorred">*</em></p>
+							<input type="button" value="删除模块" class="removemodule">
+						</div>
+						<div class="con_slt">
+							<img src="__PUBLIC__/Admin/Images/images/album_s.png" height="242" width="603">
+						</div>
+						<table class="con_table">
+							<volist name="v.subList" id="vo" key="ko">
+							<tr>
+								<th>图片{$ko}<em class="colorred">*</em></th>
+								<td>
+									<span class="input_area">
+										<div class="btn coupon_btn">
+										   <span>选择图片</span>
+										   <input  type="file" name="upload" >
+										   <input type="hidden" value="{$vo.pic}" name="module[6][{$v.typeCount}][{$ko}][pic]" class="pic_path noempty" data-empty="相册图片{$ko}">
+										</div>
+										<php>if($vo['pic']){</php>
+										<img src="<php>echo C('IMG_DIR');</php>/{$vo.pic}" class="show_img" width="30" height="30"  />
+										<php>}else{</php>
+										<img src="" class="show_img" width="30" height="30" style="display:none" />
+										<php>}</php>
+									</span>
+									<span>(尺寸800*600)</span>
+								</td>
+							</tr>
+							<tr>
+								<th>标题{$ko}内容<em class="colorred">*</em></th>
+								<td class="con_link">
+									<input type="text" value="{$vo.title}" name="module[6][{$v.typeCount}][{$ko}][tit]" class="noempty" data-empty="相册标题{$ko}内容">
+								</td>
+							</tr>
+							</volist>
+						</table>
+					</div>
+					<!-- 模块6 -->
+					
+					<elseif condition="$v.type eq 7"/>
+					<!-- 模块7 -->
+					<div class="moduletitle contnetbox module7" id="module_7_0{$v.typeCount}">
+						<div class="con_title clearfix">
+							<h3>标题</h3>
+							<p>序号：<input type="text" value="{$v.order}" name="module[7][{$v.typeCount}][modid]" class="noempty" data-empty="标题模块序号"><em class="colorred">*</em></p>
+							<input type="button" value="删除模块" class="removemodule">
+						</div>
+						<div class="con_slt">
+							<img src="__PUBLIC__/Admin/Images/images/title.png" height="41" width="322">
+						</div>
+						<table class="con_table">
+							<tr>
+								<th>模块大标题内容<em class="colorred">*</em></th>
+								<td class="con_link">
+									<input type="text" value="{$v.subList.0.title}" name="module[7][{$v.typeCount}][1][tit]" class="noempty" data-empty="标题内容">
+									<span>(请保持在14字以内)</span>
+								</td>
+							</tr>
+							<tr>
+								<th>标题位置</th>
+								<td class="tit_place">
+									<p><input type="radio" value="1" <if condition="$v.align eq 1">checked</if> name="module[7][{$v.typeCount}][align]">居左</p>
+									<p><input type="radio" value="2" <if condition="$v.align eq 2">checked</if> name="module[7][{$v.typeCount}][align]">居中</p>
+									<p><input type="radio" value="3" <if condition="$v.align eq 3">checked</if> name="module[7][{$v.typeCount}][align]">居右</p>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<!-- 模块7 -->
+					
+					<elseif condition="$v.type eq 8"/>
+					<!-- 模块8 -->
+					<div class="store contnetbox module8" id="module_8_0{$v.typeCount}">
+						<div class="con_title clearfix">
+							<h3>店铺</h3>
+							<p>序号：<input type="text" value="{$v.order}" name="module[8][{$v.typeCount}][modid]" class="noempty" data-empty="店铺模块序号"><em class="colorred">*</em></p>
+							<input type="button" value="删除模块" class="removemodule">
+						</div>
+						<div class="con_slt">
+							<img src="__PUBLIC__/Admin/Images/images/store.png" height="165" width="668">
+						</div>
+						<table class="con_table">
+							<volist name="v.subList" id="vo" key="ko">
+							<tr>
+								<th>店铺{$ko} ID<em class="colorred">*</em></th>
+								<td class="con_link">
+									<input type="text" value="{$vo.url}" name="module[8][{$v.typeCount}][{$ko}][link]" class="noempty isnum" data-empty="店铺{$ko}ID">
+								</td>
+							</tr>
+							<tr>
+								<th>店铺{$ko}标题</th>
+								<td class="con_link">
+									<input type="text" value="{$vo.title}" name="module[8][{$v.typeCount}][{$ko}][tit]" placeholder="店铺{$ko}标题">
+									<span>(选填，请保持在15字以内)</span>
+								</td>
+							</tr>
+							</volist>
+						</table>
+					</div>
+					<!-- 模块8 -->
+					
+					<elseif condition="$v.type eq 9"/>
+					<!-- 模块9 -->
+					<div class="goods contnetbox module9" id="module_9_0{$v.typeCount}">
+						<div class="con_title clearfix">
+							<h3>商品</h3>
+							<p>序号：<input type="text" value="{$v.order}" name="module[9][{$v.typeCount}][modid]" class="noempty" data-empty="商品模块序号"><em class="colorred">*</em></p>
+							<input type="button" value="删除模块" class="removemodule">
+						</div>
+						<div class="con_slt">
+							<img src="__PUBLIC__/Admin/Images/images/goods_s.png" height="258" width="807">
+						</div>
+						<table class="con_table">
+							<volist name="v.subList" id="vo" key="ko">
+							<tr>
+								<th>商品{$ko} ID<em class="colorred">*</em></th>
+								<td class="con_link">
+									<input type="text" value="{$vo.url}" name="module[9][{$v.typeCount}][{$ko}][link]" class="noempty isnum" data-empty="商品{$ko}ID">
+								</td>
+							</tr>
+							<tr>
+								<th>商品{$ko}标题</th>
+								<td class="con_link">
+									<input type="text" value="{$vo.title}" name="module[9][{$v.typeCount}][{$ko}][tit]" placeholder="商品{$ko}标题">
+									<span>(选填，请保持在15字以内)</span>
+								</td>
+							</tr>
+							</volist>
+						</table>
+					</div>
+					<!-- 模块9 -->
+					
+					</if>
+				</volist>
+			<php>}</php>
+		</div>
+        
+        <table>
+            <!-- 选择添加的模块开始 -->
+            <tr>
+                <th class="tjmk">添加模块</th>
+                <td class="modulechose clearfix">
+                    <p><input type="radio" checked="true" name="modulebox">图文1</p>
+                    <p><input type="radio" name="modulebox">图文2</p>
+                    <p><input type="radio" name="modulebox">图文3</p>
+                    <p><input type="radio" name="modulebox">图文4</p>
+                    <p><input type="radio" name="modulebox">图片</p>
+                    <p><input type="radio" name="modulebox">相册</p>
+                    <p><input type="radio" name="modulebox">标题</p>
+                    <p><input type="radio" name="modulebox">店铺</p>
+                    <p><input type="radio" name="modulebox">商品</p>
+                </td>
+            </tr>
+            <!-- 选择添加的模块结束 -->
+
+            <!-- 缩略图预览开始 -->
+            <tr>
+                <td colspan="2" class="modulepreview">
+                    <p>缩略图预览：</p>
+                    <div class="previewimg">
+                        <img src="__PUBLIC__/Admin/Images/images/tuwen1.png" height="281" width="672" >
+                        <img src="__PUBLIC__/Admin/Images/images/tuwen2.png" height="108" width="663" style="display: none;">
+                        <img src="__PUBLIC__/Admin/Images/images/tuwen3.png" height="247" width="676" style="display: none;">
+                        <img src="__PUBLIC__/Admin/Images/images/tuwen4.png" height="280" width="670" style="display: none;">
+                        <img src="__PUBLIC__/Admin/Images/images/bigimg.png" height="265" width="771" style="display: none;">
+                        <img src="__PUBLIC__/Admin/Images/images/album.png" height="260" width="662" style="display: none;">
+                        <img src="__PUBLIC__/Admin/Images/images/title.png" height="41" width="322" style="display: none;">
+                        <img src="__PUBLIC__/Admin/Images/images/store.png" height="165" width="668" style="display: none;">
+                        <img src="__PUBLIC__/Admin/Images/images/goods.png" height="212" width="672" style="display: none;">
+                    </div>
+                </td>
+            </tr>
+            <!-- 缩略图预览结束 -->
+
+            <tr>
+                <td colspan="2" class="addmodule">
+                    <input type="button" value="&nbsp;&nbsp;添加模块&nbsp;&nbsp;">
+                </td>
+            </tr>
+        </table>
+        <!-- 添加模块选择结束 -->
+
+        <!-- 导航栏和固定模块选择开始 -->
+        <table class="modulesubmit">
+            <tr>
+                <td colspan="3">
+                    <p>是否要添加导航栏<input type="checkbox" class="addnavmodule" name="tem[is_nav]" <if condition="$temInfo.is_nav eq 1">checked</if> value="1"></p>
+                </td>
+            </tr>
+            <!-- 导航栏设置开始 -->
+			<if condition="$temInfo.is_nav eq 1">
+            <tr class="nav">
+                <td colspan="3">
+                    <table class="navmodule">
+                        <tr>
+                            <th>导航栏颜色<em class="colorred">*</em></th>
+                            <td><input type="text" placeholder="#RRGGBB" value="{$temInfo.nav_color}" name="tem[nav_color]" class="noempty" data-empty="导航栏颜色"></td>
+                        </tr>
+						<php>if($temInfo['navList']){</php>
+						<volist name="temInfo.navList.subList" id="vo" key="ko">
+                        <tr class="navbtn{$ko}">
+                        <tr class="navbtn{$ko}">
+                            <th>添加导航栏按钮{$ko}链接<em class="colorred">*</em></th>
+                            <td class="con_link3">
+                                <input class="txtwrite noempty bhttp" type="text" value="{$vo.url}" name="module[0][1][{$ko}][link]" data-empty="导航栏按钮{$ko}链接">
+                                <span>(请以http://开头)</span>
+								<php>if($ko >= 4){</php>
+								<input class="navremove" id="navremove_{$ko}" type="button" value="&nbsp;&nbsp;删除&nbsp;&nbsp;">
+								<php>}</php>
+                            </td>
+                        </tr>
+                        <tr class="navbtn navbtn{$ko}" id="navbtn_{$ko}">
+                            <th>导航栏按钮{$ko}文字<em class="colorred">*</em></th>
+                            <td class="con_link3">
+                                <input type="text" value="{$vo.title}" name="module[0][1][{$ko}][tit]" class="noempty" data-empty="导航栏按钮{$ko}文字">
+                                <span>(请保持在6字以内)</span>
+                            </td>
+                        </tr>
+						</volist>
+                        <php>}else{</php>
+						<tr class="navbtn1">
+                            <th>添加导航栏按钮1链接<em class="colorred">*</em></th>
+                            <td class="con_link3">
+                                <input class="txtwrite noempty bhttp" type="text" name="module[0][1][1][link]" data-empty="导航栏按钮1链接">
+                                <span>(请以http://开头)</span>
+                            </td>
+                        </tr>
+                        <tr class="navbtn navbtn1" id="navbtn_1">
+                            <th>导航栏按钮1文字<em class="colorred">*</em></th>
+                            <td class="con_link3">
+                                <input type="text" name="module[0][1][1][tit]" class="noempty" data-empty="导航栏按钮1文字">
+                                <span>(请保持在6字以内)</span>
+                            </td>
+                        </tr>
+                        <tr class="navbtn2">
+                            <th>添加导航栏按钮2链接<em class="colorred">*</em></th>
+                            <td class="con_link3">
+                                <input class="txtwrite noempty bhttp" type="text" name="module[0][1][2][link]" data-empty="导航栏按钮2链接">
+                                <span>(请以http://开头)</span>
+                            </td>
+                        </tr>
+                        <tr class="navbtn navbtn2" id="navbtn_2">
+                            <th>导航栏按钮2文字<em class="colorred">*</em></th>
+                            <td class="con_link3">
+                                <input type="text" name="module[0][1][2][tit]" class="noempty" data-empty="导航栏按钮2文字">
+                                <span>(请保持在6字以内)</span>
+                            </td>
+                        </tr>
+                        <tr class="navbtn3">
+                            <th>添加导航栏按钮3链接<em class="colorred">*</em></th>
+                            <td class="con_link3">
+                                <input class="txtwrite noempty bhttp" type="text" name="module[0][1][3][link]" data-empty="导航栏按钮3链接">
+                                <span>(请以http://开头)</span>
+                            </td>
+                        </tr>
+                        <tr class="navbtn navbtn3" id="navbtn_3">
+                            <th>导航栏按钮3文字<em class="colorred">*</em></th>
+                            <td class="con_link3">
+                                <input type="text" name="module[0][1][3][tit]" class="noempty" data-empty="导航栏按钮3文字">
+                                <span>(请保持在6字以内)</span>
+                            </td>
+                        </tr>
+						<php>}</php>
+                        <tr>
+                            <td colspan="2" class="addnav">
+                                <input class="addbtn" type="button" value="&nbsp;&nbsp;点击添加&nbsp;&nbsp;">
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+			<else/>
+			<tr class="nav" style="display:none;">
+                <td colspan="3">
+                    <table class="navmodule">
+                        <tr>
+                            <th>导航栏颜色<em class="colorred">*</em></th>
+                            <td><input type="text" placeholder="#RRGGBB" name="tem[nav_color]" class="noempty" data-empty="导航栏颜色"></td>
+                        </tr>
+                        <tr class="navbtn1">
+                            <th>添加导航栏按钮1链接<em class="colorred">*</em></th>
+                            <td class="con_link3">
+                                <input class="txtwrite noempty bhttp" type="text" name="module[0][1][1][link]" data-empty="导航栏按钮1链接">
+                                <span>(请以http://开头)</span>
+                            </td>
+                        </tr>
+                        <tr class="navbtn navbtn1" id="navbtn_1">
+                            <th>导航栏按钮1文字<em class="colorred">*</em></th>
+                            <td class="con_link3">
+                                <input type="text" name="module[0][1][1][tit]" class="noempty" data-empty="导航栏按钮1文字">
+                                <span>(请保持在6字以内)</span>
+                            </td>
+                        </tr>
+                        <tr class="navbtn2">
+                            <th>添加导航栏按钮2链接<em class="colorred">*</em></th>
+                            <td class="con_link3">
+                                <input class="txtwrite noempty bhttp" type="text" name="module[0][1][2][link]" data-empty="导航栏按钮2链接">
+                                <span>(请以http://开头)</span>
+                            </td>
+                        </tr>
+                        <tr class="navbtn navbtn2" id="navbtn_2">
+                            <th>导航栏按钮2文字<em class="colorred">*</em></th>
+                            <td class="con_link3">
+                                <input type="text" name="module[0][1][2][tit]" class="noempty" data-empty="导航栏按钮2文字">
+                                <span>(请保持在6字以内)</span>
+                            </td>
+                        </tr>
+                        <tr class="navbtn3">
+                            <th>添加导航栏按钮3链接<em class="colorred">*</em></th>
+                            <td class="con_link3">
+                                <input class="txtwrite noempty bhttp" type="text" name="module[0][1][3][link]" data-empty="导航栏按钮3链接">
+                                <span>(请以http://开头)</span>
+                            </td>
+                        </tr>
+                        <tr class="navbtn navbtn3" id="navbtn_3">
+                            <th>导航栏按钮3文字<em class="colorred">*</em></th>
+                            <td class="con_link3">
+                                <input type="text" name="module[0][1][3][tit]"class="noempty" data-empty="导航栏按钮3文字">
+                                <span>(请保持在6字以内)</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="addnav">
+                                <input class="addbtn" type="button" value="&nbsp;&nbsp;点击添加&nbsp;&nbsp;">
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+			</if>
+            <!-- 导航栏设置结束 -->
+            <tr>
+                <th>
+                    <p>固定模块1<input class="gdmk1" type="checkbox" value="1" <if condition="$temInfo.is_question eq 1">checked</if> name="tem[is_question]"></p>
+                </th>
+                <td class="wjdz">
+                    <p>问卷地址</p>
+                </td>
+                <td class="con_link2">
+                    <input class="questionnaire questionnaire1 noempty" data-empty="问卷地址" type="text" <php>if(!$temInfo['is_question']){</php>disabled="true"<php>}</php> name="tem[question_url]" value="{$temInfo.question_url}"><br/>
+                    <span><input class="qr" type="radio" <php>if(!$temInfo['is_question']){</php>disabled="true"<php>}</php> value="1" <if condition="$temInfo.question_align eq 1">checked</if>  name="tem[question_align]">嵌入</span>
+					<span><input class="fc" type="radio" <php>if(!$temInfo['is_question']){</php>disabled="true"<php>}</php> value="2" <if condition="$temInfo.question_align eq 2">checked</if>  name="tem[question_align]">浮层</span>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <p>固定模块2<input class="gdmk2" type="checkbox" value="1" <if condition="$temInfo.is_weibo eq 1">checked</if> name="tem[is_weibo]"></p>
+                </th>
+                <td class="wjdz">
+                    <p>微博代码</p>
+                </td>
+                <td class="con_link4">
+                    <textarea name="tem[weibo_url]" class="questionnaire questionnaire2 noempty" data-empty="微博代码" <php>if(!$temInfo['is_weibo']){</php>disabled="true"<php>}</php> >{$temInfo.weibo_url}</textarea><br/>
+                    <span>
+                    	<input class="yl" type="radio" <php>if(!$temInfo['is_weibo']){</php>disabled="true"<php>}</php> value="1" <if condition="$temInfo.weibo_align eq 1">checked</if> name="tem[weibo_align]">一栏</span>
+					<span><input class="el" type="radio" <php>if(!$temInfo['is_weibo']){</php>disabled="true"<php>}</php> value="2" <if condition="$temInfo.weibo_align eq 2">checked</if>  name="tem[weibo_align]">二栏</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" class="submitbtn">
+                   <input type="button" id="submitform" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+                </td>
+            </tr>
+        </table>
+        <!-- 导航栏和固定模块选择开始 -->
+        </form>
+    </div>
+    <!-- 内容end -->
+
+</body>
+</html>

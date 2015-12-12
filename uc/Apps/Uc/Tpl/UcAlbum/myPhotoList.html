@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <php>if($obj == "me") { if($userinfo['groupid'] >= 4 && $userinfo['groupid'] < 11) { </php><META NAME="robots" CONTENT="NOINDEX,NOFOLLOW">
+    <php>} } elseif($obj == "other") { if($huser['groupid']  >= 4 && $huser['groupid'] < 11) { </php><META NAME="robots" CONTENT="NOINDEX,NOFOLLOW">
+    <php>} }</php>
+    <meta name="keywords" content="{$mtaKeywords}" />
+    <meta name="description" content="{$mtaDescription}" />
+    <title>{$mtaTitle}</title>
+<link rel="stylesheet" type="text/css" href="<php>echo autoVer('/Css/uc/global.css');</php>"/>
+<link rel="stylesheet" type="text/css" href="<php>echo autoVer('/Css/uc/main.css');</php>"/>
+</head>
+<body>
+<!--头部开始-->
+<div class="global_header"> 
+    <!--头部导航开始-->
+    <include file="Public:top"/>
+
+    <include file="Public:header"/>
+</div>
+<!--头部结束--> 
+
+<!--主体部分开始-->
+<div class="main two_side clearfix"> 
+    <!--左侧开始-->
+    <include file="Public:left"/>
+    <!--左侧结束-->
+    <div class="plc_main"> 
+        <!--右侧开始-->
+        <div class="main_cont">
+            <div class="path_title">
+                <span class="photo_title" id="ptitle" petname="{$arrAlbum.title}" content="{$arrAlbum.content}" picid="{$arrAlbum.id}" petid="{$arrAlbum.pet_id}">我的相册</span>
+                <a class="return" href="<php>echo get_rewrite_url('UcAlbum', 'photo', $uid );</php>" title="返回相册首页>>">返回相册首页>></a>
+            </div>
+            
+            <div class="photo_toolbar">
+                <a class="u_photo_btn" href="javascript:void(0)" thref="/UcAlbum/uploadPhoto/aid/{$aid}" target="_self" title="上传照片"></a>
+                <span class="name">{$strAlbumName}</span>
+                <notpresent name="default">
+                    <a class="modify" id="edit_album" href="javascript:void(0)">修改相册信息</a>
+                </notpresent>
+                <notpresent name="default">
+                <a class="del" id="delpopt" href="javascript:void(0)">删除相册</a>
+                </notpresent>
+                <a class="manage" id="palledit" href="javascript:void(0)">批量管理</a>
+            </div>
+
+            <notpresent name="flag">
+            <div class="photo_group_edit none" id="photoalledit">
+                <span class="input_box"><input type="checkbox" id="ckeckAll" name="ckeckAll"><label for="ckeckAll">全选</label></span>
+                <a class="modify_photo" id="modifyPhoto" href="/UcAlbum/editPhoto">修改照片信息</a>
+                <div class="trs_wrap" id="trswrap"><!-- click addClass('select_trs') -->
+
+                     <a class="trs" href="javascript:void(0)">转移到</a>
+                    <div class="trs_drop">
+                        <ul>
+                            <volist name='arrSelectAlbum' id='vo'>
+                            <li class="album"><a href="javascript:void(0)" title="{$vo.title}" pid="{$vo.id}">{$vo.title}</a></li>
+                            </volist>
+                            <li class="new_album" id="new_album"><a href="#" title="+新建相册">+新建相册</a></li>
+                        </ul>
+                     </div>
+                </div>
+                <a class="del_link" id="delArrs" href="javascript:void(0)">删除</a>
+            </div>
+            
+            <!--相片列表开始-->
+            <div class="photo_list">
+                <ul>
+                    <volist name="arrPhotoMsg" id="vo">
+                    <li class="viw">
+                        <div class="img_show">
+							<span class="act" style="display: none;">
+								<a title="编辑" class="edit_album" href="javascript:void(0)"></a><a title="删除" class="del_album" pid="{$vo.pid}" href="javascript:void(0)"></a>
+							</span>
+							<a href="<php>echo get_rewrite_url('UcAlbum', 'photoshow',$vo['pid'] );</php>">
+							<img src="<php>echo C('IMG_DIR');</php>/{$vo.bpath}" onload="this.onload=null;BQ.imgLoad(this,[{$vo.width},{$vo.height}],[160,160]);" style="display:none;"/></a>
+						</div>
+                        <div class="img_title">
+                            <input class="photo_select none" type="checkbox" value="{$vo.pid}"><a href="<php>echo get_rewrite_url('UcAlbum', 'photoshow',$vo['pid'] );</php>" title="{$vo.pname}">{$vo.pname}</a>
+							<input class="input_bk photo_txt none" title="鼠标移出自动完成修改" type="text" pid="{$vo.pid}" value="{$vo.pname}">
+                        </div>
+                    </li>
+                    </volist>
+                </ul>
+            </div>
+            <!--相片列表结束-->
+
+            <!--分页开始-->
+            <div class="page_wrap">
+    	         <div class="showpage">
+	                 {$page}
+	              </div>
+             </div>
+             <!--分页结束-->
+                <else />
+             <div class="nophoto_list">相册内还没有照片，<a href="/UcAlbum/uploadPhoto/aid/{$aid}">马上上传</a></div>
+            </notpresent>
+        </div>
+        <!--右侧结束--> 
+    </div>
+</div>
+<!--主体部分结束--> 
+
+<input type="hidden" name="title" id="picid" value="">
+<div class="popup_layer none" id="picedit" style="width:390px">
+    <div class="bg">
+        <div class="content"> <a title="关闭" href="javascript:void(0);" class="close">关闭</a>
+            <div class="hd">修改相册信息</div>
+
+            <div class="bd">
+                <!--替换内容开始-->
+                <div class="photo_popup">
+                    <p class="error none">请填写相册名称</p>
+                    <div class="create_name">
+                        <span class="name">相册名称：</span>
+                        <input type="text" value="" id="picnm" name="textfield2" class="name_input">
+                        <span class="input_max_num"><span class="num" id="picnmnum">0/30</span></span><!-- 超出数字 addClass('warning') -->
+                    </div>
+                    <div class="create_desc">
+                        <span class="desc">相册描述：</span>
+                        <textarea rows="5" cols="45" id="picdesc" name="textarea" class="desc_textarea"></textarea>
+                        <span class="input_max_num"><span class="num" id="picdescnum">0/200</span></span><!-- 超出数字 addClass('warning') -->
+                    </div>
+                    <div class="con_pets">
+                        <span class="pets">关联宠物：</span>
+                        <select id="picselt" name="select2">
+                            <option value='0'>不关联宠物</option>
+                           <volist name='arrPetMsg' id='vo'>
+                            <option value="{$vo.pid}">{$vo.petname}</option>
+                           </volist>
+                        </select>
+                    </div>
+                    <p class="btn">
+                       <a href="javascript:void(0);" class="submit_btn">确定</a>
+                       <a href="javascript:void(0);" class="cancel_btn">取消</a>
+                    </p>
+                </div>
+                <!--替换内容结束-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="popup_layer none" id="picadd" style="width:390px">
+    <div class="bg">
+        <div class="content"> <a title="关闭" href="javascript:void(0);" class="close">关闭</a>
+            <div class="hd">创建相册</div>
+            <div class="bd">
+                <!--替换内容开始-->
+                <div class="photo_popup">
+                    <p class="error none">请填写相册名称</p>
+                    <div class="create_name">
+                        <span class="name">相册名称：</span>
+                        <input type="text" value="请输入相册信息" id="addcnm" name="textfield2" class="name_input">
+                        <span class="input_max_num"><span class="num" id="addcnmnub">0/30</span></span><!-- 超出数字 addClass('warning') -->
+                    </div>
+                    <div class="create_desc">
+                        <span class="desc">相册描述：</span>
+                        <textarea rows="5" cols="45" id="picadddesc" name="textarea" class="desc_textarea">请输入相册描述</textarea>
+                        <span class="input_max_num"><span class="num" id="picadddescnum">0/200</span></span><!-- 超出数字 addClass('warning') -->
+                    </div>
+                    <div class="con_pets">
+                        <span class="pets">关联宠物：</span>
+                        <select id="picaddgl" name="select2">
+                            <option value='0'>不关联宠物</option>
+                            <volist name='arrPetMsg' id='vo'>
+                            <option value="{$vo.pid}">{$vo.petname}</option>
+                            </volist>
+                        </select>
+                    </div>
+                    <p class="btn">
+                       <a href="javascript:void(0);" class="submit_btn" id="addsubmit">创建</a>
+                       <a href="javascript:void(0);" class="cancel_btn">取消</a>
+                    </p>
+                </div>
+                <!--替换内容结束-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="popup_layer none" id="picaddok">
+    <div class="bg">
+         <div class="mini_content tips_height">
+              <p class="info">
+                  <i class="icon_succ"></i>创建成功
+              </p>
+        </div>
+    </div>
+</div>
+
+<div class="popup_layer none" id="picedditok">
+    <div class="bg">
+         <div class="mini_content tips_height">
+              <p class="info">
+                  <i class="icon_succ"></i>修改成功
+              </p>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"> 
+	BQ.load("util.KeyMap,UCAlbum",function(){
+         BQ.UCAlbum('myPhotoList',{'aid':'<php>echo $aid;</php>','uid':'<php>echo $uid;</php>'}).exec();
+    });
+</script>
+<!--底部开始-->
+<include file="Public:footer"/>
+<!--底部结束--> 
+

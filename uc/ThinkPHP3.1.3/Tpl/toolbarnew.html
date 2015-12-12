@@ -1,0 +1,35 @@
+<script type="text/javascript">var config={"vet_dir":'<php>echo C("VET_DIR");</php>',"vet_dir_city":'<php>if($city_pysx){echo C("VET_DIR")."/".$city_pysx;}else{echo C("VET_DIR");}</php>',"bbs_dir":'<php>echo C("BBS_DIR");</php>',"bk_dir":'<php>echo C("BK_DIR");</php>','clocal':'<php>echo C("C_DIR");</php>',"i_dir":"<php>echo C('I_DIR');</php>",'static_dir':"<php>echo C('STATIC_DIR');</php>",'userinfo_dir':"<php>echo C('BLOG_DIR');</php>/userinfo","uid":"<php>echo $userinfo['uid'];</php>","shop_dir":'<php>echo C("SHOP_DIR");</php>',"c_dir":'<php>echo C("C_DIR");</php>','blog_dir':'<php>echo C("BLOG_DIR");</php>','BLOG_DIR':'<php>echo C("BLOG_DIR");</php>','domain':'<php>echo C("STATIC_DIR");</php>/Js1',"shop_dir":"<php>echo C('SHOP_DIR');</php>"};</script>
+<div id="toolbar">
+    <div class="margin_auto">
+        <div class="top_left">
+            <a href="<php>echo C('BLOG_DIR');</php>" var="101" ids="ID_101" target="_blank">波奇网</a><span>&nbsp;</span>
+            <a href="<php>echo C('SHOP_DIR');</php>" var="102" ids="ID_102" target="_blank">我的商城</a><span>&nbsp;</span>
+            <a href="<php>echo C('BBS_DIR');</php>"  var="103" ids="ID_103" target="_blank">我的论坛</a><span>&nbsp;</span>
+            <a href="<php>echo C('VET_DIR');</php>"  var="104" ids="ID_104" target="_blank">宠物服务</a>
+        </div>
+
+        <div class="top_icon">
+            <a href="http://e.weibo.com/boqii" target="_blank" var="109" ids="ID_109" class="pngFix"></a>
+            <a class="top_sta pngFix" href="javascript:void(0)" var="1010" ids="ID_1010" onclick="AddFavorite(window.location,document.title)"></a>
+            <a class="top_tel pngFix" href="<php>echo C('BLOG_DIR');</php>/subject/mobile/" var="1011" ids="ID_1011" target="_blank" title="波奇手机客户端"></a>
+        </div>
+        <div id="logininfo_head"></div>
+        <?php if($current=="site"){?>
+        <input type="hidden" value="/site/index.php/Public/logininfo" id="logininfo_url">
+        <?php }else if($current=="baike"){?>
+        <input type="hidden" value="/baike/index.php/Public/logininfo" id="logininfo_url">
+        <?php }else if($current=="vet" || $current = "news"){?>
+        <input type="hidden" value="/index.php/Public/logininfo" id="logininfo_url">
+        <?php }else if($current=="bbs" || $current=="meitu"){?>
+        <input type="hidden" value="/index.php/Public/logininfo" id="logininfo_url">
+        <?php }?>
+        <script type="text/javascript">
+            $(function(){
+                var logininfo_url = $("#logininfo_url").val();
+                $.post(logininfo_url,function(data){
+                    $('#logininfo_head').html(data);
+                });
+            });
+        </script>
+    </div>
+</div>

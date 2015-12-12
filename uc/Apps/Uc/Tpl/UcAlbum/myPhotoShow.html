@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <php>if($obj == "me") { if($userinfo['groupid'] >= 4 && $userinfo['groupid'] < 11) { </php><META NAME="robots" CONTENT="NOINDEX,NOFOLLOW">
+    <php>} } elseif($obj == "other") { if($huser['groupid']  >= 4 && $huser['groupid'] < 11) { </php><META NAME="robots" CONTENT="NOINDEX,NOFOLLOW">
+    <php>} }</php>
+    <meta name="keywords" content="{$mtaKeywords}" />
+    <meta name="description" content="{$mtaDescription}" />
+    <title>{$mtaTitle}</title>
+<link rel="stylesheet" type="text/css" href="<php>echo autoVer('/Css/uc/global.css');</php>"/>
+<link rel="stylesheet" type="text/css" href="<php>echo autoVer('/Css/uc/main.css');</php>"/>
+</head>
+<body>
+<!--头部开始-->
+<div class="global_header"> 
+    <!--头部导航开始-->
+    <include file="Public:top"/>
+
+    <include file="Public:header"/>
+    <!--nav导航结束-->
+</div>
+<!--头部结束--> 
+
+<!--主体部分开始-->
+<div class="main two_side clearfix"> 
+    <!--左侧开始-->
+    <include file="Public:left"/>
+    <!--左侧结束-->
+    <div class="plc_main"> 
+        <!--右侧开始-->
+        <div class="main_cont">
+            <div class="path_title">
+                <span class="photo_title">我的相册<em class="photo_path">>> <a href="<php>echo get_rewrite_url('UcAlbum', 'photoList', $aid );</php>">{$strAlbumName}</a> >> {$arrCurrentPhoto.photo_name}</em></span>
+                <a class="return" href="<php>echo get_rewrite_url('UcAlbum', 'photo', $uid );</php>" title="返回相册首页>>">返回相册首页>></a>
+            </div>
+            
+        <!--图集开始-->
+        <div class="gallery" id="gallery">
+            <div class="photo_thumb">
+                <span class="thumb_prev" title="上一张"></span>
+                <div class="thumb_list">
+                    <ul>
+                        <!--<li class="cur">-->
+                        <volist name="arrPhotoList" id="vo">
+                        <li photoId="{$vo.photo_id}" pnb="{$vo.comments}" wid={$vo.photo_id} unickname="{$nickname}" uavatar="{$avatar.headok}" uavatarerror="{$avatar.headerror}"><a href="<php>echo get_rewrite_url('UcAlbum', 'photoshow', $vo['photo_id'] );</php>"><img src="<php>echo C('IMG_DIR');</php>/{$vo.mpath}" msrc="<php>echo C('IMG_DIR');</php>/{$vo.photo_path}" alt="{$vo.photo_desc}" title="{$vo.photo_name}"  pid="{$i}" onload="this.onload=null;BQ.imgLoad(this,[{$vo.width},{$vo.height}],[56,56]);" style="display:none;"/></a></li>
+                        </volist>
+                    </ul>
+                </div>
+                <span class="thumb_next" title="下一张"></span>
+            </div>
+            
+            <div class="photo_view"><!-- mouseover 上一张 addClass('left_img') 下一张 addClass('right_img') --> 
+                 <div class="photo_but" id="photo_but">
+					<!--a href="#" class="left"></a>
+					<a href="#" class="right"></a-->
+				</div>
+				<div id="imgcon">
+					<img src="<php>echo C('IMG_DIR');</php>/{$arrCurrentPhoto.photo_path}" id="lodimg" style="display:none;"/>
+				</div>
+            </div>
+
+        </div>
+        <!--图集结束-->
+        
+        <!--照片信息开始-->
+        <div class="photo_info" id="photoinfo">
+            <div class="photo_title">
+                <span class="name"></span>
+                <div class="edit_name et">
+                    <div class="name_value">
+                        <input class="input_box" id="edit_name" name="textfield2" type="text" value="" />
+                    </div>
+                    <div class="name_btn">
+                        <p class="btn"><a class="submit_btn submit_name" href="javascript:void(0)">确定</a> <a class="c_btn" href="javascript:void(0)">取消</a></p>
+                        <p class="num"><span class="current">1</span>/30</p>
+                    </div>
+                </div> 
+            
+                <span class="date">{$arrCurrentPhoto.cretime} 上传</span>
+			
+				<span class="page" id="ajax_page">
+                     <?php
+                    echo  "<a href=\"C('BLOG_DIR')/photo/p/$intPrePid\" title=\"上一张\" class=\"prev\">上一张</a>|<a href=\"C('BLOG_DIR')/photo/p/$intLastPid\" title=\"下一张\" class=\"next\">下一张</a>";
+                     ?>
+                </span>
+            </div>
+            
+            <div class="view_desc"><span class="info view_descs">点此输入照片描述</span>
+				 <div class="edit_desc et">
+                <div class="desc_value">
+                    <textarea class="textarea_box" name="textarea" id="textarea" cols="45" rows="5"></textarea>
+                </div>
+                <div class="desc_btn">
+                    <p class="btn"><a class="submit_btn submit_desc" href="javascript:void(0)">确定</a> <a class="c_btn" href="javascript:void(0)">取消</a></p>
+                    <p class="num"><span class="current">1</span>/200</p>
+                </div>
+				</div>
+			</div>
+
+            <div class="stat_info">
+			<div class="bdshare">
+				<div class="fr">
+				<!-- Baidu Button BEGIN -->
+						<div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare"> <span class="bds_more">分享到：</span> <a class="bds_qzone"></a> <a class="bds_tsina"></a> <a class="bds_tqq"></a> <a class="bds_renren"></a> </div>
+						<script type="text/javascript" id="bdshare_js" data="type=tools" ></script> 
+						<script type="text/javascript" id="bdshell_js"></script> 
+						<script type="text/javascript">
+							var nickname = '{$nickname}',albumname='{$strAlbumName}',imageurl='{$shareUrl}';
+							var bds_config = {'bdText':nickname+'的'+albumname+'-波奇网','bdPic':imageurl};
+							document.getElementById("bdshell_js").src = "http://share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+					</script> 
+			   <!-- Baidu Button END -->
+			   </div>
+			</div>
+			<div class="bqinfo">
+				<span class="bqyds">阅读({$arrCurrentPhoto.views})</span><span class="wline">|</span><span class="bqplwe">评论({$arrCurrentPhoto.comments})</span></div>
+			</div>
+
+        </div>  
+        <!--照片信息结束-->
+        
+                <div class="blog_comment">
+                   
+                    
+                    <!--评论列表开始-->
+                    <div class="comment_list" id="commentlist" >
+                        <volist name="arrCommentInfo"  id="vo">
+                        <dl class="viw">
+                            <dt unm="{$vo.nickName}" uid="{$vo.uid}" cid="{$vo.id}"><a  href="<php>echo get_rewrite_url('Index', 'index', $vo['uid']);</php>"><img src="{$vo.avatar.headok}" width="50" height="50"/></a></dt>
+                            <dd><a href="#">{$vo.nickName}</a><php>if(isset($vo['reply_uid'])) { </php> 回复 <a  href="<php>echo get_rewrite_url('Index', 'index', $vo['uid']);</php>" target="_blank">{$vo.reply_nickname}</a> <php>} </php>：{$vo.content}
+                                 <p class="info tr"><span class="date">{$vo.time}</span><a href="javascript:void(0);" thref="/UcAlbum/ajaxDeletePhotoComment/cid/{$vo.id}" class="bqinfodel">删除</a><i class="wline">|</i><a class="bqrepeat" href="#">回复</a></p>
+                            </dd>
+                        </dl>
+                        </volist>
+                    </div>
+                    <!--评论列表结束--> 
+                    
+                    <!--分页开始-->
+                    <div class="page_wrap page_wrap2">
+                        <div class="showpage" id="showpage">{$page}</div>
+                    </div>
+                    <!--分页结束--> 
+					<a name="Reply"></a>
+					 <!--评论输入框开始-->
+                    <div class="input_box">
+                        <textarea name="textarea2" id="bqcom1" cols="45" rows="5" rnickname="{$rnicename}" ruid="{$ruid}" rid="{$rid}">说点什么吧……</textarea>
+                        <span class="num" id="bqtexsub">1/140</span><!-- 超出字数 addClass('warning') --> 
+                    </div>
+                    <div class="send_fun">
+                        <div class="emot"> <a class="face"id="bqbut1" href="#" title="插入表情">表情</a></div>
+                        <div class="pub"> <a class="submit_btn" href="#" id="bqemoSubmit1">评论</a> </div>
+                    </div>
+                    <!--评论输入框结束--> 
+
+                </div>
+        
+        </div>
+        <!--右侧结束--> 
+    </div>
+</div>
+<!--主体部分结束--> 
+<script type="text/javascript"> 
+	BQ.load("UCBQExp,UCAlbum",function(){
+         BQ.UCAlbum('myPhotoShow',{'currentPid':'<php>echo $currentPid;</php>','I_DIR' : '<php>echo C("I_DIR");</php>'}).exec();
+    });
+</script>
+<!--底部开始-->
+<include file="Public:footer"/>
+<!--底部结束--> 
+

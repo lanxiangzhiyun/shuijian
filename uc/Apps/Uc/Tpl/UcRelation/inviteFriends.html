@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <php>if($obj == "me") { if($userinfo['groupid'] >= 4 && $userinfo['groupid'] < 11) { </php><META NAME="robots" CONTENT="NOINDEX,NOFOLLOW">
+    <php>} } elseif($obj == "other") { if($huser['groupid']  >= 4 && $huser['groupid'] < 11) { </php><META NAME="robots" CONTENT="NOINDEX,NOFOLLOW">
+    <php>} }</php>
+    <meta name="keywords" content="{$mtaKeywords}" />
+    <meta name="description" content="{$mtaDescription}" />
+    <title>{$mtaTitle}</title>
+    <link rel="stylesheet" type="text/css" href="<php>echo autoVer('/Css/uc/global.css');</php>"/>
+    <link rel="stylesheet" type="text/css" href="<php>echo autoVer('/Css/uc/main.css');</php>"/>
+</head>
+<body>
+<!--头部开始-->
+<div class="global_header">
+    <!--头部导航开始-->
+    <include file="Public:top" />
+
+    <include file="Public:header" />
+</div>
+<!--头部结束--> 
+
+<!--主体部分开始-->
+<div class="main two_side clearfix">
+    <!--左侧开始-->
+    <include file="Public:left" />
+    <!--左侧结束-->
+    <div class="plc_main"> 
+        <!--右侧开始-->
+        <div class="main_cont">
+            <div class="common_tab">
+                <ul>
+                    <li><a href="<php>echo get_rewrite_url('UcRelation', 'follow', $uid);</php>">我的关注</a></li>
+                    <li><a href="<php>echo get_rewrite_url('UcRelation', 'fans', $uid);</php>">我的粉丝</a></li>
+                    <li><a href="<php>echo get_rewrite_url('UcRelation', 'friends', $uid);</php>">我的好友</a></li>
+                    <li class="current"><a href="<php>echo get_rewrite_url('UcRelation', 'invite', $uid);</php>">邀请好友</a></li>
+                </ul>
+            </div>
+            <div class="invite_friends">
+                <dl>
+                    <dt><strong>1、您的朋友们也和您一样喜欢宠物？快邀请他们一起来吧~</strong></dt>
+                    <dd>
+                        <div class="share_txt">
+                            <!--复制成功url—><a href="<php>echo 'http://wwwlocal.boqii.com/user/register.php?u='.$invite_uid</php>" ></a>-->
+                            <textarea name="textarea" id="textarea" cols="45" rows="5">喜欢狗狗？猫猫？还是其它的小动物？来波奇网，这里有真实的宠友交流，最物美价廉的宠物用品，还有丰富的线下宠友聚会哦~<php>echo get_rewrite_url('User', 'register');</php>?u={$invite_uid}</textarea>
+                        </div>
+                        <div class="share_btn"><a class="submit_btn" href="javascript:void(0);">复制</a> <span class="suc_tips none" id="icon_succ_ok"> <i class="icon_succ"></i>复制成功</span></div>
+                    </dd>
+                    <dt><strong>2、或者通过以下方式分享给好友：</strong></dt>
+                    <dd> <!-- Baidu Button BEGIN -->
+                        <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare"> <a class="bds_qzone">QQ空间</a> <a class="bds_tsina">新浪微博</a> <a class="bds_tqq">腾讯微博</a> <a class="bds_renren">人人网</a> <span class="bds_more">更多</span> </div>
+                        <script type="text/javascript" id="bdshare_js" data="type=tools" ></script> 
+                        <script type="text/javascript" id="bdshell_js"></script> 
+                        <script type="text/javascript">
+							document.getElementById("bdshell_js").src = "http://share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+					</script> 
+                        <!-- Baidu Button END --></dd>
+                    <dt><strong>3、成功邀请3名好友，您将获得<font color="#FE720C">300</font>啵币奖励！</strong><a href="<php>echo C('BBS_DIR').'/content/viewthread-289266.html';</php>" target="_blank">啵币有什么用？</a></dt>
+                    <dd>
+                        <p class="txt">【奖励发放】你邀请的好友通过邮箱验证后，系统将自动发放奖励。 </p>
+                        <p class="txt">【自动关注】你邀请的好友将自动关注你，让你迅速成为波奇宠物的明星达人。</p>
+                    </dd>
+                    <dt><strong>已成功邀请的好友：</strong></dt>
+                    <dd>
+                        <div class="invite_list">
+                            <ul>
+                                <volist name="inviteInfo" id="vo">
+                                <li><a href="<php>echo get_rewrite_url('Index', 'index', $vo['uid']);</php>" target="_blank">{$vo.nickname}</a></li>
+                                </volist>
+                            </ul>
+                        </div>
+                        <!--分页开始-->
+
+                        <div class="page_wrap">
+                            <div class="showpage"> {$page} </div>
+                        </div>
+                        <!--分页结束-->
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <!--右侧结束--> 
+    </div>
+</div>
+<!--主体部分结束--> 
+<script language="Javascript">
+BQ.load("UCRelation",function(){
+    BQ.UCRelation('inviteFriends').exec();
+});
+</script>
+<!--底部开始-->
+<include file="Public:footer" />
+<!--底部结束--> 
+

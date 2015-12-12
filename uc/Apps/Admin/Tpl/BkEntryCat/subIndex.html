@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>二级分类列表</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Js/library/ui/static/calendar/calendar.css"/>
+    <script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/bq.js"></script>
+    <script type='text/javascript' src='__PUBLIC__/Js/library/ui/form/calender.js'></script>
+    <script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+</head>
+<body>
+
+<div class="common_tab">
+    <ul>
+        <li><a href="__ROOT__/iadmin.php/BkEntryCat/index/level/1"><span>一级分类</span></a></li>
+        <li class="current"><a href="__ROOT__/iadmin.php/BkEntryCat/subIndex"><span>二级分类</span></a></li>
+        <li><a href="__ROOT__/iadmin.php/BkEntryCat/threeIndex"><span>三级分类</span></a></li>
+    </ul>
+</div>
+<!--搜索开始-->
+<div class="search_box">
+    <div class="search">
+    </div>
+</div>
+<!--搜索结束-->
+<!--数据列表开始-->
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+    <thead>
+		<tr bgcolor="#add8e6">
+			<td  colspan="1" align="left">{$lang}</td>
+			<?php if($level != 1 && $parentId != 0 ) { ?>
+			<td  colspan="9" ><a href="__ROOT__/iadmin.php/BkEntryCat/editor/action/addnext/id/{$parentId}/level/{$level}">添加同级分类</a></td>
+			<?php } else {?>
+			<td  colspan="9" ><a href="#"></a></td>
+			<?php }?>
+		</tr>
+    <tr>
+        <th width="7%">ID</th>
+        <th width="7%">名称</th>
+        <th width="7%">代号</th>
+        <th width="7%">父类</th>
+        <th>介绍</th>
+        <th width="7%">词条数</th>
+        <th width="7%">层级</th>
+        <th width="7%">排序</th>
+        <th width="14%">操作</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <volist name="arrAllTopList" id="vo" >
+        <tr>
+            <td width="7%">{$vo.id}</td>
+            <td width="7%"><a href="/iadmin.php/BkEntryCat/threeIndex/pid/{$vo.id}/level/{$level+1}">{$vo.name}</a></td>
+            <th width="7%">{$vo.code}</th>
+            <td width="7%">{$vo.parent_name}</td>
+			<td>{$vo.introduce}</td>
+            <td width="7%">{$vo.entry_num}</td>
+            <td width="7%">{$vo.level}</td>
+            <td width="7%">{$vo.sort}</td>
+            <td width="14%">
+                <!--    <?php
+                  if($vo['level'] != 1) {
+                ?>
+               <a onclick="if(confirm('确定删除吗?')){return true;}else{return false;}" href="__ROOT__/iadmin.php/BkEntryCat/editor/action/delete/id/{$vo.id}/level/<php>echo $level;</php>">删除</a>
+               <?php }?>-->
+                <a href="__ROOT__/iadmin.php/BkEntryCat/editorSub/action/subChild/id/{$vo.id}">编辑</a>
+				<?php if($vo['level'] == 2) {?>
+					&nbsp;<a href="__ROOT__/iadmin.php/BkEntryCat/editor/action/addthree/id/<php>echo $vo['id']</php>/level/<php>echo $level+1;</php>">增加三级分类</a>
+				<?php }?>
+            </td>
+        </tr>
+    </volist>
+    </tbody>
+</table>
+</form>
+<!--数据列表结束-->
+
+<!--分页开始-->
+<?php echo $pageHtml;?>
+<!--分页结束-->
+</div>
+<script type='text/javascript'>
+    //页面加载一次
+    window.onload=function(){
+        var url = $('#url').val();
+        if(url){
+            var maxCode=parent.oMapReloadInfo['maxCode'];
+            var code=parent.oMapReloadInfo['code'];
+            var difference = maxCode-code;
+            if(difference==1){
+                parent.oMapReloadInfo['maxCode']=maxCode+1;
+                location.href=url;
+            }else{
+                parent.oMapReloadInfo['code']=code+1;
+            }
+        }
+    }
+    BQ.ui.form.Calender('#calender1');
+    BQ.ui.form.Calender('#calender2');
+</script>
+</body>
+</html>

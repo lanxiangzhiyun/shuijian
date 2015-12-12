@@ -1,0 +1,430 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$tip}</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/styles.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Js/library/ui/static/calendar/calendar.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type="text/javascript" src="__PUBLIC__/Js/bq.js"></script>
+<script type='text/javascript' src='__PUBLIC__/Js/library/ui/form/calender.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+<script type='text/javascript'>
+	BQ.load("BQAjaxUP",function(){
+		BQ.BQAjaxUP('AjaxUP',{but:$('#banner_pic'),action:'/iadmin.php/Upload/imageUpload',data:{'type':'subtem'},onSubmit:function(file,ext){
+			if(ext && /^(jpg|jpeg|png|gif)$/.test(ext)){
+				//console.log('上传中...');
+			}else{
+				alert('不支持非图片格式！');
+				return false;
+			}
+			},onComplete:function(file,response){
+				response = eval("("+response+")");
+				//返回json数据
+				if(response.status == 'ok'){
+					$('#ban_pic').val(response.imgpath);
+					//$('#minimg').html('<img src="'+response.domain+response.imgpath+'" alt="" width="'+response.width+'" height="'+response.height+'">')
+					$('#banimg').html('<img src="'+response.domain+response.imgpath+'" alt="" width="600" height="420" >');
+				}else if(response.status == 'noselect'){
+					alert('服务器错误、上传图片为空值。');
+				}else if(response.status == 'login'){
+					alert('请登录后操作！');
+				}else{
+					alert('上传失败，请重新上传！');
+				}
+			}});
+			
+		BQ.BQAjaxUP('AjaxUP',{but:$('#bodyground_pic'),action:'/iadmin.php/Upload/imageUpload',data:{'type':'subtem'},onSubmit:function(file,ext){
+			if(ext && /^(jpg|jpeg|png|gif)$/.test(ext)){
+				//console.log('上传中...');
+			}else{
+				alert('不支持非图片格式！');
+				return false;
+			}
+			},onComplete:function(file,response){
+				response = eval("("+response+")");
+				//返回json数据
+				if(response.status == 'ok'){
+					$('#bg_pic').val(response.imgpath);
+					//$('#minimg').html('<img src="'+response.domain+response.imgpath+'" alt="" width="'+response.width+'" height="'+response.height+'">')
+					$('#bgimg').html('<img src="'+response.domain+response.imgpath+'" alt="" width="20" height="20">');
+				}else if(response.status == 'noselect'){
+					alert('服务器错误、上传图片为空值。');
+				}else if(response.status == 'login'){
+					alert('请登录后操作！');
+				}else{
+					alert('上传失败，请重新上传！');
+				}
+			}});
+			
+		BQ.BQAjaxUP('AjaxUP',{but:$('#header_pic'),action:'/iadmin.php/Upload/imageUpload',data:{'type':'subtem'},onSubmit:function(file,ext){
+			if(ext && /^(jpg|jpeg|png|gif)$/.test(ext)){
+				//console.log('上传中...');
+			}else{
+				alert('不支持非图片格式！');
+				return false;
+			}
+			},onComplete:function(file,response){
+				response = eval("("+response+")");
+				//返回json数据
+				if(response.status == 'ok'){
+					$('#head_pic').val(response.imgpath);
+					//$('#minimg').html('<img src="'+response.domain+response.imgpath+'" alt="" width="'+response.width+'" height="'+response.height+'">')
+					$('#headerimg').html('<img src="'+response.domain+response.imgpath+'" alt="" width="420" height="270">');
+				}else if(response.status == 'noselect'){
+					alert('服务器错误、上传图片为空值。');
+				}else if(response.status == 'login'){
+					alert('请登录后操作！');
+				}else{
+					alert('上传失败，请重新上传！');
+				}
+			}});
+	})
+</script>
+<script>
+//保存
+function check(obj) {
+	if(obj['tem[title]'].value == '') {
+		alert('请输入专题名称！');
+		obj['tem[title]'].focus();
+		return false;
+	}
+	if(obj['tem[ban_pic]'].value != '' ) {
+		if(obj['tem[ban_h]'].value == '') {
+			alert('请输入banner的高度！');
+			obj['tem[ban_h]'].focus();
+			return false;
+		}
+	}
+	if($('#head1').attr('checked')){
+		if(obj['tem[head_title]'].value == '') {
+			alert('请输入头部标题！');
+			obj['tem[head_title]'].focus();
+			return false;
+		}
+		if(obj['tem[head_pic]'].value == '' ) {
+			alert('请选择头部图片！');
+			obj['header_pic'].focus();
+			return false;
+		}
+		if(obj['tem[head_content]'].value == ''  || obj['tem[head_content]'].value == '请输入200字以内......' ) {
+			alert('请输入头部内容！');
+			obj['tem[head_content]'].focus();
+			return false;
+		}
+		if(obj['tem[head_url]'].value == '') {
+			alert('请输入头部链接！');
+			obj['tem[head_url]'].focus();
+			return false;
+		}
+		
+	}
+	if($('#vote1').attr('checked')){
+		if(obj['tem[vote_title]'].value == '') {
+			alert('请输入投票标题！');
+			obj['tem[vote_title]'].focus();
+			return false;
+		}
+		if(obj['tem[vote_a]'].value == '') {
+			alert('请选择选项A名称！');
+			obj['tem[vote_a]'].focus();
+			return false;
+		}
+		if(obj['tem[vote_b]'].value == '') {
+			alert('请输入选项B名称！');
+			obj['tem[vote_b]'].focus();
+			return false;
+		}
+	}
+	
+	return true;
+}
+</script>
+
+</head>
+<body>
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li><a  href="__ROOT__/iadmin.php/SubTem/index"><span>专题页列表</span></a></li>
+        <li class="current"><a class="add_btn" href="__ROOT__/iadmin.php/SubTem/addSubject<php>if($tip == '编辑专题'){</php>?id={$arrInfo.id}<php> }</php>"><span>{$tip}</span></a></li>
+        <li><a href="__ROOT__/iadmin.php/SubTem/newIndex"><span>新专题管理</span></a></li>
+        <li><a  href="__ROOT__/iadmin.php/SubTem/addNewSubject"><span>新增新专题</span></a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="add_subject">
+	
+	<form action='__ROOT__/iadmin.php/subTem/saveSubject' method='post' enctype="multipart/form-data" onsubmit="return check(this)">
+		<input type='hidden' name='id' value='{$arrInfo.id}'>
+		<!--广告开始-->
+		<!--数据列表开始-->
+		<table width="70%" border="0" cellspacing="0" cellpadding="0" class="tb">
+			<tbody>
+				<tr>
+					<td rowspan="4" width=95>全局</td>
+					<td width=120>专题名称</td>
+					<td class="s_b" align="left">
+						<input type="text" style="width:600px;"  name="tem[title]" value="{$arrInfo.title}"/>
+					</td>
+				</tr>
+				<tr>
+					<td>Banner</td>
+					<td class="s_b">
+						<input type="hidden" name="tem[ban_pic]" id="ban_pic"  value="{$arrInfo.ban_pic}"/>
+						<input type="file" id="banner_pic" name="banner_pic" />
+						<span style="margin-left:60px">banner高度：</span>
+						<input type="text" name="tem[ban_h]" value="{$arrInfo.ban_h}" />
+						<p id="banimg"><php>if($arrInfo['ban_pic']){</php>
+						<img src="<php>echo C('IMG_DIR').'/'.$arrInfo['ban_pic'];</php>" width="600" height="420"/>
+						<php>}</php></p>
+					</td>
+				</tr>
+				<tr>
+					
+					<td>页面背景</td>
+					<td class="s_b">
+						<input type="hidden" name="tem[bg_pic]" id="bg_pic" value="{$arrInfo.bg_pic}"/>
+						<input type="file" name="bodyground_pic" id="bodyground_pic"  />
+						<span style="color:black;">(此图在页面显示为无限复制,建议宽高10px*10px以内)</span>
+						<p id="bgimg"><php>if($arrInfo['bg_pic']){</php>
+						<img src="<php>echo C('IMG_DIR').'/'.$arrInfo['bg_pic'];</php>" width="20" height="20"/>
+						<php>}</php></p>
+					</td>
+				</tr>
+				<tr>
+					
+					<td>正文样式</td>
+					<td class="s_b">
+						字体：<input type="text" name="tem[bg_ffamily]" class="yangshi"  value="<if condition="$arrInfo.bg_ffamily neq ''">{$arrInfo.bg_ffamily}<else/>Microsoft YaHei</if>" />
+						字号：<input type="text" name="tem[bg_fsize]" class="yangshi"  value="<if condition="$arrInfo.bg_fsize neq ''">{$arrInfo.bg_fsize}<else/>12px</if>" />
+						字体颜色：<input type="text" name="tem[bg_fcolor]" class="yangshi"  value="<if condition="$arrInfo.bg_fcolor neq ''">{$arrInfo.bg_fcolor}<else/>#000000</if>"" />
+					</td>
+				</tr>
+				<tr>
+					<td rowspan="6">
+						<label><input class="s_t" checked="checked" type="checkbox" <if condition="$arrInfo.head1 eq 1">checked="checked"</if> value="1" name="tem[head1]" id="head1" /> 头部</label>
+					</td>
+					<td>head标题</td>
+					<td class="s_b"><input type="text" style="width:600px;" name="tem[head_title]" value="{$arrInfo.head_title}"/></td>
+				</tr>
+				<tr>
+					
+					<td>head图片</td>
+					<td class="s_b">
+						<input type="hidden" name="tem[head_pic]" id="head_pic" value="{$arrInfo.head_pic}"/>
+						<input type="file" name="header_pic" id="header_pic"/>
+						<span style="color:black;">（尺寸420x270）</span>
+						<p id="headerimg"><php>if($arrInfo['head_pic']){</php>
+						<img src="<php>echo C('IMG_DIR').'/'.$arrInfo['head_pic'];</php>"  width="420" height="270"/>
+						<php>}</php></p>
+					</td>
+				</tr>
+				<tr>
+					
+					<td>head内容</td>
+					<td class="s_b">
+						<textarea name="tem[head_content]" class="change_content" cols="130" rows="3"><if condition="$arrInfo.head_content eq ''">请输入200字以内......<else/>{$arrInfo.head_content}</if></textarea>
+					</td>
+				</tr>
+				<tr>
+					
+					<td>head链接</td>
+					<td class="s_b">
+						<input style="width:600px;" type="text" name="tem[head_url]" value="{$arrInfo.head_url}"/>
+						<span>(请以http://开头)</span>
+					</td>
+				</tr>
+				<tr>
+					
+					<td>head标题样式</td>
+					<td class="s_b">
+						字体：<input type="text" name="tem[head_ffamily]" class="yangshi"  value="<if condition="$arrInfo.head_ffamily neq ''">{$arrInfo.head_ffamily}<else/>Microsoft YaHei</if>""/>
+						字号：<input type="text" name="tem[head_fsize]" class="yangshi"  value="<if condition="$arrInfo.head_fsize neq ''">{$arrInfo.head_fsize}<else/>12px</if>"/>
+						字体颜色：<input type="text" name="tem[head_fcolor]" class="yangshi"  value="<if condition="$arrInfo.head_fcolor neq ''">{$arrInfo.head_fcolor}<else/>#000000</if>"/>
+					</td>
+				</tr>
+				<tr>
+					
+					<td>head背景色</td>
+					<td class="s_b">
+						<input type="text" name="tem[head_bgcolor]" value="{$arrInfo.head_bgcolor}"/>
+					</td>
+				</tr>
+				<tr>
+					<td rowspan="3"><label><input checked="checked" type="checkbox"  class="s_t" <if condition="$arrInfo.head1 eq 1">checked="checked"</if> value="1" name="tem[vote]" id="vote1"/> 投票</label></td>
+					<td>投票标题</td>
+					<td class="s_b"><input type="text" name="tem[vote_title]" value="{$arrInfo.vote_title}"/></td>
+				</tr>
+				<tr>
+			
+					<td>选项A名称</td>
+					<td class="s_b">
+						<input type="text" name="tem[vote_a]" value="{$arrInfo.vote_a}"/>
+						初值：<input type="text" name="tem[vote_anum]" value="{$arrInfo.vote_anum}"/>
+					</td>
+				</tr>
+				<tr>
+					
+					<td>选项B名称</td>
+					<td class="s_b">
+						<input type="text" name="tem[vote_b]" value="{$arrInfo.vote_b}"/>
+						初值：<input type="text" name="tem[vote_bnum]" value="{$arrInfo.vote_bnum}"/>
+					</td>
+				</tr>
+				<tr>
+					<td rowspan="3">侧边栏</td>
+					<td>标题样式</td>
+					<td class="s_b">
+						字体：<input type="text" name="tem[sidebar_ffamily]" class="yangshi"  value="<if condition="$arrInfo.sidebar_ffamily neq ''">{$arrInfo.sidebar_ffamily}<else/>Microsoft YaHei</if>"/>
+						字号：<input type="text" name="tem[sidebar_fsize]" class="yangshi"  value="<if condition="$arrInfo.sidebar_fsize neq ''">{$arrInfo.sidebar_fsize}<else/>12px</if>"/>
+						字体颜色：<input type="text" name="tem[sidebar_fcolor]" class="yangshi"  value="<if condition="$arrInfo.sidebar_fcolor neq ''">{$arrInfo.sidebar_fcolor}<else/>#000000</if>"/>
+					</td>
+				</tr>
+				<tr>
+					
+					<td>背景色</td>
+					<td class="s_b"><input type="text" name="tem[sidebar_bgcolor]" class="yangshi"  value="<if condition="$arrInfo.sidebar_bgcolor neq ''">{$arrInfo.sidebar_bgcolor}<else/>#FFFFFF</if>"/></td>
+				</tr>
+				<tr>
+					
+					<td>分割线颜色</td>
+					<td class="s_b"><input type="text" name="tem[sidebar_line]" class="yangshi"  value="<if condition="$arrInfo.sidebar_line neq ''">{$arrInfo.sidebar_line}<else/>#000000</if>"/></td>
+				</tr>
+				<tr>
+					<td rowspan="3">内容</td>
+					<td>标题样式</td>
+					<td class="s_b">
+						字体：<input type="text" name="tem[con_ffamily]" class="yangshi"  value="<if condition="$arrInfo.con_ffamily neq ''">{$arrInfo.con_ffamily}<else/>Microsoft YaHei</if>"/>
+						字号：<input type="text" name="tem[con_fsize]" class="yangshi"  value="<if condition="$arrInfo.con_fsize neq ''">{$arrInfo.con_fsize}<else/>12px</if>"/>
+						字体颜色：<input type="text" name="tem[con_fcolor]" class="yangshi"  value="<if condition="$arrInfo.con_fcolor neq ''">{$arrInfo.con_fcolor}<else/>#000000</if>"/>
+					</td>
+				</tr>
+				<tr>
+					
+					<td>背景色</td>
+					<td class="s_b"><input type="text" name="tem[con_bgcolor]" class="yangshi"  value="<if condition="$arrInfo.con_bgcolor neq ''">{$arrInfo.con_bgcolor}<else/>#FFFFFF</if>"/></td>
+				</tr>
+				<tr>
+					
+					<td>分割线颜色</td>
+					<td class="s_b"><input type="text" name="tem[con_line]" class="yangshi"  value="<if condition="$arrInfo.con_line neq ''">{$arrInfo.con_line}<else/>#F1F1F1</if>"/></td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<if condition="$id neq ''">
+			<volist name="contentInfo" id="vo">
+			<div class="subject_content">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+					<tr>
+						<td rowspan="4" width=95>内容{$vo.id}号</td>
+						<td width=120>标题</td>
+						<td class="c_b"><input style="width:600px;" type="text" name="con_title[]" value="{$vo.con_title}" /></td>
+					</tr>
+					<tr>
+						
+						<td>图片</td>
+						<td class="c_b">
+							
+							<input type="file" class="add_conpic" name="con_pic[]" value="{$vo.con_pic}" />
+							<input type="hidden" name="con_id[]" value="{$vo.id}" />
+							<p><php>if($vo['con_pic']){</php>
+							<img src="<php>echo C('IMG_DIR').'/'.$vo['con_pic'];</php>"  width="150" height="115"/>
+							<php>}</php></p>
+						</td>
+					</tr>
+					<tr>
+						
+						<td>链接</td>
+						<td class="c_b">
+							<input type="text" style="width:600px;" name="con_url[]"  value="{$vo.con_url}"/>
+							<span>(请以http://开头)</span>
+						</td>
+					</tr>
+					<tr>
+						
+						<td>内容</td>
+						<td class="c_b"><textarea name="content[]" class="change_content" id="" cols="130" rows="3"><if condition="$vo.content neq ''">{$vo.content}<else/>请输入200字以内</if></textarea></td>
+					</tr>
+				</table>
+				<div style="float:right">
+					<a class="common_btn" onclick="delEditContent(this)" href="javascript:void(0);" id="{$vo.id}" title="删除编辑内容">删除</a>
+				</div>
+			</div>
+			</volist>
+		<else/>
+		<div class="subject_content">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+				<tr>
+					<td rowspan="4" width=95>内容</td>
+					<td width=120>标题</td>
+					<td class="c_b"><input style="width:600px;" type="text" name="con_title[]" value="" /></td>
+				</tr>
+				<tr>
+					<td>图片</td>
+					<td class="c_b">
+						<input type="file" class="add_conpic" name="con_pic[]" value="" />
+						<input type="hidden" name="con_id[]" value="" />
+					</td>
+				</tr>
+				<tr>
+					<td>链接</td>
+					<td class="c_b"><input style="width:600px;" type="text" name="con_url[]"  /></td>
+				</tr>
+				<tr>
+					
+					<td>内容</td>
+					<td class="c_b"><textarea name="content[]" class="change_content" id="" cols="130" rows="3">请输入200字以内......</textarea></td>
+				</tr>
+			</table>
+			
+		</div>
+		</if>
+		<div style="margin:20px 0 0 0;">
+			<a class="common_btn" id="add_content" href="javascript:void(0);" title="添加内容">添加内容</a>
+		</div>
+		<div class="subject_submit">
+			<a href="javascript:void(0);"><input class="submit" type="submit" value="发布" /></a>
+			<a onClick="return backfun('/iadmin.php/subTem/index');" href="javascript:void(0);">取消</a>
+		</div>
+ 	</form>
+</div>
+<script type="text/javascript">
+	
+	$('#add_content').click(function(){
+		$(this).parent().before('<div class="subject_content"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb"><tr><td rowspan="4" width=95>内容</td><td width=120>标题</td><td class="c_b"><input type="text" style="width:600px;" name="con_title[]"  /></td></tr><tr><td>图片</td><td class="c_b"><input type="file" class="add_conpic" name="con_pic[]" value="" /><input type="hidden" name="con_id[]" value="" /></td></tr><tr><td>链接</td><td class="c_b"><input type="text" name="con_url[]" style="width:600px;" /><span>(请以http://开头)</span></td></tr><tr><td>内容</td><td class="c_b"><textarea class="change_content" name="content[]" id="" cols="130" rows="3">请输入200字以内......</textarea></td></tr></table><div style="float:right"><a class="common_btn"  id="del_content1" href="javascript:void(0);" title="删除内容">删除</a></div>');
+		
+	});
+	$('#del_content1').live('click',function(){
+		$(this).parent().parent().remove()
+	});
+	$('.change_content').live('focus',function(){
+		if($(this).val() == '请输入200字以内......'){
+			$(this).val('');
+		}
+		$(this).css('color','black');
+	});
+	function delEditContent(obj){
+		var _res = confirm('真的要删除吗？');
+		var _id  = obj.id;
+		if(_res && _id){
+			$.getJSON(
+				"/iadmin.php/SubTem/ajaxDelContent",
+				{id:_id},
+				function(list){ 
+					if(list == 'ok'){
+						$(obj).parent().parent().remove();
+						alert('操作成功！');
+					}else{
+						alert('操作失败！');
+					}
+				}
+			)
+		}
+	}
+</script>
+
+</body>
+</html>

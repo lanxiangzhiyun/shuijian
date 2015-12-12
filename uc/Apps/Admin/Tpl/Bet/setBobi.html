@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>抽奖啵币设置</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<!-- <link rel="stylesheet" type="text/css" href="__PUBLIC__/Js/library/ui/static/calendar/calendar.css"/> -->
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type="text/javascript" src="__PUBLIC__/Js/bq.js"></script>
+<!-- <script type='text/javascript' src='__PUBLIC__/Js/library/ui/form/calender.js'></script> -->
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+<style type='text/css'>
+.popup_layer . {
+	display:none;
+}
+</style>
+</head>
+<body>
+<include file="Index:isdelete"/>
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li><a href="__ROOT__/iadmin.php/Bet/index"><span>兑奖中心</span></a></li>
+        <li class="current"><a href="__ROOT__/iadmin.php/Bet/setBobi"><span>抽奖啵币设置</span></a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+    <form action='__ROOT__/iadmin.php/Bet/saveBobi' method='post' onsubmit="return check(this)">
+    <div class="common_tb">
+        <ul>
+            <li>
+                <span class="text">抽奖啵币数量：</span>
+                <span class="input_area">
+                    <input name="bobi" type="text" class="input_bk" value="{$bobi}" />
+					(1~10000)
+                </span>
+            </li>
+            <li>
+                <span class="text">&nbsp;</span>
+                <span class="input_area"><a class="submit_btn" onClick='submitFunc();' href="javascript:void(0);" title="确定"></a><a class="cancel_btn" onClick="return backfun('/iadmin.php/Bet/prize?action=lottery');" href="javascript:void(0);" title="取消"></a> </span>
+            </li>
+        </ul>
+    </div>
+	</form>
+</div>
+</body>
+
+<script type='text/javascript'>
+function check(obj){
+	var _bobi = isNumber(obj.bobi.value);
+	if(_bobi == false){
+		alert('请输入正确数字！');
+		obj.bobi.focus();
+		return false;
+	}
+}
+function submitFunc(){
+	$("form").submit();
+}
+</script>
+</html>

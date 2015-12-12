@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>热门话题推荐</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+<style type='text/css'>
+.popup_layer .setnotice_class{
+	display:none;
+}
+</style>
+</head>
+<body>
+<include file="Index:isdelete" />
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+		<li><a href="__ROOT__/iadmin.php/Push/publishGroupList"><span>栏目组</span></a></li>
+        <li class="current"><a href="__ROOT__/iadmin.php/Push/publishList?pgid={$pgid}"><span>栏目</span></a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+	<form action='__ROOT__/iadmin.php/Push/keepSort' method='post'>
+    <!--数据列表开始-->
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+		<thead>
+			<tr>
+				<td colspan="5" align="left">
+					当前位置：{$publishGroupInfo['name']} <a href="__ROOT__/iadmin.php/Push/publishAdd?pgid={$pgid}">添加栏目</a>
+				</td>
+			</tr>
+		</thead>
+        <thead>
+            <tr>
+                <th width="45">选中</th>
+                <th width="5%">ID</th>
+                <th width="45%">栏目标题</th>
+				<th width="15%">编号code</th>
+                <th width="25%">创建时间</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+			<volist name='publish' id='vo'>
+			<tr>
+                <td><input class="dx" type="checkbox" value="{$vo.id}" id="blogID_{$vo.id}" name="blogID"></td>
+				<td>{$vo.id}</td>
+                <td align="left">
+					<span class="title">
+						<if condition="$vo['code'] eq 50002">
+						{$vo.name}
+						<else/>
+						<a href="__ROOT__/iadmin.php/Push/publishArticleList?pid={$vo.id}&pgid={$pgid}">{$vo.name}</a>
+						</if>
+					</span>
+				</td>
+				<td>{$vo.code}</td>
+                <td>{$vo.create_time|date="y-m-d H:i",###}</td>
+                <td><a  href="javascript:;" onClick="return newUurlDelete(2,'__ROOT__/iadmin.php/Push/delPublish?pid={$vo.id}&pgid={$pgid}');">删除</a></td>
+            </tr>
+            </volist>
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="8" align="left"><!--<label><input class="select_all" type="checkbox" value="全选" id="blogID" name="blogID">全选</label> <a class="del_btn" href="#" actions='10' controllers='5' title="删除"><a class="save_btn" href="#" onClick='submitFun();' title="保存"></a>--></td>
+            </tr>
+        </tfoot>
+    </table>
+	</form>
+    <!--数据列表结束-->
+    
+    <!--分页开始-->
+    <?php echo $pageHtml;?>
+    <!--分页结束-->
+    
+</div>
+</body>
+</html>

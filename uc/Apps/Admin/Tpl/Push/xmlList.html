@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>xml列表</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+<style type='text/css'>
+.popup_layer .setnotice_class{
+	display:none;
+}
+</style>
+</head>
+<body>
+<include file="Index:isdelete" />
+<!--tab开始-->
+<div class="common_tab">
+
+</div>
+<!--tab结束-->
+<div class="wrap">
+    <!--数据列表开始-->
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+        <thead>
+            <tr>
+                <th width="45">选中</th>
+                <th width="5%">ID</th>
+                <th width="65%">xml路径</th>
+                <th width="15%">创建时间</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+			<volist name='list' id='vo'>
+			<tr>
+                <td><input class="dx" type="checkbox" value="{$vo.id}" id="blogID_{$vo.id}" name="blogID"></td>
+                <td>{$vo.id}</td>
+                <td align="left"><span class="title">{$vo.xml_url}</span></td>
+                <td>{$vo.create_time|date="y-m-d H:i:s",###}</td>
+
+                
+            </tr>
+            </volist>
+        </tbody>
+        
+    </table>
+	
+    <!--数据列表结束-->
+    
+    <!--分页开始-->
+    <?php echo $pageHtml;?>
+    <!--分页结束-->
+    
+</div>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<php>if($obj == "me") { if($userinfo['groupid'] >= 4 && $userinfo['groupid'] < 11) { </php><META NAME="robots" CONTENT="NOINDEX,NOFOLLOW">
+<php>} } elseif($obj == "other") { if($huser['groupid']  >= 4 && $huser['groupid'] < 11) { </php><META NAME="robots" CONTENT="NOINDEX,NOFOLLOW">
+<php>} }</php>
+<title>收到的消息</title>
+<link rel="stylesheet" type="text/css" href="<php>echo autoVer('/Css/uc/global.css');</php>"/>
+<link rel="stylesheet" type="text/css" href="<php>echo autoVer('/Css/uc/main.css');</php>"/>
+</head>
+<body>
+<!--头部开始-->
+<div class="global_header"> 
+   <include file="Public:top" />
+	
+   <include file="Public:header" />
+</div>
+<!--头部结束--> 
+
+<!--主体部分开始-->
+<div class="main two_side clearfix"> 
+    <!--左侧开始-->
+    <include file="Public:left" />
+    <!--左侧结束-->
+    <div class="plc_main"> 
+        <!--右侧开始-->
+        <div class="main_cont">
+            <div class="common_tab">
+                <ul>
+                    <li class="current"><a href="/UcMsg/myInbox">我的消息</a></li>
+                    <li><a href="/UcMsg/myNotice">系统通知</a></li>
+                </ul>
+            </div>
+            <div class="sub_tab">
+                <ul>
+                    <li class="current"><a href="/UcMsg/myInbox">收到的消息</a></li>
+                    <li><a href="/UcMsg/myOutbox">发出的消息</a></li>
+                </ul>
+                <a class="send_msg_btn" id="msgbut" href="#">发消息</a> </div>
+            
+            <!--短消息列表开始-->
+            <form name="outbox" method="post" action="/UcMsg/myInbox">
+            <div class="msg_list" id="msglist">
+                <div class="msg_del">
+                    <label>
+                        <input type="checkbox" name="checkall" id="checkall"/>
+                        全选</label>
+                    <a href="#" id="delMsgs">删除</a></div>
+				<volist name='allinbox' id='v'>
+                <dl>
+                    <dt unm="{$v.senduser}" uid="{$v.sendid}" pid="{$v.msgid}">
+                        <div class="input_box">
+                            <input type="checkbox" name="mall[]"  id="mall[]" value="{$v.id}"/>
+                        </div>
+                        <div class="head"><a href="<php>echo get_rewrite_url('Index','index',$v['sendid']);</php>"><img src="{$v.sendavatar}"/></a><php>if($v['readstatus'] == 0){</php><i class="unread">未读</i><php>}</php></div>
+                    </dt>
+                    <dd>
+						<php>if($v['parent_id'] != 0){</php><div class="name"><span class="tips_txt">回复</span><a href="<php>echo get_rewrite_url('Index','index',$v['sendid']);</php>">{$v.senduser}</a><span class="tips_txt">：{$v.omessage}</span></div><php>}else{</php><div class="name"><a href="<php>echo get_rewrite_url('Index','index',$v['sendid']);</php>">{$v.senduser}:</a></div><php>}</php>
+                        <div class="intr">{$v.scontent}<a class="read" href="/UcMsg/updateStatus/id/{$v.id}">查看全部</a></div>
+                        <div class="all none">{$v.content}</div>
+                        <div class="info"><span class="date">{$v.dateline}</span><span class="act"><a href="#" class="ras">回复</a><i class="wline">|</i><a thref="/UcMsg/msgInDel/msgid/{$v.id}" href="javascript:void(0);" class="del" rid="1">删除</a></span></div>
+                        <!--回复框开始-->
+                        <div class="feed_list none">
+                            <div class="repeat">
+                                <div class="arrow"> <em>◆</em> <span>◆</span> </div>
+                                <div class="input_box">
+                                    <textarea name="textarea2" class="rtext" cols="45" rows="5">回复@小熊：</textarea>
+                                    <span class="num">1/150</span><!-- 超出字数 addClass('warning') --> 
+                                </div>
+                                <div class="send_fun">
+                                    <div class="pub"> <a class="submit_btn" href="javascript:void(0);" >回复</a> </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--回复框结束--> 
+                    </dd>
+                </dl>
+               </volist>
+
+            </div>
+            </form>
+            <!--短消息列表结束--> 
+            
+            <!--分页开始-->
+            <div class="page_wrap">
+                <div class="showpage"> 
+				{$page}
+				<!--<a class="page-prev" href="#"><span>上一页</span></a> <span class="page-this">1</span> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">5</a> <span class="page-break">...</span> <a href="#">20</a> <a class="page-next" href="#"><span>下一页</span></a>--> 
+				</div>
+            </div>
+            <!--分页结束--> 
+            
+        </div>
+        <!--右侧结束--> 
+    </div>
+</div>
+<!--主体部分结束--> 
+
+<div class="popup_layer none" id="receivedmsgs" style="width:403px;">
+    <div class="bg">
+        <div class="content"> <a title="关闭" href="javascript:void(0);" class="close closes">关闭</a>
+            <div class="hd">发消息</div>
+            <div class="bd"> 
+                <!--替换内容开始-->
+                <div class="send_msg_popup">
+                    <p class="error none" id="msgerror">请填写联系人和内容</p>
+                    <ul>
+                       <li> <span class="txt">发送给：</span>
+							<div class="sed_box">
+                            <div class="input_box">
+								<input type="hidden" name="title" id="receverids" value="">
+                                <div id="msguname" class="input_people" ></div>
+                                <a href="javascript:void(0);" class="people_link msguname">联系人</a> <a href="javascript:void(0);" class="clear_all" id="clearAll">清空</a> </div>
+                                <!--弹窗用户选择列表开始-->
+								<div class="send_msg_panel" id="send_msg_panel"><a title="关闭" href="javascript:void(0);" class="close">关闭</a>
+									<div class="send_tab">
+										<ul>
+											<li class="current"><a href="javascript:void(0);">我的好友</a></li>
+										</ul>
+									</div>
+									<div id="sendLists">
+										<div class="send_list">
+											<div id="sendList">
+												<ul>
+													<li><label><input type="radio" id="RadioGroup1_0" value="单选" name="RadioGroup1">会飞的鱼</label></li>
+												</ul>
+											</div>
+										</div>
+										<div class="page_btn">
+											<a title="上一页" href="javascript:void(0);" class="prev_btn"></a>
+											<a title="下一页" href="javascript:void(0);" class="next_btn"></a>
+										</div>
+									</div>
+									<p class="btn">
+										<a href="javascript:void(0);" class="submit_btn" id="submitbtnend">确定</a>
+									</p>
+								</div>
+							</div>
+                            <!--弹窗用户选择列表开始-->
+                        </li>
+                        <li> <span class="txt">内&#12288;容：</span>
+                            <div class="input_box">
+                                <textarea rows="5" cols="45" id="msgtextareas" name="textarea" class="input_info"></textarea>
+                            </div>
+                        </li>
+                        <li class="info"><span class="txt">&nbsp;</span><span class="tips">最多不超过<span id="receivedmsgsnum">0/150</span>字</span></li>
+                        <li class="send_btn"><span class="txt">&nbsp;</span><a href="javascript:void(0);" class="submit_btn" id="sbBtns">确定</a> <a href="javascript:void(0);" class="cancel_btn">取消</a></li>
+                    </ul>
+                </div>
+                <div class="loading send_msg_popup_h">正在发送……</div>
+                <div class="succ_tips send_msg_popup_h"><i class="icon_succ"></i>恭喜，发送成功！</div>
+                <!--替换内容结束--> 
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="popup_layer none" id="delmsg" style="width:330px">
+    <div class="bg">
+        <div class="content"> <a title="关闭" href="javascript:void(0);" class="close">关闭</a>
+            <div class="hd">提示</div>
+            <div class="bd"> 
+                <!--替换内容开始-->
+                <div class="del_msg_tips">
+                    <i class="icon_ask"></i>删除该消息将不可恢复，确定要删除该条消息？
+                    <p><label><input type="checkbox" class="checkblack" name="checkblack">同时将该用户拉入黑名单</label></p>
+                </div>
+                <!--替换内容结束--> 
+                 <p class="btn">
+                     <a href="javascript:void(0);" class="submit_btn">确定</a>
+                     <a href="javascript:void(0);" class="cancel_btn">取消</a>
+                 </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"> 
+	BQ.load("UCMsg",function(){
+         BQ.UCMsg('myInbox',{'I_DIR':'<php>echo C("I_DIR");</php>'}).exec();
+    });
+</script>
+<!--底部开始-->
+<include file="Public:footer" />
+<!--底部结束--> 
+

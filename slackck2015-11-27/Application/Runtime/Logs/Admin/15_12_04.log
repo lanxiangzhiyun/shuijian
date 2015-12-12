@@ -1,0 +1,435 @@
+[ 2015-12-04T14:13:36+08:00 ] 127.0.0.1 /slackck2015-11-27/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.044002s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.017001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.017001s ]
+
+[ 2015-12-04T14:13:37+08:00 ] 127.0.0.1 /slackck2015-11-27/index.php/Login/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.069004s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.070004s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.017001s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.018001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.026001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.026001s ]
+
+[ 2015-12-04T14:13:50+08:00 ] 127.0.0.1 /slackck2015-11-27/index.php/Login/runlogin.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+
+[ 2015-12-04T14:13:50+08:00 ] 127.0.0.1 /slackck2015-11-27/index.php/Login/runlogin.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2015-12-04T14:13:51+08:00 ] 127.0.0.1 /slackck2015-11-27/index.php/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2] Division by zero D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Admin\Controller\IndexController.class.php 第 36 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: s D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 400 行.
+NOTIC: [8] Undefined index: s D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 400 行.
+NOTIC: [8] Undefined index: s D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 400 行.
+NOTIC: [8] Undefined index: s D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 400 行.
+NOTIC: [8] Undefined index: s D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 400 行.
+NOTIC: [8] Undefined index: s D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 400 行.
+NOTIC: [8] Undefined index: s D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 400 行.
+NOTIC: [8] Undefined index: s D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 400 行.
+NOTIC: [8] Undefined index: s D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 400 行.
+NOTIC: [8] Undefined index: s D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 400 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.491028s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.491028s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2015-12-04T14:13:51+08:00 ] 127.0.0.1 /slackck2015-11-27/index.php/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [2] Division by zero D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Admin\Controller\IndexController.class.php 第 36 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: s D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 400 行.
+NOTIC: [8] Undefined index: s D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 400 行.
+NOTIC: [8] Undefined index: s D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 400 行.
+NOTIC: [8] Undefined index: s D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 400 行.
+NOTIC: [8] Undefined index: s D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 400 行.
+NOTIC: [8] Undefined index: s D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 400 行.
+NOTIC: [8] Undefined index: s D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 400 行.
+NOTIC: [8] Undefined index: s D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 400 行.
+NOTIC: [8] Undefined index: s D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 400 行.
+NOTIC: [8] Undefined index: s D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 400 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.520030s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.520030s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2015-12-04T14:13:59+08:00 ] 127.0.0.1 /slackck2015-11-27/index.php/Sys/sys/s/2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.101006s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.101006s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-12-04T14:14:17+08:00 ] 127.0.0.1 /slackck2015-11-27/index.php/Sys/leftnav/s/3.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:leftnav
+
+[ 2015-12-04T14:14:21+08:00 ] 127.0.0.1 /slackck2015-11-27/index.php/Sys/admin_list/s/15.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: map D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Admin\Controller\SysController.class.php 第 68 行.
+NOTIC: [8] Undefined variable: map D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Admin\Controller\SysController.class.php 第 71 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Admin\Controller\SysController.class.php 第 71 行.
+NOTIC: [8] Undefined variable: map D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Admin\Controller\SysController.class.php 第 76 行.
+NOTIC: [8] Undefined offset: 0 D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Admin\Controller\SysController.class.php 第 80 行.
+NOTIC: [8] Undefined offset: 0 D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Admin\Controller\SysController.class.php 第 80 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant admin_open - assumed 'admin_open' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\4180b128332bb55c64012cd90a13c6c1.php 第 501 行.
+NOTIC: [8] Use of undefined constant admin_open - assumed 'admin_open' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\4180b128332bb55c64012cd90a13c6c1.php 第 501 行.
+NOTIC: [8] Use of undefined constant admin_open - assumed 'admin_open' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\4180b128332bb55c64012cd90a13c6c1.php 第 501 行.
+NOTIC: [8] Use of undefined constant admin_open - assumed 'admin_open' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\4180b128332bb55c64012cd90a13c6c1.php 第 501 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.068004s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.068004s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2015-12-04T14:14:31+08:00 ] 127.0.0.1 /slackck2015-11-27/index.php/Sys/admin_group.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant status - assumed 'status' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\073b40ad60f7824ce765b9912cbcd219.php 第 465 行.
+NOTIC: [8] Use of undefined constant status - assumed 'status' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\073b40ad60f7824ce765b9912cbcd219.php 第 465 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.027002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.027002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2015-12-04T14:14:48+08:00 ] 127.0.0.1 /slackck2015-11-27/index.php/Sys/admin_list.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: map D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Admin\Controller\SysController.class.php 第 68 行.
+NOTIC: [8] Undefined variable: map D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Admin\Controller\SysController.class.php 第 71 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Admin\Controller\SysController.class.php 第 71 行.
+NOTIC: [8] Undefined variable: map D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Admin\Controller\SysController.class.php 第 76 行.
+NOTIC: [8] Undefined offset: 0 D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Admin\Controller\SysController.class.php 第 80 行.
+NOTIC: [8] Undefined offset: 0 D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Admin\Controller\SysController.class.php 第 80 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant admin_open - assumed 'admin_open' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\4180b128332bb55c64012cd90a13c6c1.php 第 501 行.
+NOTIC: [8] Use of undefined constant admin_open - assumed 'admin_open' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\4180b128332bb55c64012cd90a13c6c1.php 第 501 行.
+NOTIC: [8] Use of undefined constant admin_open - assumed 'admin_open' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\4180b128332bb55c64012cd90a13c6c1.php 第 501 行.
+NOTIC: [8] Use of undefined constant admin_open - assumed 'admin_open' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\4180b128332bb55c64012cd90a13c6c1.php 第 501 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.027001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.027001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-12-04T14:15:11+08:00 ] 127.0.0.1 /slackck2015-11-27/index.php/Sys/admin_list_edit/admin_id/1.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant id - assumed 'id' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\ccf0fd139b403f8d88ca289d9a24ac51.php 第 531 行.
+NOTIC: [8] Use of undefined constant id - assumed 'id' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\ccf0fd139b403f8d88ca289d9a24ac51.php 第 531 行.
+NOTIC: [8] Use of undefined constant admin_open - assumed 'admin_open' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\ccf0fd139b403f8d88ca289d9a24ac51.php 第 585 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.075004s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.075004s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2015-12-04T14:15:24+08:00 ] 127.0.0.1 /slackck2015-11-27/index.php/Sys/admin_list_runedit
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2] Illegal offset type in isset or empty D:\WebstormProjects\shuijian\slackck2015-11-27\ThinkPHP\Library\Think\Model.class.php 第 445 行.
+
+[ 2015-12-04T14:15:26+08:00 ] 127.0.0.1 /slackck2015-11-27/index.php/Sys/admin_list.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: map D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Admin\Controller\SysController.class.php 第 68 行.
+NOTIC: [8] Undefined variable: map D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Admin\Controller\SysController.class.php 第 71 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Admin\Controller\SysController.class.php 第 71 行.
+NOTIC: [8] Undefined variable: map D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Admin\Controller\SysController.class.php 第 76 行.
+NOTIC: [8] Undefined offset: 0 D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Admin\Controller\SysController.class.php 第 80 行.
+NOTIC: [8] Undefined offset: 0 D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Admin\Controller\SysController.class.php 第 80 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant admin_open - assumed 'admin_open' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\4180b128332bb55c64012cd90a13c6c1.php 第 501 行.
+NOTIC: [8] Use of undefined constant admin_open - assumed 'admin_open' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\4180b128332bb55c64012cd90a13c6c1.php 第 501 行.
+NOTIC: [8] Use of undefined constant admin_open - assumed 'admin_open' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\4180b128332bb55c64012cd90a13c6c1.php 第 501 行.
+NOTIC: [8] Use of undefined constant admin_open - assumed 'admin_open' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\4180b128332bb55c64012cd90a13c6c1.php 第 501 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.026001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.026001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2015-12-04T14:15:30+08:00 ] 127.0.0.1 /slackck2015-11-27/index.php/Sys/admin_list_state.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2015-12-04T14:15:37+08:00 ] 127.0.0.1 /slackck2015-11-27/index.php/Sys/admin_rule.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant status - assumed 'status' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\c06bcf7b3913a02cfa55b7e5f0a23e79.php 第 491 行.
+NOTIC: [8] Use of undefined constant status - assumed 'status' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\c06bcf7b3913a02cfa55b7e5f0a23e79.php 第 491 行.
+NOTIC: [8] Use of undefined constant status - assumed 'status' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\c06bcf7b3913a02cfa55b7e5f0a23e79.php 第 491 行.
+NOTIC: [8] Use of undefined constant status - assumed 'status' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\c06bcf7b3913a02cfa55b7e5f0a23e79.php 第 491 行.
+NOTIC: [8] Use of undefined constant status - assumed 'status' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\c06bcf7b3913a02cfa55b7e5f0a23e79.php 第 491 行.
+NOTIC: [8] Use of undefined constant status - assumed 'status' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\c06bcf7b3913a02cfa55b7e5f0a23e79.php 第 491 行.
+NOTIC: [8] Use of undefined constant status - assumed 'status' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\c06bcf7b3913a02cfa55b7e5f0a23e79.php 第 491 行.
+NOTIC: [8] Use of undefined constant status - assumed 'status' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\c06bcf7b3913a02cfa55b7e5f0a23e79.php 第 491 行.
+NOTIC: [8] Use of undefined constant status - assumed 'status' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\c06bcf7b3913a02cfa55b7e5f0a23e79.php 第 491 行.
+NOTIC: [8] Use of undefined constant status - assumed 'status' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\c06bcf7b3913a02cfa55b7e5f0a23e79.php 第 491 行.
+NOTIC: [8] Use of undefined constant status - assumed 'status' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\c06bcf7b3913a02cfa55b7e5f0a23e79.php 第 491 行.
+NOTIC: [8] Use of undefined constant status - assumed 'status' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\c06bcf7b3913a02cfa55b7e5f0a23e79.php 第 491 行.
+NOTIC: [8] Use of undefined constant status - assumed 'status' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\c06bcf7b3913a02cfa55b7e5f0a23e79.php 第 491 行.
+NOTIC: [8] Use of undefined constant status - assumed 'status' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\c06bcf7b3913a02cfa55b7e5f0a23e79.php 第 491 行.
+NOTIC: [8] Use of undefined constant status - assumed 'status' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\c06bcf7b3913a02cfa55b7e5f0a23e79.php 第 491 行.
+NOTIC: [8] Use of undefined constant status - assumed 'status' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\c06bcf7b3913a02cfa55b7e5f0a23e79.php 第 491 行.
+NOTIC: [8] Use of undefined constant status - assumed 'status' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\c06bcf7b3913a02cfa55b7e5f0a23e79.php 第 491 行.
+NOTIC: [8] Use of undefined constant status - assumed 'status' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\c06bcf7b3913a02cfa55b7e5f0a23e79.php 第 491 行.
+NOTIC: [8] Use of undefined constant status - assumed 'status' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\c06bcf7b3913a02cfa55b7e5f0a23e79.php 第 491 行.
+NOTIC: [8] Use of undefined constant status - assumed 'status' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\c06bcf7b3913a02cfa55b7e5f0a23e79.php 第 491 行.
+NOTIC: [8] Use of undefined constant status - assumed 'status' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\c06bcf7b3913a02cfa55b7e5f0a23e79.php 第 491 行.
+NOTIC: [8] Use of undefined constant status - assumed 'status' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\c06bcf7b3913a02cfa55b7e5f0a23e79.php 第 491 行.
+NOTIC: [8] Use of undefined constant status - assumed 'status' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\c06bcf7b3913a02cfa55b7e5f0a23e79.php 第 491 行.
+NOTIC: [8] Use of undefined constant status - assumed 'status' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\c06bcf7b3913a02cfa55b7e5f0a23e79.php 第 491 行.
+NOTIC: [8] Use of undefined constant status - assumed 'status' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\c06bcf7b3913a02cfa55b7e5f0a23e79.php 第 491 行.
+NOTIC: [8] Use of undefined constant status - assumed 'status' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\c06bcf7b3913a02cfa55b7e5f0a23e79.php 第 491 行.
+NOTIC: [8] Use of undefined constant status - assumed 'status' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\c06bcf7b3913a02cfa55b7e5f0a23e79.php 第 491 行.
+NOTIC: [8] Use of undefined constant status - assumed 'status' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\c06bcf7b3913a02cfa55b7e5f0a23e79.php 第 491 行.
+NOTIC: [8] Use of undefined constant status - assumed 'status' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\c06bcf7b3913a02cfa55b7e5f0a23e79.php 第 491 行.
+NOTIC: [8] Use of undefined constant status - assumed 'status' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\c06bcf7b3913a02cfa55b7e5f0a23e79.php 第 491 行.
+NOTIC: [8] Use of undefined constant status - assumed 'status' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\c06bcf7b3913a02cfa55b7e5f0a23e79.php 第 491 行.
+NOTIC: [8] Use of undefined constant status - assumed 'status' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\c06bcf7b3913a02cfa55b7e5f0a23e79.php 第 491 行.
+NOTIC: [8] Use of undefined constant status - assumed 'status' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\c06bcf7b3913a02cfa55b7e5f0a23e79.php 第 491 行.
+NOTIC: [8] Use of undefined constant status - assumed 'status' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\c06bcf7b3913a02cfa55b7e5f0a23e79.php 第 491 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.031001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.031001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2015-12-04T14:17:07+08:00 ] 127.0.0.1 /slackck2015-11-27/index.php/Sys/admin_rule_edit/id/1.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: adminnav D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\a488d936b753fa7452799146311a8ee4.php 第 438 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.066004s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.067004s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-12-04T14:19:39+08:00 ] 127.0.0.1 /slackck2015-11-27/index.php/Sys/sys/s/2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.035002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.035002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-12-04T14:36:19+08:00 ] 127.0.0.1 /slackck2015-11-27/index.php/Sys/admin_list/s/15.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: map D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Admin\Controller\SysController.class.php 第 68 行.
+NOTIC: [8] Undefined variable: map D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Admin\Controller\SysController.class.php 第 71 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Admin\Controller\SysController.class.php 第 71 行.
+NOTIC: [8] Undefined variable: map D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Admin\Controller\SysController.class.php 第 76 行.
+NOTIC: [8] Undefined offset: 0 D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Admin\Controller\SysController.class.php 第 80 行.
+NOTIC: [8] Undefined offset: 0 D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Admin\Controller\SysController.class.php 第 80 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Use of undefined constant admin_open - assumed 'admin_open' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\4180b128332bb55c64012cd90a13c6c1.php 第 501 行.
+NOTIC: [8] Use of undefined constant admin_open - assumed 'admin_open' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\4180b128332bb55c64012cd90a13c6c1.php 第 501 行.
+NOTIC: [8] Use of undefined constant admin_open - assumed 'admin_open' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\4180b128332bb55c64012cd90a13c6c1.php 第 501 行.
+NOTIC: [8] Use of undefined constant admin_open - assumed 'admin_open' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\4180b128332bb55c64012cd90a13c6c1.php 第 501 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.041002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.041002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2015-12-04T14:36:21+08:00 ] 127.0.0.1 /slackck2015-11-27/index.php/Sys/admin_list_edit/admin_id/1.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant id - assumed 'id' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\ccf0fd139b403f8d88ca289d9a24ac51.php 第 531 行.
+NOTIC: [8] Use of undefined constant id - assumed 'id' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\ccf0fd139b403f8d88ca289d9a24ac51.php 第 531 行.
+NOTIC: [8] Use of undefined constant admin_open - assumed 'admin_open' D:\WebstormProjects\shuijian\slackck2015-11-27\Application\Runtime\Cache\Admin\ccf0fd139b403f8d88ca289d9a24ac51.php 第 585 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.041002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.041002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+

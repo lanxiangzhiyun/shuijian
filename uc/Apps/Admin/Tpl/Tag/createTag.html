@@ -1,0 +1,232 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>创建标签</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type="text/javascript" src="__ROOT__/Addons/Plugins/ueditor/editor_config_article.js"></script>  
+<script type="text/javascript" src="__ROOT__/Addons/Plugins/ueditor/editor_all.js"></script>  
+<script type="text/javascript" src="__ROOT__/Addons/Plugins/ueditor/_src/plugins/autoheight.js"></script>  
+<link rel="stylesheet" type="text/css" href="__ROOT__/Addons/Plugins/ueditor/themes/default/ueditor.css">
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Js/bq.js'></script>
+<script type='text/javascript'>
+	BQ.load("BQAjaxUP",function(){
+		BQ.BQAjaxUP('AjaxUP',{but:$('.addfield'),action:'/iadmin.php/Upload/imageUpload',data:{'type':'tag'},onSubmit:function(file,ext){
+			if(ext && /^(jpg|jpeg|png|gif)$/.test(ext)){
+				//console.log('上传中...');
+			}else{
+				alert('不支持非图片格式！');
+				return false;
+			}
+			},onComplete:function(file,response){
+				response = eval("("+response+")");
+				//返回json数据
+				if(response.status == 'ok'){
+					$('#pic_path').val(response.imgpath);
+					//$('#minimg').html('<img src="'+response.domain+response.imgpath+'" alt="" width="'+response.width+'" height="'+response.height+'">')
+					$('#minimg').html('<img src="'+response.domain+response.imgpath+'" alt="" width="64">');
+				}else if(response.status == 'noselect'){
+					alert('服务器错误、上传图片为空值。');
+				}else if(response.status == 'login'){
+					alert('请登录后操作！');
+				}else{
+					alert('上传失败，请重新上传！');
+				}
+			}}
+		);
+	})
+</script>
+<style type="text/css">
+	.ptag{
+		width:auto;height:22px;text-align:center;
+		border:1px solid #ccc;border-radius:5px;
+		float:left;background-color:#ccc;
+		margin-right:3px;padding:2px 5px;
+		<!-- background:url("__PUBLIC__/Admin/Images/popup_bg.png") 0px 5px; -->
+		position:relative;
+	}
+	.ptag em{
+		background:url("__PUBLIC__/Admin/Images/popup_bg.png") 0px -5px;
+		position:absolute;
+		right:2px;
+		width:5px;height:5px;
+	}
+</style>
+</head>
+<body>
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li><a href="__ROOT__/iadmin.php/Tag/index"><span>标签管理</span></a></li>
+        <li class="current"><a href="__ROOT__/iadmin.php/Tag/createTag"><span>创建标签</span></a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+	<form action='__ROOT__/iadmin.php/Tag/addTag' method='post'>
+    <!--创建标签开始-->
+    <div class="common_tb">
+        <ul>
+			<li>
+                <span class="text">标签名：</span>
+                <span class="input_area">
+					<input name="tag" type="text" value='' class="input_bk" id="" onblur="checkTag(this)" />
+					<font id="tishi" color="red"></font>
+					<br/>
+					<font class="info">标签名称 10个汉字以内</font>
+				</span>
+            </li>    
+			<li id="tag_pic">
+                <span class="text">标签图片：</span>
+                <span class="input_area">
+                <input type="hidden" name="pic_path" value='{$detail.pic_path}' id="pic_path" />
+				<a href="#" class="addfield"></a>
+				&nbsp;&nbsp;<font color="#FF0000">*</font>(64*64像素以内)　
+				<p id="minimg"><php>if($detail['pic_path']){</php>
+				<img src="<php>echo C('IMG_DIR').'/'.$detail['pic_path'];</php>" width="200"/>
+				<php>}</php></p>
+                </span>
+            </li>
+			<li>
+                <span class="text">标签别名：</span>
+                <span class="input_area">
+					<input name="alias" type="text" value='' class="input_bk" id="" />
+					<br/>
+					<font class="info">标签的其他表述方式，添加别名可以便于用户找到该标签 多个别名请用空格隔开</font>
+				</span>
+            </li>
+			<li>
+                <span class="text">标签描述：</span>
+				<span class="input_area">
+					<textarea id="textfield" style="width:400px;height:80px;" class="textarea_bk" name="content"></textarea>
+					<br/><font class="info">关于标签的详细描述，100字以内</font>
+                </span>
+			</li>
+			<li>
+				<!-- 记得添加时传入父级tag id和显示父级tag name -->
+				<span class="text">父标签：</span>
+				<span class="input_area" style="position:relative;z-index:9999">
+					<input type="hidden" name="tagids" class="tagids" id="tag_ptag" value=""/>
+					<input type="text" name="stag" class="input_bk addNewTag" value="" act="ptag" />
+					<div class="add_tag_s"></div><br />
+					<div class="add_tag_t"></div>
+                </span>
+			</li>
+            <li>
+                <span class="text">所属栏目：</span>
+                <span class="input_area">
+                <select class="select_bk" name="type" id="select">
+					<option value="11">百科标签</option>
+				</select>
+                </span>
+            </li>
+            <li>
+                <span class="text">&nbsp;</span>
+                <span class="input_area"><a class="submit_btn"  onClick='submitFun();' href="javascript:void(0);" title="确定"></a><a class="cancel_btn" onClick="return backfun('/iadmin.php/Tag/index');" href="javascript:void(0);" title="取消"></a> </span>
+            </li>
+        </ul>
+    </div>
+    <!--创建标签结束-->
+	</form>
+</div>
+<script>
+//搜索标签
+tag();
+function tag(){
+	var tagArr = {};
+	tagArr['ptag'] = [];
+	tagArr['stag'] = [];
+	$('.addNewTag').bind('click keyup',function(){
+		var _t = $(this);
+		var key = $.trim(_t.val()),next=_t.next(),tag=_t.attr('act');
+		if(key=='') return;
+		searchAjax(tag ,key, next);
+		return false;
+	});
+	$(document).on('click',function(){
+		$('.add_tag_s').hide();
+	});
+	//下拉框添加标签
+	$('.add_tag_s_list').live('click',function(){
+		var _t = $(this);
+		var tag_list = _t.parent().siblings('.add_tag_t');
+		var flag=true;
+		var p = _t.attr('act');
+		var length = tagArr[p].length;
+		if(length>0){
+			if(tagArr[p].indexOf(_t.attr('pid'))>-1){
+				flag=false;
+				alert('已经添加过了，请重新选择！');
+			}
+		}
+		if(flag){
+			_t.parent().prev().val(_t.text());
+			tag_list.append('<div class="add_tag_list" act="'+_t.attr('act')+'" pid="'+_t.attr('pid')+'">'+_t.text()+'<em></em></div>');
+			tagArr[p].push(_t.attr('pid'));
+			_t.parent().siblings('.tagids').val(tagArr[p].join(','));
+		}
+	});
+	//移除标签
+	$('.add_tag_list').live('click',function(){
+		var _t = $(this);
+		var p = _t.attr('act');
+		_t.remove();
+		for(var i=0;i<tagArr[p].length;i++){
+			if(tagArr[p][i]==_t.attr('pid')){
+				tagArr[p].splice(i,1);
+				break;
+			}
+		}
+		$('#tag_'+$(this).attr('act')).val(tagArr[p].join(','));   //这里要做修改
+	});
+	var ajaxData = {};
+	function searchAjax(tag, key, next){  //搜索标签
+		if(ajaxData[tag+key]==undefined){
+			$.get('/iadmin.php/Tag/ajaxSearchTagByName',{act:tag,keyword:key},function(d){
+				loadData(d,tag,next);
+				ajaxData[tag+key]=d;
+			},'json');
+		}else{
+			loadData(ajaxData[key],next);
+		}	
+	}
+	function loadData(d,tag,next){
+		if(d.status=='ok'){
+			if(d.data){
+				var pHtml = '';
+				$.each(d.data,function(i,j){
+					pHtml += '<div class="add_tag_s_list" act="'+tag+'" pid="'+j.id+'">'+j.name+'</div>';
+				});
+				next.html(pHtml).show();
+			}else{
+				next.html('').hide();
+			}
+		}else{
+			alert(d.msg);
+		}
+	}
+}
+</script>
+<script type="text/javascript">
+	function checkTag(obj){
+		var ta = obj.value;
+		if(ta){
+			$.getJSON(
+				"/iadmin.php/Tag/ajaxCheckTagIsExists",
+				{tagName:ta},
+				function(d){ 
+					if(d.status == 'ok'){
+						$(obj).focus();
+						$('#tishi').html(d.msg);
+					}else{
+						$('#tishi').html('');
+					}
+				}
+			)
+		}
+	}
+</script>
+</body>
+</html>

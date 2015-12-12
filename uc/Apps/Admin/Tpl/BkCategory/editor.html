@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>分类</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Js/library/ui/static/calendar/calendar.css"/>
+    <script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/bq.js"></script>
+    <script type='text/javascript' src='__PUBLIC__/Js/library/ui/form/calender.js'></script>
+    <script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+</head>
+<body>
+<!--tab结束-->
+<div class="wrap">
+
+    <form enctype="multipart/form-data" action='__ROOT__/iadmin.php/BkCategory/editor'  method='POST' id='form1' name='form1'>
+        <!--搜索开始-->
+        <div class="search_box">
+            <div class="search">
+            </div>
+        </div>
+        <!--搜索结束-->
+        <!--数据列表开始-->
+        <input type='hidden' name='id' value='{$id}'>
+        <input type='hidden' name='action' value='{$action}'>
+        <input type='hidden' name='level' value='{$level}'>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb">
+            <thead>
+            <tr bgcolor="#add8e6">
+                <td  colspan="2" align="left">{$lang}</td>
+            </tr>
+            <?php
+            if($level != 1) {
+            ?>
+            <tr><th>上一级分类名称：</th>
+                <td>
+                    <input type="hidden" value="" name="data[beforename]">
+                    <php>echo $strName ;</php>
+                </td>
+            </tr>
+            <?php }?>
+            <tr><th>分类名称：</th>
+                <td>
+                 <input type="text"  name='data[name]'
+                        <php>if(!empty($arrInfo[0]['name'])){
+                            echo "value=".$arrInfo[0]['name'];
+                            }</php>
+
+                          />
+                </td>
+            </tr>
+            <?php if($action == 'editorok') { ?>
+            <tr><th>分类代号</th>
+                <td>
+                    <php>if(!empty($arrInfo[0]['code'])){echo $arrInfo[0]['code'];}</php>
+                </td>
+            </tr>
+          <?php } else {?>
+            <tr><th>分类代号</th>
+                <td>
+                    <input type="text"  name='data[code]' <php>if(!empty($arrInfo[0]['code'])){echo "value=".$arrInfo[0]['code'];}</php> />
+                </td>
+            </tr>
+
+            <?php } ?>
+            <tr><th>分类图片：</th>
+                <td><p id="minimg"><php>if($arrInfo[0]['pic_path']){
+                    echo "<img  src=".C('IMG_DIR').'/'.$arrInfo[0]['pic_path']. ' />';
+                    }</php> </p>
+				<input type="hidden" name="data[pic_path]" value='' id="fileField" />
+				<a href="#" class="addfield">点击上传</a></td></tr>
+
+            <?php
+            if($level != 1) {
+            ?>
+            <tr><th>分类排序：</th><td bgcolor="#FFFFFF">
+                <input id="name" type="text" style="width:200px;"  name="data[sort]"
+                <php>if($arrInfo[0]['sort']) echo "value='".$arrInfo[0]['sort']."'";</php>>请填写数字
+            </td></tr>
+           <?php }?>
+            <tr><th>分类介绍：</th><td>
+                <textarea name="data[introduce]" cols="60" rows="10" ><php>if($arrInfo[0]['introduce']){echo $arrInfo[0]['introduce'];}</php></textarea>
+            </td></tr>
+            </thead>
+            <tbody>
+            </tbody>
+            <tfoot>
+            <tr>
+            <tr><td  colspan='2'><input type="button" value="提交" onClick="submitFun();"></td></tr>
+            </tr>
+            </tfoot>
+        </table>
+    </form>
+    <!--数据列表结束-->
+
+    <!--分页开始-->
+    <?php echo $pageHtml;?>
+    <!--分页结束-->
+</div>
+<script type='text/javascript' src='__PUBLIC__/Js/bq.js'></script>
+<script type='text/javascript'>
+	BQ.load("BQAjaxUP",function(){
+		BQ.BQAjaxUP('AjaxUP',{but:$('.addfield'),action:'/iadmin.php/Upload/imageUpload',data:{'type':'category'},onSubmit:function(file,ext){
+			if(ext && /^(jpg|jpeg|png|gif)$/.test(ext)){
+				//console.log('上传中...');
+			}else{
+				alert('不支持非图片格式！');
+				return false;
+			}
+			},onComplete:function(file,response){
+				response = eval("("+response+")");
+				//返回json数据
+				if(response.status == 'ok'){
+                    $('#fileField').val(response.imgpath);
+                    $('#minimg').html('<img src="'+response.domain+response.imgpath+'" ">')
+				}else if(response.status == 'noselect'){
+					alert('服务器错误、上传图片为空值。');
+				}else if(response.status == 'login'){
+					alert('请登录后操作！');
+				}else{
+					alert('上传失败，请保持图片不超过2M');
+				}
+			}});
+	})
+</script>
+<script type='text/javascript'>
+    //页面加载一次
+    window.onload=function(){
+        var url = $('#url').val();
+        if(url){
+            var maxCode=parent.oMapReloadInfo['maxCode'];
+            var code=parent.oMapReloadInfo['code'];
+            var difference = maxCode-code;
+            if(difference==1){
+                parent.oMapReloadInfo['maxCode']=maxCode+1;
+                location.href=url;
+            }else{
+                parent.oMapReloadInfo['code']=code+1;
+            }
+        }
+    }
+    BQ.ui.form.Calender('#calender1');
+    BQ.ui.form.Calender('#calender2');
+
+
+
+</script>
+</body>
+</html>

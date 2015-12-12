@@ -1,0 +1,28 @@
+<div id="header">
+	<div class="top_auto">
+    	<div class="logo"><a href="<php>echo C('BLOG_DIR');</php>"><img src="<php>echo C('STATIC_DIR');</php>/Images/sitenew/logo.gif" width="180" height="88" alt="波奇网" title="波奇网" /></a></div>
+		
+        <div class="top_search left">
+            <form id="search_form" method="get" action="<php>echo C('BLOG_DIR');</php>/search" target="_blank">
+            <div class="search_left">
+                <input type="text" id="keyword" name="keywords" class="search" value="<php>if(isset($keywords)){echo $keywords;}else{echo '请输入关键字';}</php>" />
+            </div>
+        	</form>
+            <input type="submit" class="search_btn" id="button" name="button" value="搜 索" />
+        </div>
+        <php>if($hotKeywordList){</php>
+        <div class="s_search">热门搜索：
+			<php>foreach($hotKeywordList as $k=>$vo){</php>
+			<a href="<php>echo $vo['url']</php>" target="_blank"><php>echo $vo['name']</php></a>
+			<php>}</php>
+			<a target="_blank" href="<php>echo C('BLOG_DIR').'/keywords/'</php>">更多>></a>
+		</div>
+		<php>}</php>
+        <div class="top_ad right">
+			<php>if($topPush){ </php>
+				<a href="{$topPush.url}" target="_blank"><img alt="{$topPush.title}" src="{$topPush.pic_path}" /></a>
+			<php>}</php>
+		</div>
+		
+	</div>
+</div>

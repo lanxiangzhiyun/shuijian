@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>创建标签</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Css/frame.css"/>
+<script type='text/javascript' src='__PUBLIC__/Js/jquery.js'></script>
+<script type='text/javascript' src='__PUBLIC__/Admin/Js/globals.js'></script>
+</head>
+<body>
+<!--tab开始-->
+<div class="common_tab">
+    <ul>
+        <li><a href="__ROOT__/iadmin.php/Tag/newsTagList"><span>资讯标签管理</span></a></li>
+        <li class="current"><a href="__ROOT__/iadmin.php/Tag/newsTagAdd"><span>创建资讯标签</span></a></li>
+    </ul>
+</div>
+<!--tab结束-->
+<div class="wrap">
+	<form action='__ROOT__/iadmin.php/Tag/newsTagSave' method='post'>
+	<input type='hidden' value='add' name='act'>
+    <!--创建标签开始-->
+    <div class="common_tb">
+        <ul>
+            <li>
+                <span class="text">标签名：</span><span class="input_area">
+                <textarea id="textfield" class="textarea_bk" name="tags"></textarea>
+                </span><span class="info"><br/>多个标签之间用空格分隔,一次最多添加30个词</span></li>
+
+            <li>
+                <span class="text">&nbsp;</span>
+                <span class="input_area">
+					<a class="submit_btn"  onClick='submitFun();' href="javascript:void(0);" title="确定"></a>
+					<a class="cancel_btn" onClick="return backfun('/iadmin.php/Tag/newsTagList');" href="javascript:void(0);" title="取消"></a> 
+				</span>
+            </li>
+        </ul>
+    </div>
+    <!--创建标签结束-->
+	</form>
+</div>
+</body>
+</html>

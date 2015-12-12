@@ -1,0 +1,41 @@
+<div class="path_title">
+    <span class="pet_title">宠物档案</span>
+</div>
+<!--宠物列表开始-->
+<div class="pet_list">
+
+    <volist name='petList' id='vo'>
+        <dl>
+            <switch name="vo.selected">
+                <case value="1">
+                    <dt class="current">
+                </case>
+                <default/>
+                <dt>
+            </switch>
+            <img src="{$vo.picpath}" width="70" height="70"/><i class="select_icon"></i></dt>
+            <dd>
+                <p class="name">{$vo.petname}
+                    <switch name="vo.is_default">
+                        <case value="1"><i class="pet_dang" title="当家宠物"></i></case>
+                        <default/>
+                    </switch>
+                </p>
+                <p class="like">{$vo.lovenum}人喜欢</p>
+
+                <p class="act"><a href="/UcPets/petHobby/id/{$vo.id}">编辑</a> <a href="javascript:void(0);" thref="/UcPets/delHobbyPet/id/{$vo.id}/currentId/{$currentId}" class="delpat">删除</a></p>
+            </dd>
+        </dl>
+    </volist>
+    <if condition="$flag eq 1">
+        <dl class="nopet_add">
+            <dt><a href="/UcPets/petFiles/addId/1" title="添加宠物" class="add_pets_img"></a></dt>
+        </dl>
+        <elseif condition="$flag eq 2" />
+        <dl class="nopet_add">
+            <dt><a href="/UcPets/petFiles/addId/1" title="添加宠物" class="add_pets_img"></a></dt>
+            <dd>还没有宠物入住，现在就去 <a href="/UcPets/petFiles/addId/1">添加宠物</a> 吧!</dd>
+        </dl>
+        <else />
+    </if>
+</div>

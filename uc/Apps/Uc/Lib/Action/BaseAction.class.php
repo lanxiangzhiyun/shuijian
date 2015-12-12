@@ -14,12 +14,12 @@ class BaseAction extends Action{
      */
     public function __construct() {
         parent::__construct();
-        
+
         //载入扩展函数库
         Load('extend');
 
 		//安全性过滤(防止xss漏洞以及sql注入)
-		safe();
+		//safe();
 
         //初始化登录用户信息
         $this->initUser();
@@ -99,7 +99,7 @@ class BaseAction extends Action{
         $this->_user = $userinfo;
         $this->assign("userinfo",$userinfo);
     }
-    
+
     /**
      * 初始化登录地址
      */
@@ -186,7 +186,7 @@ class BaseAction extends Action{
      * 如果未登录，则返回login
      * 如果为禁止发言组，则返回false
      * 如果为其他组别，则返回true
-     * 
+     *
      */
     public function checkUserGroup() {
         $user = $this->_user;

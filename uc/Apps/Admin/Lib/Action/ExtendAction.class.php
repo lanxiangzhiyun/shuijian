@@ -9,35 +9,35 @@ class ExtendAction extends Action{
 	protected $opration;
 	/*
 	*初始化
-	*/   
+	*/
 	public function _initialize(){
-		
+
 		//初始化检查用户是否登陆
 		$allowACtion = array('login','loginCheck','loginOut','getNotice');
 
-		$ip = my_get_client_ip();
+		$ip = get_client_ip();
 		$session_key = session_id().$ip;
-		if(!$_SESSION[$session_key] && !in_array($_GET['_URL_']['1'],$allowACtion)){
-			session('boqiiUserId',null);
-			session('boqiiUserName',null);
-			$this->redirect('/iadmin.php/Index/login');
-		}
+//		if(!$_SESSION[$session_key] && !in_array($_GET['_URL_']['1'],$allowACtion)){
+//			session('boqiiUserId',null);
+//			session('boqiiUserName',null);
+//			$this->redirect('/iadmin.php/Index/login');
+//		}
 
 		$boqiiUserId = session('boqiiUserId');
-		if(empty($boqiiUserId)){
-			if(!in_array($_GET['_URL_']['1'],$allowACtion)){
-				$this->checkLogin();
-			}
-		}
+//		if(empty($boqiiUserId)){
+//			if(!in_array($_GET['_URL_']['1'],$allowACtion)){
+//				$this->checkLogin();
+//			}
+//		}
 		//初始化检查用户权限
-		$this->checkRbac();
+//		$this->checkRbac();
 	}
 
 	/*
 	*获取用户信息
 	*/
 	protected function _init(){
-		
+
 	}
 
 	/*
@@ -46,7 +46,7 @@ class ExtendAction extends Action{
 	protected function checkLogin(){
 		//获得session
 		$boqiiUserId = session('boqiiUserId');
-		
+
 		if($boqiiUserId){
 			$this->redirect('/iadmin.php/Index/index');
 		}else{
@@ -76,7 +76,7 @@ class ExtendAction extends Action{
 	*@model 要实例化的model
 	*@column 条件字段
 	*@object_id 条件
-	*@field 需要搜索的字段 array('name'=>array('title'=>'日志内容','flag'=>1)) name 字段 title 提示 flag 1表示 XXX被修改（主要是针对副文本编辑器） 
+	*@field 需要搜索的字段 array('name'=>array('title'=>'日志内容','flag'=>1)) name 字段 title 提示 flag 1表示 XXX被修改（主要是针对副文本编辑器）
 	*@newData 表单提交的新数据name名称要和字段一一对应
 	*@operation 操作位置(config配置)
 	*/
@@ -91,14 +91,14 @@ class ExtendAction extends Action{
 
 		//搜索所需对比字段数据
 		$data = $dModel ->where($where)->field($fieldStr)->find();
-	
+
 		$isCheck = 0;
 		//记录的操作内容
 		$strTip='';
 		foreach($data as $key=>$val){
 			foreach($newData as $k=>$v){
 				if($key==$k && $val!=$v){//判断字段是否一致 判断内容是否一致
-					
+
 					if($field[$key]['flag']==1){
 						$strTip .= $field[$key]['title'].'被修改;';
 						$isCheck++;
@@ -110,21 +110,21 @@ class ExtendAction extends Action{
 			}
 		}
 		//echo $isCheck;
-		
+
 		if($isCheck>0){
 			$this->recordOperations(3,$operation,$object_id,'','','','',$strTip);
 		}
 	}
-	
+
 	/*
-	*记录到操作日志 ($type 操作类型(1:增 2:删 3:改) 
-	$operation 操作位置 
-	$object_id 操作对象id 
-	$is_setnotice 判断是否发送站内信 
-	$to_uid 发送给某个用户 
-	$notice_type 站内信类型  
-	$column操作字段 
-	$beforeContent 修改前内容 
+	*记录到操作日志 ($type 操作类型(1:增 2:删 3:改)
+	$operation 操作位置
+	$object_id 操作对象id
+	$is_setnotice 判断是否发送站内信
+	$to_uid 发送给某个用户
+	$notice_type 站内信类型
+	$column操作字段
+	$beforeContent 修改前内容
 	$afterContent 修改后内容)
 	*/
 	protected function recordOperations($type,$operation,$object_id,$is_setnotice=null,$to_uid=null,$notice_type=null,$column=null,$beforeContent=null,$afterContent=null){
@@ -132,7 +132,7 @@ class ExtendAction extends Action{
 			switch ($type){
 				case 1:
 				  $data['operationtext']=  "新增了一条数据,ID编号为".$object_id;
-				  break;  
+				  break;
 				case 2:
 				  $data['operationtext']=  '删除了一条数据,ID编号为'.$object_id;
 				  break;
@@ -166,7 +166,7 @@ class ExtendAction extends Action{
 				//发送站内信
 				$this->setNotice($object_id,$to_uid,$notice_type,$type);
 			}
-			
+
 			$ucOperation = D('UcOperation');
 			$ucOperation->create();
 			$data['userid']=session('boqiiUserId');
@@ -180,7 +180,7 @@ class ExtendAction extends Action{
 			$data['status']=0;
 			$ucOperation->add($data);
 	}
-	
+
 	/*
 	*图片上传
 	*/
@@ -208,9 +208,9 @@ class ExtendAction extends Action{
 		}else{// 上传成功 获取上传文件信息svnuc\Data\U\ADS
 			$info =  $upload->getUploadFileInfo();
 		}
-		
+
 		return $info;
-		
+
 	}
 
 	/*
@@ -226,7 +226,7 @@ class ExtendAction extends Action{
 			$data = $model->where($where)->select();
 			//判断内容是否为空
 			if(strip_tags($data[0][$noticeType[$notice_type]['column']])){
-				
+
 				$tip = strip_tags($data[0][$noticeType[$notice_type]['column']]);
 			}else{
 				$tip = 	'(于'.date('Y-m-d H:i:s',$data[0][$noticeType[$notice_type]['other']]).'发布)';
@@ -243,7 +243,7 @@ class ExtendAction extends Action{
 			if($type==2){
 				$content = "您的".$noticeType[$notice_type]['name']." ".$subContent."因包含违规信息，已由管理员删除，给您带来的不便，深表歉意。<br />如有任何问题，可联系论坛管理员。";
 			}else if($type==3){
-				$content = "您的".$noticeType[$notice_type]['name']." ".$subContent."可能包含不合适的内容，已由管理员更正，给您带来的不便，深表歉意。<br />如有任何问题，可联系论坛管理员。";	
+				$content = "您的".$noticeType[$notice_type]['name']." ".$subContent."可能包含不合适的内容，已由管理员更正，给您带来的不便，深表歉意。<br />如有任何问题，可联系论坛管理员。";
 			}else if($type==4){
 				$content = "您在".$noticeType[$notice_type]['name']." ".$subContent."中的图片由于内容违规，已被管理员删除，相关联的相册对应的该图片也一并删除，如有问题，请联系论坛管理员";
 			}else if($type==5){
@@ -251,7 +251,7 @@ class ExtendAction extends Action{
 			}else if($type==6){
 				$content = "您在相册中的".$subContent."图片由于内容违规，已被管理员删除，使用此图的日志中对应图片也一并删除，如有问题，请联系论坛管理员";
 			}
-			
+
 			//百科
 			if($param){
 				$content = "您在".$param['oteam_name']."发布的帖子《".$param['title']."》因内容不符，已被管理员移动到".$param['team_name']."。如您未加入".$param['team_name']."，系统将自动为您加入，您也可以选择退出该组，退出该组不影响您已发布的内容。如需退出，进入该小组后点击退出即可。";

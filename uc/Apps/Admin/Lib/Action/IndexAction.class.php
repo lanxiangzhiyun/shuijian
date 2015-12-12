@@ -3,7 +3,7 @@
 *管理系统首页控制器
 */
 class IndexAction extends ExtendAction{
-    
+
 	/*
 	*主体页面
 	*/
@@ -12,7 +12,7 @@ class IndexAction extends ExtendAction{
 		$this->assign('username',$username);
 		$this->display('index');
 	}
-	
+
 	/*
 	*左侧菜单栏目
 	*/
@@ -25,8 +25,8 @@ class IndexAction extends ExtendAction{
 	*/
 	public function login(){
 		$this->display('login');
-	} 
-	
+	}
+
 	/*
 	*用户名密码验证
 	*/
@@ -37,7 +37,7 @@ class IndexAction extends ExtendAction{
 		$uid = $ucAdmin->where(array('username'=>$data['username']))->getField('id');
 		if(!$uid) echo 0;
 		$password = trim($this->_post('password'));
-		$data['password'] = doubleMd5($uid,md5($password));
+		$data['password'] = md5($uid,md5($password));
 		$data['status'] = 0;
 		$Admin = $ucAdmin->where($data)->find();
 		if($Admin){
@@ -55,10 +55,10 @@ class IndexAction extends ExtendAction{
 			}
 
 			//后台IP登陆限制
-			$ip = my_get_client_ip();
+			$ip = get_client_ip();
 			$session_key = session_id().$ip;
 			$_SESSION[$session_key] = 1;
-			
+
 			echo 1;
 		}else{
 			echo 0;
@@ -74,14 +74,14 @@ class IndexAction extends ExtendAction{
 			session('boqiiUserName',null);
 			$this->redirect('/iadmin.php/Index/login');
 	}
-	
+
 	/*
 	*修改密码页面
 	*/
 	public function modifyPasswordPage(){
 		$this->display('modifyPasswordPage');
 	}
-	
+
 	/*
 	*获得外部传值 发送站内信
 	*/
@@ -102,9 +102,9 @@ class IndexAction extends ExtendAction{
 		$boqiiUserName = session('boqiiUserName');
 		$boqiiUserId = session('boqiiUserId');
 		$password = doubleMd5($boqiiUserId,md5($this->_post('password')));
-		
+
 		$newpassword = doubleMd5($boqiiUserId,md5($this->_post('newpassword')));
-		
+
 		$admin = $ucAdmin->where(array('username'=>$boqiiUserName,'password'=>$password))->find();
 		if(empty($admin)){
 			echo 3;
@@ -116,10 +116,10 @@ class IndexAction extends ExtendAction{
 		echo 1;
 		exit;
 	}
-	
+
 	public function mkdirtest(){
 		error_reporting(E_ALL);
 		$reuslt = mkdir('/webwww/baike1', 0777);
 		print_r($result);exit;
-	} 
+	}
 }

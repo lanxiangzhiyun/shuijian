@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2015-12-11 18:40:16
+Date: 2015-12-12 17:36:22
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -58,6 +58,27 @@ CREATE TABLE `shuijian_article` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for `shuijian_cart`
+-- ----------------------------
+DROP TABLE IF EXISTS `shuijian_cart`;
+CREATE TABLE `shuijian_cart` (
+  `rec_id` mediumint(8) NOT NULL AUTO_INCREMENT,
+  `user_id` mediumint(8) NOT NULL DEFAULT '0',
+  `session_id` char(32) NOT NULL,
+  `goods_id` mediumint(8) NOT NULL DEFAULT '0',
+  `goods_sn` varchar(60) NOT NULL,
+  `goods_name` varchar(120) NOT NULL,
+  `goods_price` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `goods_number` smallint(5) NOT NULL DEFAULT '0',
+  `goods_attr` text NOT NULL,
+  PRIMARY KEY (`rec_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of shuijian_cart
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for `shuijian_goods`
 -- ----------------------------
 DROP TABLE IF EXISTS `shuijian_goods`;
@@ -93,6 +114,86 @@ CREATE TABLE `shuijian_goods` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for `shuijian_order_action`
+-- ----------------------------
+DROP TABLE IF EXISTS `shuijian_order_action`;
+CREATE TABLE `shuijian_order_action` (
+  `action_id` mediumint(8) NOT NULL AUTO_INCREMENT,
+  `order_id` mediumint(8) NOT NULL DEFAULT '0',
+  `action_user` varchar(30) NOT NULL,
+  `order_status` tinyint(1) NOT NULL DEFAULT '0',
+  `pay_status` tinyint(1) NOT NULL,
+  `action_note` varchar(255) NOT NULL,
+  `log_time` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`action_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of shuijian_order_action
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `shuijian_order_info`
+-- ----------------------------
+DROP TABLE IF EXISTS `shuijian_order_info`;
+CREATE TABLE `shuijian_order_info` (
+  `order_id` mediumint(8) NOT NULL AUTO_INCREMENT,
+  `order_sn` varchar(20) NOT NULL,
+  `user_id` mediumint(8) NOT NULL DEFAULT '0',
+  `order_status` tinyint(1) NOT NULL DEFAULT '0',
+  `pay_status` tinyint(1) NOT NULL DEFAULT '0',
+  `consignee` varchar(60) NOT NULL,
+  `country` smallint(5) NOT NULL DEFAULT '0',
+  `province` smallint(5) NOT NULL DEFAULT '0',
+  `city` smallint(5) NOT NULL DEFAULT '0',
+  `district` smallint(5) NOT NULL DEFAULT '0',
+  `address` varchar(255) NOT NULL,
+  `mobile` varchar(60) NOT NULL,
+  `postscript` varchar(255) NOT NULL,
+  `shipping_area` varchar(120) NOT NULL,
+  `shipping_name` varchar(120) NOT NULL,
+  `pay_id` tinyint(3) NOT NULL DEFAULT '0',
+  `pay_name` varchar(120) NOT NULL,
+  `inv_payee` varchar(120) NOT NULL,
+  `goods_amount` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `shipping_fee` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `coupon_fee` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `money_paid` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `surplus` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `order_amount` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `add_time` int(10) NOT NULL DEFAULT '0',
+  `confirm_time` int(10) NOT NULL DEFAULT '0',
+  `pay_time` int(10) NOT NULL DEFAULT '0',
+  `shipping_time` int(10) NOT NULL DEFAULT '0',
+  `to_buyer` varchar(255) NOT NULL,
+  `pay_note` varchar(255) NOT NULL,
+  PRIMARY KEY (`order_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of shuijian_order_info
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `shuijian_payment`
+-- ----------------------------
+DROP TABLE IF EXISTS `shuijian_payment`;
+CREATE TABLE `shuijian_payment` (
+  `pay_id` tinyint(3) NOT NULL AUTO_INCREMENT,
+  `pay_code` varchar(20) NOT NULL,
+  `pay_name` varchar(120) NOT NULL,
+  `pay_desc` text NOT NULL,
+  `pay_order` tinyint(3) NOT NULL DEFAULT '0',
+  `pay_config` text NOT NULL,
+  `enabled` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`pay_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of shuijian_payment
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for `shuijian_users`
 -- ----------------------------
 DROP TABLE IF EXISTS `shuijian_users`;
@@ -115,4 +216,25 @@ CREATE TABLE `shuijian_users` (
 
 -- ----------------------------
 -- Records of shuijian_users
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `shuijian_user_address`
+-- ----------------------------
+DROP TABLE IF EXISTS `shuijian_user_address`;
+CREATE TABLE `shuijian_user_address` (
+  `address_id` mediumint(8) NOT NULL AUTO_INCREMENT,
+  `user_id` mediumint(8) NOT NULL DEFAULT '0',
+  `consignee` varchar(60) NOT NULL,
+  `country` smallint(5) NOT NULL DEFAULT '0',
+  `province` smallint(5) NOT NULL DEFAULT '0',
+  `city` smallint(5) NOT NULL DEFAULT '0',
+  `district` smallint(5) NOT NULL DEFAULT '0',
+  `address` varchar(120) NOT NULL,
+  `mobile` varchar(60) NOT NULL,
+  PRIMARY KEY (`address_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of shuijian_user_address
 -- ----------------------------

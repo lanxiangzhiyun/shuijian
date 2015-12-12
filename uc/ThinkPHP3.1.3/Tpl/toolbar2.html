@@ -1,0 +1,30 @@
+<link href="<php>echo autoVer('/Css/public/header.css');</php>" rel="stylesheet" />
+<div id="top_c" class="clearfix">
+    <div id="top">
+        <div class="top_left"><a href="<php>echo C('BLOG_DIR');</php>" target="_blank">波奇网</a><span></span><a href="<php>echo C('SHOP_DIR');</php>" target="_blank">我的商城</a><span></span><a href="<php>echo C('BBS_DIR');</php>"  target="_blank">我的论坛</a><span></span><a href="<php>echo C('VET_DIR');</php>"  target="_blank">宠物服务</a></div>
+        <div class="top_icon">
+            <a href="http://e.weibo.com/boqii" target="_blank" class="pngFix"></a>
+            <a class="top_sta pngFix" href="javascript:void(0)" onclick="AddFavorite(window.location,document.title)"></a>
+            <a class="top_tel pngFix" href="<php>echo C('BLOG_DIR');</php>/subject/mobile/" target="_blank" title="波奇手机客户端"></a>
+        </div>
+        <div id="logininfo_head"></div>
+		<?php if($current=="site"){?>
+			<input type="hidden" value="/site/index.php/Public/logininfo" id="logininfo_url">
+		<?php }else if($current=="baike"){?>
+			<input type="hidden" value="/baike/index.php/Public/logininfo" id="logininfo_url">
+		<?php }else if($current=="vet"){?>
+			<input type="hidden" value="/index.php/Public/logininfo" id="logininfo_url">
+		<?php }else if($current=="bbs" || $current=="meitu"){?>
+			<input type="hidden" value="/index.php/Public/logininfo" id="logininfo_url">
+		<?php }?>
+        <script type="text/javascript">
+            $(function(){
+				var logininfo_url = $("#logininfo_url").val();
+                $.post(logininfo_url,function(data){
+                    $('#logininfo_head').html(data);
+                });
+            });
+        </script>       
+    </div>
+</div>
+<script src="<php>echo autoVer('/Js1/project/public/header.js');</php>"></script>

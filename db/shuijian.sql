@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2015-12-12 17:36:22
+Date: 2015-12-14 19:11:35
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,7 +20,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `shuijian_admin`;
 CREATE TABLE `shuijian_admin` (
-  ` admin_id` tinyint(4) NOT NULL AUTO_INCREMENT,
+  `admin_id` tinyint(4) NOT NULL AUTO_INCREMENT,
   `admin_username` varchar(20) NOT NULL,
   `admin_pwd` varchar(70) NOT NULL,
   `admin_email` varchar(30) NOT NULL,
@@ -31,12 +31,13 @@ CREATE TABLE `shuijian_admin` (
   `admin_lasttime` int(11) NOT NULL,
   `admin_open` tinyint(2) NOT NULL,
   `admin_actionList` text NOT NULL,
-  PRIMARY KEY (` admin_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`admin_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of shuijian_admin
 -- ----------------------------
+INSERT INTO `shuijian_admin` VALUES ('1', 'admin', 'd41d8cd98f00b204e9800998ecf8427e', 'f@126.com', 'admin', '123456', '127.0.0.1', '112222233', '1450091438', '1', '');
 
 -- ----------------------------
 -- Table structure for `shuijian_article`

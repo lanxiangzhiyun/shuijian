@@ -106,7 +106,7 @@
 											// Redirect after successful login page (when progress bar reaches 100%)
 											if(resp==1)
 											{
-												window.location.href = 'dashboard-1.html';
+												window.location.href = '/iadmin.php/Index/index';
 											}
 											else
 											{

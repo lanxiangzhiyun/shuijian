@@ -46,9 +46,9 @@ class IndexAction extends ExtendAction{
         if($Admin){
             //修改登录时间
             $sjAdmin->where('admin_id='.$Admin['admin_id'])->save(array('admin_lasttime'=>time()));
-            session('boqiiUserId',$Admin['admin_id']);
-            session('boqiiUserName',$Admin['admin_username']);
-            session('boqiiTrueName',$Admin['admin_realname']);
+            session('sjUserId',$Admin['admin_id']);
+            session('sjUserName',$Admin['admin_username']);
+            session('sjTrueName',$Admin['admin_realname']);
 //            if(in_array($Admin['admin_id'],array(1,35))){
 //                $arr = C('RBAC');
 //                $keys = array_keys($arr);
@@ -73,8 +73,8 @@ class IndexAction extends ExtendAction{
     *管理员退出
     */
     public function loginOut(){
-        session('boqiiUserId',null);
-        session('boqiiUserName',null);
+        session('sjUserId',null);
+        session('sjUserName',null);
         $this->redirect('/iadmin.php/Index/login');
     }
 
@@ -85,17 +85,6 @@ class IndexAction extends ExtendAction{
         $this->display('modifyPasswordPage');
     }
 
-    /*
-    *获得外部传值 发送站内信
-    */
-    public function getNotice(){
-        $object_id=$this->_get('object_id');
-        $to_uid=$this->_get('to_uid');
-        $notice_type=$this->_get('notice_type');
-        $type=$this->_get('type');
-        $param = $this->_get('param');
-        $this->setNotice($object_id,$to_uid,$notice_type,$type,$param);
-    }
     /*
     *提交修改b4f49f54ef1f263a536205d2b6a448b1
     */
@@ -118,11 +107,5 @@ class IndexAction extends ExtendAction{
         session('boqiiUserName',null);
         echo 1;
         exit;
-    }
-
-    public function mkdirtest(){
-        error_reporting(E_ALL);
-        $reuslt = mkdir('/webwww/baike1', 0777);
-        print_r($result);exit;
     }
 }

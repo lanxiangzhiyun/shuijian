@@ -5,9 +5,9 @@
  * @author: fanghui
  * @created:
  */
-class HelpModel extends Model {
+class AdminModel extends Model {
 
-    protected $trueTableName = 'shujian_admin';
+    protected $trueTableName = 'shuijian_admin';
 
     //管理员列表
     public function getList($param) {
@@ -18,7 +18,7 @@ class HelpModel extends Model {
         $where = "1=1";
 
         $arrList = $this -> where ($where) -> limit($pageNum) -> page ($page) ->field($param['fields']) ->order('admin_id DESC')-> select();
-//       echo M()->_sql();
+       echo M()->_sql();
         $this ->total=  $this -> where ($where) ->field('admin_id') -> count();
         $this->subtotal = count($arrList);
         //总页数

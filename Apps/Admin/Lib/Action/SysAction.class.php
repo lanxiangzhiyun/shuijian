@@ -16,7 +16,7 @@ class SysAction extends ExtendAction{
         $data['page']= isset($_GET['page']) ? $_GET['page'] : 1;
         $data['pageNum'] = 10;
         // 字段
-        $data['fields'] = 'id,title,url,sort,type,create_time';
+        $data['fields'] = 'admin_id,admin_username,admin_email,admin_realname';
 
         // 当前url地址
         $url='/iadmin.php/Sys/admin_list?';

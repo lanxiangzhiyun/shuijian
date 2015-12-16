@@ -255,7 +255,10 @@
           <div class="panel-body">
 
             <div class="table-responsive" data-pattern="priority-columns" data-focus-btn-icon="fa-asterisk" data-sticky-table-header="true" data-add-display-all-btn="true" data-add-focus-btn="true">
-
+              <volist name='arrList' id='vo'>
+                {$vo.shuijian_id}
+                {$vo.shuijian_username}
+              </volist>
               <table cellspacing="0" class="table table-small-font table-bordered table-striped">
                 <thead>
                 <tr>

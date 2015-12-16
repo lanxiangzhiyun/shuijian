@@ -804,7 +804,8 @@
           <div class="panel-body">
 
             <div class="table-responsive" data-pattern="priority-columns" data-focus-btn-icon="fa-asterisk" data-sticky-table-header="true" data-add-display-all-btn="true" data-add-focus-btn="true">
-
+              <?php if(is_array($arrList)): $i = 0; $__LIST__ = $arrList;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i; echo ($vo["shuijian_id"]); ?>
+                <?php echo ($vo["shuijian_username"]); endforeach; endif; else: echo "" ;endif; ?>
               <table cellspacing="0" class="table table-small-font table-bordered table-striped">
                 <thead>
                 <tr>

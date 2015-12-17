@@ -16,7 +16,7 @@ class SysAction extends ExtendAction{
         $data['page']= isset($_GET['page']) ? $_GET['page'] : 1;
         $data['pageNum'] = 10;
         // 字段
-        $data['fields'] = 'admin_id,admin_username,admin_email,admin_realname';
+        $data['fields'] = '*';
 
         // 当前url地址
         $url='/iadmin.php/Sys/admin_list?';
@@ -26,6 +26,7 @@ class SysAction extends ExtendAction{
         // 获取列表
         $arrList = $adminModel -> getList($data);
         $arrAssign['arrList'] = $arrList;
+
         // 获取分页信息
         $pageHtml = $this->page($url,$adminModel->pagecount, $data['pageNum'],$data['page'],$adminModel->subtotal);
         $this->assign('pageHtml',$pageHtml);

@@ -18,7 +18,7 @@ class AdminModel extends Model {
         $where = "1=1";
 
         $arrList = $this -> where ($where) -> limit($pageNum) -> page ($page) ->field($param['fields']) ->order('admin_id DESC')-> select();
-       echo M()->_sql();
+       //echo M()->_sql();
         $this ->total=  $this -> where ($where) ->field('admin_id') -> count();
         $this->subtotal = count($arrList);
         //总页数

@@ -37,4 +37,17 @@ class SysAction extends ExtendAction{
 
         $this->display('admin_list');
     }
+
+    public function admin_edit(){
+        // URL参数
+        $data = $this -> _get('data');
+        // 新增友链
+        $adminModel = D('Admin');
+        $result = $adminModel -> addList($data);
+        if ($result) {
+            $this->ajaxReturn(array('title'=>'success'));
+        }else {
+            echo "<script>alert('操作失败!');history.back();</script>";
+        }
+    }
 }

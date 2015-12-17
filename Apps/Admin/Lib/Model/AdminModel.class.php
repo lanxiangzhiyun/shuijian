@@ -27,32 +27,27 @@ class AdminModel extends Model {
         return $arrList;
     }
 
-    //添加友情链接
+    //添加
     public function addList($param) {
         $id = intval($param['id']);
-        $type = intval($param['type']);
-        if (!in_array($type,array(1,2,3,4,5,6,7))) {
-            return  array('msg'=>'操作失败');
-        }
 
         //编辑
         if ($id) {
             $result = $this -> save(array(
-                'id'=>$id,
-                'type' => $type,
-                'title' => $param['title'],
-                'sort'=>$param['sort'],
-                'url'=>$param['url'],
-                'update_time'=>time()
+                'admin_id'=>$id,
+                'admin_username' => $param['admin_username'],
+                'admin_email' => $param['admin_email'],
+                'admin_realname'=>$param['admin_realname'],
+                'admin_tel'=>$param['admin_tel']
             ));
         } else {
             //新增
             $result = $this -> add(array(
-                'type' => $type,
-                'title' => $param['title'],
-                'sort'=>$param['sort'],
-                'url'=>$param['url'],
-                'create_time'=>time()
+                'admin_username' => $param['admin_username'],
+                'admin_email' => $param['admin_email'],
+                'admin_realname'=>$param['admin_realname'],
+                'admin_tel'=>$param['admin_tel'],
+                'admin_addtime'=>$param['admin_addtime']
             ));
         }
         if ($result !== FALSE) {

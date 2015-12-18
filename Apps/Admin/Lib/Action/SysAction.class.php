@@ -40,10 +40,29 @@ class SysAction extends ExtendAction{
 
     public function admin_edit(){
         // URL参数
-        $data = $this -> _get('data');
-        // 新增友链
+        $data = $this -> _post('data');
+        // 新增
         $adminModel = D('Admin');
         $result = $adminModel -> addList($data);
+        if ($result) {
+            $this->ajaxReturn(array('title'=>'success'));
+        }else {
+            echo "<script>alert('操作失败!');history.back();</script>";
+        }
+    }
+
+    /**
+     * 删除
+     */
+    public function ajaxDelList () {
+        $adminModel = D('Admin');
+        // 待删除友链id字符串（英文逗号串接）
+        $ids = $this->_post('ajaxDelList');
+
+        // 分割友链id字符串
+        $idArr = array_filter(explode(',',$ids));
+        // 删除友链
+        $result =$adminModel -> delList($idArr) ;
         if ($result) {
             $this->ajaxReturn(array('title'=>'success'));
         }else {

@@ -8,7 +8,7 @@
   <meta name="description" content="Xenon Boostrap Admin Panel" />
   <meta name="author" content="" />
 
-  <title>Xenon - Responsive Table</title>
+  <title>水见管理后台</title>
 
   <link rel="stylesheet" href="http://fonts.useso.com/css?family=Arimo:400,700,400italic">
   <link rel="stylesheet" href="__PUBLIC__/Admin/css/fonts/linecons/css/linecons.css">
@@ -208,59 +208,21 @@
         <p class="description">Admin List</p>
       </div>
 
-      <div class="breadcrumb-env">
+      <include file="Common:breadcrumb"/>
 
-        <ol class="breadcrumb bc-1">
-          <li>
-            <a href="dashboard-1.html"><i class="fa-home"></i>Home</a>
-          </li>
-          <li>
-
-            <a href="tables-basic.html">Tables</a>
-          </li>
-          <li class="active">
-
-            <strong>Responsive Table</strong>
-          </li>
-        </ol>
-
-      </div>
-
+    </div>
+    <div class="row">
+      <a class="btn btn-white pull-right" href="javascript:void(0);" id="adminAdd">+添加管理员</a>
     </div>
     <!-- Responsive Table -->
     <div class="row">
       <div class="col-md-12">
-
         <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Adjustable Responsive Table</h3>
-
-            <div class="panel-options">
-              <a href="#">
-                <i class="linecons-cog"></i>
-              </a>
-
-              <a href="#" data-toggle="panel">
-                <span class="collapse-icon">&ndash;</span>
-                <span class="expand-icon">+</span>
-              </a>
-
-              <a href="#" data-toggle="reload">
-                <i class="fa-rotate-right"></i>
-              </a>
-
-              <a href="#" data-toggle="remove">
-                &times;
-              </a>
-            </div>
-          </div>
           <div class="panel-body">
-
             <div class="table-responsive" data-pattern="priority-columns" data-focus-btn-icon="fa-asterisk" data-sticky-table-header="true" data-add-display-all-btn="true" data-add-focus-btn="true">
               <table cellspacing="0" class="table table-small-font table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Company</th>
                   <th data-priority="1">名称</th>
                   <th data-priority="3">邮件</th>
                   <th data-priority="1">真实姓名</th>
@@ -268,6 +230,7 @@
                   <th data-priority="3">登陆ip</th>
                   <th data-priority="6">添加时间</th>
                   <th data-priority="6">登陆时间</th>
+                  <th data-priority="6">操作</th>
                 </tr>
                 </thead>
                 <tbody>

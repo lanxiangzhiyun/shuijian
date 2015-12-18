@@ -47,9 +47,10 @@ class AdminModel extends Model {
                 'admin_email' => $param['admin_email'],
                 'admin_realname'=>$param['admin_realname'],
                 'admin_tel'=>$param['admin_tel'],
-                'admin_addtime'=>$param['admin_addtime']
+                'admin_addtime'=>time()
             ));
         }
+        //echo M()->_sql();
         if ($result !== FALSE) {
             return array('status'=> 1);
         } else {
@@ -57,15 +58,16 @@ class AdminModel extends Model {
         }
     }
 
-    //删除友情链接
+    //删除
     public function delList($id) {
         if (is_array($id)) {
-            $where =array('id' => array('in', $id));
+            $where =array('admin_id' => array('in', $id));
         } else {
-            $where = array('id' => array('in', "$id"));
+            $where = array('admin_id' => array('in', "$id"));
         }
 
         $result = $this -> where($where) -> delete();
+//        echo M()->_sql();
         if ($result !== FALSE) {
             $data =  1;
         } else {

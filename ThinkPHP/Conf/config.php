@@ -9,8 +9,6 @@ if (in_array($_SERVER['HTTP_HOST'], array('local.shuijian.com'))) {
     $blog_dir = 'http://local.shuijian.com/';
 }
 
-date_default_timezone_set('Asia/Shanghai');
-
 $myconfig = array(
 	'DB_TYPE'=> 'mysql',   	// 数据库类型
     'DB_HOST'=> $db_host, 	// 数据库服务器地址

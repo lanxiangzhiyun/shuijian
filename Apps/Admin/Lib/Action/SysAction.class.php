@@ -69,4 +69,5 @@ class SysAction extends ExtendAction{
             echo "<script>alert('操作失败!');history.back();</script>";
         }
     }
+
 }

@@ -8,7 +8,7 @@
   <meta name="description" content="Xenon Boostrap Admin Panel" />
   <meta name="author" content="" />
 
-  <title>水见 - Dashboard</title>
+  <title>水见管理后台</title>
 
   <link rel="stylesheet" href="http://fonts.useso.com/css?family=Arimo:400,700,400italic">
   <link rel="stylesheet" href="__PUBLIC__/Admin/css/fonts/linecons/css/linecons.css">
@@ -21,6 +21,8 @@
   <link rel="stylesheet" href="__PUBLIC__/Admin/css/custom.css">
 
   <script src="__PUBLIC__/Admin/js/jquery-1.11.1.min.js"></script>
+  <script src="__PUBLIC__/Admin/js/project/functions.js"></script>
+  <script src="__PUBLIC__/Admin/js/project/admin.js"></script>
 
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
@@ -32,11 +34,10 @@
 </head>
 <body class="page-body">
 
-<div class="copyrights">Collect from <a href="http://www.cssmoban.com/"  title="网站模板">网站模板</a></div>
 <div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
 
   <!-- Add "fixed" class to make the sidebar fixed always to the browser viewport. -->
-  <!-- Addingsettings-pane-innersettings-pane-inner class "toggle-others" will keep only one menu item open at a time. -->
+  <!-- Adding class "toggle-others" will keep only one menu item open at a time. -->
   <!-- Adding class "collapsed" collapse sidebar root elements and show only icons. -->
   <div class="sidebar-menu toggle-others fixed">
 
@@ -77,6 +78,8 @@
 
       </header>
 
+
+
       <include file="Common:left"/>
 
     </div>
@@ -85,16 +88,83 @@
 
   <div class="main-content">
 
+    <!-- User Info, Notifications and Menu Bar -->
+    <div class="page-title">
+
+      <div class="title-env">
+        <h1 class="title">菜单管理</h1>
+        <p class="description">Menu Management</p>
+      </div>
+
+      <include file="Common:breadcrumb"/>
+
+    </div>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+
+        <div class="tabs-vertical-env">
+          <ul class="nav tabs-vertical">
+            <volist name='menuList_l1' id='vo'>
+              <li class="active" pid="{$vo.menu_id}"><a href="#menus_{$vo.menu_id}" data-toggle="tab">{$vo.menu_name}</a></li>
+            </volist>
+            <li> <a href="javascript:void(0)" data-toggle="tab" id="menu_add1"><strong>添加一级菜单 + </strong></a></li>
+          </ul>
+
+          <div class="tab-content">
+            <volist name='menuList_l1' id='vo'>
+              <div class="tab-pane active" id="menus_{$vo.menu_id}">
+                <volist name='menuList_l2' id='vo2'>
+                  <?php
+                  if($vo['menu_id'] == $vo2['menu_pid']){
+                  ?>
+                    <button class="btn btn-gray disabled">{$vo2.menu_name}</button><br>
+                  <?php
+                  }
+                  ?>
+                </volist>
+                <button class="btn btn-success menu_add2">添加二级菜单 + </button>
+              </div>
+            </volist>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- Main Footer -->
+    <!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
+    <!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
+    <!-- Or class "fixed" to  always fix the footer to the end of page -->
+    <footer class="main-footer sticky footer-type-1">
+
+      <div class="footer-inner">
+
+        <!-- Add your copyright text here -->
+        <div class="footer-text">
+          &copy; 2014
+          <strong>Xenon</strong>
+          More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
+        </div>
+
+
+        <!-- Go to Top Link, just add rel="go-top" to any link to add this functionality -->
+        <div class="go-up">
+
+          <a href="#" rel="go-top">
+            <i class="fa-angle-up"></i>
+          </a>
+
+        </div>
+
+      </div>
+
+    </footer>
   </div>
 
 </div>
 
 
-<div class="page-loading-overlay">
-  <div class="loader-2"></div>
-</div>
 
-
+<include file="Common:modal"/>
 
 
 <!-- Bottom Scripts -->
@@ -104,13 +174,6 @@
 <script src="__PUBLIC__/Admin/js/joinable.js"></script>
 <script src="__PUBLIC__/Admin/js/xenon-api.js"></script>
 <script src="__PUBLIC__/Admin/js/xenon-toggles.js"></script>
-
-
-<!-- Imported scripts on this page -->
-<script src="__PUBLIC__/Admin/js/xenon-widgets.js"></script>
-<script src="__PUBLIC__/Admin/js/devexpress-web-14.1/js/globalize.min.js"></script>
-<script src="__PUBLIC__/Admin/js/devexpress-web-14.1/js/dx.chartjs.js"></script>
-<script src="__PUBLIC__/Admin/js/toastr/toastr.min.js"></script>
 
 
 <!-- JavaScripts initializations and stuff -->

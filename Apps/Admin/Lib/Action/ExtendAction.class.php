@@ -31,6 +31,27 @@ class ExtendAction extends Action{
 //		}
 		//初始化检查用户权限
 //		$this->checkRbac();
+
+		$this->getMenu();
+	}
+
+
+	/*
+	 * 获取菜单
+	 */
+	protected function getMenu(){
+		$data['fields'] = '*';
+		$menuModel = D('Menu');
+		$menuList = $menuModel -> getList($data);
+		print_r(array_filter($menuList,"getFirstLvlMenu"));
+		$this->assign('menuList_l1',array_filter($menuList,function($var){
+			if($var['menu_level'] == 1)
+				return $var;
+		}));
+		$this->assign('menuList_l2',array_reverse(array_filter($menuList,function($var){
+			if($var['menu_level'] == 2)
+				return $var;
+		})));
 	}
 
 	/*

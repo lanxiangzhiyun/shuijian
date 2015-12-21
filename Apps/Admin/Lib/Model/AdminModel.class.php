@@ -76,4 +76,13 @@ class AdminModel extends Model {
         return $data;
     }
 
+    //根据admin_id获取权限菜单列表
+    public function getActionList($adminId){
+        $where = "1=1 and admin_id=".$adminId;
+        $arrList = $this->where($where)->order('admin_id DESC')-> select();
+//        echo M()->_sql();
+        return $arrList;
+    }
+
+
 }

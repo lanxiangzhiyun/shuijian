@@ -244,6 +244,7 @@
                       <td><?php echo gmdate('Y-m-d H:i:s',$vo['admin_addtime'])?></td>
                       <td><?php echo gmdate('Y-m-d H:i:s',$vo['admin_lasttime'])?></td>
                       <td>
+                        <a href="/iadmin.php/Auth/auth_list/adminID/{$vo.admin_id}" class="btn btn-secondary btn-sm btn-icon icon-left">授权</a>
                         <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left adminEdit">编辑</a>
                         <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left adminDelete">删除</a>
                       </td>

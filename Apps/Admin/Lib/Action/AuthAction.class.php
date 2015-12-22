@@ -29,29 +29,16 @@ class AuthAction extends ExtendAction{
         $this->display('auth_list');
     }
 
-    public function add1(){
+    public function auth_menus(){
         // URL参数
         $data = $this -> _post('data');
         // 新增
-        $menuModel = D('Menu');
-        $result = $menuModel -> addList1($data);
+        $adminModel = D('Admin');
+        $result = $adminModel -> setActionList($data);
         if ($result) {
             $this->ajaxReturn(array('title'=>'success'));
         }else {
-            echo "<script>alert('操作失败!');window.location.reload();</script>";
-        }
-    }
-
-    public function add2(){
-        // URL参数
-        $data = $this -> _post('data');
-        // 新增
-        $menuModel = D('Menu');
-        $result = $menuModel -> addList2($data);
-        if ($result) {
-            $this->ajaxReturn(array('title'=>'success'));
-        }else {
-            echo "<script>alert('操作失败!');window.location.reload();</script>";
+            echo "<script>alert('操作失败!');</script>";
         }
     }
 }

@@ -40,10 +40,13 @@ class ExtendAction extends Action{
 	 * 获取菜单
 	 */
 	protected function getMenu(){
+		$adminID = session('sjUserId');
 		$data['fields'] = '*';
 		$menuModel = D('Menu');
-		$menuList = $menuModel -> getList($data);
-		print_r(array_filter($menuList,"getFirstLvlMenu"));
+		$adminModel = D('Admin');
+		$adarrList = $adminModel -> getActionList($adminID);
+		$menuList = $menuModel -> getList($data,$adarrList[0]['admin_actionList']);
+		//print_r(array_filter($menuList,"getFirstLvlMenu"));
 		$this->assign('menuList_l1',array_filter($menuList,function($var){
 			if($var['menu_level'] == 1)
 				return $var;

@@ -129,7 +129,7 @@
                   <?php
                   if($vo['menu_id'] == $vo2['menu_pid']){
                   ?>
-                  <input type="checkbox" <?php if(array_search($vo2['menu_id'],explode(',',$adarrList['admin_actionList']))>-1){?>checked="checked"<?php }?> class="userauthmenu_input" value="{$vo2.menu_id}" id="menus_{$vo2.menu_id}" autocomplete="off">
+                  <input type="checkbox" actionList="{$adarrList.admin_actionList}" <?php if(array_search($vo2['menu_id'],explode(',',$adarrList['admin_actionList']))>-1){?>checked="checked"<?php }?> class="userauthmenu_input" value="{$vo2.menu_id}" id="menus_{$vo2.menu_id}" autocomplete="off">
                     <label class="btn btn-gray disabled">{$vo2.menu_name}</label><br>
                   <?php
                   }

@@ -84,5 +84,17 @@ class AdminModel extends Model {
         return $arrList;
     }
 
-
+    //设置权限
+    public function setActionList($param){
+        $result = $this -> save(array(
+            'admin_id'=>$param['userId'],
+            'admin_actionList' => $param['actionList']
+        ));
+        //echo M()->_sql();
+        if ($result !== FALSE) {
+            return array('status'=> 1);
+        } else {
+            return array('msg'=>'操作失败');
+        }
+    }
 }

@@ -161,4 +161,24 @@ $(function() {
       trObj.remove();
     }
   });
+
+  // 企业用户授权_提交
+  $('.userauthmenu_input').click(function(){
+    var thisInput = $(this);
+    var menuId = thisInput.val();
+    var userId = $('#menus_userId').val();
+    var actionList = '';
+    $("input[type='checkbox']:checked").each(function(key,el){
+      actionList += $(el).val()+',';
+    });
+    if(actionList.length!=0)
+      actionList = actionList.substring(0,actionList.length-1);
+
+
+    var ajaxResult = DoAjaxPost('/iadmin.php/Auth/auth_menus',{'data':{'actionList':actionList,'menuId':menuId,'userId':userId}});
+
+    if (ajaxResult['title'] == 'success') {
+      alert('更改成功！');
+    }
+  });
 })

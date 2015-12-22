@@ -10,11 +10,11 @@ class MenuModel extends Model {
     protected $trueTableName = 'shuijian_menu';
 
     //菜单列表
-    public function getList($param) {
-        $where = "1=1";
+    public function getList($param,$admin_actionList) {
+        $where = "(1=1 and menu_level =1) or menu_id in ('".$admin_actionList."')";
 
         $arrList = $this -> where ($where) ->field($param['fields']) ->order('menu_id DESC')-> select();
-       //echo M()->_sql();
+       echo M()->_sql();
         return $arrList;
     }
 

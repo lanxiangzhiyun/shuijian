@@ -49,14 +49,6 @@ class IndexAction extends ExtendAction{
             session('sjUserId',$Admin['admin_id']);
             session('sjUserName',$Admin['admin_username']);
             session('sjTrueName',$Admin['admin_realname']);
-//            if(in_array($Admin['admin_id'],array(1,35))){
-//                $arr = C('RBAC');
-//                $keys = array_keys($arr);
-//                session('boqiiOperation',implode(',',$keys));
-//            }else{
-//                session('boqiiOperation',$Admin['operation']);
-//            }
-
             //后台IP登陆限制
             $ip = get_client_ip();
             $session_key = session_id().$ip;
@@ -76,36 +68,5 @@ class IndexAction extends ExtendAction{
         session('sjUserId',null);
         session('sjUserName',null);
         $this->redirect('/iadmin.php/Index/login');
-    }
-
-    /*
-    *修改密码页面
-    */
-    public function modifyPasswordPage(){
-        $this->display('modifyPasswordPage');
-    }
-
-    /*
-    *提交修改b4f49f54ef1f263a536205d2b6a448b1
-    */
-    public function modifyPassword(){
-
-        $ucAdmin = D('UcAdmin');
-        $boqiiUserName = session('boqiiUserName');
-        $boqiiUserId = session('boqiiUserId');
-        $password = doubleMd5($boqiiUserId,md5($this->_post('password')));
-
-        $newpassword = doubleMd5($boqiiUserId,md5($this->_post('newpassword')));
-
-        $admin = $ucAdmin->where(array('username'=>$boqiiUserName,'password'=>$password))->find();
-        if(empty($admin)){
-            echo 3;
-            exit;
-        }
-        $result = $ucAdmin->where(array('id'=>$boqiiUserId))->save(array('password'=>$newpassword));
-        session('boqiiUserId',null);
-        session('boqiiUserName',null);
-        echo 1;
-        exit;
     }
 }

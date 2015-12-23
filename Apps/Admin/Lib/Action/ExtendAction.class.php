@@ -14,33 +14,32 @@ class ExtendAction extends Action{
 
 		//初始化检查用户是否登陆
 		$allowACtion = array('login','loginCheck','loginOut','getNotice');
-
+		//print_r($_SESSION);
 		$ip = get_client_ip();
 		$session_key = session_id().$ip;
-//		if(!$_SESSION[$session_key] && !in_array($_GET['_URL_']['1'],$allowACtion)){
-//			session('boqiiUserId',null);
-//			session('boqiiUserName',null);
-//			$this->redirect('/iadmin.php/Index/login');
-//		}
+		//echo $session_key;
+		if(!$_SESSION[$session_key] && !in_array($_GET['_URL_']['1'],$allowACtion)){
+			session('sjUserId',null);
+			session('sjUserName',null);
+			$this->redirect('/iadmin.php/Index/login');
+		}
 
-		$boqiiUserId = session('boqiiUserId');
-//		if(empty($boqiiUserId)){
-//			if(!in_array($_GET['_URL_']['1'],$allowACtion)){
-//				$this->checkLogin();
-//			}
-//		}
-		//初始化检查用户权限
-//		$this->checkRbac();
+		$sjUserId = session('sjUserId');
+		if(empty($sjUserId)){
+			if(!in_array($_GET['_URL_']['1'],$allowACtion)){
+				$this->checkLogin();
+			}
+		}
 
-		$this->getMenu();
+		//初始化检查用户权限，设置菜单
+		$this->getMenu($sjUserId);
 	}
 
 
 	/*
 	 * 获取菜单
 	 */
-	protected function getMenu(){
-		$adminID = session('sjUserId');
+	protected function getMenu($adminID){
 		$data['fields'] = '*';
 		$menuModel = D('Menu');
 		$adminModel = D('Admin');
@@ -69,21 +68,13 @@ class ExtendAction extends Action{
 	*/
 	protected function checkLogin(){
 		//获得session
-		$boqiiUserId = session('shuijianUserId');
+		$boqiiUserId = session('sjUserId');
 
 		if($boqiiUserId){
 			$this->redirect('/iadmin.php/Index/index');
 		}else{
 			$this->redirect('/iadmin.php/Index/login');
 		}
-	}
-
-	/*
-	*检查用户权限
-	*/
-	protected function checkRbac(){
-		$Useroperation = explode(',',session('boqiiOperation'));
-		$this->assign('Useroperation',$Useroperation);
 	}
 
 	/*

@@ -80,7 +80,7 @@ class AdminModel extends Model {
     public function getActionList($adminId){
         $where = "1=1 and admin_id=".$adminId;
         $arrList = $this->where($where)->order('admin_id DESC')-> select();
-//        echo M()->_sql();
+        //echo M()->_sql();
         return $arrList;
     }
 

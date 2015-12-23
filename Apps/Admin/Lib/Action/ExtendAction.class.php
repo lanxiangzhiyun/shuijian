@@ -29,10 +29,11 @@ class ExtendAction extends Action{
 			if(!in_array($_GET['_URL_']['1'],$allowACtion)){
 				$this->checkLogin();
 			}
+		}else{
+			//初始化检查用户权限，设置菜单
+			$this->getMenu($sjUserId);
 		}
 
-		//初始化检查用户权限，设置菜单
-		$this->getMenu($sjUserId);
 	}
 
 

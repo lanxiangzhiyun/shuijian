@@ -19,9 +19,14 @@ class MenuAction extends ExtendAction{
         $arrList = $menuModel -> getList($data);
         $arrAssign['arrList'] = $arrList;
 
-        foreach ($arrAssign as $key => $val) {
-            $this -> assign($key,$val);
-        }
+        $this->assign('menuLA_l1',array_filter($arrList,function($var){
+            if($var['menu_level'] == 1)
+                return $var;
+        }));
+        $this->assign('menuLA_l2',array_reverse(array_filter($arrList,function($var){
+            if($var['menu_level'] == 2)
+                return $var;
+        })));
 
         $this->display('menu_list');
     }

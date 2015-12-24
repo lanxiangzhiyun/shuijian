@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
-Date: 2015-12-21 23:47:45
+Date: 2015-12-24 23:20:27
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -36,7 +36,7 @@ CREATE TABLE `shuijian_admin` (
 -- ----------------------------
 -- Records of shuijian_admin
 -- ----------------------------
-INSERT INTO shuijian_admin VALUES ('1', 'admin', 'd41d8cd98f00b204e9800998ecf8427e', 'f@126.com', 'admin', '123456', '127.0.0.1', '112222233', '1450275480', '1', '2,3,4');
+INSERT INTO shuijian_admin VALUES ('1', 'admin', 'd41d8cd98f00b204e9800998ecf8427e', 'f@126.com', 'admin', '123456', '127.0.0.1', '112222233', '1450879362', '1', '2,3');
 
 -- ----------------------------
 -- Table structure for `shuijian_article`
@@ -93,6 +93,21 @@ CREATE TABLE `shuijian_cart` (
 
 -- ----------------------------
 -- Records of shuijian_cart
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `shuijian_city`
+-- ----------------------------
+DROP TABLE IF EXISTS `shuijian_city`;
+CREATE TABLE `shuijian_city` (
+  `city_id` tinyint(3) NOT NULL auto_increment,
+  `ctity_code` varchar(20) NOT NULL,
+  `city_name` varchar(120) NOT NULL,
+  PRIMARY KEY  (`city_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of shuijian_city
 -- ----------------------------
 
 -- ----------------------------

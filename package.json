@@ -1,0 +1,23 @@
+{
+  "name": "shuijian",
+  "version": "1.0.0",
+  "description": "shuijianShopCode\r add by patrick\r test",
+  "main": "index.js",
+  "dependencies": {
+    "wechat-api": "^1.23.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lanxiangzhiyun/shuijian.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lanxiangzhiyun/shuijian/issues"
+  },
+  "homepage": "https://github.com/lanxiangzhiyun/shuijian#readme"
+}

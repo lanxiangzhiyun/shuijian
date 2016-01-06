@@ -4,8 +4,41 @@
  *
 */
 
-body {	
+body {
 }
 
 a {
+}
+
+form, .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12
+{
+  padding-left:0px;
+  padding-right:0px;
+}
+
+.table > thead > tr > td, .table > tbody > tr > td, .table > tfood > tr > td, .table > thead > tr > th, .table > tbody > tr > th, .table > tfood > tr > th{
+  padding:15px 5px 10px 5px;
+}
+
+.erptable{
+  color:#000000;
+  padding:5px 0 0 0 !important;
+  border: solid 1px #aaa !important;
+  text-align:center;
+}
+.erptable input{
+  width:70px;
+}
+.grayback{
+  background-color: #efefef !important;
+
+}
+.errortxt{
+  color:red;
+  font-size:20px;
+}
+
+/*autocomplete自动加载 z-index与modal冲突*/
+.ui-autocomplete{
+  z-index:100000 !important;
 }

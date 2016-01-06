@@ -35,6 +35,12 @@ class ShopAction extends ExtendAction{
             $this -> assign($key,$val);
         }
 
+        //获取城市列表
+        $cityModel = D('City');
+        $dat_c = array();
+        $dat_c['fields'] = '*';
+        $cityList = $cityModel -> getList($dat_c);
+        $this -> assign('cityList',$cityList);
         $this->display('shop_list');
     }
 

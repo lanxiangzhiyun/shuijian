@@ -22,7 +22,7 @@
 
   <script src="__PUBLIC__/Admin/js/jquery-1.11.1.min.js"></script>
   <script src="__PUBLIC__/Admin/js/project/functions.js"></script>
-  <script src="__PUBLIC__/Admin/js/project/admin.js"></script>
+  <script src="__PUBLIC__/Admin/js/project/shop.js"></script>
 
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
@@ -39,111 +39,6 @@
   <a href="#" data-toggle="settings-pane" data-animate="true">
     &times;
   </a>
-
-  <div class="settings-pane-inner">
-
-    <div class="row">
-
-      <div class="col-md-4">
-
-        <div class="user-info">
-
-          <div class="user-image">
-            <a href="extra-profile.html">
-              <img src="__PUBLIC__/Admin/images/user-2.png" class="img-responsive img-circle" />
-            </a>
-          </div>
-
-          <div class="user-details">
-
-            <h3>
-              <a href="extra-profile.html">John Smith</a>
-
-              <!-- Available statuses: is-online, is-idle, is-busy and is-offline -->
-              <span class="user-status is-online"></span>
-            </h3>
-
-            <p class="user-title">Web Developer</p>
-
-            <div class="user-links">
-              <a href="extra-profile.html" class="btn btn-primary">Edit Profile</a>
-              <a href="extra-profile.html" class="btn btn-success">Upgrade</a>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="col-md-8 link-blocks-env">
-
-        <div class="links-block left-sep">
-          <h4>
-            <span>Notifications</span>
-          </h4>
-
-          <ul class="list-unstyled">
-            <li>
-              <input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk1" />
-              <label for="sp-chk1">Messages</label>
-            </li>
-            <li>
-              <input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk2" />
-              <label for="sp-chk2">Events</label>
-            </li>
-            <li>
-              <input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk3" />
-              <label for="sp-chk3">Updates</label>
-            </li>
-            <li>
-              <input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk4" />
-              <label for="sp-chk4">Server Uptime</label>
-            </li>
-          </ul>
-        </div>
-
-        <div class="links-block left-sep">
-          <h4>
-            <a href="#">
-              <span>Help Desk</span>
-            </a>
-          </h4>
-
-          <ul class="list-unstyled">
-            <li>
-              <a href="#">
-                <i class="fa-angle-right"></i>
-                Support Center
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="fa-angle-right"></i>
-                Submit a Ticket
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="fa-angle-right"></i>
-                Domains Protocol
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="fa-angle-right"></i>
-                Terms of Service
-              </a>
-            </li>
-          </ul>
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
 </div>
 
 <div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
@@ -204,71 +99,197 @@
     <div class="page-title">
 
       <div class="title-env">
-        <h1 class="title">管理员列表</h1>
-        <p class="description">Admin List</p>
+        <h1 class="title">店铺管理</h1>
+        <p class="description">Shops Management</p>
       </div>
 
       <include file="Common:breadcrumb"/>
 
     </div>
     <div class="row">
-      <a class="btn btn-white pull-right" href="javascript:void(0);" id="adminAdd">+添加管理员</a>
+      <form class="form-inline pull-left" role="form">
+        <div class="form-group pull-left">
+          店铺名：<input class="form-control" type="text" name="shopName" placeholder="请输入店铺名" value="">
+        </div>
+        <div class="form-group pull-left">
+          <button class="btn btn-white">查询</button>
+        </div>
+      </form>
+
+      <a class="btn btn-white pull-right" href="javascript:void(0);" id="shopAdd">+添加店铺</a>
     </div>
     <!-- Responsive Table -->
     <div class="row">
-      <div class="col-md-12">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div class="table-responsive" data-pattern="priority-columns" data-focus-btn-icon="fa-asterisk" data-sticky-table-header="true" data-add-display-all-btn="true" data-add-focus-btn="true">
-              <table cellspacing="0" class="table table-small-font table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th data-priority="1">名称</th>
-                  <th data-priority="3">邮件</th>
-                  <th data-priority="1">真实姓名</th>
-                  <th data-priority="3">手机号</th>
-                  <th data-priority="3">登陆ip</th>
-                  <th data-priority="6">添加时间</th>
-                  <th data-priority="6">登陆时间</th>
-                  <th data-priority="6">操作</th>
-                </tr>
-                </thead>
-                <tbody>
-                  <volist name='arrList' id='vo'>
-                    <tr trid="{$vo.admin_id}">
-                      <td class="admin_username">{$vo.admin_username}</td>
-                      <td class="admin_email">{$vo.admin_email}</td>
-                      <td class="admin_realname">{$vo.admin_realname}</td>
-                      <td class="admin_tel">{$vo.admin_tel}</td>
-                      <td>{$vo.admin_ip}</td>
-                      <td><?php echo gmdate('Y-m-d H:i:s',$vo['admin_addtime'])?></td>
-                      <td><?php echo gmdate('Y-m-d H:i:s',$vo['admin_lasttime'])?></td>
-                      <td>
-                        <a href="/iadmin.php/Auth/auth_list/adminID/{$vo.admin_id}" class="btn btn-secondary btn-sm btn-icon icon-left">授权</a>
-                        <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left adminEdit">编辑</a>
-                        <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left adminDelete">删除</a>
-                      </td>
-                    </tr>
-                  </volist>
-                </tbody>
-              </table>
+      <div class="col-xs-12">
+        <table class="table table-model-2 table-bordered table-hover" id="shopTable">
+          <thead>
+          <tr>
+            <th>店铺名称</th>
+            <th>
+              <select id="shopCitySelect">
+                <option value="">所在城市</option>
+                <volist name='cityList' id='vo'>
+                  <option value="{$vo.city_id}">{$vo.city_name}</option>
+                </volist>
+              </select>
+            </th>
+            <th>起送价</th>
+            <th>运费</th>
+            <th>类型</th>
+            <th>运营方式</th>
+            <th>送货方式</th>
+            <th>支付类型</th>
+            <th>开通状态</th>
+            <th class="text-center">操作</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr trid="1699" lng="121.466780" lat="31.236136" address="上海市" roleid="10">
+            <td class="shopName">上海配送店铺</td>
+            <td class="shopCity">上海</td>
+            <td class="shopLowprice">20</td>
+            <td class="shopShipCost">3</td>
+            <td class="shopTypeTd" typeval="2">
+              社区
+            </td>
+            <td class="shopDeliverTypeTd" typeval="2">
+              快递模式
+            </td>
+            <td class="shopDeliverTypeTd" typeval="2">
+              送货上门
+            </td>
+            <td class="shopPayTypeTd" typeval="1">
+              在线支付
+            </td>
+            <td class="shopIsopenTd" typeval="2">
+              全开通
+            </td>
+            <td class="text-center">
+              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left shopEdit">编辑</a>
+              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left shopDelete">删除</a>
+              <a href="javascript:void(0);" class="btn btn-turquoise btn-sm btn-icon icon-left shopShipTimeEdit">派送时间</a>
+              <a href="/shop/map/1699" class="btn btn-turquoise btn-sm btn-icon icon-left shopMapEdit">地图</a>
+            </td>
+            <td class="shipTimeId hide" shiptimeid="4599"></td>
+            <td class="weekDays hide" weekdays="1,2,3,4,5,6,7"></td>
+            <td class="todayArrive hide" todayarrive="0"></td>
+            <td class="todayArriveTime hide" todayarrivetime="00:00:00"></td>
+            <td class="sendAfterDays hide" sendafterdays="1"></td>
+            <td class="sendTimeBegin hide" sendtimebegin="07:00"></td>
+            <td class="sendTimeEnd hide" sendtimeend="23:00"></td>
+            <td class="chooseCount hide" choosecount="1"></td>
+          </tr>
+          <tr trid="1698" lng="121.327271" lat="31.200592" address="上海市虹桥火车站" roleid="10">
+            <td class="shopName">全国快递店铺</td>
+            <td class="shopCity">白领专区</td>
+            <td class="shopLowprice">1</td>
+            <td class="shopShipCost">1</td>
+            <td class="shopTypeTd" typeval="1">
+              校园
+            </td>
+            <td class="shopDeliverTypeTd" typeval="1">
+              门店模式
+            </td>
+            <td class="shopDeliverTypeTd" typeval="2">
+              送货上门
+            </td>
+            <td class="shopPayTypeTd" typeval="1">
+              在线支付
+            </td>
+            <td class="shopIsopenTd" typeval="2">
+              全开通
+            </td>
+            <td class="text-center">
+              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left shopEdit">编辑</a>
+              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left shopDelete">删除</a>
+              <a href="javascript:void(0);" class="btn btn-turquoise btn-sm btn-icon icon-left shopShipTimeEdit">派送时间</a>
+              <a href="/shop/map/1698" class="btn btn-turquoise btn-sm btn-icon icon-left shopMapEdit">地图</a>
+            </td>
+            <td class="shipTimeId hide" shiptimeid="4601"></td>
+            <td class="weekDays hide" weekdays="1,2,3,4,5,6,7"></td>
+            <td class="todayArrive hide" todayarrive="0"></td>
+            <td class="todayArriveTime hide" todayarrivetime="00:00:00"></td>
+            <td class="sendAfterDays hide" sendafterdays="3"></td>
+            <td class="sendTimeBegin hide" sendtimebegin="06:00"></td>
+            <td class="sendTimeEnd hide" sendtimeend="22:00"></td>
+            <td class="chooseCount hide" choosecount="3"></td>
+          </tr>
+          <tr trid="1675" lng="121.512856" lat="31.288280" address="四平路1239号同济大学西南九地下商业街" roleid="10">
+            <td class="shopName">同济店大仓</td>
+            <td class="shopCity">上海</td>
+            <td class="shopLowprice">10</td>
+            <td class="shopShipCost">3</td>
+            <td class="shopTypeTd" typeval="1">
+              校园
+            </td>
+            <td class="shopDeliverTypeTd" typeval="1">
+              门店模式
+            </td>
+            <td class="shopDeliverTypeTd" typeval="1">
+              自提
+            </td>
+            <td class="shopPayTypeTd" typeval="1">
+              在线支付
+            </td>
+            <td class="shopIsopenTd" typeval="2">
+              全开通
+            </td>
+            <td class="text-center">
+              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left shopEdit">编辑</a>
+              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left shopDelete">删除</a>
+              <a href="javascript:void(0);" class="btn btn-turquoise btn-sm btn-icon icon-left shopShipTimeEdit">派送时间</a>
+              <a href="/shop/map/1675" class="btn btn-turquoise btn-sm btn-icon icon-left shopMapEdit">地图</a>
+            </td>
+            <td class="shipTimeId hide" shiptimeid="4552"></td>
+            <td class="weekDays hide" weekdays="1,2,3,4,5,6,7"></td>
+            <td class="todayArrive hide" todayarrive="1"></td>
+            <td class="todayArriveTime hide" todayarrivetime="20:00:00"></td>
+            <td class="sendAfterDays hide" sendafterdays="3"></td>
+            <td class="sendTimeBegin hide" sendtimebegin="10:00"></td>
+            <td class="sendTimeEnd hide" sendtimeend="17:00"></td>
+            <td class="chooseCount hide" choosecount="3"></td>
+          </tr>
+          <tr trid="3" lng="12.222000" lat="12.330000" address="1" roleid="10">
+            <td class="shopName">单品快递门店</td>
+            <td class="shopCity">上海</td>
+            <td class="shopLowprice">0</td>
+            <td class="shopShipCost">0</td>
+            <td class="shopTypeTd" typeval="1">
+              校园
+            </td>
+            <td class="shopDeliverTypeTd" typeval="1">
+              门店模式
+            </td>
+            <td class="shopDeliverTypeTd" typeval="1">
+              自提
+            </td>
+            <td class="shopPayTypeTd" typeval="1">
+              在线支付
+            </td>
+            <td class="shopIsopenTd" typeval="2">
+              全开通
+            </td>
+            <td class="text-center">
+              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left shopEdit">编辑</a>
+              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left shopDelete">删除</a>
+              <a href="javascript:void(0);" class="btn btn-turquoise btn-sm btn-icon icon-left shopShipTimeEdit">派送时间</a>
+              <a href="/shop/map/3" class="btn btn-turquoise btn-sm btn-icon icon-left shopMapEdit">地图</a>
+            </td>
+            <td class="shipTimeId hide" shiptimeid="4096"></td>
+            <td class="weekDays hide" weekdays="1,2,3,4,5,6,7"></td>
+            <td class="todayArrive hide" todayarrive="0"></td>
+            <td class="todayArriveTime hide" todayarrivetime="12:30:00"></td>
+            <td class="sendAfterDays hide" sendafterdays="7"></td>
+            <td class="sendTimeBegin hide" sendtimebegin="01:30"></td>
+            <td class="sendTimeEnd hide" sendtimeend="13:30"></td>
+            <td class="chooseCount hide" choosecount="3"></td>
+          </tr>
+          </tbody>
+        </table>
+        <div><div class="pull-left"><ul class="pagination"><li class="disabled"><a>共：4</a></li></ul></div>
+          <div class="pull-left"></div>
 
-            </div>
 
-            <script type="text/javascript">
-              // This JavaScript Will Replace Checkboxes in dropdown toggles
-              jQuery(document).ready(function($)
-              {
-                setTimeout(function()
-                {
-                  $(".checkbox-row input").addClass('cbr');
-                  cbr_replace();
-                }, 0);
-              });
-            </script>
-
-
-          </div>
 
         </div>
       </div>

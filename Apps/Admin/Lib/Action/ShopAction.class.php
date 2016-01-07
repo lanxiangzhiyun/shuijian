@@ -48,8 +48,8 @@ class ShopAction extends ExtendAction{
         // URL参数
         $data = $this -> _post('data');
         // 新增
-        $adminModel = D('Shop');
-        $result = $adminModel -> addList($data);
+        $shopModel = D('Shop');
+        $result = $shopModel -> addList($data);
         if ($result) {
             $this->ajaxReturn(array('title'=>'success'));
         }else {

@@ -17,7 +17,7 @@ class ShopModel extends Model {
 
         $where = "1=1";
 
-        $arrList = $this -> where ($where) -> limit($pageNum) -> page ($page) ->field($param['fields']) ->order('shop_id DESC')-> select();
+        $arrList = $this->join(' shuijian_city ON shuijian_city.city_id = shuijian_shop.shop_city') -> where ($where) -> limit($pageNum) -> page ($page) ->field($param['fields']) ->order('shop_id DESC')-> select();
        //echo M()->_sql();
         $this ->total=  $this -> where ($where) ->field('shop_id') -> count();
         $this->subtotal = count($arrList);
@@ -46,12 +46,10 @@ class ShopModel extends Model {
     //添加
     public function addList($param) {
         $id = intval($param['id']);
-
         //编辑
-        if ($id) {
+        if ($id>-1) {
             $result = $this -> save(array(
                 'shop_id'=>$id,
-                'shop_city' => $param['shop_city'],
                 'shop_name' => $param['shop_name'],
                 'low_price'=>$param['low_price'],
                 'ship_cost'=>$param['ship_cost'],

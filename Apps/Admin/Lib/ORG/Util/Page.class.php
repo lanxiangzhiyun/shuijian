@@ -1,6 +1,6 @@
 <?php
 class Page{
-	
+
 	private $url;
 	private $pcount;
 	private $limit;
@@ -22,11 +22,11 @@ class Page{
 		$html = $this->rules();
 		return $html;
 	}
-	
+
 	/*
 	*排列规则
 	*/
-	private function rules(){  
+	private function rules(){
 		$prevPage = intval($this->page)-1;
 		if($prevPage<=0){
 			$prevPage = 1;
@@ -35,55 +35,57 @@ class Page{
 		if($nextPage>=$this->pcount){
 			$nextPage = $this->pcount;
 		}
-		$html = "<div class='page_wrap'><div class='showpage'><span class='num'>本页共".$this->count."条</span>";
-		$html.="<a class='page-prev' href='".$this->url.$prevPage."'><span>上一页</span></a>";
+		$html = "<div class=\"row\"><div class=\"col-xs-12\">";
+		$html .= " <div class=\"pull-left\"><div class=\"pull-left\"><ul class=\"pagination\"><li class=\"disabled\"><a>共:".$this->count."条</li></ul></div></div>";
+		$html .= "<div class=\"pull-left\"><ul class=\"pagination\">";
+		$html.="<li><a class='page-prev' href='".$this->url.$prevPage."'><span>«</span></a></li>";
 		if(intval($this->pcount)>7){
 			if(intval($this->page)<=4){
 				for($i=1;$i<=5;$i++){
 					if($this->page==$i){
-						$html.=" <span class='page-this'>".$i."</span>";
+						$html.="<li class=\"active\"><span>".$i."</span></li>";
 					}else{
-						$html.="<a href='".$this->url.$i."'>".$i."</a>";
+						$html.="<li><a href='".$this->url.$i."'>".$i."</a></li>";
 					}
 				}
-				$html.="<span class='page-break'>...</span>";
-				$html.=" <a href='".$this->url.$this->pcount."'>".$this->pcount."</a>";
+				$html.="<li><span class='page-break'>...</span></li>";
+				$html.="<li><a href='".$this->url.$this->pcount."'>".$this->pcount."</a></li>";
 
 			}else if(intval($this->page)>=(intval($this->pcount)-3)){
-				$html.=" <a href='".$this->url."1'>1</a>";
-				$html.="<span class='page-break'>...</span>";
+				$html.="<li><a href='".$this->url."1'>1</a></li>";
+				$html.="<li><span class='page-break'>...</span></li>";
 				for($i=(intval($this->pcount)-4);$i<=intval($this->pcount);$i++){
 					if($this->page==$i){
-						$html.=" <span class='page-this'>".$i."</span>";
+						$html.="<li class=\"active\"><span>".$i."</span></li>";
 					}else{
-						$html.="<a href='".$this->url.$i."'>".$i."</a>";
+						$html.="<li><a href='".$this->url.$i."'>".$i."</a></li>";
 					}
 				}
-			
+
 			}else{
-				$html.=" <a href='".$this->url."1'>1</a>";
-				$html.="<span class='page-break'>...</span>";
+				$html.="<li><a href='".$this->url."1'>1</a></li>";
+				$html.="<li><span class='page-break'>...</span></li>";
 				for($i=(intval($this->page)-2);$i<=(intval($this->page)+2);$i++){
 					if($this->page==$i){
-						$html.=" <span class='page-this'>".$i."</span>";
+						$html.="<li class=\"active\"><span>".$i."</span></li>";
 					}else{
-						$html.="<a href='".$this->url.$i."'>".$i."</a>";
+						$html.="<li><a href='".$this->url.$i."'>".$i."</a></li>";
 					}
 				}
-				$html.="<span class='page-break'>...</span>";
-				$html.=" <a href='".$this->url.$this->pcount."'>".$this->pcount."</a>";
+				$html.="<li><span class='page-break'>...</span></li>";
+				$html.="<li><a href='".$this->url.$this->pcount."'>".$this->pcount."</a></li>";
 			}
 		}else{
 			for($i=1;$i<=$this->pcount;$i++){
 				if($this->page==$i){
-					$html.=" <span class='page-this'>".$i."</span>";
+					$html.="<li class=\"active\"><span>".$i."</span></li>";
 				}else{
-					$html.="<a href='".$this->url.$i."'>".$i."</a>";
+					$html.="<li><a href='".$this->url.$i."'>".$i."</a></li>";
 				}
 			}
 		}
-		$html.="<a class='page-next' href='".$this->url.$nextPage."'><span>下一页</span></a>";
-		$html.="<span class='num'>共".$this->pcount."页</span><span class='txt'>到第</span><span class='txt'><input class='input_num' type='text' url='".$this->url."' name='pageJump' id='pageJump' /></span><span class='txt'>页</span><a class='goto_btn' href='javascript:;'  title='确定'></a></div></div>";
+		$html.="<li><a class='page-next' href='".$this->url.$nextPage."'><span>»</span></a></li>";
+		$html .= "</div></div></div>";
 		return $html;
 	}
 

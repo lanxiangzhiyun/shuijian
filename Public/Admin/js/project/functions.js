@@ -202,7 +202,7 @@ function DoIllegalValidate2(values,rule,options){
         var url = options[i];
         var jsonPara = {'value':inputVal};
         var result = DoAjaxPost(url,jsonPara);
-        if(result=='false'){
+        if(result=='true'){
           illegal = true;
           inputObj.parent().parent().addClass('has-error');
           inputObj.after('<label class="control-label errorLabel">“'+inputVal+'”已被占用，请换其它 ！</label>');

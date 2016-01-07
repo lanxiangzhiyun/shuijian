@@ -27,6 +27,22 @@ class ShopModel extends Model {
         return $arrList;
     }
 
+    public function nameuniquecheck($value) {
+        //分页参数
+        $where = "1=1";
+        $param = array();
+        if($value)
+            $where .= " and shop_name='" . $value."'";
+        $param['fields'] = "*";
+
+        $arrList = $this -> where ($where) -> field($param['fields']) -> select();
+        //echo M()->_sql();
+        if($arrList)
+            return "success";
+        else
+            return "false";
+    }
+
     //添加
     public function addList($param) {
         $id = intval($param['id']);
@@ -34,20 +50,35 @@ class ShopModel extends Model {
         //编辑
         if ($id) {
             $result = $this -> save(array(
-                'admin_id'=>$id,
-                'admin_username' => $param['admin_username'],
-                'admin_email' => $param['admin_email'],
-                'admin_realname'=>$param['admin_realname'],
-                'admin_tel'=>$param['admin_tel']
+                'shop_id'=>$id,
+                'shop_city' => $param['shop_city'],
+                'shop_name' => $param['shop_name'],
+                'low_price'=>$param['low_price'],
+                'ship_cost'=>$param['ship_cost'],
+                'shop_address'=>$param['shop_address'],
+                'shop_type'=>$param['shop_type'],
+                'shop_businessType'=>$param['shop_businessType'],
+                'shop_deliverType'=>$param['shop_deliverType'],
+                'shop_payType'=>$param['shop_payType'],
+                'shop_isopen'=>$param['shop_isopen'],
+                'longitude'=>$param['longitude'],
+                'latitude'=>$param['latitude']
             ));
         } else {
             //新增
             $result = $this -> add(array(
-                'admin_username' => $param['admin_username'],
-                'admin_email' => $param['admin_email'],
-                'admin_realname'=>$param['admin_realname'],
-                'admin_tel'=>$param['admin_tel'],
-                'admin_addtime'=>time()
+                'shop_city' => $param['shop_city'],
+                'shop_name' => $param['shop_name'],
+                'low_price'=>$param['low_price'],
+                'ship_cost'=>$param['ship_cost'],
+                'shop_address'=>$param['shop_address'],
+                'shop_type'=>$param['shop_type'],
+                'shop_businessType'=>$param['shop_businessType'],
+                'shop_deliverType'=>$param['shop_deliverType'],
+                'shop_payType'=>$param['shop_payType'],
+                'shop_isopen'=>$param['shop_isopen'],
+                'longitude'=>$param['longitude'],
+                'latitude'=>$param['latitude']
             ));
         }
         //echo M()->_sql();
@@ -61,9 +92,9 @@ class ShopModel extends Model {
     //删除
     public function delList($id) {
         if (is_array($id)) {
-            $where =array('admin_id' => array('in', $id));
+            $where =array('shop_id' => array('in', $id));
         } else {
-            $where = array('admin_id' => array('in', "$id"));
+            $where = array('shop_id' => array('in', "$id"));
         }
 
         $result = $this -> where($where) -> delete();
@@ -74,27 +105,5 @@ class ShopModel extends Model {
             $data = 0;
         }
         return $data;
-    }
-
-    //根据admin_id获取权限菜单列表
-    public function getActionList($adminId){
-        $where = "1=1 and admin_id=".$adminId;
-        $arrList = $this->where($where)->order('admin_id DESC')-> select();
-        //echo M()->_sql();
-        return $arrList;
-    }
-
-    //设置权限
-    public function setActionList($param){
-        $result = $this -> save(array(
-            'admin_id'=>$param['userId'],
-            'admin_actionList' => $param['actionList']
-        ));
-        //echo M()->_sql();
-        if ($result !== FALSE) {
-            return array('status'=> 1);
-        } else {
-            return array('msg'=>'操作失败');
-        }
     }
 }

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-01-06 18:14:21
+Date: 2016-01-07 18:48:32
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -83,7 +83,7 @@ CREATE TABLE `shuijian_admin` (
 -- ----------------------------
 -- Records of shuijian_admin
 -- ----------------------------
-INSERT INTO `shuijian_admin` VALUES ('1', 'admin', 'd41d8cd98f00b204e9800998ecf8427e', 'f@126.com', 'admin', '123456', '127.0.0.1', '112222233', '1452050244', '1', '2,3,5');
+INSERT INTO `shuijian_admin` VALUES ('1', 'admin', 'd41d8cd98f00b204e9800998ecf8427e', 'f@126.com', 'admin', '123456', '127.0.0.1', '112222233', '1452159317', '1', '2,3,5');
 
 -- ----------------------------
 -- Table structure for `shuijian_article`
@@ -430,6 +430,7 @@ CREATE TABLE `shuijian_shop` (
   `shop_city` tinyint(3) NOT NULL,
   `shop_name` varchar(120) NOT NULL,
   `low_price` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `ship_cost` decimal(10,2) NOT NULL DEFAULT '0.00',
   `shop_address` varchar(120) NOT NULL,
   `shop_type` tinyint(3) NOT NULL DEFAULT '1',
   `shop_businessType` tinyint(3) NOT NULL DEFAULT '1',
@@ -444,6 +445,7 @@ CREATE TABLE `shuijian_shop` (
 -- ----------------------------
 -- Records of shuijian_shop
 -- ----------------------------
+INSERT INTO `shuijian_shop` VALUES ('0', '1', 'test', '1.00', '1.00', 'test222', '1', '1', '2', '1', '0', '0', '0');
 
 -- ----------------------------
 -- Table structure for `shuijian_site`

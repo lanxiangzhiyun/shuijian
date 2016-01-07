@@ -144,25 +144,27 @@
           </tr>
           </thead>
           <tbody>
-          <tr trid="1699" lng="121.466780" lat="31.236136" address="上海市" roleid="10">
-            <td class="shopName">上海配送店铺</td>
-            <td class="shopCity">上海</td>
-            <td class="shopLowprice">20</td>
-            <td class="shopShipCost">3</td>
-            <td class="shopTypeTd" typeval="2">
-              社区
+            <volist name='arrList' id='vo'>
+              <tr trid="{$vo.shop_id}" lng="{$vo.longitude}" lat="{$vo.latitude}" address="{$vo.shop_address}" roleid="10">
+            <td class="shopName">{$vo.shop_name}</td>
+            <td class="shopCity">{$vo.shop_city}</td>
+            <td class="shopLowprice">{$vo.low_price}</td>
+            <td class="shopShipCost">{$vo.ship_cost}</td>
+            <td class="shopTypeTd" typeval="{$vo.shop_type}">
+              <?php $tem = array('1'=>'校园','2'=>'社区','3'=>'办公室') ?>
+              <?php echo $tem[$vo[shop_type]]?>
             </td>
-            <td class="shopDeliverTypeTd" typeval="2">
-              快递模式
+            <td class="shopDeliverTypeTd" typeval="{$vo.shop_businessType}">
+              {$vo.shop_businessType_name}
             </td>
-            <td class="shopDeliverTypeTd" typeval="2">
-              送货上门
+            <td class="shopDeliverTypeTd" typeval="{$vo.shop_deliverType}">
+              {$vo.shop_deliverType_name}
             </td>
-            <td class="shopPayTypeTd" typeval="1">
-              在线支付
+            <td class="shopPayTypeTd" typeval="{$vo.shop_payType}">
+              {$vo.shop_payType_name}
             </td>
-            <td class="shopIsopenTd" typeval="2">
-              全开通
+            <td class="shopIsopenTd" typeval="{$vo.shop_isopen}">
+              {$vo.shop_isopen}
             </td>
             <td class="text-center">
               <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left shopEdit">编辑</a>
@@ -179,111 +181,7 @@
             <td class="sendTimeEnd hide" sendtimeend="23:00"></td>
             <td class="chooseCount hide" choosecount="1"></td>
           </tr>
-          <tr trid="1698" lng="121.327271" lat="31.200592" address="上海市虹桥火车站" roleid="10">
-            <td class="shopName">全国快递店铺</td>
-            <td class="shopCity">白领专区</td>
-            <td class="shopLowprice">1</td>
-            <td class="shopShipCost">1</td>
-            <td class="shopTypeTd" typeval="1">
-              校园
-            </td>
-            <td class="shopDeliverTypeTd" typeval="1">
-              门店模式
-            </td>
-            <td class="shopDeliverTypeTd" typeval="2">
-              送货上门
-            </td>
-            <td class="shopPayTypeTd" typeval="1">
-              在线支付
-            </td>
-            <td class="shopIsopenTd" typeval="2">
-              全开通
-            </td>
-            <td class="text-center">
-              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left shopEdit">编辑</a>
-              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left shopDelete">删除</a>
-              <a href="javascript:void(0);" class="btn btn-turquoise btn-sm btn-icon icon-left shopShipTimeEdit">派送时间</a>
-              <a href="/shop/map/1698" class="btn btn-turquoise btn-sm btn-icon icon-left shopMapEdit">地图</a>
-            </td>
-            <td class="shipTimeId hide" shiptimeid="4601"></td>
-            <td class="weekDays hide" weekdays="1,2,3,4,5,6,7"></td>
-            <td class="todayArrive hide" todayarrive="0"></td>
-            <td class="todayArriveTime hide" todayarrivetime="00:00:00"></td>
-            <td class="sendAfterDays hide" sendafterdays="3"></td>
-            <td class="sendTimeBegin hide" sendtimebegin="06:00"></td>
-            <td class="sendTimeEnd hide" sendtimeend="22:00"></td>
-            <td class="chooseCount hide" choosecount="3"></td>
-          </tr>
-          <tr trid="1675" lng="121.512856" lat="31.288280" address="四平路1239号同济大学西南九地下商业街" roleid="10">
-            <td class="shopName">同济店大仓</td>
-            <td class="shopCity">上海</td>
-            <td class="shopLowprice">10</td>
-            <td class="shopShipCost">3</td>
-            <td class="shopTypeTd" typeval="1">
-              校园
-            </td>
-            <td class="shopDeliverTypeTd" typeval="1">
-              门店模式
-            </td>
-            <td class="shopDeliverTypeTd" typeval="1">
-              自提
-            </td>
-            <td class="shopPayTypeTd" typeval="1">
-              在线支付
-            </td>
-            <td class="shopIsopenTd" typeval="2">
-              全开通
-            </td>
-            <td class="text-center">
-              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left shopEdit">编辑</a>
-              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left shopDelete">删除</a>
-              <a href="javascript:void(0);" class="btn btn-turquoise btn-sm btn-icon icon-left shopShipTimeEdit">派送时间</a>
-              <a href="/shop/map/1675" class="btn btn-turquoise btn-sm btn-icon icon-left shopMapEdit">地图</a>
-            </td>
-            <td class="shipTimeId hide" shiptimeid="4552"></td>
-            <td class="weekDays hide" weekdays="1,2,3,4,5,6,7"></td>
-            <td class="todayArrive hide" todayarrive="1"></td>
-            <td class="todayArriveTime hide" todayarrivetime="20:00:00"></td>
-            <td class="sendAfterDays hide" sendafterdays="3"></td>
-            <td class="sendTimeBegin hide" sendtimebegin="10:00"></td>
-            <td class="sendTimeEnd hide" sendtimeend="17:00"></td>
-            <td class="chooseCount hide" choosecount="3"></td>
-          </tr>
-          <tr trid="3" lng="12.222000" lat="12.330000" address="1" roleid="10">
-            <td class="shopName">单品快递门店</td>
-            <td class="shopCity">上海</td>
-            <td class="shopLowprice">0</td>
-            <td class="shopShipCost">0</td>
-            <td class="shopTypeTd" typeval="1">
-              校园
-            </td>
-            <td class="shopDeliverTypeTd" typeval="1">
-              门店模式
-            </td>
-            <td class="shopDeliverTypeTd" typeval="1">
-              自提
-            </td>
-            <td class="shopPayTypeTd" typeval="1">
-              在线支付
-            </td>
-            <td class="shopIsopenTd" typeval="2">
-              全开通
-            </td>
-            <td class="text-center">
-              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left shopEdit">编辑</a>
-              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left shopDelete">删除</a>
-              <a href="javascript:void(0);" class="btn btn-turquoise btn-sm btn-icon icon-left shopShipTimeEdit">派送时间</a>
-              <a href="/shop/map/3" class="btn btn-turquoise btn-sm btn-icon icon-left shopMapEdit">地图</a>
-            </td>
-            <td class="shipTimeId hide" shiptimeid="4096"></td>
-            <td class="weekDays hide" weekdays="1,2,3,4,5,6,7"></td>
-            <td class="todayArrive hide" todayarrive="0"></td>
-            <td class="todayArriveTime hide" todayarrivetime="12:30:00"></td>
-            <td class="sendAfterDays hide" sendafterdays="7"></td>
-            <td class="sendTimeBegin hide" sendtimebegin="01:30"></td>
-            <td class="sendTimeEnd hide" sendtimeend="13:30"></td>
-            <td class="chooseCount hide" choosecount="3"></td>
-          </tr>
+            </volist>
           </tbody>
         </table>
         <div><div class="pull-left"><ul class="pagination"><li class="disabled"><a>共：4</a></li></ul></div>

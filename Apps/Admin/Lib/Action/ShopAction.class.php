@@ -44,11 +44,11 @@ class ShopAction extends ExtendAction{
         $this->display('shop_list');
     }
 
-    public function admin_edit(){
+    public function shop_edit(){
         // URL参数
         $data = $this -> _post('data');
         // 新增
-        $adminModel = D('Admin');
+        $adminModel = D('Shop');
         $result = $adminModel -> addList($data);
         if ($result) {
             $this->ajaxReturn(array('title'=>'success'));
@@ -76,4 +76,12 @@ class ShopAction extends ExtendAction{
         }
     }
 
+
+    public function name_unique_check(){
+
+        $value = $this -> _post('value');
+        $shopModel = D('Shop');
+        $result = $shopModel -> nameuniquecheck($value);
+        $this->ajaxReturn($result);
+    }
 }

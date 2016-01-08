@@ -147,7 +147,7 @@
             <volist name='arrList' id='vo'>
               <tr trid="{$vo.shop_id}" lng="{$vo.longitude}" lat="{$vo.latitude}" address="{$vo.shop_address}" roleid="10">
             <td class="shopName">{$vo.shop_name}</td>
-            <td class="shopCity">{$vo.shop_city}</td>
+            <td class="shopCity">{$vo.city_name}</td>
             <td class="shopLowprice">{$vo.low_price}</td>
             <td class="shopShipCost">{$vo.ship_cost}</td>
             <td class="shopTypeTd" typeval="{$vo.shop_type}">
@@ -155,16 +155,20 @@
               <?php echo $tem[$vo[shop_type]]git
             </td>
             <td class="shopDeliverTypeTd" typeval="{$vo.shop_businessType}">
-              {$vo.shop_businessType_name}
+              <?php $tem = array('1'=>'门店模式','2'=>'快递模式') ?>
+              <?php echo $tem[$vo[shop_businessType]]?>
             </td>
             <td class="shopDeliverTypeTd" typeval="{$vo.shop_deliverType}">
-              {$vo.shop_deliverType_name}
+              <?php $tem = array('1'=>'自提','2'=>'送货上门','3'=>'两种方式都行') ?>
+              <?php echo $tem[$vo[shop_deliverType]]?>
             </td>
             <td class="shopPayTypeTd" typeval="{$vo.shop_payType}">
-              {$vo.shop_payType_name}
+              <?php $tem = array('1'=>'在线支付','2'=>'货到付款','3'=>'两种方式都行') ?>
+              <?php echo $tem[$vo[shop_payType]]?>
             </td>
             <td class="shopIsopenTd" typeval="{$vo.shop_isopen}">
-              {$vo.shop_isopen}
+              <?php $tem = array('0'=>'未营业','3'=>'放假中','1'=>'半开通') ?>
+              <?php echo $tem[$vo[shop_isopen]]?>
             </td>
             <td class="text-center">
               <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left shopEdit">编辑</a>
@@ -184,42 +188,18 @@
             </volist>
           </tbody>
         </table>
-        <div><div class="pull-left"><ul class="pagination"><li class="disabled"><a>共：4</a></li></ul></div>
-          <div class="pull-left"></div>
-
-
-
-        </div>
       </div>
     </div>
+
+    <!--分页开始-->
+    <?php echo $pageHtml;?>
+    <!--分页结束-->
+
     <!-- Main Footer -->
     <!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
     <!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
     <!-- Or class "fixed" to  always fix the footer to the end of page -->
-    <footer class="main-footer sticky footer-type-1">
-
-      <div class="footer-inner">
-
-        <!-- Add your copyright text here -->
-        <div class="footer-text">
-          &copy; 2014
-          <strong>Xenon</strong>
-          More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
-        </div>
-
-
-        <!-- Go to Top Link, just add rel="go-top" to any link to add this functionality -->
-        <div class="go-up">
-
-          <a href="#" rel="go-top">
-            <i class="fa-angle-up"></i>
-          </a>
-
-        </div>
-
-      </div>
-
-    </footer>
+    <include file="Common:footer"/>
   </div>
 </div>
 

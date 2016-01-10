@@ -218,3 +218,288 @@ function DoIllegalValidate2(values,rule,options){
   }
   return outterIllegal;
 }
+
+/*
+
+ | 日期控件，必须引用本地的jquery-ui.min.js文件，i don't know why!
+ | eg：全部订单
+
+ */
+function DatePickerInit()
+{
+  $.datepicker.regional['zh-CN'] = {
+    clearText: '清除',
+    clearStatus: '清除已选日期',
+    closeText: '关闭',
+    closeStatus: '不改变当前选择',
+    prevText: '<上月',
+    prevStatus: '显示上月',
+    prevBigText: '<<',
+    prevBigStatus: '显示上一年',
+    nextText: '下月>',
+    nextStatus: '显示下月',
+    nextBigText: '>>',
+    nextBigStatus: '显示下一年',
+    currentText: '今天',
+    currentStatus: '显示本月',
+    monthNames: ['一月','二月','三月','四月','五月','六月', '七月','八月','九月','十月','十一月','十二月'],
+    monthNamesShort: ['一','二','三','四','五','六', '七','八','九','十','十一','十二'],
+    monthStatus: '选择月份',
+    yearStatus: '选择年份',
+    weekHeader: '周',
+    weekStatus: '年内周次',
+    dayNames: ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'],
+    dayNamesShort: ['周日','周一','周二','周三','周四','周五','周六'],
+    dayNamesMin: ['日','一','二','三','四','五','六'],
+    dayStatus: '设置 DD 为一周起始',
+    dateStatus: '选择 m月 d日, DD',
+    dateFormat: 'yy-mm-dd',
+    firstDay: 1,
+    initStatus: '请选择日期',
+    isRTL: false};
+  $.datepicker.setDefaults($.datepicker.regional['zh-CN']);
+  $( "#datepicker" ).datepicker({
+    altField: "#datepicker",
+    altFormat: "yy-mm-dd"
+  });
+  $('#datepicker_second').datepicker({
+    altField: "#datepicker_second",
+    altFormat: "yy-mm-dd"
+  });
+  $('#datepicker_third').datepicker({
+    altField: "#datepicker_third",
+    altFormat: "yy-mm-dd"
+  });$('#datepicker_third').datepicker({
+  altField: "#datepicker_third",
+  altFormat: "yy-mm-dd"
+});
+  $('#datepicker_forth').datepicker({
+    altField: "#datepicker_forth",
+    altFormat: "yy-mm-dd"
+  });
+}
+
+
+
+/*
+
+ | 日期格式转换，对应PHP的DateFormat()
+ | eg：BeiingAPI返回的date分平台，10/13位Long型
+
+ */
+Date.prototype.Format = function(format)
+{
+  var o = {
+    "M+" : this.getMonth()+1,                 //月份
+    "d+" : this.getDate(),                    //日
+    "h+" : this.getHours(),                   //小时
+    "m+" : this.getMinutes(),                 //分
+    "s+" : this.getSeconds(),                 //秒
+    "q+" : Math.floor((this.getMonth()+3)/3), //季度
+    "S"  : this.getMilliseconds()             //毫秒
+  };
+  if( /(y+)/.test(format) ){
+    format=format.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+  }
+  for(var k in o){
+    if( new RegExp("("+ k +")").test(format) ){
+      format = format.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+    }
+  }
+  return format;
+}
+function DateFormat(time,format){
+  time = time.length == 10 ? time*1000 : time;
+  return new Date(time).Format(format);
+}
+
+
+
+/*
+
+ | 获取checkbox的值, 转换成数组或者字符串
+ | eg：DoIllegalValidate2()对checkbox的验证，Edit优惠券基础模版的client
+
+ */
+function CheckboxToArray(inputObj){
+  var clients = [];
+  inputObj.each(function(){
+    if($(this).prop('checked')){
+      clients.push($(this).val());
+    }
+  });
+  return clients;
+}
+function CheckboxToString(inputObj)
+{
+  var clients = CheckboxToArray(inputObj);
+  return clients.join();
+}
+
+
+
+/*
+
+ | 优惠券试用客户端，对应PHP的CouponClient()
+ | eg：优惠券管理->基础模版
+
+ */
+function CouponClient(type)
+{
+  var clientType = {'0':'Other','1':'PC','2':'Wechat','3':'Android','5':'iOS'};
+  if( type== 'ALL'){
+    return '全部';
+  }else{
+    if(type.indexOf(',')<0){
+      return clientType[type];
+    }else{
+      types = type.split(',');
+      var client = '';
+      for (var i in types){
+        client += clientType[types[i]]+',';
+      }
+      return client.substring(0,client.length-1);
+    }
+  }
+}
+
+/*
+
+ | 时
+ | eg：自提点
+
+ */
+function selectHourTime(timeData) {
+  var str = '';
+  if(timeData) {
+    for(var i=0;i<24;i++) {
+      if(i < 10) {
+        if(timeData == '0'+i) {
+          str += '<option value="0'+i+'" selected>0'+i+'</option>';
+        } else {
+          str += '<option value="0'+i+'">0'+i+'</option>';
+        }
+      } else {
+        if(timeData == i) {
+          str += '<option value="'+i+'" selected>'+i+'</option>';
+        } else {
+          str += '<option value="'+i+'">'+i+'</option>';
+        }
+      }
+    }
+  } else {
+    for(var i=0;i<24;i++) {
+      if(i < 10) {
+        str += '<option value="0'+i+'">0'+i+'</option>';
+      } else {
+        str += '<option value="'+i+'">'+i+'</option>';
+      }
+    }
+  }
+  return str;
+}
+/*
+
+ | 分
+ | eg：自提点
+
+ */
+function selectMinuteTime(timeData) {
+  var str = '';
+  if(timeData) {
+    for(var i=0;i<60;i++) {
+      if(i < 10) {
+        if(timeData == '0'+i) {
+          str += '<option value="0'+i+'" selected>0'+i+'</option>';
+        } else {
+          str += '<option value="0'+i+'">0'+i+'</option>';
+        }
+      } else {
+        if(timeData == i) {
+          str += '<option value="'+i+'" selected>'+i+'</option>';
+        } else {
+          str += '<option value="'+i+'">'+i+'</option>';
+        }
+      }
+    }
+  } else {
+    for(var i=0;i<60;i++) {
+      if(i < 10) {
+        str += '<option value="0'+i+'">0'+i+'</option>';
+      } else {
+        str += '<option value="'+i+'">'+i+'</option>';
+      }
+    }
+  }
+  return str;
+}
+/*
+
+ | 秒
+ | eg：店铺派送时间
+
+ */
+function selectSecondTime(timeData) {
+  var str = '';
+  if(timeData) {
+    for(var i=0;i<60;i++) {
+      if(i < 10) {
+        if(timeData == '0'+i) {
+          str += '<option value="0'+i+'" selected>0'+i+'</option>';
+        } else {
+          str += '<option value="0'+i+'">0'+i+'</option>';
+        }
+      } else {
+        if(timeData == i) {
+          str += '<option value="'+i+'" selected>'+i+'</option>';
+        } else {
+          str += '<option value="'+i+'">'+i+'</option>';
+        }
+      }
+    }
+  } else {
+    for(var i=0;i<60;i++) {
+      if(i < 10) {
+        str += '<option value="0'+i+'">0'+i+'</option>';
+      } else {
+        str += '<option value="'+i+'">'+i+'</option>';
+      }
+    }
+  }
+  return str;
+}
+
+
+/*
+
+ | 验证时间大小
+ | eg：自提点
+
+ */
+function checkTime(startTime,endTime) {
+  starttime = startTime.split(":");
+  endtime = endTime.split(":");
+  if(starttime[0] > endtime[0]) {
+    return true;
+  } else if (starttime[0] == endtime[0]) {
+    if(starttime[1] >= endtime[1]) {
+      return true;
+    }
+  }
+  return false;
+}
+
+/*
+
+ | 比较日期大小
+ | eg：公告
+
+ */
+function checkEndTime(startTime,endTime){
+  var start=new Date(startTime.replace("-", "/").replace("-", "/"));
+  var end=new Date(endTime.replace("-", "/").replace("-", "/"));
+  if(end<start){
+    return true;
+  }
+  return false;
+}

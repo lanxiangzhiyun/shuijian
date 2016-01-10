@@ -109,7 +109,7 @@
     <div class="row">
       <form class="form-inline pull-left" role="form">
         <div class="form-group pull-left">
-          店铺名：<input class="form-control" type="text" name="shopName" placeholder="请输入店铺名" value="">
+          店铺名：<input class="form-control" type="text" name="shopName" placeholder="请输入店铺名" value="{$Think.get.shopName}">
         </div>
         <div class="form-group pull-left">
           <button class="btn btn-white">查询</button>
@@ -129,7 +129,11 @@
               <select id="shopCitySelect">
                 <option value="">所在城市</option>
                 <volist name='cityList' id='vo'>
-                  <option value="{$vo.city_id}">{$vo.city_name}</option>
+                  <if condition="$Think.get.shop_city eq $vo['city_id']">
+                    <option value="{$vo.city_id}" selected>{$vo.city_name}</option>
+                  <else />
+                    <option value="{$vo.city_id}">{$vo.city_name}</option>
+                  </if>
                 </volist>
               </select>
             </th>
@@ -173,17 +177,21 @@
             <td class="text-center">
               <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left shopEdit">编辑</a>
               <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left shopDelete">删除</a>
-              <a href="javascript:void(0);" class="btn btn-turquoise btn-sm btn-icon icon-left shopShipTimeEdit">派送时间</a>
-              <a href="/shop/map/1699" class="btn btn-turquoise btn-sm btn-icon icon-left shopMapEdit">地图</a>
+              <if condition="$vo.shipTime_id eq null">
+                <a href="javascript:void(0);" class="btn btn-turquoise btn-sm btn-icon icon-left shopShipTimeAdd">派送时间</a>
+                <else />
+                <a href="javascript:void(0);" class="btn btn-turquoise btn-sm btn-icon icon-left shopShipTimeEdit">派送时间</a>
+              </if>
+              <a href="/iadmin.php/Shop/map/shopid/{$vo.shop_id}" class="btn btn-turquoise btn-sm btn-icon icon-left shopMapEdit">地图</a>
             </td>
-            <td class="shipTimeId hide" shiptimeid="4599"></td>
-            <td class="weekDays hide" weekdays="1,2,3,4,5,6,7"></td>
-            <td class="todayArrive hide" todayarrive="0"></td>
-            <td class="todayArriveTime hide" todayarrivetime="00:00:00"></td>
-            <td class="sendAfterDays hide" sendafterdays="1"></td>
-            <td class="sendTimeBegin hide" sendtimebegin="07:00"></td>
-            <td class="sendTimeEnd hide" sendtimeend="23:00"></td>
-            <td class="chooseCount hide" choosecount="1"></td>
+            <td class="shipTimeId hide" shiptimeid="{$vo.shipTime_id}"></td>
+            <td class="weekDays hide" weekdays="{$vo.shipT_weekDays}"></td>
+            <td class="todayArrive hide" todayarrive="{$vo.shipT_todayArrive}"></td>
+            <td class="todayArriveTime hide" todayarrivetime="{$vo.todayArriveTime}"></td>
+            <td class="sendAfterDays hide" sendafterdays="{$vo.sendAfterDays}"></td>
+            <td class="sendTimeBegin hide" sendtimebegin="{$vo.sendTimeBegin}"></td>
+            <td class="sendTimeEnd hide" sendtimeend="{$vo.sendTimeEnd}"></td>
+            <td class="chooseCount hide" choosecount="{$vo.chooseCount}"></td>
           </tr>
             </volist>
           </tbody>

@@ -4,7 +4,7 @@
 $(function() {
 //选择城市
   $("#shopCitySelect").change(function(){
-    DoChangeSelect($(this), 'city', /\?.*/, true);
+    DoChangeSelect($(this), 'shop_city', /\?.*/, true);
   });
 //删除店铺
   $(document).off('click','.shopDelete');
@@ -13,7 +13,7 @@ $(function() {
     var name = trObj.find('.shopName').text();
     var alertTxt = '店铺：'+name+'\n\n店铺相关的信息也将删除';
     var id = trObj.attr('trid');
-    DoDeleteTr('/shop/delete',trObj,alertTxt,id);
+    DoDeleteTr('/iadmin.php/Shop/ajaxDelList',trObj,alertTxt,id);
   });
 //添加店铺
   $('#shopAdd').click(function() {
@@ -482,7 +482,7 @@ $(function() {
         alert('送达结束时间不能小于送达开始时间');return;
       }
       if(DoIllegalValidate2(new Array(shopIdInput,todayArriveInput,startHourInput,startMinuteInput,sendAfterDaysInput,sendTimeBeginHourInput,sendTimeBeginMinuteInput,sendTimeEndHourInput,sendTimeEndMinuteInput,chooseCountInput),'required')) return;
-      var ajaxResult = DoAjaxPost('/shop/ship-time-add',$('#modal_main form').serialize());
+      var ajaxResult = DoAjaxPost('/iadmin.php/Shop/ship_time_add',$('#modal_main form').serialize());
       if(ajaxResult['title'] == 'success'){
         var data = ajaxResult['data'];
         trObject.find('.shipTimeId').attr('shipTimeId',data['id']);
@@ -681,7 +681,7 @@ $(function() {
         alert('送达结束时间不能小于送达开始时间');return;
       }
       if(DoIllegalValidate2(new Array(shopIdInput,shipTimeIdInput,todayArriveInput,startHourInput,startMinuteInput,sendAfterDaysInput,sendTimeBeginHourInput,sendTimeBeginMinuteInput,sendTimeEndHourInput,sendTimeEndMinuteInput,chooseCountInput),'required')) return;
-      var ajaxResult = DoAjaxPost('/shop/ship-time-edit',$('#modal_main form').serialize());
+      var ajaxResult = DoAjaxPost('/iadmin.php/Shop/ship_time_edit',$('#modal_main form').serialize());
       if(ajaxResult['title'] == 'success'){
         trObject.find('.weekDays').attr('weekDays',weekDaysValue);
         trObject.find('.todayArrive').attr('todayArrive',todayArriveInput.val());

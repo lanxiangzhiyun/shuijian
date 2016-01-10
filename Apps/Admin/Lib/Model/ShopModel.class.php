@@ -17,7 +17,15 @@ class ShopModel extends Model {
 
         $where = "1=1";
 
-        $arrList = $this->join(' shuijian_city ON shuijian_city.city_id = shuijian_shop.shop_city') -> where ($where) -> limit($pageNum) -> page ($page) ->field($param['fields']) ->order('shop_id DESC')-> select();
+        if($param['shopcity']>-1){
+            $where .= " and shop_city = ".$param['shopcity'];
+        }
+
+        if($param['shopName']){
+            $where .= " and shop_name like '%".$param['shopName']."%'";
+        }
+
+        $arrList = $this->join(' shuijian_city ON shuijian_city.city_id = shuijian_shop.shop_city') ->join(' shuijian_shopShipTime c ON c.shopid = shuijian_shop.shop_id')-> where ($where) -> limit($pageNum) -> page ($page) ->field($param['fields']) ->order('shop_id DESC')-> select();
        //echo M()->_sql();
         $this ->total=  $this -> where ($where) ->field('shop_id') -> count();
         $this->subtotal = count($arrList);
@@ -47,7 +55,7 @@ class ShopModel extends Model {
     public function addList($param) {
         $id = intval($param['id']);
         //编辑
-        if ($id>-1) {
+        if ($id) {
             $result = $this -> save(array(
                 'shop_id'=>$id,
                 'shop_name' => $param['shop_name'],

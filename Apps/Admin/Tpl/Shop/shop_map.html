@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Xenon Boostrap Admin Panel" />
+  <meta name="author" content="" />
+
+  <title>水见管理后台</title>
+
+  <link rel="stylesheet" href="http://fonts.useso.com/css?family=Arimo:400,700,400italic">
+  <link rel="stylesheet" href="__PUBLIC__/Admin/css/fonts/linecons/css/linecons.css">
+  <link rel="stylesheet" href="__PUBLIC__/Admin/css/fonts/fontawesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="__PUBLIC__/Admin/css/bootstrap.css">
+  <link rel="stylesheet" href="__PUBLIC__/Admin/css/xenon-core.css">
+  <link rel="stylesheet" href="__PUBLIC__/Admin/css/xenon-forms.css">
+  <link rel="stylesheet" href="__PUBLIC__/Admin/css/xenon-components.css">
+  <link rel="stylesheet" href="__PUBLIC__/Admin/css/xenon-skins.css">
+  <link rel="stylesheet" href="__PUBLIC__/Admin/css/custom.css">
+
+  <script src="__PUBLIC__/Admin/js/jquery-1.11.1.min.js"></script>
+  <script src="__PUBLIC__/Admin/js/project/functions.js"></script>
+  <script src="__PUBLIC__/Admin/js/project/shop.js"></script>
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+
+</head>
+<body class="page-body">
+
+<div class="settings-pane">
+
+  <a href="#" data-toggle="settings-pane" data-animate="true">
+    &times;
+  </a>
+</div>
+
+<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+
+  <!-- Add "fixed" class to make the sidebar fixed always to the browser viewport. -->
+  <!-- Adding class "toggle-others" will keep only one menu item open at a time. -->
+  <!-- Adding class "collapsed" collapse sidebar root elements and show only icons. -->
+  <div class="sidebar-menu toggle-others fixed">
+
+    <div class="sidebar-menu-inner">
+
+      <header class="logo-env">
+
+        <!-- logo -->
+        <div class="logo">
+          <a href="dashboard-1.html" class="logo-expanded">
+            <img src="__PUBLIC__/Admin/images/logo@2x.png" width="80" alt="" />
+          </a>
+
+          <a href="dashboard-1.html" class="logo-collapsed">
+            <img src="__PUBLIC__/Admin/images/logo-collapsed@2x.png" width="40" alt="" />
+          </a>
+        </div>
+
+        <!-- This will toggle the mobile menu and will be visible only on mobile devices -->
+        <div class="mobile-menu-toggle visible-xs">
+          <a href="#" data-toggle="user-info-menu">
+            <i class="fa-bell-o"></i>
+            <span class="badge badge-success">7</span>
+          </a>
+
+          <a href="#" data-toggle="mobile-menu">
+            <i class="fa-bars"></i>
+          </a>
+        </div>
+
+        <!-- This will open the popup with user profile settings, you can use for any purpose, just be creative -->
+        <div class="settings-icon">
+          <a href="#" data-toggle="settings-pane" data-animate="true">
+            <i class="linecons-cog"></i>
+          </a>
+        </div>
+
+
+      </header>
+
+
+
+      <include file="Common:left"/>
+
+    </div>
+
+  </div>
+
+  <div class="main-content">
+
+    <!-- User Info, Notifications and Menu Bar -->
+    <div class="page-title">
+
+      <div class="title-env">
+        <h1 class="title">店铺派送区</h1>
+        <p class="description">Shop Maps Management</p>
+      </div>
+
+      <include file="Common:breadcrumb"/>
+
+    </div>
+
+    <style type="text/css">
+      body, html{width: 100%;height: 100%;overflow: hidden;margin:0;}
+      #allmap {height: 500px;overflow: hidden;}
+      #result {border-left:1px dotted #999;height:100%;width:295px;position:absolute;top:0px;right:0px;font-size:12px;}
+      dl,dt,dd,ul,li{
+        margin:0;
+        padding:0;
+        list-style:none;
+      }
+      p{font-size:12px;}
+      dt{
+        font-size:14px;
+        font-family:"微软雅黑";
+        font-weight:bold;
+        border-bottom:1px dotted #000;
+        padding:5px 0 5px 5px;
+        margin:5px 0;
+      }
+      dd{
+        padding:5px 0 0 5px;
+      }
+      li{
+        line-height:28px;
+      }
+      .red{color: red;}
+    </style>
+
+    <script src="http://api.map.baidu.com/api?v=2.0&amp;ak=jmjSS8oYFwkyqEx0o99q9w3N"></script>
+    <script src="http://api.map.baidu.com/api?v=2.0&ak=jmjSS8oYFwkyqEx0o99q9w3N"></script>
+    <!--加载鼠标绘制工具-->
+    <script type="text/javascript" src="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>
+    <link rel="stylesheet" href="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.css" />
+    <!--加载检索信息窗口-->
+    <script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.4/src/SearchInfoWindow_min.js"></script>
+    <link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.4/src/SearchInfoWindow_min.css" />
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">派送区管理</h3>
+            <br>
+            <span style="font-size: 12px;color:red">1.绘制多边形时，双击可结束绘制； 2.左单击可以进行修改，右击可以进行删除； 3.新绘制的区域要立即保存，否则无法保存，只能删除后重新绘制</span>
+          </div>
+
+          <div class="panel-body">
+            <div id="allmap" style="overflow:hidden;zoom:1;position:relative">
+              <div id="map" style="height:100%;-webkit-transition: all 0.5s ease-in-out;transition: all 0.5s ease-in-out;"></div>
+              <div id="panelWrap" style="width:0px;position:absolute;top:0px;right:0px;height:100%;overflow:auto;-webkit-transition: all 0.5s ease-in-out;transition: all 0.5s ease-in-out;">
+                <div style="width:20px;height:200px;margin:-100px 0 0 -10px;color:#999;position:absolute;opacity:0.5;top:50%;left:50%;" id="showOverlayInfo">此处用于展示覆盖物信息</div>
+                <div id="panel" style="position:absolute;"></div>
+              </div>
+            </div>
+            <input id="shopMapShopId" type="hidden" name="shopId" value="{$Think.get.shopid}">
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      $(function(){
+        // 百度地图API功能
+        var map = new BMap.Map('map');
+        var poi = new BMap.Point(121.327271,31.200592);
+        map.centerAndZoom(poi, 16);
+        map.enableScrollWheelZoom();
+        //初始化
+        var sContent ='<div style="margin-top:20px;">派送名：<input type="text" class="addPolygonLabelMessage" value="">&nbsp;&nbsp;<input type="button" class="savePolygonMessage btn btn-success btn-sm" value="保存"></div>';
+        var infoWindow = new BMap.InfoWindow(sContent);  // 创建信息窗口对象
+        infoWindow.setWidth(300);
+        infoWindow.setHeight(50);
+        //覆盖物样式
+        var styleOptions = {
+          strokeColor:"red",    //边线颜色。
+          fillColor:"red",      //填充颜色。当参数为空时，圆形将没有填充效果。
+          strokeWeight: 3,       //边线的宽度，以像素为单位。
+          strokeOpacity: 0.8,	   //边线透明度，取值范围0 - 1。
+          fillOpacity: 0.6,      //填充的透明度，取值范围0 - 1。
+          strokeStyle: 'solid' //边线的样式，solid或dashed。
+        }
+        //标签样式
+        var labelStyle = {
+          border:0,
+          backgroundColor:'',
+          padding:'3px',
+        }
+
+        //=========权限判断start==================================
+        //客服登陆2   只能查看
+        //其他角色
+
+        //实例化鼠标绘制工具
+        var drawingManager = new BMapLib.DrawingManager(map, {
+          isOpen: false, //是否开启绘制模式
+          enableDrawingTool: true, //是否显示工具栏
+          drawingToolOptions: {
+            anchor: BMAP_ANCHOR_TOP_RIGHT, //位置
+            offset: new BMap.Size(5, 5), //偏离值
+            drawingModes : [BMAP_DRAWING_POLYGON, BMAP_DRAWING_RECTANGLE],
+          },
+          circleOptions: styleOptions, //圆的样式
+          polylineOptions: styleOptions, //线的样式
+          polygonOptions: styleOptions, //多边形的样式
+          rectangleOptions: styleOptions //矩形的样式
+        });
+        //鼠标绘制执行
+        var overlaycomplete = function(e){
+          var eoverlay = e.overlay;
+          var thisTarget = eoverlay.getPath();
+          //添加信息窗口
+          var thisPoint = new BMap.Point(thisTarget[0].lng,thisTarget[0].lat);
+          var sContent ='<div style="margin-top:20px;">派送名：<input type="text" class="addPolygonLabelMessage" value="">&nbsp;&nbsp;<input type="button" class="savePolygonMessage btn btn-success btn-sm" value="保存"></div>';
+          var infoWindow = new BMap.InfoWindow(sContent);  // 创建信息窗口对象
+          map.openInfoWindow(infoWindow,thisPoint); //开启信息窗口
+          infoWindow.addEventListener('clickclose',function() {
+            eoverlay.disableEditing();
+          });
+          infoWindow.addEventListener('close',function() {
+            var labelInfo = $(".addPolygonLabelMessage").val();
+            if(labelInfo == '' || labelInfo == null) {
+              labelInfo = '请输入名字';
+            }
+            var shopId = $("#shopMapShopId").val();
+            if(shopId == '' || shopId == null) {
+              alert('没找到店铺Id');return;
+            }
+            var lngAndLat = new Array();
+            $.each(eoverlay.getPath(),function(i,item) {
+              var lngAndLatDate = new Array();
+              lngAndLatDate[0] = item.lng;
+              lngAndLatDate[1] = item.lat;
+              lngAndLat[i] = lngAndLatDate;
+            });
+            var lngAndLatSize = new Array();
+            lngAndLatSize[0] = eoverlay.getBounds().getNorthEast().lng;	//最大经度
+            lngAndLatSize[1] = eoverlay.getBounds().getNorthEast().lat;	//最大维度
+            lngAndLatSize[2] = eoverlay.getBounds().getSouthWest().lng;	//最小经度
+            lngAndLatSize[3] = eoverlay.getBounds().getSouthWest().lat;	//最小维度
+            if(lngAndLatSize[0] == null || lngAndLatSize[1] == null || lngAndLatSize[2] == null || lngAndLatSize[3] == null) {
+              alert('没有获取到最大和最小经纬度');
+            }
+            if((lngAndLatSize[0] == lngAndLatSize[2]) && (lngAndLatSize[1] == lngAndLatSize[3])) {
+              alert('不能保存为点');
+              map.closeInfoWindow(thisPoint); //关闭信息窗口
+              map.removeOverlay(eoverlay);
+              return;
+            }
+            var labelInfo = $(".addPolygonLabelMessage").val();
+            if(labelInfo == '' || labelInfo == null) {
+              labelInfo = '请输入名字';
+              var obj = DoAjaxPost('/shop/add-map',{shopId:shopId,labelInfo:labelInfo,lngAndLat:lngAndLat,lngAndLatSize:lngAndLatSize});
+              if(obj.title == 'success'){
+                eoverlay.disableEditing();
+                thisTarget = eoverlay.getPath();
+                thisPoint = new BMap.Point(thisTarget[0].lng,thisTarget[0].lat);
+                //添加文字标注
+                map.removeOverlay(label);
+                label = new BMap.Label(labelInfo,{position:thisPoint});
+                label.setStyle(labelStyle);
+                map.addOverlay(label);
+                sContent ='<div style="margin-top:20px;">派送名：<input type="text" class="addPolygonLabelMessage" value="'+labelInfo+'"><input type="hidden" class="getMapServiceSiteId" name="shipAreaId" value="'+obj.data+'">&nbsp;&nbsp;<input type="button" class="savePolygonMessage btn btn-success btn-sm" value="保存"></div>';
+                infoWindow = new BMap.InfoWindow(sContent);  // 创建信息窗口对象
+                infoWindow.addEventListener('clickclose',function() {
+                  eoverlay.disableEditing();
+                });
+                map.closeInfoWindow(thisPoint); //关闭信息窗口
+              } else {
+                alert(obj.data);
+              }
+            }
+          });
+          var label;
+          $(".savePolygonMessage").click(function() {
+            var labelInfo = $(".addPolygonLabelMessage").val();
+            if(labelInfo == '' || labelInfo == null) {
+              alert('名字不能为空');return;
+            }
+            var shopId = $("#shopMapShopId").val();
+            if(shopId == '' || shopId == null) {
+              alert('没找到店铺Id');return;
+            }
+            var lngAndLat = new Array();
+            $.each(eoverlay.getPath(),function(i,item) {
+              var lngAndLatDate = new Array();
+              lngAndLatDate[0] = item.lng;
+              lngAndLatDate[1] = item.lat;
+              lngAndLat[i] = lngAndLatDate;
+            });
+            var lngAndLatSize = new Array();
+            lngAndLatSize[0] = eoverlay.getBounds().getNorthEast().lng;	//最大经度
+            lngAndLatSize[1] = eoverlay.getBounds().getNorthEast().lat;	//最大维度
+            lngAndLatSize[2] = eoverlay.getBounds().getSouthWest().lng;	//最小经度
+            lngAndLatSize[3] = eoverlay.getBounds().getSouthWest().lat;	//最小维度
+            if(lngAndLatSize[0] == null || lngAndLatSize[1] == null || lngAndLatSize[2] == null || lngAndLatSize[3] == null) {
+              alert('没有获取到最大和最小经纬度');
+            }
+            if((lngAndLatSize[0] == lngAndLatSize[2]) && (lngAndLatSize[1] == lngAndLatSize[3])) {
+              alert('不能保存为点');
+              map.closeInfoWindow(thisPoint); //关闭信息窗口
+              map.removeOverlay(eoverlay);
+              return;
+            }
+            var obj = DoAjaxPost('/shop/add-map',{shopId:shopId,labelInfo:labelInfo,lngAndLat:lngAndLat,lngAndLatSize:lngAndLatSize});
+            if(obj.title == 'success'){
+              eoverlay.disableEditing();
+              thisTarget = eoverlay.getPath();
+              thisPoint = new BMap.Point(thisTarget[0].lng,thisTarget[0].lat);
+              //添加文字标注
+              map.removeOverlay(label);
+              label = new BMap.Label(labelInfo,{position:thisPoint});
+              label.setStyle(labelStyle);
+              map.addOverlay(label);
+              sContent ='<div style="margin-top:20px;">派送名：<input type="text" class="addPolygonLabelMessage" value="'+labelInfo+'"><input type="hidden" class="getMapServiceSiteId" name="shipAreaId" value="'+obj.data+'">&nbsp;&nbsp;<input type="button" class="savePolygonMessage btn btn-success btn-sm" value="保存"></div>';
+              infoWindow = new BMap.InfoWindow(sContent);  // 创建信息窗口对象
+              infoWindow.addEventListener('clickclose',function() {
+                eoverlay.disableEditing();
+              });
+              map.closeInfoWindow(thisPoint); //关闭信息窗口
+            } else {
+              alert(obj.data);
+            }
+          });
+          //给覆盖物添加事件
+          eoverlay.addEventListener("click",function() {
+            eoverlay.enableEditing();
+            map.openInfoWindow(infoWindow,thisPoint); //开启信息窗口
+            $(".savePolygonMessage").click(function() {
+              var labelInfo = $(".addPolygonLabelMessage").val();
+              var shipAreaId = $(".getMapServiceSiteId").val();
+              if(labelInfo == '' || labelInfo == null) {
+                alert('名字不能为空');return;
+              }
+              if(shipAreaId == '' || shipAreaId == null) {
+                alert('派送ID不能为空');return;
+              }
+              var lngAndLat = new Array();
+              $.each(eoverlay.getPath(),function(i,item) {
+                var lngAndLatDate = new Array();
+                lngAndLatDate[0] = item.lng;
+                lngAndLatDate[1] = item.lat;
+                lngAndLat[i] = lngAndLatDate;
+              });
+              var lngAndLatSize = new Array();
+              lngAndLatSize[0] = eoverlay.getBounds().getNorthEast().lng;	//最大经度
+              lngAndLatSize[1] = eoverlay.getBounds().getNorthEast().lat;	//最大维度
+              lngAndLatSize[2] = eoverlay.getBounds().getSouthWest().lng;	//最小经度
+              lngAndLatSize[3] = eoverlay.getBounds().getSouthWest().lat;	//最小维度
+              if(lngAndLatSize[0] == null || lngAndLatSize[1] == null || lngAndLatSize[2] == null || lngAndLatSize[3] == null) {
+                alert('没有获取到最大和最小经纬度');
+              }
+              if((lngAndLatSize[0] == lngAndLatSize[2]) && (lngAndLatSize[1] == lngAndLatSize[3])) {
+                alert('不能保存为点');
+                map.closeInfoWindow(thisPoint); //关闭信息窗口
+                map.removeOverlay(eoverlay);
+                return;
+              }
+              var obj = DoAjaxPost('/shop/edit-map',{shipAreaId:shipAreaId,labelInfo:labelInfo,lngAndLat:lngAndLat,lngAndLatSize:lngAndLatSize});
+              if(obj.title == 'success'){
+                eoverlay.disableEditing();
+                thisTarget = eoverlay.getPath();
+                thisPoint = new BMap.Point(thisTarget[0].lng,thisTarget[0].lat);
+                //添加文字标注
+                map.removeOverlay(label);
+                label = new BMap.Label(labelInfo,{position:thisPoint});
+                label.setStyle(labelStyle);
+                map.addOverlay(label);
+                sContent ='<div style="margin-top:20px;">派送名：<input type="text" class="addPolygonLabelMessage" value="'+labelInfo+'"><input type="hidden" class="getMapServiceSiteId" name="shipAreaId" value="'+shipAreaId+'">&nbsp;&nbsp;<input type="button" class="savePolygonMessage btn btn-success btn-sm" value="保存"></div>';
+                infoWindow = new BMap.InfoWindow(sContent);  // 创建信息窗口对象
+                infoWindow.addEventListener('clickclose',function() {
+                  eoverlay.disableEditing();
+                });
+                map.closeInfoWindow(thisPoint); //关闭信息窗口
+              } else {
+                alert(obj.data);
+              }
+            });
+          });
+          //创建右键菜单
+          var markerMenu=new BMap.ContextMenu();
+          markerMenu.addItem(new BMap.MenuItem('删除',function() {
+            if(!confirm("确定要删除吗")) return;
+            map.openInfoWindow(infoWindow,thisPoint); //开启信息窗口
+            var shipAreaId = $(".getMapServiceSiteId").val();
+            if(shipAreaId) {
+              var obj = DoAjaxPost('/shop/del-map',{shipAreaId:shipAreaId});
+              if(obj.title == 'success'){
+                map.removeOverlay(eoverlay);
+                map.removeOverlay(label);
+              } else {
+                alert(obj.data);
+              }
+            } else {
+              map.removeOverlay(eoverlay);
+              map.removeOverlay(label);
+            }
+            map.closeInfoWindow(thisPoint); //关闭信息窗口
+          }));
+          eoverlay.addContextMenu(markerMenu);
+
+        };
+
+        //添加鼠标绘制工具监听事件，用于获取绘制结果
+        drawingManager.addEventListener('overlaycomplete', overlaycomplete);
+
+        //其他区块派送区域
+        var arrayinfoShowOnly = "";	    //创建配送范围
+        $.each(arrayinfoShowOnly,function(i,item) {
+          var mapPoint = new Array();
+          $.each(item[1],function(j,data) {
+            mapPoint[j] = new BMap.Point(data[0],data[1]);
+          });
+          var rectangleShowOnly = new BMap.Polygon(mapPoint, {strokeColor:"blue", strokeWeight:2, strokeOpacity:0.5});
+          map.addOverlay(rectangleShowOnly);
+          //添加文字标注
+          map.removeOverlay(label);
+          var label = new BMap.Label(item[0][0],{position:mapPoint[0]});
+          label.setStyle(labelStyle);
+          map.addOverlay(label);
+        });
+
+
+        //当前区块派送区域
+        var arrayinfo = [[["\u6c5f\u6d59\u5feb\u9012\u5e97\u94fa1","50"],[["119.662747","31.153321"],["119.901912","31.161232"],["120.104282","30.939471"],["120.334248","30.939471"],["120.982753","31.018732"],["120.987352","30.891883"],["121.139130","30.852209"],["121.139130","30.768837"],["121.221918","30.784723"],["121.277110","30.741031"],["121.304706","30.641655"],["122.095789","30.585960"],["122.808685","30.366843"],["122.183176","29.243681"],["120.922962","27.099934"],["120.260659","27.428763"],["119.846720","27.297349"],["119.625952","27.658356"],["119.267205","27.420554"],["118.917656","27.478002"],["118.899259","27.822053"],["118.724485","27.969168"],["118.825670","28.197611"],["118.052983","29.146819"],["118.085179","29.288044"],["118.209360","29.308203"],["118.324343","29.485429"],["118.512916","29.565882"],["118.922256","29.951157"],["118.908458","30.314979"],["119.225811","30.287041"],["119.405185","30.346899"],["119.349993","30.518286"],["119.253407","30.538195"],["119.248808","30.621767"],["119.395986","30.685393"],["119.446579","30.645632"],["119.584558","30.828396"]]],[["\u6c5f\u6d59\u5feb\u9012\u5e97\u94fa2","51"],[["119.329296","35.084340"],["118.924555","35.038957"],["118.758980","34.750942"],["118.510616","34.697776"],["118.354239","34.400933"],["118.124273","34.400933"],["118.087478","34.644575"],["117.820717","34.644575"],["117.388381","34.545682"],["116.983640","34.788897"],["116.864058","34.917812"],["116.652489","34.940540"],["116.385728","34.804074"],["116.919250","34.362799"],["117.167613","34.103023"],["117.599950","34.034124"],["117.765526","33.903826"],["117.747128","33.742592"],["118.179465","33.742592"],["117.967896","33.280238"],["118.188663","33.218402"],["118.289849","32.854229"],["118.529013","32.706580"],["118.740582","32.722133"],["118.777377","32.986127"],["119.025740","32.955110"],["119.228111","32.768778"],["119.172919","32.558683"],["119.053336","32.465147"],["118.768178","32.574263"],["118.584205","32.566473"],["118.666993","32.410540"],["118.676192","32.215240"],["118.437027","32.082193"],["118.409431","31.933263"],["118.501417","31.768371"],["118.795774","31.736930"],["118.906158","31.563808"],["118.786576","31.327209"],["118.841767","31.248209"],["119.062535","31.248209"],["119.218912","31.319312"],["119.384488","31.216591"],["119.662172","31.155299"],["119.758758","31.159502"],["119.855631","31.161974"],["119.903061","31.163951"],["119.965152","31.099904"],["120.107731","30.950374"],["120.344597","30.954338"],["120.537768","30.995951"],["120.919512","31.035566"],["120.889617","31.138486"],["121.068990","31.154310"],["121.124182","31.363724"],["121.363347","31.549038"],["121.141430","31.807658"],["121.261012","31.909725"],["121.923315","31.634670"],["122.052096","31.729067"],["121.619759","32.566473"]]],[["\u6c5f\u6d59\u5feb\u9012\u95e8\u5e973","59"],[["121.580378","53.348074"],["121.791946","53.022065"],["121.322815","52.671199"],["122.647421","52.446946"],["123.162545","51.215988"],["124.513947","51.311960"],["125.075864","51.675844"],["125.811756","51.215988"],["125.167850","49.311716"],["124.247986","48.413488"],["122.408256","47.424147"],["123.364915","46.135073"],["121.929926","45.827244"],["122.261078","44.367917"],["123.144148","44.447047"],["123.843245","43.436766"],["119.979813","41.696203"],["119.722251","42.327349"],["118.508029","41.281189"],["117.735342","42.572601"],["116.962656","42.354647"],["114.975748","41.530519"],["114.681391","42.163310"],["113.945499","41.058754"],["113.908705","40.443137"],["112.547305","40.217854"],["111.480262","39.594421"],["110.266040","39.337734"],["109.207396","38.732421"],["108.904640","37.894376"],["107.543240","37.836034"],["107.322472","37.043865"],["108.647078","36.273072"],["108.647078","35.374063"],["107.653624","34.829746"],["106.476197","34.981313"],["106.623375","33.760910"],["105.777100","32.802843"],["104.526083","32.616188"],["103.974164","33.730171"],["102.391997","34.098307"],["101.140981","32.896022"],["99.117278","32.989102"],["97.903056","34.220663"],["97.498316","33.205905"],["98.491770","31.614077"],["99.190867","29.287107"],["98.565359","28.672359"],["98.160619","27.857901"],["98.749332","27.497559"],["98.749332","26.276780"],["97.387932","24.606315"],["97.682289","23.796300"],["98.933305","24.235704"],["99.264456","22.263775"],["100.294705","21.439350"],["101.766489","21.128961"],["102.943916","22.229521"],["105.593127","23.491212"],["106.770554","21.955180"],["108.058364","21.577087"],["110.302835","20.367474"],["111.038726","21.473797"],["112.436921","22.023816"],["113.761526","22.503319"],["115.454078","22.810687"],["117.772137","23.219422"],["119.445491","25.263752"],["120.852885","27.065047"],["120.282568","27.328271"],["119.804239","27.204963"],["119.620266","27.549877"],["119.325909","27.352916"],["118.847579","27.418610"],["118.801586","27.738297"],["118.626812","27.942728"],["118.718798","28.171228"],["117.900118","29.185277"],["118.295660","29.572019"],["118.838381","29.989307"],["118.847579","30.380907"],["119.307512","30.404831"],["119.206327","30.651702"],["119.519081","30.890004"],["119.555875","31.119796"],["119.316710","31.167269"],["119.075246","31.206811"],["118.817684","31.210765"],["118.725697","31.380600"],["118.845280","31.550127"],["118.753293","31.703614"],["118.472734","31.746860"],["118.371549","31.876473"],["118.380748","32.088170"],["118.609214","32.228016"],["118.540224","32.592828"],["118.760992","32.612295"],["119.036951","32.499329"],["119.147335","32.585041"],["119.170332","32.775647"],["119.004756","32.923180"],["118.816184","32.946453"],["118.779389","32.701787"],["118.434440","32.678450"],["118.337854","32.748442"],["118.232069","32.826147"],["118.103288","33.167230"],["117.882521","33.267749"],["118.048097","33.684041"],["117.716945","33.684041"],["117.588164","33.937445"],["117.137430","34.037063"],["116.300353","34.814574"],["116.870670","35.011592"],["117.422588","34.609473"],["118.149282","34.715885"],["118.222871","34.472454"],["118.443638","34.723481"],["118.802386","35.026728"],["121.148041","35.989498"],["123.208538","37.528974"],["119.133537","38.040028"],["118.140083","38.040028"],["117.477780","38.533061"],["118.103288","39.137429"],["118.986359","38.994001"],["119.906224","39.878508"],["121.083651","40.919345"],["122.040310","40.835558"],["122.224283","40.386887"],["121.194034","38.619716"],["131.496521","42.789790"],["131.275753","44.841082"],["132.048439","45.284397"],["133.041893","44.997941"],["134.403293","46.441180"],["134.108937","46.947534"],["134.918418","47.673267"],["134.918418","48.462456"],["130.981396","47.673267"],["130.871012","48.755265"],["129.767175","49.287653"],["127.780267","49.575634"],["126.078517","52.760578"],["125.269036","53.221282"],["123.493696","53.556729"]]]];		//创建配送范围
+        $.each(arrayinfo,function(i,item) {
+          var mapPoint = new Array();
+          $.each(item[1],function(j,data) {
+            mapPoint[j] = new BMap.Point(data[0],data[1]);
+          });
+          var rectangle = new BMap.Polygon(mapPoint, styleOptions);
+          map.addOverlay(rectangle);
+          //添加文字标注
+          map.removeOverlay(label);
+          var label = new BMap.Label(item[0][0],{position:mapPoint[0]});
+          label.setStyle(labelStyle);
+          map.addOverlay(label);
+          var thisTarget = rectangle.getPath();
+          //添加信息窗口
+          var thisPoint = new BMap.Point(thisTarget[0].lng,thisTarget[0].lat);
+          map.closeInfoWindow(thisPoint);
+          var sContent ='<div style="margin-top:20px;">派送名：<input type="text" class="addPolygonLabelMessage" value="'+item[0][0]+'"><input type="hidden" class="getMapServiceSiteId" name="shipAreaId" value="'+item[0][1]+'">&nbsp;&nbsp;<input type="button" class="savePolygonMessage btn btn-success btn-sm" value="保存"></div>';
+          var infoWindow = new BMap.InfoWindow(sContent);  // 创建信息窗口对象
+          infoWindow.addEventListener('clickclose',function() {
+            rectangle.disableEditing();
+          });
+          //覆盖物改变，文字标注也改变
+          rectangle.addEventListener('lineupdate',function() {
+            var labelInfo = $(".addPolygonLabelMessage").val();
+            thisTarget = rectangle.getPath();
+            thisPoint = new BMap.Point(thisTarget[0].lng,thisTarget[0].lat);
+            //添加文字标注
+            map.removeOverlay(label);
+            label = new BMap.Label(item[0][0],{position:thisPoint});
+            label.setStyle(labelStyle);
+            map.addOverlay(label);
+          });
+          //给覆盖物添加事件
+          rectangle.addEventListener("click",function() {
+            rectangle.enableEditing();
+            map.openInfoWindow(infoWindow,thisPoint); //开启信息窗口
+            $(".savePolygonMessage").click(function() {
+              var labelInfo = $(".addPolygonLabelMessage").val();
+              var shipAreaId = $(".getMapServiceSiteId").val();
+              if(labelInfo == '' || labelInfo == null) {
+                alert('名字不能为空');return;
+              }
+              if(shipAreaId == '' || shipAreaId == null) {
+                alert('派送ID不能为空');return;
+              }
+              var lngAndLat = new Array();
+              $.each(rectangle.getPath(),function(i,item) {
+                var lngAndLatDate = new Array();
+                lngAndLatDate[0] = item.lng;
+                lngAndLatDate[1] = item.lat;
+                lngAndLat[i] = lngAndLatDate;
+              });
+              var lngAndLatSize = new Array();
+              lngAndLatSize[0] = rectangle.getBounds().getNorthEast().lng;	//最大经度
+              lngAndLatSize[1] = rectangle.getBounds().getNorthEast().lat;	//最大维度
+              lngAndLatSize[2] = rectangle.getBounds().getSouthWest().lng;	//最小经度
+              lngAndLatSize[3] = rectangle.getBounds().getSouthWest().lat;	//最小维度
+              if(lngAndLatSize[0] == null || lngAndLatSize[1] == null || lngAndLatSize[2] == null || lngAndLatSize[3] == null) {
+                alert('没有获取到最大和最小经纬度');
+              }
+              if((lngAndLatSize[0] == lngAndLatSize[2]) && (lngAndLatSize[1] == lngAndLatSize[3])) {
+                alert('不能保存为点');
+                map.closeInfoWindow(thisPoint); //关闭信息窗口
+                map.removeOverlay(rectangle);
+                return;
+              }
+              var obj = DoAjaxPost('/shop/edit-map',{shipAreaId:shipAreaId,labelInfo:labelInfo,lngAndLat:lngAndLat,lngAndLatSize:lngAndLatSize});
+              if(obj.title == 'success'){
+                rectangle.disableEditing();
+                thisTarget = rectangle.getPath();
+                thisPoint = new BMap.Point(thisTarget[0].lng,thisTarget[0].lat);
+                //添加文字标注
+                map.removeOverlay(label);
+                label = new BMap.Label(labelInfo,{position:thisPoint});
+                label.setStyle(labelStyle);
+                map.addOverlay(label);
+                sContent ='<div style="margin-top:20px;">派送名：<input type="text" class="addPolygonLabelMessage" value="'+labelInfo+'"><input type="hidden" class="getMapServiceSiteId" name="shipAreaId" value="'+item[0][1]+'">&nbsp;&nbsp;<input type="button" class="savePolygonMessage btn btn-success btn-sm" value="保存"></div>';
+                infoWindow = new BMap.InfoWindow(sContent);  // 创建信息窗口对象
+                infoWindow.addEventListener('clickclose',function() {
+                  rectangle.disableEditing();
+                });
+                map.closeInfoWindow(thisPoint); //关闭信息窗口
+              } else {
+                alert(obj.data);
+              }
+            });
+          });
+          //创建右键菜单
+          var markerMenu=new BMap.ContextMenu();
+          markerMenu.addItem(new BMap.MenuItem('删除',function() {
+            if(!confirm("确定要删除吗")) return;
+            map.openInfoWindow(infoWindow,thisPoint); //开启信息窗口
+            var shipAreaId = $(".getMapServiceSiteId").val();
+            if(shipAreaId == '' || shipAreaId == null) {
+              alert('无法获取派送点id');
+              return;
+            }
+            var obj = DoAjaxPost('/shop/del-map',{shipAreaId:shipAreaId});
+            if(obj.title == 'success'){
+              map.removeOverlay(rectangle);
+              map.removeOverlay(label);
+            } else {
+              alert(obj.data);
+            }
+            map.closeInfoWindow(thisPoint); //关闭信息窗口
+          }));
+          rectangle.addContextMenu(markerMenu);
+        });
+
+        //=========权限判断end======
+      });
+    </script>
+
+  </div>
+</div>
+
+
+
+<include file="Common:modal"/>
+
+
+<!-- Bottom Scripts -->
+<script src="__PUBLIC__/Admin/js/bootstrap.min.js"></script>
+<script src="__PUBLIC__/Admin/js/TweenMax.min.js"></script>
+<script src="__PUBLIC__/Admin/js/resizeable.js"></script>
+<script src="__PUBLIC__/Admin/js/joinable.js"></script>
+<script src="__PUBLIC__/Admin/js/xenon-api.js"></script>
+<script src="__PUBLIC__/Admin/js/xenon-toggles.js"></script>
+
+
+<!-- Imported scripts on this page -->
+<script src="__PUBLIC__/Admin/js/rwd-table/js/rwd-table.min.js"></script>
+
+
+<!-- JavaScripts initializations and stuff -->
+<script src="__PUBLIC__/Admin/js/xenon-custom.js"></script>
+
+</body>
+</html>

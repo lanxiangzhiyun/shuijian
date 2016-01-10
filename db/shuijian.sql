@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
-Date: 2016-01-07 23:21:43
+Date: 2016-01-10 23:35:46
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -82,7 +82,7 @@ CREATE TABLE `shuijian_admin` (
 -- ----------------------------
 -- Records of shuijian_admin
 -- ----------------------------
-INSERT INTO shuijian_admin VALUES ('1', 'admin', 'd41d8cd98f00b204e9800998ecf8427e', 'f@126.com', 'admin', '123456', '127.0.0.1', '112222233', '1452172726', '1', '2,3,5');
+INSERT INTO shuijian_admin VALUES ('1', 'admin', 'd41d8cd98f00b204e9800998ecf8427e', 'f@126.com', 'admin', '123456', '127.0.0.1', '112222233', '1452411610', '1', '2,3,5');
 
 -- ----------------------------
 -- Table structure for `shuijian_article`
@@ -199,12 +199,13 @@ CREATE TABLE `shuijian_city` (
   `ctity_code` varchar(20) NOT NULL,
   `city_name` varchar(120) NOT NULL,
   PRIMARY KEY  (`city_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of shuijian_city
 -- ----------------------------
 INSERT INTO shuijian_city VALUES ('1', 'sh', '上海');
+INSERT INTO shuijian_city VALUES ('2', 'gz', '广州');
 
 -- ----------------------------
 -- Table structure for `shuijian_deliver`
@@ -445,6 +446,28 @@ CREATE TABLE `shuijian_shop` (
 -- Records of shuijian_shop
 -- ----------------------------
 INSERT INTO shuijian_shop VALUES ('0', '1', 'test', '1.00', '1.00', 'test222', '3', '1', '3', '1', '0', '0', '0');
+
+-- ----------------------------
+-- Table structure for `shuijian_shopshiptime`
+-- ----------------------------
+DROP TABLE IF EXISTS `shuijian_shopshiptime`;
+CREATE TABLE `shuijian_shopshiptime` (
+  `shipTime_id` tinyint(3) NOT NULL auto_increment,
+  `shopid` tinyint(3) NOT NULL,
+  `shipT_weekDays` varchar(120) NOT NULL,
+  `shipT_todayArrive` tinyint(3) NOT NULL,
+  `todayArriveTime` varchar(120) NOT NULL,
+  `sendAfterDays` varchar(20) NOT NULL,
+  `sendTimeBegin` varchar(20) NOT NULL,
+  `sendTimeEnd` varchar(20) NOT NULL,
+  `chooseCount` tinyint(3) NOT NULL default '3',
+  PRIMARY KEY  (`shipTime_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of shuijian_shopshiptime
+-- ----------------------------
+INSERT INTO shuijian_shopshiptime VALUES ('1', '0', '1,2,3,4,5,6,7', '1', '04:08:00', '1', '01:00', '19:00', '3');
 
 -- ----------------------------
 -- Table structure for `shuijian_site`

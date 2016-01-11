@@ -14,10 +14,10 @@ class ShopMapModel extends Model {
         $where = "1=1";
 
         if($param['shopid']>-1){
-            $where .= " and shopid = ".$param['shopid'];
+            $where .= " and shopId = ".$param['shopid'];
         }
 
-        $arrList = $this-> where ($where) ->field($param['fields']) ->order('shipTime_id DESC')-> select();
+        $arrList = $this-> where ($where) ->field($param['fields']) ->order('shipAreaId DESC')-> select();
        //echo M()->_sql();
 
         return $arrList;
@@ -26,15 +26,15 @@ class ShopMapModel extends Model {
     //添加
     public function addList($param) {
         $id = intval($param['id']);
-        print_r($param['lngAndLat']);
+        //print_r($param['lngAndLat']);
         //编辑
         if ($id) {
             $result = $this -> save(array(
                 'shipAreaId'=>$id,
                 'shopId' => $param['shopId'],
                 'labelInfo' => $param['labelInfo'],
-                'lngAndLat'=> json_encode($param['lngAndLat']),
-                'lngAndLatSize'=>json_encode($param['lngAndLatSize'])
+                'lngAndLat'=> $param['lngAndLat'],
+                'lngAndLatSize'=>$param['lngAndLatSize']
             ));
         } else {
             //新增
@@ -47,7 +47,7 @@ class ShopMapModel extends Model {
         }
         //echo M()->_sql();
         if ($result !== FALSE) {
-            return array('status'=> 1);
+            return array('status'=> 1,'result'=>$result);
         } else {
             return array('msg'=>'操作失败');
         }
@@ -56,9 +56,9 @@ class ShopMapModel extends Model {
     //删除
     public function delList($id) {
         if (is_array($id)) {
-            $where =array('shipTime_id' => array('in', $id));
+            $where =array('shipAreaId' => array('in', $id));
         } else {
-            $where = array('shipTime_id' => array('in', "$id"));
+            $where = array('shipAreaId' => array('in', "$id"));
         }
 
         $result = $this -> where($where) -> delete();

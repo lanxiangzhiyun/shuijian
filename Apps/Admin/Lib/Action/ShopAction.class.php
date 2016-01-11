@@ -140,4 +140,33 @@ class ShopAction extends ExtendAction{
     public function  map($shopid){
         $this->display('shop_map');
     }
+
+    public function  add_map(){
+        $data['shopId'] = $this -> _post('shopId');
+        $data['labelInfo'] = $this -> _post('labelInfo');
+        $data['lngAndLat'] = $this -> _post('lngAndLat');
+        $data['lngAndLatSize'] = $this -> _post('lngAndLatSize');
+        $ShopMapModel = D('ShopMap');
+        $result = $ShopMapModel -> addList($data);
+        if ($result) {
+            $this->ajaxReturn(array('title'=>'success','data'=>$result));
+        }else {
+            echo "<script>alert('操作失败!');history.back();</script>";
+        }
+    }
+
+    public function  edit_map(){
+        $data['id'] = $this -> _post('shipAreaId');
+        $data['shopId'] = $this -> _post('shopId');
+        $data['labelInfo'] = $this -> _post('labelInfo');
+        $data['lngAndLat'] = $this -> _post('lngAndLat');
+        $data['lngAndLatSize'] = $this -> _post('lngAndLatSize');
+        $ShopMapModel = D('ShopMap');
+        $result = $ShopMapModel -> addList($data);
+        if ($result) {
+            $this->ajaxReturn(array('title'=>'success','data'=>$result));
+        }else {
+            echo "<script>alert('操作失败!');history.back();</script>";
+        }
+    }
 }

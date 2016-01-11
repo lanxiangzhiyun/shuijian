@@ -255,7 +255,7 @@
             var labelInfo = $(".addPolygonLabelMessage").val();
             if(labelInfo == '' || labelInfo == null) {
               labelInfo = '请输入名字';
-              var obj = DoAjaxPost('/shop/add-map',{shopId:shopId,labelInfo:labelInfo,lngAndLat:lngAndLat,lngAndLatSize:lngAndLatSize});
+              var obj = DoAjaxPost('/iadmin.php/Shop/add_map',{shopId:shopId,labelInfo:labelInfo,lngAndLat:lngAndLat,lngAndLatSize:lngAndLatSize});
               if(obj.title == 'success'){
                 eoverlay.disableEditing();
                 thisTarget = eoverlay.getPath();
@@ -307,7 +307,7 @@
               map.removeOverlay(eoverlay);
               return;
             }
-            var obj = DoAjaxPost('/shop/add-map',{shopId:shopId,labelInfo:labelInfo,lngAndLat:lngAndLat,lngAndLatSize:lngAndLatSize});
+            var obj = DoAjaxPost('/iadmin.php/Shop/add_map',{shopId:shopId,labelInfo:labelInfo,lngAndLat:lngAndLat,lngAndLatSize:lngAndLatSize});
             if(obj.title == 'success'){
               eoverlay.disableEditing();
               thisTarget = eoverlay.getPath();
@@ -361,7 +361,7 @@
                 map.removeOverlay(eoverlay);
                 return;
               }
-              var obj = DoAjaxPost('/shop/edit-map',{shipAreaId:shipAreaId,labelInfo:labelInfo,lngAndLat:lngAndLat,lngAndLatSize:lngAndLatSize});
+              var obj = DoAjaxPost('/iadmin.php/Shop/edit_map',{shipAreaId:shipAreaId,labelInfo:labelInfo,lngAndLat:lngAndLat,lngAndLatSize:lngAndLatSize});
               if(obj.title == 'success'){
                 eoverlay.disableEditing();
                 thisTarget = eoverlay.getPath();

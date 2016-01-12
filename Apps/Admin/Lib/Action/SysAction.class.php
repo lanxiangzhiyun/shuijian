@@ -35,6 +35,20 @@ class SysAction extends ExtendAction{
             $this -> assign($key,$val);
         }
 
+        //获取角色列表
+        $roleModel = D('Role');
+        $dat_c = array();
+        $dat_c['fields'] = '*';
+        $roleList = $roleModel -> getList($dat_c);
+        $this -> assign('roleList',$roleList);
+
+        //获取商铺列表
+        $shopModel = D('Shop');
+        $dat_c = array();
+        $dat_c['fields'] = '*';
+        $shopList = $shopModel -> getList($dat_c);
+        $this -> assign('shopList',$shopList);
+
         $this->display('admin_list');
     }
 

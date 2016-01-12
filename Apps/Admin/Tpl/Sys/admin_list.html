@@ -173,6 +173,22 @@
     <?php echo $pageHtml;?>
     <!--分页结束-->
 
+    <div id="role" class="hide">
+      <select id="level" name="data[admin_role]" class="form-control">
+          <option value="">请选择</option>
+        <volist name='roleList' id='vorole'>
+          <option value="{$vorole.role_id}">{$vorole.role_name}</option>
+        </volist>
+      </select>
+    </div>
+    <div id="shop" class="hide">
+      <select id="shop_id" name="data[admin_shop]" class="form-control">
+          <option value="">请选择</option>
+        <volist name='shopList' id='voshop'>
+          <option value="{$voshop.shop_id}">{$voshop.shop_name}</option>
+        </volist>
+      </select>
+    </div>
     <!-- Main Footer -->
     <!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
     <!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->

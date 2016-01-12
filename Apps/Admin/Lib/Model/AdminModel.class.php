@@ -35,6 +35,8 @@ class AdminModel extends Model {
         if ($id) {
             $result = $this -> save(array(
                 'admin_id'=>$id,
+                'admin_role'=>$param['admin_role'],
+                'admin_shop'=>$param['admin_shop'],
                 'admin_username' => $param['admin_username'],
                 'admin_email' => $param['admin_email'],
                 'admin_realname'=>$param['admin_realname'],
@@ -43,6 +45,8 @@ class AdminModel extends Model {
         } else {
             //新增
             $result = $this -> add(array(
+                'admin_role'=>$param['admin_role'],
+                'admin_shop'=>$param['admin_shop'],
                 'admin_username' => $param['admin_username'],
                 'admin_email' => $param['admin_email'],
                 'admin_realname'=>$param['admin_realname'],

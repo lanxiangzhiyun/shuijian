@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
-Date: 2016-01-11 23:19:08
+Date: 2016-01-12 22:46:37
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -76,13 +76,15 @@ CREATE TABLE `shuijian_admin` (
   `admin_lasttime` int(11) NOT NULL,
   `admin_open` tinyint(2) NOT NULL,
   `admin_actionList` text NOT NULL,
+  `admin_role` tinyint(2) NOT NULL,
+  `admin_shop` tinyint(3) NOT NULL,
   PRIMARY KEY  (`admin_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of shuijian_admin
 -- ----------------------------
-INSERT INTO shuijian_admin VALUES ('1', 'admin', 'd41d8cd98f00b204e9800998ecf8427e', 'f@126.com', 'admin', '123456', '127.0.0.1', '112222233', '1452519018', '1', '2,3,5');
+INSERT INTO shuijian_admin VALUES ('1', 'admin', 'd41d8cd98f00b204e9800998ecf8427e', 'f@126.com', 'admin', '123456', '127.0.0.1', '112222233', '1452602480', '1', '2,3,5,6', '1', '0');
 
 -- ----------------------------
 -- Table structure for `shuijian_article`
@@ -303,7 +305,7 @@ CREATE TABLE `shuijian_menu` (
   `enabled` tinyint(1) NOT NULL default '1',
   `menu_pid` tinyint(3) NOT NULL default '0',
   PRIMARY KEY  (`menu_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of shuijian_menu
@@ -313,6 +315,7 @@ INSERT INTO shuijian_menu VALUES ('2', '管理员设置', '2', '/iadmin.php/Sys/
 INSERT INTO shuijian_menu VALUES ('3', '菜单管理', '2', '/iadmin.php/Menu/menu_list', '1', '1');
 INSERT INTO shuijian_menu VALUES ('4', 'test', '2', 'test', '1', '1');
 INSERT INTO shuijian_menu VALUES ('5', '店铺管理', '2', '/iadmin.php/Shop/shop_list', '1', '1');
+INSERT INTO shuijian_menu VALUES ('6', '自提点管理', '2', '/iadmin.php/Site/site_list', '1', '1');
 
 -- ----------------------------
 -- Table structure for `shuijian_order_action`
@@ -420,6 +423,23 @@ CREATE TABLE `shuijian_products` (
 -- ----------------------------
 -- Records of shuijian_products
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for `shuijian_role`
+-- ----------------------------
+DROP TABLE IF EXISTS `shuijian_role`;
+CREATE TABLE `shuijian_role` (
+  `role_id` tinyint(2) NOT NULL auto_increment,
+  `role_name` varchar(20) NOT NULL,
+  PRIMARY KEY  (`role_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of shuijian_role
+-- ----------------------------
+INSERT INTO shuijian_role VALUES ('1', '店长');
+INSERT INTO shuijian_role VALUES ('2', '客服');
+INSERT INTO shuijian_role VALUES ('10', '其他');
 
 -- ----------------------------
 -- Table structure for `shuijian_shop`

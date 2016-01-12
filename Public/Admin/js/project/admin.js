@@ -65,6 +65,8 @@ $(function() {
 // 添加管理员
   $(document).on('click', '#adminAdd', function () {
     var bodyHtml = '';
+    var shoprole = $("#role").html();
+    var shoplist = $("#shop").html();
     bodyHtml += '<form class="form-horizontal" fole="form" id="adminFormAdd">';
     bodyHtml += '	<div class="form-group">';
     bodyHtml += '		<label class="col-sm-2 control-label">姓名</label>';
@@ -90,6 +92,18 @@ $(function() {
     bodyHtml += '			<input type="text" class="form-control onlyDigitData" name="data[admin_tel]" id="admin_tel" value="">';
     bodyHtml += '		</div>';
     bodyHtml += '	</div>';
+    bodyHtml += '	<div class="form-group">';
+    bodyHtml += '		<label class="col-sm-2 control-label">角色</label>';
+    bodyHtml += '		<div class="col-sm-10">';
+    bodyHtml += shoprole;
+    bodyHtml += '		</div>';
+    bodyHtml += '	</div>';
+    bodyHtml += '	<div class="form-group hide" id="shop_hide_div">';
+    bodyHtml += '		<label class="col-sm-2 control-label">负责店铺</label>';
+    bodyHtml += '		<div class="col-sm-10">';
+    bodyHtml += shoplist;
+    bodyHtml += '		</div>';
+    bodyHtml += '	</div>';
     bodyHtml += '</form>';
     InitShowModal('添加管理员', bodyHtml);
     $(document).off('click', '#modal_main .modal-footer #submit');
@@ -104,6 +118,8 @@ $(function() {
 
   $(document).on('click', '.adminEdit', function () {
     var trObj = $(this).parent().parent();
+    var shoprole = $("#role").html();
+    var shoplist = $("#shop").html();
     var id = trObj.attr('trid');
     var admin_username = trObj.find('.admin_username').text();
     var admin_email = trObj.find('.admin_email').text();
@@ -136,6 +152,17 @@ $(function() {
     bodyHtml += '			<input type="text" class="form-control onlyDigitData" name="data[admin_tel]" id="admin_tel" value="' + admin_tel + '">';
     bodyHtml += '		</div>';
     bodyHtml += '	</div>';
+    bodyHtml += '	<div class="form-group">';
+    bodyHtml += '		<label class="col-sm-2 control-label">角色</label>';
+    bodyHtml += '		<div class="col-sm-10">';
+    bodyHtml += shoprole;
+    bodyHtml += '		</div>';
+    bodyHtml += '	</div>';
+    bodyHtml += '	<div class="form-group hide" id="shop_hide_div">';
+    bodyHtml += '		<label class="col-sm-2 control-label">负责店铺</label>';
+    bodyHtml += '		<div class="col-sm-10">';
+    bodyHtml += shoplist;
+    bodyHtml += '		</div>';
     bodyHtml += '</form>';
     InitShowModal('编辑管理员', bodyHtml);
     $(document).off('click', '#modal_main .modal-footer #submit');
@@ -150,6 +177,15 @@ $(function() {
         window.location.href = window.location.href;
       }
     });
+  });
+
+  // 添加企业用户
+  $(document).on('change','#level',function(){
+    $('#shop_hide_div').addClass('hide');
+    var level = $(this).val();
+    if(level==1){ //店长
+      $('#shop_hide_div').removeClass('hide');
+    }
   });
 
 //删除

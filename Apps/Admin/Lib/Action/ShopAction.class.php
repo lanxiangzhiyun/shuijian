@@ -138,6 +138,18 @@ class ShopAction extends ExtendAction{
 
 
     public function  map($shopid){
+        $ShopMapModel = D('ShopMap');
+        $data['shopid'] = $shopid;
+        // 获取列表
+        $arrList = $ShopMapModel -> getList($data);
+        $arrR=array();
+        foreach($arrList as $key=>$value){
+            $arr[]=array($value['labelInfo'],$value['shipAreaId']);
+            $arr[]=json_decode($value['lngAndLat']);
+            $arrR[] = $arr;
+        }
+        //print_r($arrR);
+        $this -> assign('mapresult',json_encode($arrR));
         $this->display('shop_map');
     }
 
@@ -149,7 +161,7 @@ class ShopAction extends ExtendAction{
         $ShopMapModel = D('ShopMap');
         $result = $ShopMapModel -> addList($data);
         if ($result) {
-            $this->ajaxReturn(array('title'=>'success','data'=>$result));
+            $this->ajaxReturn(array('title'=>'success','data'=>$result['result']));
         }else {
             echo "<script>alert('操作失败!');history.back();</script>";
         }
@@ -164,7 +176,23 @@ class ShopAction extends ExtendAction{
         $ShopMapModel = D('ShopMap');
         $result = $ShopMapModel -> addList($data);
         if ($result) {
-            $this->ajaxReturn(array('title'=>'success','data'=>$result));
+            $this->ajaxReturn(array('title'=>'success','data'=>$result['result']));
+        }else {
+            echo "<script>alert('操作失败!');history.back();</script>";
+        }
+    }
+
+    public function  del_map(){
+        $ShopMapModel = D('ShopMap');
+        // 待删除友链id字符串（英文逗号串接）
+        $ids = $this->_post('shipAreaId');
+
+        // 分割友链id字符串
+        $idArr = array_filter(explode(',',$ids));
+        // 删除友链
+        $result =$ShopMapModel -> delList($idArr) ;
+        if ($result) {
+            $this->ajaxReturn(array('title'=>'success'));
         }else {
             echo "<script>alert('操作失败!');history.back();</script>";
         }

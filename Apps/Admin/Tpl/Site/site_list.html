@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Xenon Boostrap Admin Panel" />
+  <meta name="author" content="" />
+
+  <title>水见管理后台</title>
+
+  <link rel="stylesheet" href="http://fonts.useso.com/css?family=Arimo:400,700,400italic">
+  <link rel="stylesheet" href="__PUBLIC__/Admin/css/fonts/linecons/css/linecons.css">
+  <link rel="stylesheet" href="__PUBLIC__/Admin/css/fonts/fontawesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="__PUBLIC__/Admin/css/bootstrap.css">
+  <link rel="stylesheet" href="__PUBLIC__/Admin/css/xenon-core.css">
+  <link rel="stylesheet" href="__PUBLIC__/Admin/css/xenon-forms.css">
+  <link rel="stylesheet" href="__PUBLIC__/Admin/css/xenon-components.css">
+  <link rel="stylesheet" href="__PUBLIC__/Admin/css/xenon-skins.css">
+  <link rel="stylesheet" href="__PUBLIC__/Admin/css/custom.css">
+
+  <script src="__PUBLIC__/Admin/js/jquery-1.11.1.min.js"></script>
+  <script src="__PUBLIC__/Admin/js/project/functions.js"></script>
+  <script src="__PUBLIC__/Admin/js/project/shop.js"></script>
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+
+</head>
+<body class="page-body">
+
+<div class="settings-pane">
+
+  <a href="#" data-toggle="settings-pane" data-animate="true">
+    &times;
+  </a>
+</div>
+
+<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+
+  <!-- Add "fixed" class to make the sidebar fixed always to the browser viewport. -->
+  <!-- Adding class "toggle-others" will keep only one menu item open at a time. -->
+  <!-- Adding class "collapsed" collapse sidebar root elements and show only icons. -->
+  <div class="sidebar-menu toggle-others fixed">
+
+    <div class="sidebar-menu-inner">
+
+      <header class="logo-env">
+
+        <!-- logo -->
+        <div class="logo">
+          <a href="dashboard-1.html" class="logo-expanded">
+            <img src="__PUBLIC__/Admin/images/logo@2x.png" width="80" alt="" />
+          </a>
+
+          <a href="dashboard-1.html" class="logo-collapsed">
+            <img src="__PUBLIC__/Admin/images/logo-collapsed@2x.png" width="40" alt="" />
+          </a>
+        </div>
+
+        <!-- This will toggle the mobile menu and will be visible only on mobile devices -->
+        <div class="mobile-menu-toggle visible-xs">
+          <a href="#" data-toggle="user-info-menu">
+            <i class="fa-bell-o"></i>
+            <span class="badge badge-success">7</span>
+          </a>
+
+          <a href="#" data-toggle="mobile-menu">
+            <i class="fa-bars"></i>
+          </a>
+        </div>
+
+        <!-- This will open the popup with user profile settings, you can use for any purpose, just be creative -->
+        <div class="settings-icon">
+          <a href="#" data-toggle="settings-pane" data-animate="true">
+            <i class="linecons-cog"></i>
+          </a>
+        </div>
+
+
+      </header>
+
+
+
+      <include file="Common:left"/>
+
+    </div>
+
+  </div>
+
+  <div class="main-content">
+
+    <!-- User Info, Notifications and Menu Bar -->
+    <div class="page-title">
+
+      <div class="title-env">
+        <h1 class="title">自提点管理</h1>
+        <p class="description">Site Management</p>
+      </div>
+
+      <include file="Common:breadcrumb"/>
+
+    </div>
+    <div class="row">
+      <form class="form-inline pull-left" role="form">
+        <div class="form-group pull-left">
+          自提点名：<input class="form-control" type="text" name="serviceSiteName" placeholder="请输入自提点名" value="">
+        </div>
+        <div class="form-group pull-left">
+          <button class="btn btn-white">查询</button>
+        </div>
+      </form>
+
+      <a class="btn btn-white pull-right" href="javascript:void(0);" id="serviceSiteAdd">+添加自提点</a>
+    </div>
+    <!-- Responsive Table -->
+    <div class="row">
+      <div class="col-xs-12">
+        <table class="table table-model-2 table-bordered table-hover" id="serviceSiteTable">
+          <thead>
+          <tr>
+            <th>自提点名称</th>
+            <th>
+              <select id="serviceSiteShopSelect">
+                <option value="">所在店铺</option>
+                <option value="3">衢州快递门店</option>
+                <option value="1675">同济店大仓</option>
+                <option value="1698">全国快递店铺</option>
+                <option value="1699">上海配送店铺</option>
+              </select>
+            </th>
+            <th>地址</th>
+            <th>联系人</th>
+            <th>电话</th>
+            <th>营业时间</th>
+            <th>是否营业</th>
+            <th class="text-center">操作</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr trid="4959" lng="0.000000" lat="0.000000">
+            <td class="sName" title="测试活动">测试活动</td>
+            <td class="sShop">衢州快递门店</td>
+            <td class="sAddress" address="撒">撒</td>
+            <td class="sContact"></td>
+            <td class="sMobile"></td>
+            <td class="sTime" begin="" end=""><code>至</code></td>
+            <td class="sStatus" status="1">营业中√</td>
+            <td class="text-center ">
+              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left serviceSiteEidt">编辑</a>
+              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left serviceSiteDelete">删除</a>
+            </td>
+          </tr>
+          <tr trid="4958" lng="0.000000" lat="0.000000">
+            <td class="sName" title="苏河汇测试自提12">苏河汇测试自提12</td>
+            <td class="sShop">衢州快递门店</td>
+            <td class="sAddress" address="测试自提12">测试自提12</td>
+            <td class="sContact">18756037861</td>
+            <td class="sMobile">18756037861</td>
+            <td class="sTime" begin="" end=""><code>至</code></td>
+            <td class="sStatus" status="1">营业中√</td>
+            <td class="text-center ">
+              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left serviceSiteEidt">编辑</a>
+              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left serviceSiteDelete">删除</a>
+            </td>
+          </tr>
+          <tr trid="4956" lng="0.000000" lat="0.000000">
+            <td class="sName" title="西南九商业街9号电脑维修店奇怪果园自提点">西南九商业街9号电脑维修店奇怪果园..</td>
+            <td class="sShop">同济店大仓</td>
+            <td class="sAddress" address="西南九商业街9号电脑维修店奇怪果园自提点">西南九商业街9号电脑维修店奇怪果园..</td>
+            <td class="sContact"></td>
+            <td class="sMobile"></td>
+            <td class="sTime" begin="" end=""><code>至</code></td>
+            <td class="sStatus" status="1">营业中√</td>
+            <td class="text-center ">
+              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left serviceSiteEidt">编辑</a>
+              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left serviceSiteDelete">删除</a>
+            </td>
+          </tr>
+          <tr trid="3543" lng="0.000000" lat="0.000000">
+            <td class="sName" title="测试自提点1">测试自提点1</td>
+            <td class="sShop">衢州快递门店</td>
+            <td class="sAddress" address="测试1">测试1</td>
+            <td class="sContact"></td>
+            <td class="sMobile"></td>
+            <td class="sTime" begin="23:00" end="23:30">23:00<code>至</code>23:30</td>
+            <td class="sStatus" status="0">停用×</td>
+            <td class="text-center ">
+              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left serviceSiteEidt">编辑</a>
+              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left serviceSiteDelete">删除</a>
+            </td>
+          </tr>
+          <tr trid="114" lng="0.000000" lat="0.000000">
+            <td class="sName" title="地推不配送">地推不配送</td>
+            <td class="sShop">衢州快递门店</td>
+            <td class="sAddress" address="地推不配送，请注意">地推不配送，请注意</td>
+            <td class="sContact">王</td>
+            <td class="sMobile">18537199421</td>
+            <td class="sTime" begin="00:00" end="23:59">00:00<code>至</code>23:59</td>
+            <td class="sStatus" status="1">营业中√</td>
+            <td class="text-center ">
+              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left serviceSiteEidt">编辑</a>
+              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left serviceSiteDelete">删除</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!--分页开始-->
+    <?php echo $pageHtml;?>
+    <!--分页结束-->
+
+    <!-- Main Footer -->
+    <!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
+    <!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
+    <!-- Or class "fixed" to  always fix the footer to the end of page -->
+    <include file="Common:footer"/>
+  </div>
+</div>
+
+
+
+<include file="Common:modal"/>
+
+
+<!-- Bottom Scripts -->
+<script src="__PUBLIC__/Admin/js/bootstrap.min.js"></script>
+<script src="__PUBLIC__/Admin/js/TweenMax.min.js"></script>
+<script src="__PUBLIC__/Admin/js/resizeable.js"></script>
+<script src="__PUBLIC__/Admin/js/joinable.js"></script>
+<script src="__PUBLIC__/Admin/js/xenon-api.js"></script>
+<script src="__PUBLIC__/Admin/js/xenon-toggles.js"></script>
+
+
+<!-- Imported scripts on this page -->
+<script src="__PUBLIC__/Admin/js/rwd-table/js/rwd-table.min.js"></script>
+
+
+<!-- JavaScripts initializations and stuff -->
+<script src="__PUBLIC__/Admin/js/xenon-custom.js"></script>
+
+</body>
+</html>

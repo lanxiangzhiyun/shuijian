@@ -807,10 +807,10 @@ $(function() {
     bodyHtml += '</form>';
     InitShowModal('添加自提点',bodyHtml);
     //获取城市，城市只在添加时用到，所以放在这请求
-    var $citys = DoAjaxPost('/site/all-city',{});
+    var $citys = DoAjaxPost('/iadmin.php/Site/all_city',{});
     var str = '';
     $.each($citys,function(i,item){
-      str += '<option value="'+item.id+'">'+item.name+'</option>';
+      str += '<option value="'+item.city_id+'">'+item.city_name+'</option>';
     });
     $("#cacheCitySelect").append(str);
     $(document).off('click','#modal_main .modal-footer #submit');

@@ -40,13 +40,6 @@ class SiteAction extends ExtendAction{
             $this -> assign($key,$val);
         }
 
-        //获取城市列表
-        $cityModel = D('City');
-        $dat_c = array();
-        $dat_c['fields'] = '*';
-        $cityList = $cityModel -> getList($dat_c);
-        $this -> assign('cityList',$cityList);
-
         //获取商铺列表
         $shopModel = D('Shop');
         $dat_c = array();
@@ -57,12 +50,21 @@ class SiteAction extends ExtendAction{
         $this->display('site_list');
     }
 
+    public function all_city(){
+        //获取城市列表
+        $cityModel = D('City');
+        $dat_c = array();
+        $dat_c['fields'] = '*';
+        $cityList = $cityModel -> getList($dat_c);
+        $this -> ajaxReturn($cityList);
+    }
+
     public function site_edit(){
         // URL参数
         $data = $this -> _post('data');
         // 新增
-        $shopModel = D('Shop');
-        $result = $shopModel -> addList($data);
+        $siteModel = D('Site');
+        $result = $siteModel -> addList($data);
         if ($result) {
             $this->ajaxReturn(array('title'=>'success'));
         }else {

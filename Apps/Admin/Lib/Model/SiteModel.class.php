@@ -36,7 +36,7 @@ class SiteModel extends Model {
         $where = "1=1";
         $param = array();
         if($value)
-            $where .= " and shop_name='" . $value."'";
+            $where .= " and site_name='" . $value."'";
         $param['fields'] = "*";
 
         $arrList = $this -> where ($where) -> field($param['fields']) -> select();
@@ -53,15 +53,15 @@ class SiteModel extends Model {
         //编辑
         if ($id) {
             $result = $this -> save(array(
-                'shop_id'=>$id,
-                'shop_name' => $param['shop_name'],
-                'low_price'=>$param['low_price'],
-                'ship_cost'=>$param['ship_cost'],
-                'shop_address'=>$param['shop_address'],
-                'shop_type'=>$param['shop_type'],
-                'shop_businessType'=>$param['shop_businessType'],
-                'shop_deliverType'=>$param['shop_deliverType'],
-                'shop_payType'=>$param['shop_payType'],
+                'site_id'=>$id,
+                'site_city' => $param['site_city'],
+                'site_shop'=>$param['site_shop'],
+                'site_name'=>$param['site_name'],
+                'site_address'=>$param['site_address'],
+                'site_contact'=>$param['site_contact'],
+                'site_mobile'=>$param['site_mobile'],
+                'site_startTime'=>$param['startHour'].":".$param['startMinute'],
+                'site_endTime'=>$param['endHour'].":".$param['endMinute'],
                 'shop_isopen'=>$param['shop_isopen'],
                 'longitude'=>$param['longitude'],
                 'latitude'=>$param['latitude']
@@ -69,15 +69,14 @@ class SiteModel extends Model {
         } else {
             //新增
             $result = $this -> add(array(
-                'shop_city' => $param['shop_city'],
-                'shop_name' => $param['shop_name'],
-                'low_price'=>$param['low_price'],
-                'ship_cost'=>$param['ship_cost'],
-                'shop_address'=>$param['shop_address'],
-                'shop_type'=>$param['shop_type'],
-                'shop_businessType'=>$param['shop_businessType'],
-                'shop_deliverType'=>$param['shop_deliverType'],
-                'shop_payType'=>$param['shop_payType'],
+                'site_city' => $param['site_city'],
+                'site_shop'=>$param['site_shop'],
+                'site_name'=>$param['site_name'],
+                'site_address'=>$param['site_address'],
+                'site_contact'=>$param['site_contact'],
+                'site_mobile'=>$param['site_mobile'],
+                'site_startTime'=>$param['startHour'].":".$param['startMinute'],
+                'site_endTime'=>$param['endHour'].":".$param['endMinute'],
                 'shop_isopen'=>$param['shop_isopen'],
                 'longitude'=>$param['longitude'],
                 'latitude'=>$param['latitude']

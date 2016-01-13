@@ -66,7 +66,7 @@ class SiteAction extends ExtendAction{
         $siteModel = D('Site');
         $result = $siteModel -> addList($data);
         if ($result) {
-            $this->ajaxReturn(array('title'=>'success'));
+            $this->ajaxReturn(array('title'=>'success','data'=>$result));
         }else {
             echo "<script>alert('操作失败!');history.back();</script>";
         }
@@ -95,8 +95,8 @@ class SiteAction extends ExtendAction{
     public function name_unique_check(){
 
         $value = $this -> _post('value');
-        $shopModel = D('Shop');
-        $result = $shopModel -> nameuniquecheck($value);
+        $siteModel = D('Site');
+        $result = $siteModel -> nameuniquecheck($value);
         $this->ajaxReturn($result);
     }
 

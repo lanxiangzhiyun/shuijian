@@ -151,71 +151,24 @@
           </tr>
           </thead>
           <tbody>
-          <tr trid="4959" lng="0.000000" lat="0.000000">
-            <td class="sName" title="测试活动">测试活动</td>
-            <td class="sShop">衢州快递门店</td>
-            <td class="sAddress" address="撒">撒</td>
-            <td class="sContact"></td>
-            <td class="sMobile"></td>
-            <td class="sTime" begin="" end=""><code>至</code></td>
-            <td class="sStatus" status="1">营业中√</td>
+          <volist name='arrList' id='vo'>
+          <tr trid="{$vo.site_id}" lng="{$vo.longitude}" lat="{$vo.latitude}">
+            <td class="sName" title="{$vo.site_name}">{$vo.site_name}</td>
+            <td class="sShop">{$vo.shop_name}</td>
+            <td class="sAddress" address="{$vo.site_address}">{$vo.site_address}</td>
+            <td class="sContact">{$vo.site_contact}</td>
+            <td class="sMobile">{$vo.site_mobile}</td>
+            <td class="sTime" begin="{$vo.site_startTime}" end="{$vo.site_endTime}">{$vo.site_startTime}<code>至</code>{$vo.site_endTime}</td>
+            <td class="sStatus" status="{$vo.shop_isopen}">
+              <?php $tem = array('1'=>'营业中','0'=>'停业') ?>
+              <?php echo $tem[$vo[shop_isopen]]?>
+            </td>
             <td class="text-center ">
               <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left serviceSiteEidt">编辑</a>
               <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left serviceSiteDelete">删除</a>
             </td>
           </tr>
-          <tr trid="4958" lng="0.000000" lat="0.000000">
-            <td class="sName" title="苏河汇测试自提12">苏河汇测试自提12</td>
-            <td class="sShop">衢州快递门店</td>
-            <td class="sAddress" address="测试自提12">测试自提12</td>
-            <td class="sContact">18756037861</td>
-            <td class="sMobile">18756037861</td>
-            <td class="sTime" begin="" end=""><code>至</code></td>
-            <td class="sStatus" status="1">营业中√</td>
-            <td class="text-center ">
-              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left serviceSiteEidt">编辑</a>
-              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left serviceSiteDelete">删除</a>
-            </td>
-          </tr>
-          <tr trid="4956" lng="0.000000" lat="0.000000">
-            <td class="sName" title="西南九商业街9号电脑维修店奇怪果园自提点">西南九商业街9号电脑维修店奇怪果园..</td>
-            <td class="sShop">同济店大仓</td>
-            <td class="sAddress" address="西南九商业街9号电脑维修店奇怪果园自提点">西南九商业街9号电脑维修店奇怪果园..</td>
-            <td class="sContact"></td>
-            <td class="sMobile"></td>
-            <td class="sTime" begin="" end=""><code>至</code></td>
-            <td class="sStatus" status="1">营业中√</td>
-            <td class="text-center ">
-              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left serviceSiteEidt">编辑</a>
-              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left serviceSiteDelete">删除</a>
-            </td>
-          </tr>
-          <tr trid="3543" lng="0.000000" lat="0.000000">
-            <td class="sName" title="测试自提点1">测试自提点1</td>
-            <td class="sShop">衢州快递门店</td>
-            <td class="sAddress" address="测试1">测试1</td>
-            <td class="sContact"></td>
-            <td class="sMobile"></td>
-            <td class="sTime" begin="23:00" end="23:30">23:00<code>至</code>23:30</td>
-            <td class="sStatus" status="0">停用×</td>
-            <td class="text-center ">
-              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left serviceSiteEidt">编辑</a>
-              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left serviceSiteDelete">删除</a>
-            </td>
-          </tr>
-          <tr trid="114" lng="0.000000" lat="0.000000">
-            <td class="sName" title="地推不配送">地推不配送</td>
-            <td class="sShop">衢州快递门店</td>
-            <td class="sAddress" address="地推不配送，请注意">地推不配送，请注意</td>
-            <td class="sContact">王</td>
-            <td class="sMobile">18537199421</td>
-            <td class="sTime" begin="00:00" end="23:59">00:00<code>至</code>23:59</td>
-            <td class="sStatus" status="1">营业中√</td>
-            <td class="text-center ">
-              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left serviceSiteEidt">编辑</a>
-              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left serviceSiteDelete">删除</a>
-            </td>
-          </tr>
+          </volist>
           </tbody>
         </table>
       </div>

@@ -118,6 +118,8 @@ $(function() {
 
   $(document).on('click', '.adminEdit', function () {
     var trObj = $(this).parent().parent();
+    var roleid= $(this).attr("roleid");
+    var adminshop= $(this).attr("admin_shop");
     var shoprole = $("#role").html();
     var shoplist = $("#shop").html();
     var id = trObj.attr('trid');
@@ -154,17 +156,20 @@ $(function() {
     bodyHtml += '	</div>';
     bodyHtml += '	<div class="form-group">';
     bodyHtml += '		<label class="col-sm-2 control-label">角色</label>';
-    bodyHtml += '		<div class="col-sm-10">';
+    bodyHtml += '		<div class="col-sm-10 roleclass">';
     bodyHtml += shoprole;
     bodyHtml += '		</div>';
     bodyHtml += '	</div>';
-    bodyHtml += '	<div class="form-group hide" id="shop_hide_div">';
+    bodyHtml += '	<div class="form-group" id="shop_hide_div">';
     bodyHtml += '		<label class="col-sm-2 control-label">负责店铺</label>';
-    bodyHtml += '		<div class="col-sm-10">';
+    bodyHtml += '		<div class="col-sm-10 shopclass">';
     bodyHtml += shoplist;
     bodyHtml += '		</div>';
     bodyHtml += '</form>';
     InitShowModal('编辑管理员', bodyHtml);
+
+    $(".roleclass").find("option[value='"+roleid+"']").attr("selected",true);
+    $(".shopclass").find("option[value='"+adminshop+"']").attr("selected",true);
     $(document).off('click', '#modal_main .modal-footer #submit');
     $(document).on('click', '#modal_main .modal-footer #submit', function () {
       //var nameInput = $('#username');

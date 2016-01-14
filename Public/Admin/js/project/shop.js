@@ -825,7 +825,7 @@ $(function() {
       var startMinute = $('#startMinute');
       var endHour = $('#endHour');
       var endMinute = $('#endMinute');
-      var status = $("input[name='status']:checked");
+      var status = $("input[name='data[shop_isopen]']:checked");
       var longitudeInput = $('#longitude');
       var latitudeInput = $('#latitude');
       var startTime = startHour.val()+':'+startMinute.val();
@@ -837,25 +837,26 @@ $(function() {
       if(DoIllegalValidate2(new Array(siteNameInput),'unique', new Array('/iadmin.php/Site/name_unique_check'))) return;
       var ajaxResult = DoAjaxPost('/iadmin.php/Site/site_edit',$('#modal_main form').serialize());
       if(ajaxResult['title'] == 'success'){
-        var data = ajaxResult['data'];
-        $('#serviceSiteTable tbody').prepend($('#serviceSiteTable tbody tr').first().clone());
-        var currTr = $('#serviceSiteTable tbody tr').first();
-        currTr.attr('trid',data['id']);
-        currTr.attr('lng',data['longitude']);
-        currTr.attr('lat',data['latitude']);
-        currTr.find('.sName').attr('title',data['name']);
-        currTr.find('.sName').html(data['name']);
-        currTr.find('.sShop').html(shopInput.find('option:selected').text());
-        currTr.find('.sAddress').html(data['address']);
-        currTr.find('.sAddress').attr('address',data['address']);
-        currTr.find('.sContact').html(data['contact']);
-        currTr.find('.sMobile').html(data['contact_mobile']);
-        currTr.find('.sTime').html(data['site_startTime']+'<code>至</code>'+data['site_endTime']);
-        currTr.find('.sTime').attr('begin',data['site_startTime']);
-        currTr.find('.sTime').attr('end',data['site_endTime']);
-        currTr.find('.sStatus').attr('status',data['status']);
-        currTr.find('.sStatus').html($('.siteStatus').find('input:radio[value='+data['status']+']').next().text());
+        //var data = ajaxResult['data'];
+        //$('#serviceSiteTable tbody').prepend($('#serviceSiteTable tbody tr').first().clone());
+        //var currTr = $('#serviceSiteTable tbody tr').first();
+        //currTr.attr('trid',data['id']);
+        //currTr.attr('lng',data['longitude']);
+        //currTr.attr('lat',data['latitude']);
+        //currTr.find('.sName').attr('title',data['name']);
+        //currTr.find('.sName').html(data['name']);
+        //currTr.find('.sShop').html(shopInput.find('option:selected').text());
+        //currTr.find('.sAddress').html(data['address']);
+        //currTr.find('.sAddress').attr('address',data['address']);
+        //currTr.find('.sContact').html(data['contact']);
+        //currTr.find('.sMobile').html(data['contact_mobile']);
+        //currTr.find('.sTime').html(data['site_startTime']+'<code>至</code>'+data['site_endTime']);
+        //currTr.find('.sTime').attr('begin',data['site_startTime']);
+        //currTr.find('.sTime').attr('end',data['site_endTime']);
+        //currTr.find('.sStatus').attr('status',data['status']);
+        //currTr.find('.sStatus').html($('.siteStatus').find('input:radio[value='+data['status']+']').next().text());
         $('#modal_main').modal('hide');
+        window.location.href = window.location.href;
       }
     });
   });
@@ -978,7 +979,7 @@ $(function() {
       var startMinute = $('#startMinute');
       var endHour = $('#endHour');
       var endMinute = $('#endMinute');
-      var status = $("input[name='status']:checked");
+      var status = $("input[name='data[shop_isopen]']:checked");
       var longitudeInput = $('#longitude');
       var latitudeInput = $('#latitude');
       var startTime = startHour.val()+':'+startMinute.val();
@@ -987,7 +988,7 @@ $(function() {
         alert('结束时间不能小于开始时间');return;
       }
       if(DoIllegalValidate2(new Array(serviceSiteIdInput,siteNameInput,address,contact,contact_mobile,status),'required')) return;
-      if(DoIllegalValidate2(new Array(siteNameInput),'unique', new Array('iadmin.php/Site/name_unique_check/'+serviceSiteIdInput.val()))) return;
+      if(DoIllegalValidate2(new Array(siteNameInput),'unique', new Array('/iadmin.php/Site/name_unique_check/'+serviceSiteIdInput.val()))) return;
       var ajaxResult = DoAjaxPost('/iadmin.php/Site/site_edit',$('#modal_main form').serialize());
       if(ajaxResult['title'] == 'success'){
         trObject.attr('lng',longitudeInput.val());

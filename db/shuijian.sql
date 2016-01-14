@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
-Date: 2016-01-13 23:54:01
+Date: 2016-01-14 23:03:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -84,7 +84,7 @@ CREATE TABLE `shuijian_admin` (
 -- ----------------------------
 -- Records of shuijian_admin
 -- ----------------------------
-INSERT INTO shuijian_admin VALUES ('1', 'admin', 'd41d8cd98f00b204e9800998ecf8427e', 'f@126.com', 'admin', '123456', '127.0.0.1', '112222233', '1452602480', '1', '2,3,5,6', '1', '0');
+INSERT INTO shuijian_admin VALUES ('1', 'admin', 'd41d8cd98f00b204e9800998ecf8427e', 'f@126.com', 'admin', '123456', '127.0.0.1', '112222233', '1452777337', '1', '2,3,5,6', '1', '0');
 
 -- ----------------------------
 -- Table structure for `shuijian_article`
@@ -519,17 +519,18 @@ CREATE TABLE `shuijian_site` (
   `site_address` varchar(120) NOT NULL,
   `site_contact` varchar(120) NOT NULL,
   `site_mobile` varchar(20) NOT NULL,
-  `site_startTime` int(11) NOT NULL,
-  `site_endTime` int(11) NOT NULL,
+  `site_startTime` varchar(60) NOT NULL,
+  `site_endTime` varchar(60) NOT NULL,
   `shop_isopen` tinyint(3) NOT NULL default '1',
   `longitude` float default NULL,
   `latitude` float default NULL,
   PRIMARY KEY  (`site_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of shuijian_site
 -- ----------------------------
+INSERT INTO shuijian_site VALUES ('1', '1', '0', '53w5', 'erewq', 'rewrqw', '13564128227', '07:00', '18:00', '1', '0', '0');
 
 -- ----------------------------
 -- Table structure for `shuijian_users`

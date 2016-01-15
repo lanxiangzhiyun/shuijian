@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Xenon Boostrap Admin Panel" />
+  <meta name="author" content="" />
+
+  <title>水见管理后台</title>
+
+  <link rel="stylesheet" href="http://fonts.useso.com/css?family=Arimo:400,700,400italic">
+  <link rel="stylesheet" href="__PUBLIC__/Admin/css/fonts/linecons/css/linecons.css">
+  <link rel="stylesheet" href="__PUBLIC__/Admin/css/fonts/fontawesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="__PUBLIC__/Admin/css/bootstrap.css">
+  <link rel="stylesheet" href="__PUBLIC__/Admin/css/xenon-core.css">
+  <link rel="stylesheet" href="__PUBLIC__/Admin/css/xenon-forms.css">
+  <link rel="stylesheet" href="__PUBLIC__/Admin/css/xenon-components.css">
+  <link rel="stylesheet" href="__PUBLIC__/Admin/css/xenon-skins.css">
+  <link rel="stylesheet" href="__PUBLIC__/Admin/css/custom.css">
+
+  <script src="__PUBLIC__/Admin/js/jquery-1.11.1.min.js"></script>
+  <script src="__PUBLIC__/Admin/js/project/functions.js"></script>
+  <script src="__PUBLIC__/Admin/js/project/library.js"></script>
+  <script src="__PUBLIC__/Admin/js/project/shop.js"></script>
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+
+</head>
+<body class="page-body">
+
+<div class="settings-pane">
+
+  <a href="#" data-toggle="settings-pane" data-animate="true">
+    &times;
+  </a>
+</div>
+
+<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+
+  <!-- Add "fixed" class to make the sidebar fixed always to the browser viewport. -->
+  <!-- Adding class "toggle-others" will keep only one menu item open at a time. -->
+  <!-- Adding class "collapsed" collapse sidebar root elements and show only icons. -->
+  <div class="sidebar-menu toggle-others fixed">
+
+    <div class="sidebar-menu-inner">
+
+      <header class="logo-env">
+
+        <!-- logo -->
+        <div class="logo">
+          <a href="dashboard-1.html" class="logo-expanded">
+            <img src="__PUBLIC__/Admin/images/logo@2x.png" width="80" alt="" />
+          </a>
+
+          <a href="dashboard-1.html" class="logo-collapsed">
+            <img src="__PUBLIC__/Admin/images/logo-collapsed@2x.png" width="40" alt="" />
+          </a>
+        </div>
+
+        <!-- This will toggle the mobile menu and will be visible only on mobile devices -->
+        <div class="mobile-menu-toggle visible-xs">
+          <a href="#" data-toggle="user-info-menu">
+            <i class="fa-bell-o"></i>
+            <span class="badge badge-success">7</span>
+          </a>
+
+          <a href="#" data-toggle="mobile-menu">
+            <i class="fa-bars"></i>
+          </a>
+        </div>
+
+        <!-- This will open the popup with user profile settings, you can use for any purpose, just be creative -->
+        <div class="settings-icon">
+          <a href="#" data-toggle="settings-pane" data-animate="true">
+            <i class="linecons-cog"></i>
+          </a>
+        </div>
+
+
+      </header>
+
+
+
+      <include file="Common:left"/>
+
+    </div>
+
+  </div>
+
+  <div class="main-content">
+
+    <!-- User Info, Notifications and Menu Bar -->
+    <div class="page-title">
+
+      <div class="title-env">
+        <h1 class="title">物流管理</h1>
+        <p class="description">Deliver List</p>
+      </div>
+
+      <include file="Common:breadcrumb"/>
+
+    </div>
+    <div class="row">
+      <a class="btn btn-white pull-right" href="javascript:void(0);" id="deliverMenAdd">+添加物流公司</a>
+    </div>
+    <!-- Responsive Table -->
+    <div class="row">
+      <div class="col-xs-12">
+        <table class="table table-model-2 table-bordered table-hover">
+          <thead><tr>
+            <th>#</th>
+            <th>名称</th>
+            <th>业务码</th>
+            <th>联系方式</th>
+            <th>操作</th>
+          </tr></thead>
+          <tbody id="DeliverListTable">
+          <tr trid="19">
+            <td>1</td>
+            <td class="title">万象物流</td>
+            <td class="code">wanxiangwuliu</td>
+            <td class="mobile">11111111111</td>
+            <td>
+              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left deliverMenEdit">编辑</a>
+              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left deliverMenDelete">删除</a>
+            </td>
+          </tr><tr>
+          </tr><tr trid="15">
+            <td>2</td>
+            <td class="title">申通快递</td>
+            <td class="code">shentong</td>
+            <td class="mobile">11111111111</td>
+            <td>
+              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left deliverMenEdit">编辑</a>
+              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left deliverMenDelete">删除</a>
+            </td>
+          </tr><tr>
+          </tr><tr trid="10">
+            <td>3</td>
+            <td class="title">顺丰速运</td>
+            <td class="code">shunfeng</td>
+            <td class="mobile">11111111111</td>
+            <td>
+              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left deliverMenEdit">编辑</a>
+              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left deliverMenDelete">删除</a>
+            </td>
+          </tr><tr>
+          </tr><tr trid="6">
+            <td>4</td>
+            <td class="title">圆通速递</td>
+            <td class="code">yuantong</td>
+            <td class="mobile">11111111111</td>
+            <td>
+              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left deliverMenEdit">编辑</a>
+              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left deliverMenDelete">删除</a>
+            </td>
+          </tr><tr>
+          </tr><tr trid="1">
+            <td>5</td>
+            <td class="title">门店</td>
+            <td class="code"></td>
+            <td class="mobile">15801948675</td>
+            <td>
+              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left deliverMenEdit">编辑</a>
+              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left deliverMenDelete">删除</a>
+            </td>
+          </tr><tr>
+          </tr></tbody>
+        </table>
+      </div>
+    </div>
+    <!--分页开始-->
+    <?php echo $pageHtml;?>
+    <!--分页结束-->
+
+    <!-- Main Footer -->
+    <!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
+    <!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
+    <!-- Or class "fixed" to  always fix the footer to the end of page -->
+    <include file="Common:footer"/>
+  </div>
+</div>
+
+
+
+<include file="Common:modal"/>
+
+
+<!-- Bottom Scripts -->
+<script src="__PUBLIC__/Admin/js/bootstrap.min.js"></script>
+<script src="__PUBLIC__/Admin/js/TweenMax.min.js"></script>
+<script src="__PUBLIC__/Admin/js/resizeable.js"></script>
+<script src="__PUBLIC__/Admin/js/joinable.js"></script>
+<script src="__PUBLIC__/Admin/js/xenon-api.js"></script>
+<script src="__PUBLIC__/Admin/js/xenon-toggles.js"></script>
+
+
+<!-- Imported scripts on this page -->
+<script src="__PUBLIC__/Admin/js/rwd-table/js/rwd-table.min.js"></script>
+
+
+<!-- JavaScripts initializations and stuff -->
+<script src="__PUBLIC__/Admin/js/xenon-custom.js"></script>
+
+</body>
+</html>

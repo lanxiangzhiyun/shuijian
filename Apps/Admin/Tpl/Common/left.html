@@ -2,7 +2,7 @@
   <!-- add class "multiple-expanded" to allow multiple submenus to open -->
   <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
   <volist name='menuList_l1' id='vo'>
-      <li class="active opened active">
+      <li class="">
         <a href="#">
           <i class="linecons-cog"></i>
           <span class="title">{$vo.menu_name}</span>
@@ -25,3 +25,8 @@
       </li>
   </volist>
 </ul>
+<script type="text/javascript">
+  $(function() {
+    $(".active").parents("li").addClass("active opened active");
+  });
+</script>

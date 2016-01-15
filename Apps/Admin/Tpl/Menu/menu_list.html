@@ -105,14 +105,14 @@
         <div class="tabs-vertical-env">
           <ul class="nav tabs-vertical">
             <volist name='menuList_l1' id='vo'>
-              <li class="active" pid="{$vo.menu_id}"><a href="#menus_{$vo.menu_id}" data-toggle="tab">{$vo.menu_name}</a></li>
+              <li  pid="{$vo.menu_id}"><a href="#menus_{$vo.menu_id}" data-toggle="tab">{$vo.menu_name}</a></li>
             </volist>
             <li> <a href="javascript:void(0)" data-toggle="tab" id="menu_add1"><strong>添加一级菜单 + </strong></a></li>
           </ul>
 
           <div class="tab-content">
             <volist name='menuLA_l1' id='vo'>
-              <div class="tab-pane active" id="menus_{$vo.menu_id}">
+              <div class="tab-pane" id="menus_{$vo.menu_id}">
                 <volist name='menuLA_l2' id='vo2'>
                   <?php
                   if($vo['menu_id'] == $vo2['menu_pid']){

@@ -15,7 +15,7 @@ class MenuModel extends Model {
             $where = "(1=1 and menu_level =1) or menu_id in (".$admin_actionList.")";
         else
             $where = "1=1";
-        $arrList = $this -> where ($where) ->field($param['fields']) ->order('menu_id DESC')-> select();
+        $arrList = $this -> where ($where) ->field($param['fields']) ->order('menu_id asc')-> select();
        //echo M()->_sql();
         return $arrList;
     }

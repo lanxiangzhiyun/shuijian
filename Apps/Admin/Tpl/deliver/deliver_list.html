@@ -23,7 +23,7 @@
   <script src="__PUBLIC__/Admin/js/jquery-1.11.1.min.js"></script>
   <script src="__PUBLIC__/Admin/js/project/functions.js"></script>
   <script src="__PUBLIC__/Admin/js/project/library.js"></script>
-  <script src="__PUBLIC__/Admin/js/project/shop.js"></script>
+  <script src="__PUBLIC__/Admin/js/project/deliver.js"></script>
 
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
@@ -119,66 +119,39 @@
             <th>名称</th>
             <th>业务码</th>
             <th>联系方式</th>
+            <th>店铺</th>
             <th>操作</th>
           </tr></thead>
           <tbody id="DeliverListTable">
-          <tr trid="19">
-            <td>1</td>
-            <td class="title">万象物流</td>
-            <td class="code">wanxiangwuliu</td>
-            <td class="mobile">11111111111</td>
+          <volist name='arrList' id='vo' key="k">
+          <tr trid="{$vo.deliver_id}">
+            <td>{$k}</td>
+            <td class="title">{$vo.deliver_name}</td>
+            <td class="code">{$vo.deliver_apiCode}</td>
+            <td class="mobile">{$vo.deliver_mobile}</td>
+            <td class="shop" shopid="{$vo.deliver_shop}">{$vo.shop_name}</td>
             <td>
               <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left deliverMenEdit">编辑</a>
               <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left deliverMenDelete">删除</a>
             </td>
-          </tr><tr>
-          </tr><tr trid="15">
-            <td>2</td>
-            <td class="title">申通快递</td>
-            <td class="code">shentong</td>
-            <td class="mobile">11111111111</td>
-            <td>
-              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left deliverMenEdit">编辑</a>
-              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left deliverMenDelete">删除</a>
-            </td>
-          </tr><tr>
-          </tr><tr trid="10">
-            <td>3</td>
-            <td class="title">顺丰速运</td>
-            <td class="code">shunfeng</td>
-            <td class="mobile">11111111111</td>
-            <td>
-              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left deliverMenEdit">编辑</a>
-              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left deliverMenDelete">删除</a>
-            </td>
-          </tr><tr>
-          </tr><tr trid="6">
-            <td>4</td>
-            <td class="title">圆通速递</td>
-            <td class="code">yuantong</td>
-            <td class="mobile">11111111111</td>
-            <td>
-              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left deliverMenEdit">编辑</a>
-              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left deliverMenDelete">删除</a>
-            </td>
-          </tr><tr>
-          </tr><tr trid="1">
-            <td>5</td>
-            <td class="title">门店</td>
-            <td class="code"></td>
-            <td class="mobile">15801948675</td>
-            <td>
-              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left deliverMenEdit">编辑</a>
-              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left deliverMenDelete">删除</a>
-            </td>
-          </tr><tr>
-          </tr></tbody>
+          </tr>
+          </volist>
+          </tbody>
         </table>
       </div>
     </div>
     <!--分页开始-->
     <?php echo $pageHtml;?>
     <!--分页结束-->
+
+    <div id="deliverMenHideShops" class="hide">
+      <select id="shop_id" name="data[deliver_shop]" class="form-control">
+        <option value="">请选择</option>
+        <volist name='shopList' id='voshop'>
+          <option value="{$voshop.shop_id}">{$voshop.shop_name}</option>
+        </volist>
+      </select>
+    </div>
 
     <!-- Main Footer -->
     <!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->

@@ -21,9 +21,11 @@
   <link rel="stylesheet" href="__PUBLIC__/Admin/css/custom.css">
 
   <script src="__PUBLIC__/Admin/js/jquery-1.11.1.min.js"></script>
+  <link href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css" rel="stylesheet">
+  <script src="__PUBLIC__/Admin/js/project/jquery-ui.min.js"></script>
   <script src="__PUBLIC__/Admin/js/project/functions.js"></script>
   <script src="__PUBLIC__/Admin/js/project/library.js"></script>
-  <script src="__PUBLIC__/Admin/js/project/shop.js"></script>
+  <script src="__PUBLIC__/Admin/js/project/product.js"></script>
 
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
@@ -100,75 +102,44 @@
     <div class="page-title">
 
       <div class="title-env">
-        <h1 class="title">自提点管理</h1>
-        <p class="description">Site Management</p>
+        <h1 class="title">分类管理</h1>
+        <p class="description">Product Category</p>
       </div>
 
       <include file="Common:breadcrumb"/>
 
     </div>
     <div class="row">
-      <form class="form-inline pull-left" role="form">
-        <div class="form-group pull-left">
-          自提点名：<input class="form-control" type="text" name="serviceSiteName" placeholder="{$Think.get.serviceSiteName}" value="">
-        </div>
-        <div class="form-group pull-left">
-          <button class="btn btn-white">查询</button>
-        </div>
-      </form>
-
-      <a class="btn btn-white pull-right" href="javascript:void(0);" id="serviceSiteAdd">+添加自提点</a>
+      <a id="productCategoryAdd" href="javascript:void(0);" class="btn btn-white pull-right">+添加产品分类</a>
     </div>
-    <!-- Responsive Table -->
     <div class="row">
       <div class="col-xs-12">
-        <table class="table table-model-2 table-bordered table-hover" id="serviceSiteTable">
+        <table class="table table-model-2 table-bordered table-hover" id="productCategoryTable">
           <thead>
           <tr>
-            <th>自提点名称</th>
-            <th>
-              <select id="serviceSiteShopSelect">
-                <volist name='shopList' id='vo'>
-                  <if condition="$Think.get.shop_id eq $vo['shop_id']">
-                    <option value="{$vo.shop_id}" selected>{$vo.shop_name}</option>
-                  <else />
-                    <option value="{$vo.shop_id}">{$vo.shop_name}</option>
-                  </if>
-                </volist>
-              </select>
-            </th>
-            <th>地址</th>
-            <th>联系人</th>
-            <th>电话</th>
-            <th>营业时间</th>
-            <th>是否营业</th>
+            <th>ID.</th>
+            <th>分类标题</th>
+            <th>排序值</th>
             <th class="text-center">操作</th>
           </tr>
           </thead>
           <tbody>
           <volist name='arrList' id='vo'>
-          <tr trid="{$vo.site_id}" lng="{$vo.longitude}" lat="{$vo.latitude}">
-            <td class="sName" title="{$vo.site_name}">{$vo.site_name}</td>
-            <td class="sShop">{$vo.shop_name}</td>
-            <td class="sAddress" address="{$vo.site_address}">{$vo.site_address}</td>
-            <td class="sContact">{$vo.site_contact}</td>
-            <td class="sMobile">{$vo.site_mobile}</td>
-            <td class="sTime" begin="{$vo.site_startTime}" end="{$vo.site_endTime}">{$vo.site_startTime}<code>至</code>{$vo.site_endTime}</td>
-            <td class="sStatus" status="{$vo.shop_isopen}">
-              <?php $tem = array('1'=>'营业中','0'=>'停业') ?>
-              <?php echo $tem[$vo[shop_isopen]]?>
-            </td>
-            <td class="text-center ">
-              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left serviceSiteEidt">编辑</a>
-              <a href="javascript:void(0);" class="btn btn-gray btn-sm btn-icon icon-left serviceSiteDelete">删除</a>
+          <tr trid="{$vo.cat_id}">
+            <td class="cID">{$vo.cat_id}</td>
+            <td class="cTitle">{$vo.cat_name}</td>
+            <td class="cOrderby">{$vo.sort_order}</td>
+            <td class="text-center">
+              <a href="javascript:;" class="btn btn-turquoise btn-sm btn-icon icon-left categoryUpdate">编辑</a>
+              <a href="javascript:;" class="btn btn-turquoise btn-sm btn-icon icon-left categoryDelete">删除</a>
             </td>
           </tr>
           </volist>
           </tbody>
         </table>
+
       </div>
     </div>
-
     <!--分页开始-->
     <?php echo $pageHtml;?>
     <!--分页结束-->

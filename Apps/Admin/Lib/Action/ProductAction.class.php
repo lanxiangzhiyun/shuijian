@@ -168,6 +168,18 @@ class ProductAction extends ExtendAction{
             $this -> assign($key,$val);
         }
 
+        $GoodsTypeModel = D('GoodsType');
+        $dat_c = array();
+        $dat_c['fields'] = '*';
+        $goodstypeList = $GoodsTypeModel -> getList($dat_c);
+        $this -> assign('goodstypeList',$goodstypeList);
+
+        $GoodsCategoryModel = D('GoodsCategory');
+        $dat_c = array();
+        $dat_c['fields'] = '*';
+        $goodscategoryList = $GoodsCategoryModel -> getList($dat_c);
+        $this -> assign('goodscategoryList',$goodscategoryList);
+
         $this->display('BaseProduct_list');
     }
 

@@ -20,7 +20,7 @@ class BaseProductModel extends Model {
             $where .= " and bproduct_name like '%".$param['keyword']."%'";
         }
 
-        $arrList = $this-> where ($where) -> limit($pageNum) -> page ($page) ->field($param['fields']) ->order('bproduct_id DESC')-> select();
+        $arrList = $this->join(' shuijian_goods_category cat ON cat.cat_id = shuijian_baseproduct.catid')->join(' shuijian_goods_type type ON type.type_id = shuijian_baseproduct.typeid')-> where ($where) -> limit($pageNum) -> page ($page) ->field($param['fields']) ->order('bproduct_id DESC')-> select();
        //echo M()->_sql();
         $this ->total=  $this -> where ($where) ->field('bproduct_id') -> count();
         $this->subtotal = count($arrList);
